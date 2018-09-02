@@ -1,9 +1,9 @@
 === WooCommerce AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
 Tags: woocommerce, altcoin payment, crypto-currency payment, altcoin payment gateway, bitcoin payment gateway, woocommerce bitcoin, woocommerce crypto-currency payment
-Requires at least: 3.0
-Tested up to: 4.9.4
-Stable tag: 1.0.2
+Requires at least: 3.5
+Tested up to: 4.9.8
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,9 +20,10 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 
 
 * Hassle Free Installation
+* Accept any coin from 1900+ crypto currencies
 * No 3rd party wallet signup / payment required
-* Accept any cryptocurrency to your own cryptocurrency address generated from anywhere, not from a specific wallet address. 
-* After a successfull order from a client, check your cryptocurrency balance & release the product by confirming that you have received coins.
+* Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
+* After a successful order from a client, check your crypto-currency balance & release the product by confirming that you have received coins.
 * Accept any altcoin listed in the [coinmarketcap.com](https://api.coinmarketcap.com/v2/listings/) api listings
 * Automatic instant coin price calculation and will adjust to your product price. So you don't need to worry about changing cryptocurrency market price
 * Automatically convert product price to altcoin
@@ -47,6 +48,9 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 7. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.0.3 =
+* added 1500+ crypto-currencies
 
 = 1.0.2 =
 * cart total update after shipping cost change 
