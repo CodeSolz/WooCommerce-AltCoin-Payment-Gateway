@@ -54,3 +54,5 @@ add_filter( 'plugin_action_links', function( $links, $plugin ){
  */
 add_action( 'wp_ajax_calculateCoinPrice', array( 'WooGateWayCoreLib\\frontend\\functions\\CsWapgCoinCal', 'calcualteCoinPrice') );
 add_action( 'wp_ajax_nopriv_calculateCoinPrice', array( 'WooGateWayCoreLib\\frontend\\functions\\CsWapgCoinCal', 'calcualteCoinPrice') );
+
+add_action( 'woocommerce_order_details_after_order_table', array( 'WooGateWayCoreLib\\frontend\\functions\\CsWapgCustomTy', 'order_summary'), 20 );

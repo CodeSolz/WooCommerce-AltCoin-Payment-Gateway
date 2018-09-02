@@ -109,11 +109,10 @@ class CsWapgScript {
                                 action: 'calculateCoinPrice',
                                 code: '<?php echo wp_create_nonce(SECURE_AUTH_SALT); ?>',
                                 coin_info : val,
-                                coin_name : jQuery(this).find("option:selected").text(),
-                                cart_total: <?php echo $woocommerce->cart->total; ?>
+                                coin_name : jQuery(this).find("option:selected").text()
                             };
-                            jQuery.post( wapg_ajax.ajax_url, data, function (res) {
-                                res = JSON.parse(res);                      
+                            
+                            jQuery.post( wapg_ajax.ajax_url, data, function ( res ) {
                                 if( res.response === true ){
                                     jQuery(".coin-detail").html( module.altCoinPayment( res.cartTotal, res.totalCoin, res.coinFullName, res.coinName, res.coinAddress, res.coinPrice ) ).slideDown('slow');
                                 }else{

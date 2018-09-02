@@ -13,6 +13,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 
 use WooGateWayCoreLib\admin\builders\CsWapgForm;
 use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
+use WooGateWayCoreLib\lib\cartFunctions;
 
 class CsWapgFunctions extends \WC_Payment_Gateway{
     
@@ -101,11 +102,22 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
             wc_add_notice( __( 'Please confirm the coin transfer!', CS_WAPG_TEXTDOMAIN), 'error' );
             return false;
         }
+
+        //save order info
+        cartFunctions::save_payment_info( $order_id, array(
+            'cart_total' => $order->get_order_item_totals()['order_total']['value'],
+            'coin_name' => $payment_info[2],
+            'total_coin' => $payment_info[1],
+            'coin_price' => $payment_info[4],
+            'user_address' => $user_alt_address,
+            'your_address' => $payment_info[3]
+        ));
+        
         
         $note = sprintf(__( 'Order Info: Total Payment : %s has made on : %s at your address : %s . Coin price was: $%s. User %s address: %s . User confirmed that coin transfer was successfull!', CS_WAPG_TEXTDOMAIN), $payment_info[1], $payment_info[2], $payment_info[3], $payment_info[4], $payment_info[2], $user_alt_address);
         
         $order->add_order_note( $note );
-        $order->update_status('on-hold', __( 'Awaiting for amdmin payment confirmation.', CS_WAPG_TEXTDOMAIN ) );
+        $order->update_status('on-hold', __( 'Awaiting for admin payment confirmation checking.', CS_WAPG_TEXTDOMAIN ) );
 
         // Reduce stock levels
         $order->reduce_order_stock();

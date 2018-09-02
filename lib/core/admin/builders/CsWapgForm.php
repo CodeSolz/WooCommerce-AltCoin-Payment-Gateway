@@ -157,7 +157,7 @@ class CsWapgForm {
      * @return string
      */
     public static function getAltCoinsSelect(){
-        $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI.'/js/currencies.json');
+        $currencies = \file_get_contents(CS_WAPG_PLUGIN_ASSET_URI.'/js/currencies.json');
         $select = array( '0' => '===='.__( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN).'====');
         foreach( json_decode($currencies) as $currency ){
             $select += array( 
