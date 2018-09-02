@@ -1,9 +1,10 @@
 === WooCommerce AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
 Tags: woocommerce, altcoin payment, crypto-currency payment, altcoin payment gateway, bitcoin payment gateway, woocommerce bitcoin, woocommerce crypto-currency payment
-Requires at least: 3.5
+Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 1.0.3
+Stable tag: 1.0.4
+PHP: 5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,13 +42,18 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 
 1. Back-End - Settings
 2. Back-End - Settings / add coin / add more
-3. Front-end - Checkout Page
-4. Front-end - Checkout Page - Coin Address Area
-5. Front-end - after checkout - thank you page
-6. Admin Panel - order list
-7. Admin Panel - Order notes
+3. Add More Coins
+4. Front-end - Checkout Page
+5. Front-end - Checkout Page - Coin Address Area
+6. Front-end - after checkout - thank you page
+7. Admin Panel - order list
+8. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.0.4 =
+* Minor encoding errors fixed
+* Add more coin drop down fixed
 
 = 1.0.3 =
 * added 1500+ crypto-currencies

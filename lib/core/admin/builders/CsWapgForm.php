@@ -11,6 +11,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     exit;
 }
 
+use WooGateWayCoreLib\lib\Util;
+
 class CsWapgForm {
     
     /**
@@ -156,14 +158,28 @@ class CsWapgForm {
      * 
      * @return string
      */
-    public static function getAltCoinsSelect(){
+    public static function getAltCoinsSelect( $type = false ){
         $currencies = \file_get_contents(CS_WAPG_PLUGIN_ASSET_URI.'/js/currencies.json');
-        $select = array( '0' => '===='.__( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN).'====');
-        foreach( json_decode($currencies) as $currency ){
-            $select += array( 
-                $currency->id => "{$currency->name}({$currency->symbol})"
-            ); 
+
+        if( $type == 'html' ){
+            $select = '<option value="0">======== ' . __( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN) . ' ========</option>';
+        }else{
+            $select = array( '0' => '===='.__( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN).'====' );
         }
+        
+        foreach( \json_decode($currencies) as $currency ){
+            $symbol = Util::encode_html_chars( $currency->symbol );
+            $name = Util::encode_html_chars( $currency->name);
+            $id = Util::encode_html_chars($currency->id);
+            if( $type == 'html' ){
+                $select .= '<option value="'. $id .'">'. $name .'('. $symbol . ')</option>';
+            }else{
+                $select += array( 
+                    $id =>" {$name}({$symbol})"
+                );
+            }
+        }
+        
         return $select;
     }
     

@@ -186,7 +186,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
              <tbody>
                  <tr>
                      <td></td>
-                     <td style='text-align: left;'><a  class='button-primay btn-add-more-coin'>+ Add More Coin</a></td>
+                     <td style='text-align: left;'><a  class='button-secondary btn-add-more-coin'>+ Add More Coin</a></td>
                  </tr>
              </tbody>
              <input type="hidden" id="more_field_count" name="more_field_count" value="<?php echo empty($custom_fields) ? 1 : (empty($custom_fields->count) ? 1 : $custom_fields->count); ?>" />
@@ -204,7 +204,9 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
             <script>
                 var module = {
                     addMoreField : function( id ){
-                        return '<tr valign="top" id="altname_'+id+'">'+
+                        var mt = '';
+                        if( id > 2 ) { mt = 'block-mt'; }
+                        return '<tr valign="top" id="altname_'+id+'" class="more-coin-fields '+mt+'">'+
                                         '<th scope="row" class="titledesc">'+
                                                 '<label for=""><?php _e( 'Select AltCoin ', CS_WAPG_TEXTDOMAIN ); ?></label>'+
                                                 '<span class="woocommerce-help-tip"></span>'+
@@ -213,20 +215,17 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
                                                 '<fieldset>'+
                                                         '<legend class="screen-reader-text"><span>select altcoin</span></legend>'+
                                                         '<select id="woocommerce_wapg_altcoin_payment_altCoinName_'+id+'" name="woocommerce_wapg_altcoin_payment_altCoinName_'+id+'" data-coinid="'+id+'" class="select alt-coin">'+
-                                                        '<?php 
-                                                            foreach( CsWapgForm::getAltCoinsSelect() as $name => $value){
-                                                                echo '<option value="'.$name.'">'.$value.'</option>';
-                                                            }
-                                                        ?>'+
-                                                        "</select> <a data-rowid='"+id+"' class='remove'>Remove</a>"+
+                                                        '<?php echo CsWapgForm::getAltCoinsSelect( 'html' ); ?>'+
+                                                "</select>"+
                                                 '</fieldset>'+
                                         '</td>'+
+                                        "<td><a data-rowid='"+id+"' class='remove'><span class='dashicons dashicons-trash'></span></a></td>"+
                                 '</tr>'+
-                                '<tr valign="top" id="altaddress_'+id+'">'+
+                                '<tr valign="top" id="altaddress_'+id+'" class="more-coin-fields">'+
                                         '<th scope="row" class="titledesc">'+
                                                 '<label for=""><?php _e( 'Enter ', CS_WAPG_TEXTDOMAIN ); ?><span class="altCoinVallabel_'+id+'"><?php _e( ' altcoin ', CS_WAPG_TEXTDOMAIN ); ?></span><?php _e( ' address:', CS_WAPG_TEXTDOMAIN ); ?></label>'+
                                         '</th>'+
-                                        '<td class="forminp">'+
+                                        '<td class="forminp" colspan="2">'+
                                                 '<fieldset>'+
                                                         '<legend class="screen-reader-text"><span>select altcoin</span></legend>'+
                                                         '<input class="input-text regular-input" type="text" name="woocommerce_wapg_altcoin_payment_altCoinAddress_'+id+'" id="woocommerce_wapg_altcoin_payment_altCoinAddress_'+id+'" style="" placeholder="<?php _e( 'enter here your altcon address', CS_WAPG_TEXTDOMAIN ); ?>" />'+
@@ -237,6 +236,8 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
                 };
                 
                 jQuery(document).ready(function(){
+                
+                console.log( 'hi' );
                     jQuery("table").on( 'change', ".alt-coin" ,function(){
                         var val = jQuery(this).val();
                         if( parseInt(val) !== 0 ){
@@ -262,6 +263,13 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
                     
                 });
             </script>
+            <style type="text/css">
+                .btn-add-more-coin{ cursor: pointer; }
+                .more-coin-fields{ background: aliceblue; }
+                .more-coin-fields th{ padding-left: 15px; }
+                .block-mt{ border-top: 5px solid #fff;}
+                .remove{ color: red; cursor: pointer; }
+            </style>
         <?php
     }
     
