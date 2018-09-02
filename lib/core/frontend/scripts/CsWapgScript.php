@@ -38,7 +38,7 @@ class CsWapgScript {
         ?>
             <script type="text/javascript">
                 var module = {
-                    altCoinPayment: function( amount, totalcoin, coin, address, coinPrice){
+                    altCoinPayment: function( amount, totalcoin, coinFullName, coinName, address, coinPrice){
                         return '<h3 id="order_review_heading">You have to pay:</h3>'+
                         '<div id="order_review" class="woocommerce-checkout-review-order">'+
                             '<table class="shop_table woocommerce-checkout-review-order-table">'+
@@ -51,8 +51,8 @@ class CsWapgScript {
                         '<tbody>'+
                             '<tr class="cart_item">'+
                                 '<td class="product-name">'+
-                                    coin+'&nbsp;<strong class="product-quantity">&times; '+totalcoin+'</strong><br>'+
-                                    '<span class="price-tag"> ( 1 '+coin+' = &#36;'+coinPrice+') </span>'+
+                                    coinFullName+'&nbsp;<strong class="product-quantity">&times; '+totalcoin+'</strong><br>'+
+                                    '<span class="price-tag"> ( 1 '+coinFullName+' = &#36;'+coinPrice+') </span>'+
                                 '</td>'+
                                 '<td class="product-total">'+
                                     '<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>'+amount+'</span>'+
@@ -62,27 +62,35 @@ class CsWapgScript {
                     '<tfoot>'+
                     '<tr class="cart-subtotal">'+
                         '<th><?php _e( 'Subtotal', CS_WAPG_TEXTDOMAIN ); ?></th>'+
-                        '<td><span class="woocommerce-Price-amount amount">'+totalcoin+' - <span class="woocommerce-Price-currencySymbol">'+coin+'</span> </span></td>'+
+                        '<td><span class="woocommerce-Price-amount amount">'+totalcoin+' - <span class="woocommerce-Price-currencySymbol">'+coinFullName+'</span> </span></td>'+
                     '</tr>'+
                     '<tr class="order-total">'+
 			'<th><?php _e( 'Total', CS_WAPG_TEXTDOMAIN ); ?><span class="price-tag"><br><?php _e( '(*Transfer Fee Not Included)', CS_WAPG_TEXTDOMAIN ); ?></span></th>'+
 			'<td>'+
-                        '<strong><span class="woocommerce-Price-amount amount">'+totalcoin+' - <span class="woocommerce-Price-currencySymbol">'+coin+'</span></span></strong>'+
+                        '<strong><span class="woocommerce-Price-amount amount">'+totalcoin+' - <span class="woocommerce-Price-currencySymbol">'+coinFullName+'</span></span></strong>'+
                         '</td>'+
                     '</tr>'+
                     '</tfoot>'+
                     '</table>'+
                     '<p class="form-row form-row-wide">'+
-                        '<label for="alt-address"><?php _e( 'Please pay to this address:', CS_WAPG_TEXTDOMAIN ); ?> <span class="required">*</span></label>'+
-                        '<input id="alt-address" class="input-text wc-altcoin-form-user-alt-address" value="'+address+'" readonly type="text" />'+
-                    '</p><p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t foget to add the transfer fee.", CS_WAPG_TEXTDOMAIN ), 'https://coinmarketcap.com'); ?><p>'+
+                        '<label for="alt-address"><?php _e( 'Please pay to this address:', CS_WAPG_TEXTDOMAIN ); ?></label>'+
+                    '</p>'+
+                    '<div class="address-qr">'+
+                        '<img src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+coinName+':'+address+'?amount:'+totalcoin+'"/>'+
+                        '<div class="address-info">'+
+                            '<h3><strong>'+totalcoin+'</strong> '+coinFullName+'</h3>'+
+                            '<input id="alt-address" class="input-text wc-altcoin-form-user-alt-address" value="'+address+'" type="text" /><p></p>'+
+                            '<p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t foget to add the transfer fee.", CS_WAPG_TEXTDOMAIN ), 'https://coinmarketcap.com'); ?><p>'+
+                        '</div>'+
+                    '</div>'+
+                    
                     '<p class="form-row form-row-wide">'+
-                        '<label for="user-alt-address"><?php _e( 'Please enter your ', CS_WAPG_TEXTDOMAIN ); ?>'+coin+'<?php _e( ' address in case of refunds:', CS_WAPG_TEXTDOMAIN ); ?> <span class="required">*</span></label>'+
+                        '<label for="user-alt-address"><?php _e( 'Please enter your ', CS_WAPG_TEXTDOMAIN ); ?>'+coinName+'<?php _e( ' address in case of refunds:', CS_WAPG_TEXTDOMAIN ); ?> <span class="required">*</span></label>'+
                         '<input id="user_alt_address" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-address" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="please enter here your AltCoin address in case of refunds" />'+
-                        '<input type="hidden" name="payment_info" value="'+amount+'__'+totalcoin+'__'+coin+'__'+address+'__'+coinPrice+'" />'+
+                        '<input type="hidden" name="payment_info" value="'+amount+'__'+totalcoin+'__'+coinName+'__'+address+'__'+coinPrice+'" />'+
                     '</p>'+
                     '<p class="form-row form-row-wide">'+
-                        '<input type="checkbox" name="payment_confirm" />'+
+                        '<input type="checkbox" name="payment_confirm" required=""/>'+
                         '<?php _e( 'I have completed the coin transfer successfully! ', CS_WAPG_TEXTDOMAIN ); ?>'+
                     '</p>';
                     }
@@ -107,7 +115,7 @@ class CsWapgScript {
                             jQuery.post( wapg_ajax.ajax_url, data, function (res) {
                                 res = JSON.parse(res);                      
                                 if( res.response === true ){
-                                    jQuery(".coin-detail").html( module.altCoinPayment( res.cartTotal, res.totalCoin, res.coinFullName, res.coinAddress, res.coinPrice ) ).slideDown('slow');
+                                    jQuery(".coin-detail").html( module.altCoinPayment( res.cartTotal, res.totalCoin, res.coinFullName, res.coinName, res.coinAddress, res.coinPrice ) ).slideDown('slow');
                                 }else{
                                     jQuery(".coin-detail").html( res.msg ).slideDown('slow');
                                 }
@@ -115,13 +123,26 @@ class CsWapgScript {
                             });
                         }
                     });
+                    
+                    jQuery("body").on( 'focus', '.wc-altcoin-form-user-alt-address', function(){
+                        var $this = jQuery(this);
+                        $this.select();
+                        document.execCommand( 'Copy', false, null );
+                        $this.next("p").css('color','forestgreen').slideDown('slow').text('Address has been coppied to clipboard!');
+                    }).on( 'blur', '.wc-altcoin-form-user-alt-address', function(){
+                        jQuery(this).next("p").slideUp('slow');
+                    });
+                    
                 });
             </script>
             <style type="text/css">
-                .alt-info{font-style: italic;margin-bottom: 10px;}
+                .alt-info{font-style: italic;margin-bottom: 10px;border: 2px dashed #999;padding: 10px;margin-top: 25px;}
                 .coin-detail{margin-bottom: 1.5em;}
                 .coin-detail .loader{ text-align: center;}
                 .price-tag{font-style: italic;font-size: 11px;}
+                .address-qr{text-align: center;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
+                .address-info{position: relative;display: table-cell;vertical-align: top;padding: 10px 20px; width: 63%;}
+                .address-qr img{display: table-cell; padding: 0px 0px 11px 18px;}
             </style>
         <?php
     }

@@ -24,17 +24,20 @@ class CsWapgCoinCal {
         if( empty($coin_info) ){
             echo json_encode(array('response' => false, 'msg' => 'Something Went Wrong! Please try again.'));
         }else{
-            $coinFullName = sanitize_text_field($_POST['coin_name']);
+            $coinFullName = sanitize_text_field( $_POST['coin_name']) ;
             $coin_info = explode( '__', $coin_info);
             $coinId  = trim($coin_info[0]);
             
+            $coinNameArr = explode( '(', $coinFullName );
+            $coinName = strtolower($coinNameArr[0]);
+                    
             $cartTotal = (int)sanitize_text_field($_POST['cart_total']);
             $getMarketPrice = \file_get_contents("https://api.coinmarketcap.com/v1/ticker/{$coinId}");
             if( $getMarketPrice ){
                 $getMarketPrice = json_decode($getMarketPrice);
                 $coinPrice =  $getMarketPrice[0]->price_usd;
                 $totalCoin = round( ((1/$coinPrice) * $cartTotal), 8);
-                echo json_encode( array( 'response' => true, 'cartTotal' => $cartTotal, 'totalCoin' => $totalCoin, 'coinPrice' => $coinPrice, 'coinFullName' =>$coinFullName, 'coinAddress' => $coin_info[1]   ));
+                echo json_encode( array( 'response' => true, 'cartTotal' => $cartTotal, 'totalCoin' => $totalCoin, 'coinPrice' => $coinPrice, 'coinFullName' =>$coinFullName,  'coinName' => $coinName, 'coinAddress' => $coin_info[1]   ));
             }else{
                 echo json_encode(array('response' => false, 'msg' => sprintf( __( '%s API couldn\'t reach! Please try again or contact customer support. %s', CS_WAPG_TEXTDOMAIN ), '<div class="woocommerce-error">', '</div>' ) ) );
             }
