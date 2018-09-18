@@ -39,7 +39,7 @@ class CsWapgScript {
             <script type="text/javascript">
                 var module = {
                     altCoinPayment: function( amount, totalcoin, coinFullName, coinName, address, coinPrice){
-                        return '<h3 id="order_review_heading">You have to pay:</h3>'+
+                        return '<h3 id="order_review_heading"><?php _e('You have to pay:', CS_WAPG_TEXTDOMAIN); ?></h3>'+
                         '<div id="order_review" class="woocommerce-checkout-review-order">'+
                             '<table class="shop_table woocommerce-checkout-review-order-table">'+
                         '<thead>'+
@@ -86,7 +86,7 @@ class CsWapgScript {
                     
                     '<p class="form-row form-row-wide">'+
                         '<label for="user-alt-address"><?php _e( 'Please enter your ', CS_WAPG_TEXTDOMAIN ); ?>'+coinName+'<?php _e( ' address in case of refunds:', CS_WAPG_TEXTDOMAIN ); ?> <span class="required">*</span></label>'+
-                        '<input id="user_alt_address" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-address" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="please enter here your AltCoin address in case of refunds" />'+
+                        '<input id="user_alt_address" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-address" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your AltCoin address in case of refunds', CS_WAPG_TEXTDOMAIN);?>" />'+
                         '<input type="hidden" name="payment_info" value="'+amount+'__'+totalcoin+'__'+coinName+'__'+address+'__'+coinPrice+'" />'+
                     '</p>'+
                     '<p class="form-row form-row-wide">'+
@@ -127,7 +127,7 @@ class CsWapgScript {
                         var $this = jQuery(this);
                         $this.select();
                         document.execCommand( 'Copy', false, null );
-                        $this.next("p").css('color','forestgreen').slideDown('slow').text('Address has been coppied to clipboard!');
+                        $this.next("p").css('color','forestgreen').slideDown('slow').text('<?php _e( 'Address has been coppied to clipboard!', CS_WAPG_TEXTDOMAIN ); ?> ');
                     }).on( 'blur', '.wc-altcoin-form-user-alt-address', function(){
                         jQuery(this).next("p").slideUp('slow');
                     });

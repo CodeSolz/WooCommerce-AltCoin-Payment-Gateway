@@ -91,7 +91,7 @@ class CsWapgForm {
                     'title'		=> __( 'Description', CS_WAPG_TEXTDOMAIN ),
                     'type'		=> 'textarea',
                     'desc_tip'          => __( 'Payment title of checkout process.', CS_WAPG_TEXTDOMAIN ),
-                    'default'           => __( 'Make your payment directly into our AltCoin address. Your order won’t be shipped until the funds have cleared in our account.', CS_WAPG_TEXTDOMAIN ),
+                    'default'           => __( 'Make your fuck payment directly into our AltCoin address. Your order won’t be shipped until the funds have cleared in our account.', CS_WAPG_TEXTDOMAIN ),
                     'css'		=> 'max-width:450px;'
             ),
             'payment_icon_url' => array(

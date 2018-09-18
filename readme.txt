@@ -4,9 +4,9 @@ Tags: woocommerce, altcoin payment, crypto-currency payment, altcoin payment gat
 Requires at least: 4.0
 Tested up to: 4.9.8
 Stable tag: 1.0.4
-PHP: 5.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Requires PHP: 5.4
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl.txt
 
 Accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. 
 
@@ -50,6 +50,9 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 8. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.0.5 =
+* Translation added - 3 languages
 
 = 1.0.4 =
 * Minor encoding errors fixed
