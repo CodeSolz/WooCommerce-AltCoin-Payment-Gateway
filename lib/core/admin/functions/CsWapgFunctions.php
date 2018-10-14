@@ -41,13 +41,13 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         $this->id = "wapg_altcoin_payment";
 
         // Show Title
-        $this->method_title = __( "AltCoin Payment", CS_WAPG_TEXTDOMAIN );
+        $this->method_title = __( "AltCoin Payment", 'woo-altcoin-payment-gateway' );
 
         // Show Description
-        $this->method_description = __( "AltCoin Payment Gateway Plugin for WooCommerce. If you want to remove any active altcoin, just make the address field blank and save it.", CS_WAPG_TEXTDOMAIN );
+        $this->method_description = __( "AltCoin Payment Gateway Plugin for WooCommerce. If you want to remove any active altcoin, just make the address field blank and save it.", 'woo-altcoin-payment-gateway' );
 
         // vertical tab title
-        $this->title = __( "AltCoin Payment", CS_WAPG_TEXTDOMAIN );
+        $this->title = __( "AltCoin Payment", 'woo-altcoin-payment-gateway' );
 
         //get icons
         $this->icon = $this->get_icon_url();
@@ -90,16 +90,16 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         $payment_info = $this->validate_text_field( false, $_POST['payment_info']);
         $user_alt_address = $this->validate_text_field( false, $_POST['user_alt_address']);
         if( empty($payment_info)){
-            wc_add_notice( __( 'Sorry! Something went wrong. Please refresh this page and try again.', CS_WAPG_TEXTDOMAIN), 'error' );
+            wc_add_notice( __( 'Sorry! Something went wrong. Please refresh this page and try again.', 'woo-altcoin-payment-gateway'), 'error' );
             return false;
         }
         $payment_info = explode( '__', $payment_info);
         if( empty( $user_alt_address ) ){
-            wc_add_notice( sprintf(__( 'Please enter your %s address.', CS_WAPG_TEXTDOMAIN), $payment_info[ 2 ] ), 'error' );
+            wc_add_notice( sprintf(__( 'Please enter your %s address.', 'woo-altcoin-payment-gateway'), $payment_info[ 2 ] ), 'error' );
             return false;
         }
         if( empty($payment_confirm)){
-            wc_add_notice( __( 'Please confirm the coin transfer!', CS_WAPG_TEXTDOMAIN), 'error' );
+            wc_add_notice( __( 'Please confirm the coin transfer!', 'woo-altcoin-payment-gateway'), 'error' );
             return false;
         }
 
@@ -114,10 +114,10 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         ));
         
         
-        $note = sprintf(__( 'Order Info: Total Payment : %s has made on : %s at your address : %s . Coin price was: $%s. User %s address: %s . User confirmed that coin transfer was successfull!', CS_WAPG_TEXTDOMAIN), $payment_info[1], $payment_info[2], $payment_info[3], $payment_info[4], $payment_info[2], $user_alt_address);
+        $note = sprintf(__( 'Order Info: Total Payment : %s has made on : %s at your address : %s . Coin price was: $%s. User %s address: %s . User confirmed that coin transfer was successfull!', 'woo-altcoin-payment-gateway'), $payment_info[1], $payment_info[2], $payment_info[3], $payment_info[4], $payment_info[2], $user_alt_address);
         
         $order->add_order_note( $note );
-        $order->update_status('on-hold', __( 'Awaiting for admin payment confirmation checking.', CS_WAPG_TEXTDOMAIN ) );
+        $order->update_status('on-hold', __( 'Awaiting for admin payment confirmation checking.', 'woo-altcoin-payment-gateway' ) );
 
         // Reduce stock levels
         $order->reduce_order_stock();
@@ -208,7 +208,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
                         if( id > 2 ) { mt = 'block-mt'; }
                         return '<tr valign="top" id="altname_'+id+'" class="more-coin-fields '+mt+'">'+
                                         '<th scope="row" class="titledesc">'+
-                                                '<label for=""><?php _e( 'Select AltCoin ', CS_WAPG_TEXTDOMAIN ); ?></label>'+
+                                                '<label for=""><?php _e( 'Select AltCoin ', 'woo-altcoin-payment-gateway' ); ?></label>'+
                                                 '<span class="woocommerce-help-tip"></span>'+
                                         '</th>'+
                                         '<td class="forminp">'+
@@ -223,12 +223,12 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
                                 '</tr>'+
                                 '<tr valign="top" id="altaddress_'+id+'" class="more-coin-fields">'+
                                         '<th scope="row" class="titledesc">'+
-                                                '<label for=""><?php _e( 'Enter ', CS_WAPG_TEXTDOMAIN ); ?><span class="altCoinVallabel_'+id+'"><?php _e( ' altcoin ', CS_WAPG_TEXTDOMAIN ); ?></span><?php _e( ' address:', CS_WAPG_TEXTDOMAIN ); ?></label>'+
+                                                '<label for=""><?php _e( 'Enter ', 'woo-altcoin-payment-gateway' ); ?><span class="altCoinVallabel_'+id+'"><?php _e( ' altcoin ', 'woo-altcoin-payment-gateway' ); ?></span><?php _e( ' address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
                                         '</th>'+
                                         '<td class="forminp" colspan="2">'+
                                                 '<fieldset>'+
                                                         '<legend class="screen-reader-text"><span>select altcoin</span></legend>'+
-                                                        '<input class="input-text regular-input" type="text" name="woocommerce_wapg_altcoin_payment_altCoinAddress_'+id+'" id="woocommerce_wapg_altcoin_payment_altCoinAddress_'+id+'" style="" placeholder="<?php _e( 'enter here your altcon address', CS_WAPG_TEXTDOMAIN ); ?>" />'+
+                                                        '<input class="input-text regular-input" type="text" name="woocommerce_wapg_altcoin_payment_altCoinAddress_'+id+'" id="woocommerce_wapg_altcoin_payment_altCoinAddress_'+id+'" style="" placeholder="<?php _e( 'enter here your altcon address', 'woo-altcoin-payment-gateway' ); ?>" />'+
                                                 '</fieldset>'+
                                         '</td>'+
                                 '</tr>';

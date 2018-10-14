@@ -31,22 +31,22 @@ class CsWapgForm {
             foreach($custom_fields as $field){
                 $customFields += array(
                     "altCoinName_{$i}" => array(
-                        'title'		=> __( 'Select AltCoin', CS_WAPG_TEXTDOMAIN ),
+                        'title'		=> __( 'Select AltCoin', 'woo-altcoin-payment-gateway' ),
                         'type'		=> 'select',
                         'class'                => 'alt-coin',
                         'custom_attributes' => array(
                             'data-coinid' => $i
                         ),
-                        'desc_tip'	=> __( 'Select AltCoin where do you want to receive your payment', CS_WAPG_TEXTDOMAIN ),
+                        'desc_tip'	=> __( 'Select AltCoin where do you want to receive your payment', 'woo-altcoin-payment-gateway' ),
                         'default'       => $field->id,
                         'options'       => $allCoins
                     ),
                     "altCoinAddress_{$i}" => array(
-                        'title'		=> sprintf(__( 'Enter %s %s %s address.', CS_WAPG_TEXTDOMAIN ), '<span class="altCoinVallabel_'.$i.'">', $allCoins[$field->id], '</span>'),
+                        'title'		=> sprintf(__( 'Enter %s %s %s address.', 'woo-altcoin-payment-gateway' ), '<span class="altCoinVallabel_'.$i.'">', $allCoins[$field->id], '</span>'),
                         'type'		=> 'text',
                         'class'         => "alt-value-{$i}",
                         'default'       => $field->address,
-                        'placeholder'   => __( 'please enter here your coin address', CS_WAPG_TEXTDOMAIN )
+                        'placeholder'   => __( 'please enter here your coin address', 'woo-altcoin-payment-gateway' )
                     )
                 );
                 $i++;
@@ -54,21 +54,21 @@ class CsWapgForm {
         }else{
             $customFields = array(
                 'altCoinName_1' => array(
-                'title'		=> __( 'Select AltCoin', CS_WAPG_TEXTDOMAIN ),
+                'title'		=> __( 'Select AltCoin', 'woo-altcoin-payment-gateway' ),
                 'type'		=> 'select',
                 'class'                => 'alt-coin',
                 'custom_attributes' => array(
                     'data-coinid' => 1
                 ),
-                'desc_tip'	=> __( 'Select AltCoin where do you want to receive your payment', CS_WAPG_TEXTDOMAIN ),
+                'desc_tip'	=> __( 'Select AltCoin where do you want to receive your payment', 'woo-altcoin-payment-gateway' ),
                 'default'  => '0',
                 'options' => self::getAltCoinsSelect()
             ),
             'altCoinAddress_1' => array(
-                'title'		=> sprintf(__( 'Enter %s altcoin %s address.', CS_WAPG_TEXTDOMAIN ), '<span class="altCoinVallabel_1">', '</span>'),
+                'title'		=> sprintf(__( 'Enter %s altcoin %s address.', 'woo-altcoin-payment-gateway' ), '<span class="altCoinVallabel_1">', '</span>'),
                 'type'		=> 'text',
                 'class'            => 'alt-value-1',
-                'placeholder'   => __( 'please enter here your coin address', CS_WAPG_TEXTDOMAIN )
+                'placeholder'   => __( 'please enter here your coin address', 'woo-altcoin-payment-gateway' )
                 )
             );
         }
@@ -76,33 +76,33 @@ class CsWapgForm {
         
         return $obj->form_fields = array(
             'enabled' => array(
-                    'title'		=> __( 'Enable / Disable', CS_WAPG_TEXTDOMAIN ),
-                    'label'		=> __( 'Enable AltCoin payment gateway', CS_WAPG_TEXTDOMAIN ),
+                    'title'		=> __( 'Enable / Disable', 'woo-altcoin-payment-gateway' ),
+                    'label'		=> __( 'Enable AltCoin payment gateway', 'woo-altcoin-payment-gateway' ),
                     'type'		=> 'checkbox',
                     'default'	=> 'no',
             ),
             'title' => array(
-                    'title'		=> __( 'Title', CS_WAPG_TEXTDOMAIN ),
+                    'title'		=> __( 'Title', 'woo-altcoin-payment-gateway' ),
                     'type'		=> 'text',
-                    'desc_tip'          => __( 'Payment title of checkout process.', CS_WAPG_TEXTDOMAIN ),
-                    'default'           => __( 'AltCoin', CS_WAPG_TEXTDOMAIN ),
+                    'desc_tip'          => __( 'Payment title of checkout process.', 'woo-altcoin-payment-gateway' ),
+                    'default'           => __( 'AltCoin', 'woo-altcoin-payment-gateway' ),
             ),
             'description' => array(
-                    'title'		=> __( 'Description', CS_WAPG_TEXTDOMAIN ),
+                    'title'		=> __( 'Description', 'woo-altcoin-payment-gateway' ),
                     'type'		=> 'textarea',
-                    'desc_tip'          => __( 'Payment title of checkout process.', CS_WAPG_TEXTDOMAIN ),
-                    'default'           => __( 'Make your fuck payment directly into our AltCoin address. Your order won’t be shipped until the funds have cleared in our account.', CS_WAPG_TEXTDOMAIN ),
+                    'desc_tip'          => __( 'Payment title of checkout process.', 'woo-altcoin-payment-gateway' ),
+                    'default'           => __( 'Make your payment directly into our AltCoin address. Your order won’t be shipped until the funds have cleared in our account.', 'woo-altcoin-payment-gateway' ),
                     'css'		=> 'max-width:450px;'
             ),
             'payment_icon_url' => array(
-                    'title'		=> __( 'Payment Icon url', CS_WAPG_TEXTDOMAIN ),
+                    'title'		=> __( 'Payment Icon url', 'woo-altcoin-payment-gateway' ),
                     'type'		=> 'text',
-                    'desc_tip'          => __( 'Image next to the gateway’s name', CS_WAPG_TEXTDOMAIN ),
+                    'desc_tip'          => __( 'Image next to the gateway’s name', 'woo-altcoin-payment-gateway' ),
             ),
             'loader_gif_url' => array(
-                    'title'		=> __( 'Calculator Gif URL', CS_WAPG_TEXTDOMAIN ),
+                    'title'		=> __( 'Calculator Gif URL', 'woo-altcoin-payment-gateway' ),
                     'type'		=> 'text',
-                    'desc_tip'          => __( 'Calculating gif when price being calculate', CS_WAPG_TEXTDOMAIN ),
+                    'desc_tip'          => __( 'Calculating gif when price being calculate', 'woo-altcoin-payment-gateway' ),
             ),
         ) + $customFields;
     }
@@ -120,7 +120,7 @@ class CsWapgForm {
         
         $default_fields = array(
                 'alt-con' => '<p class="form-row form-row-wide altCoinSelect">
-                        <label for="' . esc_attr( $refObj->id ) . '-alt-name">' . __( 'Please select coin you want to pay:', CS_WAPG_TEXTDOMAIN ) . ' <span class="required">*</span></label>'.
+                        <label for="' . esc_attr( $refObj->id ) . '-alt-name">' . __( 'Please select coin you want to pay:', 'woo-altcoin-payment-gateway' ) . ' <span class="required">*</span></label>'.
                         self::getActiveAltCoinSelect( $refObj )
                 .'</p><div class="coin-detail"><!--coin calculation--></div>'
         );
@@ -162,9 +162,9 @@ class CsWapgForm {
         $currencies = \file_get_contents(CS_WAPG_PLUGIN_ASSET_URI.'/js/currencies.json');
 
         if( $type == 'html' ){
-            $select = '<option value="0">======== ' . __( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN) . ' ========</option>';
+            $select = '<option value="0">======== ' . __( 'Please Slect An AltCoin!', 'woo-altcoin-payment-gateway') . ' ========</option>';
         }else{
-            $select = array( '0' => '===='.__( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN).'====' );
+            $select = array( '0' => '===='.__( 'Please Slect An AltCoin!', 'woo-altcoin-payment-gateway').'====' );
         }
         
         foreach( \json_decode($currencies) as $currency ){
@@ -193,9 +193,9 @@ class CsWapgForm {
         $custom_fields = get_option( $refObj->cs_altcoin_fields );
         $altCoin = '<select name="altcoin" id="CsaltCoin" class="select">';
         if( empty($custom_fields)){
-            $altCoin .= '<option value="0">===='.__('Sorry! No AltCoin Payment is actived!', CS_WAPG_TEXTDOMAIN).'====</option>';
+            $altCoin .= '<option value="0">===='.__('Sorry! No AltCoin Payment is actived!', 'woo-altcoin-payment-gateway').'====</option>';
         }else{
-            $altCoin .= '<option value="0">===='.__( 'Please Slect An AltCoin!', CS_WAPG_TEXTDOMAIN).'====</option>';
+            $altCoin .= '<option value="0">===='.__( 'Please Slect An AltCoin!', 'woo-altcoin-payment-gateway').'====</option>';
             $custom_fields = json_decode($custom_fields);
             $allAltCoins = self::getAltCoinsSelect();
             unset($custom_fields->count);

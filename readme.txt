@@ -1,9 +1,12 @@
 === WooCommerce AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
 Tags: woocommerce, altcoin payment, crypto-currency payment, altcoin payment gateway, bitcoin payment gateway, woocommerce bitcoin, woocommerce crypto-currency payment
+Plugin Slug: cs-altcoin-payment-gateway
+Text Domain: cs-altcoin-payment-gateway
+Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 1.0.4
+Stable tag: 1.0.6
 Requires PHP: 5.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -16,12 +19,19 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 
 === Start Accepting Any Cryptocurrency  in Few Seconds!===
 
+=== How To Use Woocommer altcoin payment gateway - Basic Setup Tutorial ===
+
+
+[youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
+
+
+
 = Features =
 
 
 
 * Hassle Free Installation
-* Accept any coin from 1900+ crypto currencies
+* Accept any coin from 2000+ crypto currencies
 * No 3rd party wallet signup / payment required
 * Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
 * After a successful order from a client, check your crypto-currency balance & release the product by confirming that you have received coins.
@@ -32,6 +42,19 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 * All secure and automatic mode
 
 *To get support and more customization information  [visit our website](https://codesolz.net)*
+
+= Officially tested plugins =
+
+* WPML
+* <a target="_blank" href="https://wordpress.org/plugins/polylang/">Polylang</a>
+* <a target="_blank" href="https://wordpress.org/plugins/loco-translate/">Loco Translate</a>
+
+= Supported Languages =
+* English
+* Spanish
+* French
+* Dutch
+
 
 == Installation ==
 
@@ -50,6 +73,9 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 8. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.0.6 =
+* Added new altCoins
 
 = 1.0.5 =
 * Translation added - 3 languages

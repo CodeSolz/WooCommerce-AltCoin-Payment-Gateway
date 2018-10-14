@@ -23,12 +23,12 @@ class CsWapgCustomTy {
 //        print_r( $order->get_order_item_totals() );
         
         ?>
-        <h2><?php _e( 'Coin Details', CS_WAPG_TEXTDOMAIN ); ?></h2>
+        <h2><?php _e( 'Coin Details', 'woo-altcoin-payment-gateway' ); ?></h2>
         <table class="woocommerce-table shop_table coin_info">
             <thead>
                 <tr>
-                    <th><?php _e( 'Coin', CS_WAPG_TEXTDOMAIN ); ?></th>
-                    <th><?php _e( 'Total', CS_WAPG_TEXTDOMAIN ); ?></th>
+                    <th><?php _e( 'Coin', 'woo-altcoin-payment-gateway' ); ?></th>
+                    <th><?php _e( 'Total', 'woo-altcoin-payment-gateway' ); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,11 +40,11 @@ class CsWapgCustomTy {
             </tbody>
             <tfoot>
                 <tr>
-                    <th><?php _e( 'Subtotal', CS_WAPG_TEXTDOMAIN ); ?></th>
+                    <th><?php _e( 'Subtotal', 'woo-altcoin-payment-gateway' ); ?></th>
                     <td> <?php echo $payment_details['total_coin']; ?> - <?php echo $payment_details['coin_name']; ?></td>
                 </tr>
                 <tr>
-                    <th><?php _e( 'Total', CS_WAPG_TEXTDOMAIN ); ?></th>
+                    <th><?php _e( 'Total', 'woo-altcoin-payment-gateway' ); ?></th>
                     <td> <?php echo $payment_details['total_coin']; ?> - <?php echo $payment_details['coin_name']; ?> </td>
                 </tr>
             </tfoot>

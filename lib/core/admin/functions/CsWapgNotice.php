@@ -31,7 +31,7 @@ class CsWapgNotice {
      */
     public function install_failed(){
         $class = 'notice notice-error';
-	$message = __( 'In order to use \'WooCommerce AltCoin Payment Gateway\' plugin at first you need to install woocommerce.', CS_WAPG_TEXTDOMAIN );
+	$message = __( 'In order to use \'WooCommerce AltCoin Payment Gateway\' plugin at first you need to install woocommerce.', 'woo-altcoin-payment-gateway' );
 	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
     }
     

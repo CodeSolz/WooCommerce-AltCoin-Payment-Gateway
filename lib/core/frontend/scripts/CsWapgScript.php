@@ -39,13 +39,13 @@ class CsWapgScript {
             <script type="text/javascript">
                 var module = {
                     altCoinPayment: function( amount, totalcoin, coinFullName, coinName, address, coinPrice){
-                        return '<h3 id="order_review_heading"><?php _e('You have to pay:', CS_WAPG_TEXTDOMAIN); ?></h3>'+
+                        return '<h3 id="order_review_heading"><?php _e('You have to pay:', 'woo-altcoin-payment-gateway'); ?></h3>'+
                         '<div id="order_review" class="woocommerce-checkout-review-order">'+
                             '<table class="shop_table woocommerce-checkout-review-order-table">'+
                         '<thead>'+
                             '<tr>'+
-                                '<th class="product-name"><?php _e( 'Coin', CS_WAPG_TEXTDOMAIN ); ?></th>'+
-                                '<th class="product-total"><?php _e( 'Total', CS_WAPG_TEXTDOMAIN ); ?></th>'+
+                                '<th class="product-name"><?php _e( 'Coin', 'woo-altcoin-payment-gateway' ); ?></th>'+
+                                '<th class="product-total"><?php _e( 'Total', 'woo-altcoin-payment-gateway' ); ?></th>'+
                             '</tr>'+
                         '</thead>'+
                         '<tbody>'+
@@ -61,11 +61,11 @@ class CsWapgScript {
                         '</tbody>'+
                     '<tfoot>'+
                     '<tr class="cart-subtotal">'+
-                        '<th><?php _e( 'Subtotal', CS_WAPG_TEXTDOMAIN ); ?></th>'+
+                        '<th><?php _e( 'Subtotal', 'woo-altcoin-payment-gateway' ); ?></th>'+
                         '<td><span class="woocommerce-Price-amount amount">'+totalcoin+' - <span class="woocommerce-Price-currencySymbol">'+coinFullName+'</span> </span></td>'+
                     '</tr>'+
                     '<tr class="order-total">'+
-			'<th><?php _e( 'Total', CS_WAPG_TEXTDOMAIN ); ?><span class="price-tag"><br><?php _e( '(*Transfer Fee Not Included)', CS_WAPG_TEXTDOMAIN ); ?></span></th>'+
+			'<th><?php _e( 'Total', 'woo-altcoin-payment-gateway' ); ?><span class="price-tag"><br><?php _e( '(*Transfer Fee Not Included)', 'woo-altcoin-payment-gateway' ); ?></span></th>'+
 			'<td>'+
                         '<strong><span class="woocommerce-Price-amount amount">'+totalcoin+' - <span class="woocommerce-Price-currencySymbol">'+coinFullName+'</span></span></strong>'+
                         '</td>'+
@@ -73,25 +73,25 @@ class CsWapgScript {
                     '</tfoot>'+
                     '</table>'+
                     '<p class="form-row form-row-wide">'+
-                        '<label for="alt-address"><?php _e( 'Please pay to this address:', CS_WAPG_TEXTDOMAIN ); ?></label>'+
+                        '<label for="alt-address"><?php _e( 'Please pay to this address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
                     '</p>'+
                     '<div class="address-qr">'+
                         '<img src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+coinName+':'+address+'?amount:'+totalcoin+'"/>'+
                         '<div class="address-info">'+
                             '<h3><strong>'+totalcoin+'</strong> '+coinFullName+'</h3>'+
                             '<input id="alt-address" class="input-text wc-altcoin-form-user-alt-address" value="'+address+'" type="text" /><p></p>'+
-                            '<p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t foget to add the transfer fee.", CS_WAPG_TEXTDOMAIN ), 'https://coinmarketcap.com'); ?><p>'+
+                            '<p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t foget to add the transfer fee.", 'woo-altcoin-payment-gateway' ), 'https://coinmarketcap.com'); ?><p>'+
                         '</div>'+
                     '</div>'+
                     
                     '<p class="form-row form-row-wide">'+
-                        '<label for="user-alt-address"><?php _e( 'Please enter your ', CS_WAPG_TEXTDOMAIN ); ?>'+coinName+'<?php _e( ' address in case of refunds:', CS_WAPG_TEXTDOMAIN ); ?> <span class="required">*</span></label>'+
-                        '<input id="user_alt_address" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-address" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your AltCoin address in case of refunds', CS_WAPG_TEXTDOMAIN);?>" />'+
+                        '<label for="user-alt-address"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+coinName+'<?php _e( ' address in case of refunds:', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
+                        '<input id="user_alt_address" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-address" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your AltCoin address in case of refunds', 'woo-altcoin-payment-gateway');?>" />'+
                         '<input type="hidden" name="payment_info" value="'+amount+'__'+totalcoin+'__'+coinName+'__'+address+'__'+coinPrice+'" />'+
                     '</p>'+
                     '<p class="form-row form-row-wide">'+
                         '<input type="checkbox" name="payment_confirm" required=""/>'+
-                        '<?php _e( 'I have completed the coin transfer successfully! ', CS_WAPG_TEXTDOMAIN ); ?>'+
+                        '<?php _e( 'I have completed the coin transfer successfully! ', 'woo-altcoin-payment-gateway' ); ?>'+
                     '</p>';
                     }
                 };
@@ -127,7 +127,7 @@ class CsWapgScript {
                         var $this = jQuery(this);
                         $this.select();
                         document.execCommand( 'Copy', false, null );
-                        $this.next("p").css('color','forestgreen').slideDown('slow').text('<?php _e( 'Address has been coppied to clipboard!', CS_WAPG_TEXTDOMAIN ); ?> ');
+                        $this.next("p").css('color','forestgreen').slideDown('slow').text('<?php _e( 'Address has been coppied to clipboard!', 'woo-altcoin-payment-gateway' ); ?> ');
                     }).on( 'blur', '.wc-altcoin-form-user-alt-address', function(){
                         jQuery(this).next("p").slideUp('slow');
                     });

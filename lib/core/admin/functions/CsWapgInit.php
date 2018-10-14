@@ -53,7 +53,7 @@ class CsWapgInit{
     function welcome_page() {
       ?>
       <div class="wrap welcome-wpag" >
-        <h1><?php echo sprintf(__( 'Welcome to %s %s', CS_WAPG_TEXTDOMAIN ), CS_WAPG_PLUGIN_NAME, CS_WAPG_VERSION );?></h1>
+        <h1><?php echo sprintf(__( 'Welcome to %s %s', 'woo-altcoin-payment-gateway' ), CS_WAPG_PLUGIN_NAME, CS_WAPG_VERSION );?></h1>
         <p>
             <?php echo sprintf( __( 'Your plugin is ready to use. <a href="%s">Click here</a> for go to settings.'), admin_url('admin.php?page=wc-settings&tab=checkout&section=wapg_altcoin_payment') ); ?>
         </p>

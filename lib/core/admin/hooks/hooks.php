@@ -42,7 +42,7 @@ add_action( 'activated_plugin', function( $plugin ){
  */
 add_filter( 'plugin_action_links', function( $links, $plugin ){
     if( CS_WAPG_PLUGIN_IDENTIFIER == $plugin ){
-        $manage_link = '<a href="'.admin_url('admin.php?page=wc-settings&tab=checkout&section=wapg_altcoin_payment').'">' . __( 'Settings', CS_WAPG_TEXTDOMAIN ) . '</a>';
+        $manage_link = '<a href="'.admin_url('admin.php?page=wc-settings&tab=checkout&section=wapg_altcoin_payment').'">' . __( 'Settings', 'woo-altcoin-payment-gateway' ) . '</a>';
         array_unshift( $links, $manage_link ); // before other links
     }
     return $links;

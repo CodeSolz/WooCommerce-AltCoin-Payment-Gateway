@@ -47,7 +47,7 @@ class CsWapgCoinCal {
                 $totalCoin = round( ( ( 1 / $coinPrice ) * $cartTotal), 8 );
                 wp_send_json( array( 'response' => true, 'cartTotal' => $cartTotal, 'totalCoin' => $totalCoin, 'coinPrice' => $coinPrice, 'coinFullName' =>$coinFullName,  'coinName' => $coinName, 'coinAddress' => $coin_info[1]   ));
             }else{
-                wp_send_json(array('response' => false, 'msg' => sprintf( __( '%s API couldn\'t reach! Please try again or contact customer support. %s', CS_WAPG_TEXTDOMAIN ), '<div class="woocommerce-error">', '</div>' ) ) );
+                wp_send_json(array('response' => false, 'msg' => sprintf( __( '%s API couldn\'t reach! Please try again or contact customer support. %s', 'woo-altcoin-payment-gateway' ), '<div class="woocommerce-error">', '</div>' ) ) );
             }
         }
         exit;

@@ -5,13 +5,13 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://wordpresspremiumplugins.com/plugins/woo-altcoin-payment-gateway
  * Description:       Woocommerce payment gateway to accept crypto currency in your store.
- * Version:           1.0.5
+ * Version:           1.0.6
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl.txt
- * Text Domain:       cs-altcoin-payment-gateway
- * Domain Path:       ./languages
+ * Domain Path:       /languages
+ * Text Domain:       woo-altcoin-payment-gateway
  * Requires PHP: 5.4
  * Requires At Least: 4.0
  * Tested Up To: 4.9.8
@@ -25,13 +25,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     /**
      * Define current version
      */
-    define( 'CS_WAPG_VERSION', '1.0.5' );
+    define( 'CS_WAPG_VERSION', '1.0.6' );
     
-    /**
-     * Define textdomain
-     */
-    define( 'CS_WAPG_TEXTDOMAIN', 'cs-altcoin-payment-gateway' );
-
     /**
      * Define asset uri
      */
@@ -54,9 +49,9 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 function cs_wapg_plugin_textdomain() {
-    load_plugin_textdomain( CS_WAPG_TEXTDOMAIN, FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+    load_plugin_textdomain( 'woo-altcoin-payment-gateway', FALSE, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 }
-add_action( 'init', 'cs_wapg_plugin_textdomain' );
+add_action( 'plugins_loaded', 'cs_wapg_plugin_textdomain' );
 
 require_once __DIR__ . '/lib/vendor/autoload.php';
 require_once __DIR__ . '/lib/core/admin/hooks/hooks.php';
