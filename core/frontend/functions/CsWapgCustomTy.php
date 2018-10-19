@@ -15,12 +15,13 @@ use WooGateWayCoreLib\lib\cartFunctions;
 
 class CsWapgCustomTy {
     
+    /**
+     * Order summery in thank you page
+     * 
+     * @param type $order
+     */
     public function order_summary( $order ){
         $payment_details = cartFunctions::get_payment_info( $order->id );
-        
-//        echo "<pre>";
-////        echo $order->id;
-//        print_r( $order->get_order_item_totals() );
         
         ?>
         <h2><?php _e( 'Coin Details', 'woo-altcoin-payment-gateway' ); ?></h2>

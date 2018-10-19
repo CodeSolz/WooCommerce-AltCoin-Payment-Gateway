@@ -6,8 +6,8 @@ Text Domain: cs-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 1.0.6
-Requires PHP: 5.4
+Stable tag: 1.0.7
+Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -26,11 +26,10 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 
 
 
-= Features =
+= Key Features =
 
 
-
-* Hassle Free Installation
+* Quick & Easy Installation
 * Accept any coin from 2000+ crypto currencies
 * No 3rd party wallet signup / payment required
 * Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
@@ -42,6 +41,17 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 * All secure and automatic mode
 
 *To get support and more customization information  [visit our website](https://codesolz.net)*
+
+= How currency works? =
+* At first your local currency convert to USD and then it convert to coin price.
+* Everything done automatically in background during the checkout process. So, you don't need to worry about it.
+* Used [http://currencyconverterapi.com](http://currencyconverterapi.com) Currency converter api to convert your local currency to USD
+
+= Supported currencies =
+<blockquote>
+AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, INR, IQD, IRR, ISK, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XDR, XOF, XPF, YER, ZAR, ZMW
+</blockquote>
+
 
 = Officially tested plugins =
 
@@ -73,6 +83,10 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 8. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.0.7 =
+* Local Currency converter added
+* 156 currencies added. Eg. EUR, JPY, GBP, CHF, CAD, AUD, NZD, ZAR and more
 
 = 1.0.6 =
 * Added new altCoins

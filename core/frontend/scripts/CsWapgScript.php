@@ -38,7 +38,7 @@ class CsWapgScript {
         ?>
             <script type="text/javascript">
                 var module = {
-                    altCoinPayment: function( amount, totalcoin, coinFullName, coinName, address, coinPrice){
+                    altCoinPayment: function( cart_total, currency_symbol, totalcoin, coinFullName, coinName, address, coinPrice){
                         return '<h3 id="order_review_heading"><?php _e('You have to pay:', 'woo-altcoin-payment-gateway'); ?></h3>'+
                         '<div id="order_review" class="woocommerce-checkout-review-order">'+
                             '<table class="shop_table woocommerce-checkout-review-order-table">'+
@@ -55,7 +55,7 @@ class CsWapgScript {
                                     '<span class="price-tag"> ( 1 '+coinFullName+' = &#36;'+coinPrice+') </span>'+
                                 '</td>'+
                                 '<td class="product-total">'+
-                                    '<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>'+amount+'</span>'+
+                                    '<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">'+currency_symbol+'</span>'+cart_total+'</span>'+
                                 '</td>'+
                             '</tr>'+
                         '</tbody>'+
@@ -76,7 +76,7 @@ class CsWapgScript {
                         '<label for="alt-address"><?php _e( 'Please pay to this address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
                     '</p>'+
                     '<div class="address-qr">'+
-                        '<img src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+coinName+':'+address+'?amount:'+totalcoin+'"/>'+
+                        '<img src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+coinName+':'+address+'?cart_total:'+totalcoin+'"/>'+
                         '<div class="address-info">'+
                             '<h3><strong>'+totalcoin+'</strong> '+coinFullName+'</h3>'+
                             '<input id="alt-address" class="input-text wc-altcoin-form-user-alt-address" value="'+address+'" type="text" /><p></p>'+
@@ -87,7 +87,7 @@ class CsWapgScript {
                     '<p class="form-row form-row-wide">'+
                         '<label for="user-alt-address"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+coinName+'<?php _e( ' address in case of refunds:', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
                         '<input id="user_alt_address" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-address" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your AltCoin address in case of refunds', 'woo-altcoin-payment-gateway');?>" />'+
-                        '<input type="hidden" name="payment_info" value="'+amount+'__'+totalcoin+'__'+coinName+'__'+address+'__'+coinPrice+'" />'+
+                        '<input type="hidden" name="payment_info" value="'+cart_total+'__'+totalcoin+'__'+coinName+'__'+address+'__'+coinPrice+'" />'+
                     '</p>'+
                     '<p class="form-row form-row-wide">'+
                         '<input type="checkbox" name="payment_confirm" required=""/>'+
@@ -105,16 +105,20 @@ class CsWapgScript {
                         }else{
                             jQuery(".coin-detail").html('<div class="loader"><img src="<?php echo $this->Ref->loader_icon; ?>" /></div>').slideDown('slow');
                             $orderSubmitBtn.attr('disabled', 'disabled');
-                            var data = {
-                                action: 'calculateCoinPrice',
-                                code: '<?php echo wp_create_nonce(SECURE_AUTH_SALT); ?>',
-                                coin_info : val,
-                                coin_name : jQuery(this).find("option:selected").text()
+                            
+                            var form_data = {
+                                action : 'cs_wapg_ajax',
+                                token  : '<?php echo wp_create_nonce(SECURE_AUTH_SALT); ?>',
+                                data   : {
+                                    method : 'frontend\\functions\\CsWapgCoinCal@calcualteCoinPrice',
+                                    coin_info : val,
+                                    coin_name : jQuery(this).find("option:selected").text()
+                                }
                             };
                             
-                            jQuery.post( wapg_ajax.ajax_url, data, function ( res ) {
+                            jQuery.post( wapg_ajax.ajax_url, form_data, function ( res ) {
                                 if( res.response === true ){
-                                    jQuery(".coin-detail").html( module.altCoinPayment( res.cartTotal, res.totalCoin, res.coinFullName, res.coinName, res.coinAddress, res.coinPrice ) ).slideDown('slow');
+                                    jQuery(".coin-detail").html( module.altCoinPayment( res.cartTotal, res.currency_symbol, res.totalCoin, res.coinFullName, res.coinName, res.coinAddress, res.coinPrice ) ).slideDown('slow');
                                 }else{
                                     jQuery(".coin-detail").html( res.msg ).slideDown('slow');
                                 }
