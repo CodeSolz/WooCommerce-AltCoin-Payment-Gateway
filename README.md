@@ -9,7 +9,7 @@
 
 WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calcualtion with http://coinmarketcap.com/ api that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the chaning of the altcoin price.
 
-> Start Accepting Any Cryptocurrency  in Few Seconds!
+> *Start Accepting Any Cryptocurrency  in Few Seconds!*
 
 
 
@@ -54,7 +54,7 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-> *Check for video tutorial*
+> *Installation video tutorial*
 
 [![N|Solid](http://img.youtube.com/vi/flzobzwIZ5w/0.jpg)](http://www.youtube.com/watch?v=flzobzwIZ5w)
 
