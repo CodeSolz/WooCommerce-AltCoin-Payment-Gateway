@@ -54,7 +54,7 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-**Check for video tutorial**
+> Check for video tutorial
 [![N|Solid](http://img.youtube.com/vi/flzobzwIZ5w/0.jpg)](http://www.youtube.com/watch?v=flzobzwIZ5w)
 
 ### useful links
