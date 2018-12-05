@@ -217,6 +217,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
                                                         '<select id="woocommerce_wapg_altcoin_payment_altCoinName_'+id+'" name="woocommerce_wapg_altcoin_payment_altCoinName_'+id+'" data-coinid="'+id+'" class="select alt-coin">'+
                                                         '<?php echo CsWapgForm::getAltCoinsSelect( 'html' ); ?>'+
                                                 "</select>"+
+                                                '<br><span class="description">Please wait a moment to appear the coin list after click.</span>'+
                                                 '</fieldset>'+
                                         '</td>'+
                                         "<td><a data-rowid='"+id+"' class='remove'><span class='dashicons dashicons-trash'></span></a></td>"+

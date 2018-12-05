@@ -28,8 +28,8 @@ class WooHooks {
      * 
      * @return typeReturn order summery in thank you page
      */
-    public function wapg_order_summary(){
-        return $this->Thank_You_Page->order_summary();
+    public function wapg_order_summary( $order ){
+        return $this->Thank_You_Page->order_summary( $order );
     }
     
 }

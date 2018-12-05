@@ -5,7 +5,7 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://wordpresspremiumplugins.com/download/woocommerce-altcoin-payment-gateway/
  * Description:       Woocommerce payment gateway to accept crypto currency in your store.
- * Version:           1.0.7
+ * Version:           1.0.8
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -15,6 +15,8 @@
  * Requires PHP: 5.4
  * Requires At Least: 4.0
  * Tested Up To: 4.9.8
+ * WC requires at least: 3.2
+ * WC tested up to: 3.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,7 +40,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.0.7';
+        private static $version = '1.0.8';
         
         /**
          * Hold namespace

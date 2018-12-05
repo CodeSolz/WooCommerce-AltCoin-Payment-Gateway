@@ -6,7 +6,7 @@ Text Domain: cs-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -17,16 +17,17 @@ Accept bitcoin / any altcoin payment from your woocommerce store directly to you
 
 WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calcualtion with http://coinmarketcap.com/ api that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the chaning of the altcoin price.
 
+<blockquote>
 === Start Accepting Any Cryptocurrency  in Few Seconds!===
+</blockquote>
 
-=== How To Use Woocommer altcoin payment gateway - Basic Setup Tutorial ===
+<blockquote>
+= PHP, Wordpress & WooCommerce Version Checking =
+* Works on all mentioned & higher version
+* Manually tested & works perfectly
+</blockquote>
 
-
-[youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
-
-
-
-= Key Features =
+== Key Features ==
 
 
 * Quick & Easy Installation
@@ -38,9 +39,14 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 * Automatic instant coin price calculation and will adjust to your product price. So you don't need to worry about changing cryptocurrency market price
 * Automatically convert product price to altcoin
 * Automatically price counting by [coinmarketcap.com](http://coinmarketcap.com/) api
-* All secure and automatic mode
+* All secure and automatic mode calculation
+* Manual checking required for payment confirmation
 
-*To get support and more customization information  [visit our website](https://codesolz.net)*
+
+=== How To Use Woocommer altcoin payment gateway - Basic Setup Tutorial ===
+
+[youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
+
 
 = How currency works? =
 * At first your local currency convert to USD and then it convert to coin price.
@@ -66,6 +72,9 @@ AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, 
 * Dutch
 
 
+*To get support and more customization information  [visit our website](https://codesolz.net)*
+
+
 == Installation ==
 
 1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
@@ -83,6 +92,10 @@ AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, 
 8. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.0.8 =
+* New coins added
+* Minor bug fixeds
 
 = 1.0.7 =
 * Local Currency converter added
