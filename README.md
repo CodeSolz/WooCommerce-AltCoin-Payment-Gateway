@@ -1,6 +1,7 @@
 ## WooCommerce AltCoin Payment Gateway - Wordpress plugin
 
 [![GitHub Release Date](https://img.shields.io/github/release-date/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) [![GitHub last commit](https://img.shields.io/github/last-commit/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) 
+
 [![Wordpress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) 
 
 [![Powered By](https://img.shields.io/badge/Powered%20By-CodeSolz-brightgreen.svg)](https://codesolz.net) 
@@ -56,6 +57,7 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 
 ### How To Use Woocommer altcoin payment gateway - Basic Setup Tutorial 
 <p align="center">
+<img src="http://img.youtube.com/vi/flzobzwIZ5w/0.jpg" />
 [![Basic Setup Tutorial](http://img.youtube.com/vi/flzobzwIZ5w/0.jpg)](http://www.youtube.com/watch?v=flzobzwIZ5w "Basic Setup Tutorial")
 </p>
 
