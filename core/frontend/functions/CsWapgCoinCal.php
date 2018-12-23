@@ -106,7 +106,7 @@ class CsWapgCoinCal {
         $currDateTime = Util::get_current_datetime();
         
         //check offer expired
-        if( $currDateTime > $customField->offer_end ){
+        if( $currDateTime > $customField->offer_end || $currDateTime < $customField->offer_start ){
             return $cartTotal;
         }
         
