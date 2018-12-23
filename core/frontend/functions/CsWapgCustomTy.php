@@ -12,6 +12,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\cartFunctions;
+use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 
 class CsWapgCustomTy {
     
@@ -22,7 +23,6 @@ class CsWapgCustomTy {
      */
     public function order_summary( $order ){
         $payment_details = cartFunctions::get_payment_info( $order->id );
-        
         ?>
         <h2><?php _e( 'Coin Details', 'woo-altcoin-payment-gateway' ); ?></h2>
         <table class="woocommerce-table shop_table coin_info">
@@ -40,6 +40,12 @@ class CsWapgCustomTy {
                 <td><?php echo $payment_details['cart_total']; ?></td>
             </tbody>
             <tfoot>
+                <?php if( !empty($payment_details['special_discount'])) { ?>
+                    <tr>
+                        <td><?php _e( 'Special Discount', 'woo-altcoin-payment-gateway' ); ?></td>
+                        <td> <?php echo $payment_details['special_discount']; ?></td>
+                    </tr>
+                <?php } ?>
                 <tr>
                     <th><?php _e( 'Subtotal', 'woo-altcoin-payment-gateway' ); ?></th>
                     <td> <?php echo $payment_details['total_coin']; ?> - <?php echo $payment_details['coin_name']; ?></td>

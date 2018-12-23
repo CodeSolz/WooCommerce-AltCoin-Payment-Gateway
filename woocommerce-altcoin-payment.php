@@ -5,7 +5,7 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://wordpresspremiumplugins.com/download/woocommerce-altcoin-payment-gateway/
  * Description:       Woocommerce payment gateway to accept crypto currency in your store.
- * Version:           1.0.8
+ * Version:           1.0.9
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -14,9 +14,9 @@
  * Text Domain:       woo-altcoin-payment-gateway
  * Requires PHP: 5.4
  * Requires At Least: 4.0
- * Tested Up To: 4.9.8
- * WC requires at least: 3.2
- * WC tested up to: 3.4
+ * Tested Up To: 5.0.0
+ * WC requires at least: 3.0
+ * WC tested up to: 3.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,7 +40,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.0.8';
+        private static $version = '1.0.9';
         
         /**
          * Hold namespace
@@ -60,6 +60,9 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             
             //load init
             self::load_action_files();
+            
+            //during activation
+            self::init_activation();
             
             /**load textdomain */
             add_action( 'plugins_loaded', array( __CLASS__, 'init_textdomain' ), 15 );
@@ -123,6 +126,16 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
         }
         
         /**
+         * init activation hook
+         */
+        private static function init_activation(){
+            //load config
+            require_once CS_WAPG_BASE_DIR_PATH . '/core/install/wapg_config.php';
+            //register hook
+            register_activation_hook( __FILE__, array( 'WooGateWayCoreLib\\install\\Activate', 'on_activate' ) );
+        }
+
+        /**
          * init textdomain
          */
         public static function init_textdomain(){
@@ -130,11 +143,11 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
         }
         
         /**
+         * Init payment gateway
          * 
          * @return \WooGateWayCoreLib\admin\settings\CsGateWaySettingsInit Gateway
          */
         public static function init_gateway(){
-            
             if ( class_exists( 'WC_Payment_Gateway' ) ){
                 return new WooGateWayCoreLib\admin\settings\CsGateWaySettings();
             }else{

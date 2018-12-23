@@ -1,12 +1,12 @@
 === WooCommerce AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
 Tags: woocommerce, altcoin payment, crypto-currency payment, altcoin payment gateway, bitcoin payment gateway, woocommerce bitcoin, woocommerce crypto-currency payment
-Plugin Slug: cs-altcoin-payment-gateway
-Text Domain: cs-altcoin-payment-gateway
+Plugin Slug: woo-altcoin-payment-gateway
+Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 1.0.8
+Tested up to: 5.0.0
+Stable tag: 1.0.9
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -74,6 +74,8 @@ AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, 
 
 *To get support and more customization information  [visit our website](https://codesolz.net)*
 
+*Check more information and stay get updated / track issue for development in [github.com](https://github.com/CodeSolz/WooCommerce-AltCoin-Payment-Gateway)*
+
 
 == Installation ==
 
@@ -83,19 +85,25 @@ AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, 
 == Screenshots ==
 
 1. Back-End - Settings
-2. Back-End - Settings / add coin / add more
-3. Add More Coins
-4. Front-end - Checkout Page
-5. Front-end - Checkout Page - Coin Address Area
-6. Front-end - after checkout - thank you page
-7. Admin Panel - order list
-8. Admin Panel - Order notes
+2. Back-End - add / update coin
+3. Back-End - All Coins List
+4. Front-end - Special Discount Show on Product Page
+5. Front-end - Special Discount on checkout page
+6. Front-end - Checkout Page
+7. Front-end - Checkout Page - Coin Address Area
+8. Front-end - after checkout - thank you page
+9. Admin Panel - order list
+10. Admin Panel - Order notes
 
 == Changelog ==
 
+= 1.0.9 =
+* Fully New UI Added
+* Discount option added
+
 = 1.0.8 =
 * New coins added
-* Minor bug fixeds
+* Minor bug fixed
 
 = 1.0.7 =
 * Local Currency converter added
