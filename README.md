@@ -1,12 +1,11 @@
-## WooCommerce AltCoin Payment Gateway - Wordpress plugin
-
+<p align="center">
 [![N|Solid](https://codesolz.net/wp-content/uploads/2016/11/logo4-hover.png)](https://codesolz.net/)
-
+## WooCommerce AltCoin Payment Gateway - Wordpress plugin
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) [![GitHub last commit](https://img.shields.io/github/last-commit/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) [![Maintainability](https://api.codeclimate.com/v1/badges/53342611d39bf5044b5f/maintainability)](https://codeclimate.com/github/tuhin18003/WooCommerce-AltCoin-Payment-Gateway/maintainability) <br/>
 [![Wordpress Plugin Version](https://img.shields.io/wordpress/plugin/v/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/)
 
 [![Created By](https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg)](https://codesolz.net) 
-
+</p>
 
 
 ### What does it do? 
