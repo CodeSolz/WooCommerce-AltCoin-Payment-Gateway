@@ -15,20 +15,22 @@ Accept bitcoin / any altcoin payment from your woocommerce store directly to you
 
 == Description ==
 
-WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calcualtion with http://coinmarketcap.com/ api that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the chaning of the altcoin price.
+WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calculation with [coinmarketcap api](http://coinmarketcap.com/) API that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the changing of the altcoin price.
 
 <blockquote>
-=== Start Accepting Any Cryptocurrency  in Few Seconds!===
+= How to upgrade to new version - 1.0.9 =
+Deactivate the old version
+Download latest version manually or update it by clicking from plugin's update section
+Activate again, your done :)
+
+Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
 </blockquote>
 
 <blockquote>
-= PHP, Wordpress & WooCommerce Version Checking =
-* Works on all mentioned & higher version
-* Manually tested & works perfectly
+=== Start Accepting Any Cryptocurrency in Few Seconds!===
 </blockquote>
 
 == Key Features ==
-
 
 * Quick & Easy Installation
 * Accept any coin from 2000+ crypto currencies
@@ -48,37 +50,47 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 [youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
 
 
-= How currency works? =
-* At first your local currency convert to USD and then it convert to coin price.
-* Everything done automatically in background during the checkout process. So, you don't need to worry about it.
-* Used [http://currencyconverterapi.com](http://currencyconverterapi.com) Currency converter api to convert your local currency to USD
+= How does the fiat currency works? =
+* At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
+* During the checkout process everything happen automatically in background.
 
-= Supported currencies =
+= Supported Fiat / Store Currencies =
 <blockquote>
 AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, INR, IQD, IRR, ISK, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XDR, XOF, XPF, YER, ZAR, ZMW
 </blockquote>
 
 
-= Officially tested plugins =
+= Officially Tested Translation =
 
 * WPML
 * <a target="_blank" href="https://wordpress.org/plugins/polylang/">Polylang</a>
 * <a target="_blank" href="https://wordpress.org/plugins/loco-translate/">Loco Translate</a>
 
-= Supported Languages =
-* English
-* Spanish
-* French
-* Dutch
+= Available Translation  =
+<blockquote>
+English , Spanish , French, Dutch
+</blockquote>
 
+= Forum and Feature Request = 
 
-*To get support and more customization information  [visit our website](https://codesolz.net)*
+<blockquote>
+= Pro Version for automatic order confirmation =
+  * Comming Soon!
 
-*Check more information and stay get updated / track issue for development in [github.com](https://github.com/CodeSolz/WooCommerce-AltCoin-Payment-Gateway)*
+= For Quick Support, feature request and bug reporting = 
+<ul>
+    <li> Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a></li>
+    <li> For more dedicated support or feature request write to us at <a target="_blank" href="mailto:support@codesolz.net">support@codesolz.net</a> or create a ticket <a href="http://support.codesolz.net/public/create-ticket" target="_blank"> Support Center</a></li>
+</ul>
+
+= As it's open source, check our github development Status = 
+<ul>
+    <li> Check development status or issues in <a target="_blank" href="https://github.com/CodeSolz/WooCommerce-AltCoin-Payment-Gateway" > github.com/WooCommerce-AltCoin-Payment-Gateway </a>
+</ul>
+</blockquote>
 
 
 == Installation ==
-
 1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
