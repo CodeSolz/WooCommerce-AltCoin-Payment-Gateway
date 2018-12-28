@@ -1,11 +1,15 @@
 <?php
+if (WP_DEBUG && WP_DEBUG_DISPLAY) 
+{
+   ini_set('error_reporting', E_ALL & ~E_STRICT & ~E_DEPRECATED);
+}
 
 /**
  * @wordpress-plugin
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://wordpresspremiumplugins.com/download/woocommerce-altcoin-payment-gateway/
  * Description:       Woocommerce payment gateway to accept crypto currency in your store.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -23,7 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-
 if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
     
     class Woocommerce_Altcoin_payment {
@@ -40,7 +43,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.1.0';
+        private static $version = '1.1.1';
         
         /**
          * Hold version
@@ -187,5 +190,3 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
     global $WAPG;
     $WAPG = new Woocommerce_Altcoin_payment();
 }
-
-

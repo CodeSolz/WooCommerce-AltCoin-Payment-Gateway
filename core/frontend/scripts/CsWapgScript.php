@@ -51,8 +51,8 @@ class CsWapgScript {
                         }
                         
                         return sdm +
-                        '<h3 id="order_review_heading"><?php _e('You have to pay:', 'woo-altcoin-payment-gateway'); ?></h3>'+
-                        '<div id="order_review" class="woocommerce-checkout-review-order">'+
+                        '<h3 id="wapg_order_review_heading"><?php _e('You have to pay:', 'woo-altcoin-payment-gateway'); ?></h3>'+
+                        '<div id="wapg_order_review" class="woocommerce-checkout-review-order">'+
                             '<table class="shop_table woocommerce-checkout-review-order-table">'+
                         '<thead>'+
                             '<tr>'+
@@ -90,7 +90,7 @@ class CsWapgScript {
                         '<label for="alt-coinAddress"><?php _e( 'Please pay to following address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
                     '</p>'+
                     '<div class="coinAddress-qr">'+
-                        '<img src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+res.coinName+':'+res.coinAddress+'?cart_total:'+res.totalCoin+'"/>'+
+                        '<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+res.coinName+':'+res.coinAddress+'?cart_total:'+res.totalCoin+'"/>'+
                         '<div class="coinAddress-info">'+
                             '<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
                             '<input id="alt-coinAddress" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
@@ -159,6 +159,7 @@ class CsWapgScript {
                 .coin-detail{margin-bottom: 1.5em;}
                 .coin-detail .loader{ text-align: center;}
                 .price-tag{font-style: italic;font-size: 11px;}
+                .qr-code{ max-height: 225px !important; }
                 .coinAddress-qr{text-align: center;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
                 .coinAddress-info{ position: relative;display: table-cell;vertical-align: top;padding: 10px 20px; width: 63%;}
                 .coinAddress-info h3{ font-size: 15px; }

@@ -6,7 +6,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.0.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -18,11 +18,7 @@ Accept bitcoin / any altcoin payment from your woocommerce store directly to you
 WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calculation with [coinmarketcap api](http://coinmarketcap.com/) API that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the changing of the altcoin price.
 
 <blockquote>
-= How to upgrade to new version - 1.0.9 =
-Deactivate the old version
-Download latest version manually or update it by clicking from plugin's update section
-Activate again, your done :)
-
+= Need Help on upgrade =
 Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
 </blockquote>
 
@@ -108,6 +104,11 @@ English , Spanish , French, Dutch
 10. Admin Panel - Order notes
 
 == Changelog ==
+
+= 1.1.1 =
+* QR - positioning fixed
+* QR - little bug fixed
+* PHP strict standard error fixed
 
 = 1.1.0 =
 * Database upgraded

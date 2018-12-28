@@ -13,8 +13,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 
-use WooGateWayCoreLib\Admin\options\Options_Pages;
-use WooGateWayCoreLib\Admin\options\Scripts_Settings;
+use WooGateWayCoreLib\admin\options\Options_Pages;
+use WooGateWayCoreLib\admin\options\Scripts_Settings;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
 
 class RegisterCustomMenu {

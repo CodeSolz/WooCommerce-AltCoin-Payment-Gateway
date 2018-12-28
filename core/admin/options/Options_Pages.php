@@ -12,9 +12,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     die();
 }
 
-use WooGateWayCoreLib\Admin\options\Scripts_Settings;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
-use WooGateWayCoreLib\Admin\options\Coin_List;
+use WooGateWayCoreLib\admin\options\Coin_List;
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 use WooGateWayCoreLib\lib\Util;
 
