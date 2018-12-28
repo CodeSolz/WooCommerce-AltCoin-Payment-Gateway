@@ -50,7 +50,7 @@ class Activate{
             `offer_start` datetime,  
             `offer_end` datetime,  
             PRIMARY KEY ( `id`)
-            ) $charset_collate",
+            ) $charset_collate"
         );
         
         foreach ( $sqls as $sql ) {
@@ -59,9 +59,12 @@ class Activate{
             }
         }    
         
+        //add db version to db
+        add_option( 'wapg_db_version', CS_WAPG_DB_VERSION );
+        
         //retrive old settings
-        $old_settings = get_option( 'cs_altcoin_fields' );
-        if( $old_settings ) {
+        $old_settings = get_site_option( 'cs_altcoin_fields' );
+        if( !empty($old_settings )) {
             
             foreach( json_decode( $old_settings) as $item ){
                 $get_name = CsAdminQuery::get_coin_name_id( $item->id );            
@@ -90,9 +93,23 @@ class Activate{
                 }
             }
             
-//            delete_option( 'cs_altcoin_fields' );
+            delete_option( 'cs_altcoin_fields' );
         }
         
+    }
+    
+    /**
+     * 
+     * @global type $wapg_current_db_versioncheck db status
+     */
+    public static function check_db_status(){
+        global $wapg_current_db_version;
+        $get_installed_db_version = get_site_option( 'wapg_db_version' );
+        if( empty( $get_installed_db_version ) ){
+            self::on_activate();
+        }elseif( $get_installed_db_version != $wapg_current_db_version){
+            //update db
+        }
     }
     
 }

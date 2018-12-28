@@ -51,7 +51,7 @@ class CsWapgCoinCal {
             $coinFullName = $custom_fields->name . '( ' . $custom_fields->coin_web_id . ' )';
             $coinId  = $custom_fields->coin_web_id;
             $coinAddress = $custom_fields->address;
-            $coinName = $custom_fields->name;
+            $coinName = $custom_fields->coin_web_id;
             $cartTotal = $woocommerce->cart->total;
             $store_currency = get_woocommerce_currency();
             $currency_symbol = get_woocommerce_currency_symbol();

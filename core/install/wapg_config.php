@@ -11,7 +11,10 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
    exit;
 }
 
-global $wapg_tables, $wpdb;
+global $wapg_tables, $wapg_current_db_version, $wpdb;
+
+//assign db version globally in variable
+$wapg_current_db_version = CS_WAPG_DB_VERSION;
 
 /**
  * load custom table names

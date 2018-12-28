@@ -5,7 +5,7 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://wordpresspremiumplugins.com/download/woocommerce-altcoin-payment-gateway/
  * Description:       Woocommerce payment gateway to accept crypto currency in your store.
- * Version:           1.0.9
+ * Version:           1.1.0
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -14,9 +14,9 @@
  * Text Domain:       woo-altcoin-payment-gateway
  * Requires PHP: 5.4
  * Requires At Least: 4.0
- * Tested Up To: 5.0.0
+ * Tested Up To: 5.0.2
  * WC requires at least: 3.0
- * WC tested up to: 3.5
+ * WC tested up to: 3.5.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,8 +40,15 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.0.9';
+        private static $version = '1.1.0';
         
+        /**
+         * Hold version
+         * 
+         * @var String 
+         */
+        private static $db_version = '1.0.0';
+
         /**
          * Hold namespace
          *
@@ -66,7 +73,12 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             
             /**load textdomain */
             add_action( 'plugins_loaded', array( __CLASS__, 'init_textdomain' ), 15 );
-            add_action( 'plugins_loaded', array( __CLASS__, 'init_gateway' ), 16 );
+            
+            /**load gateway*/
+            add_action( 'plugins_loaded', array( __CLASS__, 'check_db' ), 17 );
+            
+            /**load gateway*/
+            add_action( 'plugins_loaded', array( __CLASS__, 'init_gateway' ), 19 );
         }
         
         /**
@@ -77,6 +89,11 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
              * Define current version
              */
             define( 'CS_WAPG_VERSION', self::$version );
+            
+            /**
+             * Define current db version
+             */
+            define( 'CS_WAPG_DB_VERSION', self::$db_version );
 
             /**
             * Hold plugins base dir path
@@ -96,7 +113,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             /**
              * plugins identifier
              */
-            define( 'CS_WAPG_PLUGIN_IDENTIFIER', 'WooCommerce_AltCoin_Payment_Gateway/woocommerce-altcoin-payment.php' );
+            define( 'CS_WAPG_PLUGIN_IDENTIFIER', plugin_basename( __FILE__ ) );
 
             /**
              * Plugin name
@@ -133,6 +150,8 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             require_once CS_WAPG_BASE_DIR_PATH . '/core/install/wapg_config.php';
             //register hook
             register_activation_hook( __FILE__, array( 'WooGateWayCoreLib\\install\\Activate', 'on_activate' ) );
+            
+            return true;
         }
 
         /**
@@ -155,6 +174,14 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             }
             
         }
+
+        /**
+         * Check db status
+         */
+        public static function check_db(){
+            WooGateWayCoreLib\install\Activate::check_db_status();
+        }
+        
     }
     
     global $WAPG;
