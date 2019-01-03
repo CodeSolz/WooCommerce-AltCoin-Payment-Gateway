@@ -28,17 +28,45 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 
 == Key Features ==
 
-* Quick & Easy Installation
-* Accept any coin from 2000+ crypto currencies
-* No 3rd party wallet signup / payment required
+<blockquote>
+= Installation Process = 
+<ul>
+    <li> Quick & Very Easy Installation Process</li>
+</ul>
+
+= Number of Crypto Currencies = 
+<ul>
+    <li> Currently You can accept 2000+ crypto currencies ( manual order confirmation - free version ) </li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
+</ul>
+
+= Discount Feature On Cart = 
+<ul>
+    <li> Add Discount on cart for each coin separately</li>
+    <li> You can add different types of discount for each coin( percentage of total cart or a flat amount separately for each coin)</li>
+    <li> Show / hide discount offer box in single product page</li>
+</ul>
+
+= Order / Payment Confirmation Process = 
+<ul>
+    <li> There are 3 types of order confirmation process available </li>
+    <li> Free version is included with manual order confirmation </li>
+</ul>
+
+= Product Price Calculation = 
+<ul>
+    <li> Automatic & instant coin price calculation. So you don't need to worry about changing crypto-currency market price </li>
+    <li> Automatically convert product price to altcoin price </li>
+    <li> All secure and automatic price calculation by [coinmarketcap.com](http://coinmarketcap.com/) api</li>
+</ul>
+
+</blockquote>
+
+* No 3rd party wallet signup / payment required 
 * Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
 * After a successful order from a client, check your crypto-currency balance & release the product by confirming that you have received coins.
 * Accept any altcoin listed in the [coinmarketcap.com](https://api.coinmarketcap.com/v2/listings/) api listings
-* Automatic instant coin price calculation and will adjust to your product price. So you don't need to worry about changing cryptocurrency market price
-* Automatically convert product price to altcoin
-* Automatically price counting by [coinmarketcap.com](http://coinmarketcap.com/) api
-* All secure and automatic mode calculation
-* Manual checking required for payment confirmation
+
 
 
 === How To Use Woocommer altcoin payment gateway - Basic Setup Tutorial ===
