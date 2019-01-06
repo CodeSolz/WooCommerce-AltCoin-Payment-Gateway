@@ -57,7 +57,7 @@ class CsWapgCustomTy {
             </tfoot>
         </table>
         <div class="cs-ref-info ">
-            <div class="name"><?php _e( 'Coin Sent To(your altcoin address)', 'woo-altcoin-payment-gateway' ); ?> : </div>
+            <div class="name"><?php _e( 'Coin Sent To(marchent altcoin address)', 'woo-altcoin-payment-gateway' ); ?> : </div>
             <div><?php echo $payment_details['your_address']; ?></div>
         </div>    
         <div class="cs-ref-info cs-ref-info-last">
