@@ -11,6 +11,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     exit;
 }
 
+use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\admin\builders\CsWapgForm;
 use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
 use WooGateWayCoreLib\lib\cartFunctions;
@@ -78,14 +79,14 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         $order = wc_get_order( $order_id );
         $payment_confirm = isset($_POST['payment_confirm']) ? $this->validate_text_field( false, $_POST['payment_confirm']) : '';
         $payment_info = $this->validate_text_field( false, $_POST['payment_info'] );
-        $user_alt_address = $this->validate_text_field( false, $_POST['user_alt_address']);
+        $reference_trxid = $this->validate_text_field( false, $_POST['user_alt_address']);
         
         if( empty($payment_info)){
             wc_add_notice( __( 'Sorry! Something went wrong. Please refresh this page and try again.', 'woo-altcoin-payment-gateway'), 'error' );
             return false;
         }
         $payment_info = explode( '__', $payment_info);
-        if( empty( $user_alt_address ) ){
+        if( empty( $reference_trxid ) ){
             wc_add_notice( sprintf(__( 'Please enter your %s transaction reference or trxID.', 'woo-altcoin-payment-gateway'), $payment_info[ 2 ] ), 'error' );
             return false;
         }
@@ -102,18 +103,14 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
             'coin_name' => $payment_info[2],
             'total_coin' => $payment_info[1],
             'coin_price' => $payment_info[4],
-            'user_address' => $user_alt_address,
-            'your_address' => $payment_info[3]
+            'ref_trxid' => $reference_trxid,
+            'your_address' => $payment_info[3],
+            'datetime' => Util::get_current_datetime()
         ));
         
-        
-        $note = sprintf(__( 'Order Info: Total Payment : %s has made on : %s at your address : %s . Coin price was: $%s. User %s address: %s . User confirmed that coin transfer was successfull!', 'woo-altcoin-payment-gateway'), $payment_info[1], $payment_info[2], $payment_info[3], $payment_info[4], $payment_info[2], $user_alt_address);
-        
-        $order->add_order_note( $note );
         $order->update_status('on-hold', __( 'Awaiting for admin payment confirmation checking.', 'woo-altcoin-payment-gateway' ) );
 
         // Reduce stock levels
-//        $order->reduce_order_stock();
         wc_reduce_stock_levels( $order_id );
 
         // Remove cart
@@ -177,7 +174,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
              <tbody>
                  <tr>
                      <td></td>
-                     <td style='text-align: left;'><a href="<?php echo admin_url('admin.php?page=cs-woo-altcoin-gateway-settings'); ?>" class='button-secondary'> Advance Settings >></a></td>
+                     <td style='text-align: left;'><a href="<?php echo admin_url('admin.php?page=cs-woo-altcoin-gateway-settings'); ?>" class='button-secondary'> <?php _e( 'Advance Settings', 'woo-altcoin-payment-gateway' ); ?>  >></a></td>
                  </tr>
              </tbody>
          </table> 

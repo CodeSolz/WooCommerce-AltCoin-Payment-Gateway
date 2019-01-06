@@ -6,7 +6,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.0.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -123,15 +123,18 @@ English , Spanish , French, Dutch
 1. Back-End - Settings
 2. Back-End - add / update coin
 3. Back-End - All Coins List
-4. Front-end - Special Discount Show on Product Page
-5. Front-end - Special Discount on checkout page
-6. Front-end - Checkout Page
-7. Front-end - Checkout Page - Coin Address Area
-8. Front-end - after checkout - thank you page
-9. Admin Panel - order list
-10. Admin Panel - Order notes
+4. Back-End - order list
+5. Front-end - Special Discount Show on Product Page
+6. Front-end - Special Discount on checkout page
+7. Front-end - Checkout Page
+8. Front-end - Checkout Page - Coin Address Area
+9. Front-end - after checkout - thank you page
 
 == Changelog ==
+
+= 1.1.2 =
+* Transaction reference / TrxID visible for both admin and client's side
+* Coin details on admin order page
 
 = 1.1.1 =
 * QR - positioning fixed
