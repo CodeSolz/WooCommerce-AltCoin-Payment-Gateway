@@ -59,7 +59,7 @@ class CsWapgCoinCal {
             //apply special discount if active
             $special_discount = false;
             $special_discount_msg = ''; $special_discount_amount = ''; $cartTotalAfterDiscount = '';
-            if( $custom_fields->offer_status == 1 ){
+            if( true === $this->is_offer_valid( $custom_fields ) ){
                 $cartTotalAfterDiscount = $cartTotal = $this->apply_special_discount( $cartTotal, $custom_fields );
                 $special_discount = true;
                 $special_discount_type = Util::special_discount_msg( $currency_symbol, $custom_fields );
@@ -94,22 +94,34 @@ class CsWapgCoinCal {
         }
     }
     
-    
     /**
-     * Add special discount
+     * Check offer is valid
+     * 
+     * @return boolean
      */
-    private function apply_special_discount( $cartTotal, $customField ){
+    private function is_offer_valid( $customField ){
+        if( $customField->offer_status != 1 ){ //offer expired
+            return false;
+        }
+        
         //check if offer end date not found
         if( empty( $customField->offer_end ) ){
-            return $cartTotal;
+            return false;
         }
         $currDateTime = Util::get_current_datetime();
         
         //check offer expired
         if( $currDateTime > $customField->offer_end || $currDateTime < $customField->offer_start ){
-            return $cartTotal;
+            return false;
         }
         
+        return true;
+    }
+    
+    /**
+     * Add special discount
+     */
+    private function apply_special_discount( $cartTotal, $customField ){
         if( $customField->offer_type == 1 ){
             //percent
             $final_amount = (int)$cartTotal - ( ( $customField->offer_amount / 100 ) * $cartTotal );

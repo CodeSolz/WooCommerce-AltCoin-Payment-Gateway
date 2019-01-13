@@ -5,8 +5,8 @@ Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 5.0.2
-Stable tag: 1.1.2
+Tested up to: 5.0.3
+Stable tag: 1.1.3
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -131,6 +131,9 @@ English , Spanish , French, Dutch
 9. Front-end - after checkout - thank you page
 
 == Changelog ==
+
+= 1.1.3 =
+* Minor offer validity message fixed
 
 = 1.1.2 =
 * Transaction reference / TrxID visible for both admin and client's side
