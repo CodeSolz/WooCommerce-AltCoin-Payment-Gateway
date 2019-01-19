@@ -4,7 +4,7 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://wordpresspremiumplugins.com/download/woocommerce-altcoin-payment-gateway/
  * Description:       Woocommerce payment gateway to accept crypto currency in your store.
- * Version:           1.1.3
+ * Version:           1.1.4
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -38,7 +38,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.1.3';
+        private static $version = '1.1.4';
         
         /**
          * Hold version
@@ -133,11 +133,10 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             foreach ( glob( CS_WAPG_BASE_DIR_PATH . "core/actions/*.php") as $cs_action_file ) {
                 $class_name = basename( $cs_action_file, '.php' );
                 $class =  self::$namespace . '\\actions\\'. $class_name; 
-                if ( ! array_key_exists( $class, self::$wapg_hooks ) ) { //check class doesn't load multiple time
+                if ( class_exists( $class ) && ! array_key_exists( $class, self::$wapg_hooks ) ) { //check class doesn't load multiple time
                     self::$wapg_hooks[ $class ] = new $class();
                 }
             }
-            
         }
         
         /**
@@ -147,7 +146,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             //load config
             require_once CS_WAPG_BASE_DIR_PATH . '/core/install/wapg_config.php';
             //register hook
-            register_activation_hook( __FILE__, array( 'WooGateWayCoreLib\\install\\Activate', 'on_activate' ) );
+            register_activation_hook( __FILE__, array( self::$namespace . '\\install\\Activate', 'on_activate' ) );
             
             return true;
         }
@@ -166,9 +165,11 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          */
         public static function init_gateway(){
             if ( class_exists( 'WC_Payment_Gateway' ) ){
-                return new WooGateWayCoreLib\admin\settings\CsGateWaySettings();
+                $CsGatewayInit = self::$namespace . "\admin\settings\CsGateWaySettings";
+                return new $CsGatewayInit();
             }else{
-                new WooGateWayCoreLib\admin\functions\CsWccpgNotice( 1 );
+                $CsWooPlMissing = self::$namespace . "\admin\functions\CsWapgNotice";
+                new $CsWooPlMissing( 1 );
             }
             
         }
@@ -177,7 +178,8 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * Check db status
          */
         public static function check_db(){
-            WooGateWayCoreLib\install\Activate::check_db_status();
+            $cls_install = self::$namespace . "\install\Activate";
+            $cls_install::check_db_status();
         }
         
     }
