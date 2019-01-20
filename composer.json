@@ -14,8 +14,7 @@
             "WooGateWayCoreLib\\" : "core/"
         }
     },
-    "require": {
-        "php" : ">=6.0.0"
-    },
-    "minimum-stability": "dev"
+    "require-dev": {
+        "phpunit/phpunit " : "dev-master"
+    }
 }
