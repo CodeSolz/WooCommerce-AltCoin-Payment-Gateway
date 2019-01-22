@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+
+
 if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
     
     class Woocommerce_Altcoin_payment {
@@ -58,7 +60,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
         function __construct(){
             
             //load plugins constant
-            self::set_constant();
+            self::set_constants();
             
             //load core files
             self::load_core_framework();
@@ -77,46 +79,42 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
             
             /**load gateway*/
             add_action( 'plugins_loaded', array( __CLASS__, 'init_gateway' ), 19 );
+            
         }
         
         /**
          * Set constant data
          */
-        private static function set_constant(){
-            /**
-             * Define current version
-             */
-            define( 'CS_WAPG_VERSION', self::$version );
+        private static function set_constants(){
+            $constants = array(
+                'CS_WAPG_VERSION'           => self::$version, //Define current version
+                'CS_WAPG_DB_VERSION'        => self::$db_version, //Define current db version
+                'CS_WAPG_BASE_DIR_PATH'     => untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/', //Hold plugins base dir path
+                'CS_WAPG_PLUGIN_ASSET_URI'  => plugin_dir_url( __FILE__ ) . 'assets/', //Define asset uri
+                'CS_WAPG_PLUGIN_LIB_URI'    => plugin_dir_url( __FILE__ ) . 'lib/', //Library uri
+                'CS_WAPG_PLUGIN_IDENTIFIER' => plugin_basename( __FILE__ ), //plugins identifier - base dir
+                'CS_WAPG_PLUGIN_NAME'       => 'WooCommerce AltCoin Payment Gateway' //Plugin name
+            );
             
-            /**
-             * Define current db version
-             */
-            define( 'CS_WAPG_DB_VERSION', self::$db_version );
-
-            /**
-            * Hold plugins base dir path
-            */
-            define( 'CS_WAPG_BASE_DIR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/' ) ;
+            foreach($constants as $name => $value ){
+                self::set_constant( $name, $value );
+            }
             
-            /**
-             * Define asset uri
-             */
-            define( 'CS_WAPG_PLUGIN_ASSET_URI', plugin_dir_url( __FILE__ ) . 'assets/' );
-
-            /**
-             * Library uri
-             */
-            define( 'CS_WAPG_PLUGIN_LIB_URI', plugin_dir_url( __FILE__ ) . 'lib/' );
-
-            /**
-             * plugins identifier
-             */
-            define( 'CS_WAPG_PLUGIN_IDENTIFIER', plugin_basename( __FILE__ ) );
-
-            /**
-             * Plugin name
-             */
-            define( 'CS_WAPG_PLUGIN_NAME', 'WooCommerce AltCoin Payment Gateway' );
+            return true;
+        }
+        
+        /**
+         * Set constant
+         * 
+         * @param type $name
+         * @param type $value
+         * @return boolean
+         */
+        private static function set_constant( $name, $value ){
+            if( ! defined( $name ) ){
+                define( $name, $value );
+            }
+            return true;
         }
         
         /**
@@ -130,6 +128,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
          * load action files
          */
         private static function load_action_files(){
+            
             foreach ( glob( CS_WAPG_BASE_DIR_PATH . "core/actions/*.php") as $cs_action_file ) {
                 $class_name = basename( $cs_action_file, '.php' );
                 $class =  self::$namespace . '\\actions\\'. $class_name; 
@@ -168,10 +167,9 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
                 $CsGatewayInit = self::$namespace . "\admin\settings\CsGateWaySettings";
                 return new $CsGatewayInit();
             }else{
-                $CsWooPlMissing = self::$namespace . "\admin\functions\CsWapgNotice";
+                $CsWooPlMissing = self::$namespace . "\admin\\functions\\CsWapgNotice";
                 new $CsWooPlMissing( 1 );
             }
-            
         }
 
         /**
@@ -185,5 +183,5 @@ if ( ! class_exists( 'Woocommerce_Altcoin_payment' ) ){
     }
     
     global $WAPG;
-    $WAPG = new Woocommerce_Altcoin_payment();
+    $WAPG = new Woocommerce_Altcoin_payment(); 
 }

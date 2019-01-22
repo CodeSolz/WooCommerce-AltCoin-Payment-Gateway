@@ -10,11 +10,14 @@ class WoocommerceAltcoinPaymentTest extends WP_UnitTestCase {
     public function setUp()
     {
         parent::setUp();
-        $this->class_instance = new Woocommerce_Altcoin_payment();
+        $this->WAP = new Woocommerce_Altcoin_payment();
     }
-    
-    public function test_init_activation(){
-        $this->assertEquals( true );
+
+    /**
+     * check plugin doesn't return any error
+     */
+    public function testPluginLoadedSuccessfully(){
+        $this->assertTrue( true );
     }
     
 }
