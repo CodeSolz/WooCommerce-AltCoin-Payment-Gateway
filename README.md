@@ -7,23 +7,32 @@
 </p>
 
 <p align="center">
-    <img alt="undefined" src="https://img.shields.io/travis/com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg"> <br>
+    <a href="https://travis-ci.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
+        <img alt="undefined" src="https://img.shields.io/travis/com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg"> 
+    </a><br>
     <img alt="undefined" src="https://img.shields.io/github/last-commit/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
-    <img alt="undefined" src="https://api.codeclimate.com/v1/badges/53342611d39bf5044b5f/maintainability">
+    <a href="https://codeclimate.com/github/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
+        <img alt="undefined" src="https://api.codeclimate.com/v1/badges/53342611d39bf5044b5f/maintainability">
+    </a>
     <img alt="undefined" src="https://img.shields.io/github/languages/code-size/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg"> <br>
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/bitcoin.svg">
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/altcoin.svg">
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/cryptocurrency.svg">
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce.svg">
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce altcoin.svg">
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce bitcoin.svg">
-    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce cryptocurrency.svg"> <br>
-    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/wp-version/woo-altcoin-payment-gateway.svg">
-    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/tested/woo-altcoin-payment-gateway.svg">
-    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/v/woo-altcoin-payment-gateway.svg">
-    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dm/woo-altcoin-payment-gateway.svg">
-    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dt/woo-altcoin-payment-gateway.svg">
-    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg"><br><br>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/wp-version/woo-altcoin-payment-gateway.svg">
+    </a>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/tested/woo-altcoin-payment-gateway.svg">
+    </a>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/v/woo-altcoin-payment-gateway.svg">
+    </a>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dm/woo-altcoin-payment-gateway.svg">
+    </a>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dt/woo-altcoin-payment-gateway.svg">
+    </a>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg">
+    </a><br><br>
     <a href="https://codesolz.net">
         <img alt="undefined" src="https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg">
     </a>
