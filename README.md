@@ -24,8 +24,11 @@
     <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dm/woo-altcoin-payment-gateway.svg">
     <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dt/woo-altcoin-payment-gateway.svg">
     <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg"><br><br>
-    <img alt="undefined" src="https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg">
+    <a href="https://codesolz.net">
+        <img alt="undefined" src="https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg">
+    </a>
 </p>
+
 
 ### What does it do? 
 
