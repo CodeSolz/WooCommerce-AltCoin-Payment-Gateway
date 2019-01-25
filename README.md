@@ -11,15 +11,21 @@
     <img alt="undefined" src="https://img.shields.io/github/last-commit/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
     <img alt="undefined" src="https://api.codeclimate.com/v1/badges/53342611d39bf5044b5f/maintainability">
     <img alt="undefined" src="https://img.shields.io/github/languages/code-size/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg"> <br>
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/bitcoin.svg">
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/altcoin.svg">
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/cryptocurrency.svg">
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce.svg">
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce altcoin.svg">
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce bitcoin.svg">
+    <img alt="undefined" src="https://img.shields.io/github/search/codesolz/WooCommerce-AltCoin-Payment-Gateway/woocommerce cryptocurrency.svg"> <br>
+    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/wp-version/woo-altcoin-payment-gateway.svg">
+    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/tested/woo-altcoin-payment-gateway.svg">
+    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/v/woo-altcoin-payment-gateway.svg">
+    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dm/woo-altcoin-payment-gateway.svg">
+    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dt/woo-altcoin-payment-gateway.svg">
+    <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg"><br><br>
+    <img alt="undefined" src="https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg">
 </p>
-
- [![](https://img.shields.io/github/languages/code-size/badges/shields.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway)<br/>
-[![Wordpress Plugin Version](https://img.shields.io/wordpress/plugin/v/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/) [![Wordpress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/:woo-altcoin-payment-gateway.svg)](https://wordpress.org/plugins/woo-altcoin-payment-gateway/)
-
-[![Created By](https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg)](https://codesolz.net) 
-
-
-
 
 ### What does it do? 
 
