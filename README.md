@@ -3,7 +3,11 @@
 </p>
 
 <p align="center">
-## WooCommerce AltCoin Payment Gateway - Wordpress plugin
+    WooCommerce AltCoin Payment Gateway - Wordpress plugin
+</p>
+
+<p align="center">
+    <img alt="undefined" src="https://img.shields.io/travis/com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
 </p>
 
 ![](https://img.shields.io/travis/com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg) [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) [![GitHub last commit](https://img.shields.io/github/last-commit/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway) [![Maintainability](https://api.codeclimate.com/v1/badges/53342611d39bf5044b5f/maintainability)](https://codeclimate.com/github/tuhin18003/WooCommerce-AltCoin-Payment-Gateway/maintainability)  [![](https://img.shields.io/github/languages/code-size/badges/shields.svg)](https://github.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway)<br/>
