@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://codesolz.net/wp-content/uploads/2016/11/logo4-hover.png" alt="codesolz.net"/>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway/advanced/">
+        <img src="https://ps.w.org/woo-altcoin-payment-gateway/assets/icon-128x128.png" alt="codesolz.net"/>
+    </a>
 </p>
 
 <p align="center">
@@ -96,3 +98,7 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 - *Created & Supported by - [CodeSolz.com](https://codesolz.com/)*
 - *For real-time support visit our website - [CodeSolz.com](https://codesolz.com/)*
 - *For more dedicated support or feature request write to us at - [support@codesolz.net](mailto:support@codesolz.net)*
+
+<a href="https://codesolz.net">
+  <img src="https://codesolz.net/wp-content/uploads/2016/11/logo4-hover.png" alt="codesolz.net"/>
+</a>
