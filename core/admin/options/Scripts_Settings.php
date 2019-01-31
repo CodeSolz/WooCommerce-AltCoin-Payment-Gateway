@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\Admin\options;
+<?php namespace WooGateWayCoreLib\admin\options;
 
 /**
  * Class: Admin Menu Scripts
@@ -52,8 +52,14 @@ class Scripts_Settings {
         //load typehead script
         if( $page_id == $altcoin_menu['add_new_coin'] ){
             self::load_jquery_typehead();
+            
             //add payment type changer
-            self::load_payment_type_changer();
+            if( has_filter('filter_cs_wapg_payment_type_changer_script') ){
+                apply_filters( 'filter_cs_wapg_payment_type_changer_script', '' );
+            }else{
+                self::load_payment_type_changer();
+            }
+            
             //load jquery datetime picker
             self::load_jquery_date_time_picker();
         }
@@ -160,17 +166,35 @@ class Scripts_Settings {
         ?>
             <script type="text/javascript">
                 jQuery(document).ready(function( $ ){
-                    $("#cs_field_2").on( 'change', function(){
-                        var $_field = $(this);
-                        if( parseInt( $_field.val() ) !== 1 ){
-                            $(".automatic_payment_confirmation").removeClass('hide').slideDown('slow');
-                            $(".manual_payment_confirmation").addClass('hide').slideUp('slow');
-                        }else{
-                            console.log();
-                            $(".manual_payment_confirmation").removeClass('hide').slideDown('slow');
-                            $(".automatic_payment_confirmation").addClass('hide').slideUp('slow');
+                    var form = {
+                        payment_type : function( type ){
+                            if( 1 === type ){
+                                $(".manual_payment_address").slideDown('slow');
+                            }else{
+                                $(".manual_payment_address").slideUp('slow');
+                            }
+                            $("#hidden_block_1").slideUp('slow');
                         }
+                    };
+                    
+                    $("#cs_field_1").on( 'change', function(){
+                        var type_id = parseInt($(this).val());
+                        form.payment_type( type_id );
+                        if( 1 === type_id ) { return; }
+                        var data = {
+                            action: '_cs_wapg_custom_call',
+                            method: 'admin\\builders\\CsFormHelperLib@get_order_confirm_type_status',
+                            cs_token: '<?php echo wp_create_nonce( SECURE_AUTH_SALT ); ?>',
+                            type_id: type_id
+                        };
+                        $.post( ajaxurl, data, function( res ){
+                            console.log( res );
+                            if( false === res.status){
+                                $("#hidden_block_1").html( res.text ).slideDown('slow');
+                            }
+                        });
                     });
+                    
                 });
             </script>    
         <?php

@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\Admin\options;
+<?php namespace WooGateWayCoreLib\admin\options;
 
 /**
  * Class: Admin Pages
@@ -13,6 +13,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
+use WooGateWayCoreLib\admin\builders\CsFormHelperLib;
 use WooGateWayCoreLib\admin\options\Coin_List;
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 use WooGateWayCoreLib\lib\Util;
@@ -147,6 +148,17 @@ class Options_Pages {
                                 <div class="col-8">
                                     <?php
                                             $fields = array(
+                                                'cs_add_new[checkout_type]'         => array(
+                                                    'title'                     => __( 'Payment Confirmation Type', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'select',
+                                                    'class'                     => "form-control",
+                                                    'required'                  => true,
+                                                    'placeholder'               => __( 'Please select checkout type', 'woo-altcoin-payment-gateway' ),
+                                                    'options'                   => CsFormHelperLib::order_confirm_options(),
+                                                    'value'                     => empty($coin_data) ? '' : $coin_data->checkout_type,
+                                                    'desc_tip'                  => __( 'Select payment type. Either manual or automatic order confirmation. e.g : Manual', 'woo-altcoin-payment-gateway' ),
+                                                    'hidden_div'                => array( 'attributes' => array( 'id' => 'hidden_block', 'class' => 'alert alert-warning hidden m-t-15'  ) )
+                                                ),
                                                 'cs_add_new[coin_name]'         => array(
                                                     'title'                     => __( 'Enter Coin Name', 'woo-altcoin-payment-gateway' ),
                                                     'type'                      => 'text',
@@ -160,38 +172,19 @@ class Options_Pages {
                                                         'autocomplete'  => 'off'
                                                     ),
                                                     'value' => empty($coin_data) ? '' : $coin_data->name,
-                                                    'desc_tip'	=> __( 'Enter coin name you want to add in to your payment gateway. wait a while until the coin name appear in the dropdown list e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
-                                                ),
-                                                'cs_add_new[checkout_type]'         => array(
-                                                    'title'                     => __( 'Payment Confirmation Type', 'woo-altcoin-payment-gateway' ),
-                                                    'type'                      => 'select',
-                                                    'class'                     => "form-control",
-                                                    'required'                  => true,
-                                                    'placeholder'               => __( 'Please select checkout type', 'woo-altcoin-payment-gateway' ),
-                                                    'options' => array(
-                                                        '1'  => __( 'Manual', 'woo-altcoin-payment-gateway' ),
-                                                        '2'     => __( 'Automatic ( extension required )', 'woo-altcoin-payment-gateway' ),
-                                                        '3'     => __( 'Automatic ( coinmarketstats.online api )', 'woo-altcoin-payment-gateway' ),
-                                                    ),
-                                                    'value' => empty($coin_data) ? '' : $coin_data->checkout_type,
-                                                    'desc_tip'	=> __( 'Select payment type. Either manual or automatic order confirmation. e.g : Manual', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'	=> __( 'Enter coin name you want to add in to your payment gateway. Type slowly, it will take a while to appear the coin name in the dropdown list e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
                                                 ),
                                                 'cs_add_new[coin_address]'=> array(
-                                                    'section'          => '<div class="manual_payment_confirmation">', 
+                                                    'section'          => '<div class="manual_payment_address">', 
                                                     'title'            => __( 'Enter Coin address', 'woo-altcoin-payment-gateway' ),
                                                     'type'             => 'text',
                                                     'class'            => "form-control",
                                                     'required'         => true,
                                                     'value' => empty($coin_data) ? '' : $coin_data->address,
                                                     'placeholder'      => __( 'Please enter coin address', 'woo-altcoin-payment-gateway' ),
-                                                    'desc_tip'         => __( 'Enter your coin address. e.g : ', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter your coin address. e.g : 1KPLgee6crr7u1KQxwnnu4isizufxadVPZ ', 'woo-altcoin-payment-gateway' ),
                                                 ),
-                                                'alert_div' => array(
-                                                    'type'  => 'alert_div',
-                                                    'section_wrapper_class'  => 'automatic_payment_confirmation hide m-15',
-                                                    'alert_class'  => 'alert alert-warning',
-                                                    'alert_msg' => __('Sorry! This option is comming very soon. Contact us at <b>support@codesolz.net</b> for more information.', 'woo-altcoin-payment-gateway')
-                                                ),
+                                                
                                                 'cs_add_new[coin_status]'=> array(
                                                     'title'            => __( ' Active / Deactivate', 'woo-altcoin-payment-gateway' ),
                                                     'type'             => 'checkbox',
@@ -259,7 +252,10 @@ class Options_Pages {
                                                     'desc_tip'         => __( 'Select this checkbox if you want to show offer message on product page bellow product price.', 'woo-altcoin-payment-gateway' ),
                                                 ),
                                             );
-                                        (new CsFormBuilder())->generate_html_fields( $fields );
+                                            
+                                        (new CsFormBuilder())->generate_html_fields( 
+                                                apply_filters( 'filter_cs_wapg_add_new_coin_fields', $fields ) 
+                                            );
                                     ?>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.0.3
-Stable tag: 1.1.4
+Stable tag: 1.1.6
 Requires PHP: 6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -131,6 +131,12 @@ English , Spanish , French, Dutch
 9. Front-end - after checkout - thank you page
 
 == Changelog ==
+
+= 1.1.6 =
+* Minor bug fixed
+
+= 1.1.5 =
+* PHP new version - standard upgraded
 
 = 1.1.4 =
 * Minor bug fixed

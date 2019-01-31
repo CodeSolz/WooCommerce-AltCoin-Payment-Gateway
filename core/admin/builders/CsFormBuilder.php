@@ -23,6 +23,7 @@ class CsFormBuilder {
     public function generate_html_fields( $fields, $return_array = false ){
         if( empty( $fields ) ) { return false; }
         
+        
         $html_fields = array();
         $field_count = count( $fields );
         
@@ -33,11 +34,14 @@ class CsFormBuilder {
                 $no_border = 'no-border';
             }
             
+            $wrapper_class = '';
+            if( isset($field['wrapper_class']) ){
+                $wrapper_class = $field['wrapper_class'];
+            }
+            
             
             if( isset($field['type']) && $field['type'] == 'section_title' ){
                 $input  = $this->form_field_section_title( $field );
-            }elseif( isset($field['type']) && $field['type'] == 'alert_div' ){
-                $input  = $this->generate_alert_div( $field );
             }else{
                 
                 //if field start with new section
@@ -45,7 +49,7 @@ class CsFormBuilder {
                     $input  = $field['section'];
                 }
                 
-                $input  .= '<div class="form-group '.$no_border.'">';
+                $input  .= '<div class="form-group '.$no_border.' '.$wrapper_class.'">';
                 $input  .= $this->generate_field( $field_name, $field, $i );
                 $input  .= '</div>';
 
@@ -82,8 +86,6 @@ class CsFormBuilder {
             $input .= $field['input_field_wrap_start'];
         }
         
-        
-        
         if( $field['type'] == 'text' || $field['type'] == 'number' || $field['type'] == 'password' ){
             $input .= $this->generate_text_field($field_name, $field, $field_id);
         }
@@ -115,6 +117,11 @@ class CsFormBuilder {
         if( isset( $field['desc_tip'] ) && !empty($field['desc_tip']) ){
             $input .= '<p class="description">'.$field['desc_tip'].'</p>';
         }
+        
+        if( isset($field['hidden_div']) ){
+            $input  .= $this->generate_alert_div( $field['hidden_div'], $field_id );
+        }
+        
         $input .= '</div>';
         
         return $input;
@@ -140,11 +147,18 @@ class CsFormBuilder {
      * @param type $args
      * @return string
      */
-    private function generate_alert_div( $args ){
-        $input =  '<div class="'.$args['section_wrapper_class'].'">';
-        $input .= '<div class="'.$args['alert_class'].'">' .$args['alert_msg']. '</div>';
-        $input .= '</div>';
-        return $input;
+    private function generate_alert_div( $args, $fields_number ){
+        $attributes = '';
+        if( isset($args['attributes']) ){
+            foreach( $args['attributes'] as $attr_key => $attr_val ){
+                if( $attr_key == 'id' ){
+                    $attr_val = $attr_val . '_' . $fields_number;
+                }
+                $attributes .= ' ' . $attr_key .'="' . $attr_val .'" ';
+            }
+        }
+        $inner_html = isset($args['inner_html']) ? $args['inner_html'] : '';
+        return "<div {$attributes}>{$inner_html}</div>";
     }
 
     /**

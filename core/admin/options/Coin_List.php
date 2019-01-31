@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\Admin\options;
+<?php namespace WooGateWayCoreLib\admin\options;
 
 /**
  * Class: Coin LIst

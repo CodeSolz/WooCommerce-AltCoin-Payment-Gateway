@@ -13,4 +13,7 @@
 			<exclude>./tests/test-sample.php</exclude>
 		</testsuite>
 	</testsuites>
+        <php>
+        <env name="APP_URL" value="http://www.codesolz-plugins.com"/>
+    </php>
 </phpunit>
