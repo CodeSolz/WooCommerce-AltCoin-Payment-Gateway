@@ -119,7 +119,7 @@ class Activate{
             } 
                 
             //add db version to db
-            add_option( 'wapg_db_version', CS_WAPG_DB_VERSION );
+            update_option( 'wapg_db_version', CS_WAPG_DB_VERSION );
             
         }
     }
