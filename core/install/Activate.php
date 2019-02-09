@@ -36,7 +36,7 @@ class Activate{
             "CREATE TABLE IF NOT EXISTS `{$wapg_tables['addresses']}`(
             `id` int(11) NOT NULL auto_increment,
             `coin_id` int(11),
-            `address` varchar(56),
+            `address` varchar(1024),
             `lock_status` char(1),  
             PRIMARY KEY ( `id`)
             ) $charset_collate",
@@ -103,12 +103,24 @@ class Activate{
      * @global type $wapg_current_db_versioncheck db status
      */
     public static function check_db_status(){
-        global $wapg_current_db_version;
+        global $wapg_current_db_version, $wpdb, $wapg_tables;
         $get_installed_db_version = get_site_option( 'wapg_db_version' );
         if( empty( $get_installed_db_version ) ){
             self::on_activate();
         }elseif( $get_installed_db_version != $wapg_current_db_version){
             //update db
+            $update_sqls = array(
+                "ALTER TABLE `{$wapg_tables['addresses']}` CHANGE address address varchar(1024)"
+            );
+            foreach ( $update_sqls as $sql ) {
+                if ( $wpdb->query( $sql ) === false ){
+                    continue;
+                }
+            } 
+                
+            //add db version to db
+            add_option( 'wapg_db_version', CS_WAPG_DB_VERSION );
+            
         }
     }
     

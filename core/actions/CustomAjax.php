@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\actions;
+<?php namespace WooGateWayCoreLib\Actions;
 
 /**
  * Class: Custom ajax call
