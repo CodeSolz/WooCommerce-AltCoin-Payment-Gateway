@@ -130,10 +130,15 @@ class CsAdminQuery {
         $wpdb->update( "{$wapg_tables['coins']}", $get_coin_info, array( 'id' => $coin_info['cid'] ));
         
         $get_address_info = array(
+            'coin_id' => $coin_info['cid'],
             'address' => $coin_info['coin_address'],
             'lock_status' => 0
         );
-        $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $coin_info['aid'] ) );
+        if( empty( $coin_info['aid'] ) ){
+            $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
+        }else{
+            $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $coin_info['aid'] ) );
+        }
         
         $get_offer_info = array(
             'coin_id' => $coin_info['cid'],

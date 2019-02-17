@@ -21,7 +21,7 @@ class CsWapgCoinCal {
      *
      * @var type 
      */
-    private $currency_converter_api_url = 'http://free.currencyconverterapi.com/api/v5/convert?q=%s&compact=y';
+    private $currency_converter_api_url = 'https://api.coinmarketstats.online/fiat/v1/ticker/%s';
     
     /**
      *
@@ -66,7 +66,6 @@ class CsWapgCoinCal {
                 $special_discount_msg = $special_discount_type['msg'];
                 $special_discount_amount = $special_discount_type['discount'];
             }
-            
             
             if( $store_currency != 'USD' ){
                 $cartTotal = $this->store_currency_to_usd( $store_currency, $cartTotal );
@@ -137,7 +136,7 @@ class CsWapgCoinCal {
      * Get converted store currency to usd
      */
     private function store_currency_to_usd( $store_currency, $cart_total ){
-        $key = $store_currency .'_USD';
+        $key = strtolower($store_currency);
         $api_url = sprintf( $this->currency_converter_api_url , $key );
         $response = Util::remote_call( $api_url );
         if( isset( $response['error' ] ) ){
@@ -145,8 +144,16 @@ class CsWapgCoinCal {
         }
         
         $response = json_decode( $response );
+        
         if( is_object( $response ) ){
-            return  $response->{$key}->val * $cart_total;
+            if( $response->data[0]->currency == $key ){
+                return  $response->data[0]->usd * $cart_total;
+            }else{
+                return array(
+                    'error' => true,
+                    'response' => __( 'Currency not found. Please contact support@codesolz.net to add your currency.', 'woo-altcoin-payment-gateway' )
+                );
+            }
         }
         
         return array(

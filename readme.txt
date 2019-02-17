@@ -6,7 +6,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.0.3
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 Requires PHP: 6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -131,6 +131,10 @@ English , Spanish , French, Dutch
 9. Front-end - after checkout - thank you page
 
 == Changelog ==
+
+= 1.1.8 =
+* New Fiat Currency Converter added from our own data - https://coinmarketstats.online
+* Check your currency - https://api.coinmarketstats.online/fiat/v1/listings
 
 = 1.1.7 =
 * Database updated
