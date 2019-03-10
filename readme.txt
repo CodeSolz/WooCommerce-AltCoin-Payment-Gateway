@@ -6,16 +6,16 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.0.3
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 Requires PHP: 6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
-Accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. 
+This plugin will help you to accept bitcoin / any altcoin payment from your WooCommerce very easily. You can use your own coin's address to get paid. It doesn't required any subscription / payment to third party software. This plugin calculate coin price(real-time) from the most trusted coin exchange portals via API but you don't need your own API to set it up. This is automatic. You don't need to worry about the altcoin price changing time to time as it's real-time connected with exchange portals. So you can be relaxed by setting it up in your website.
 
 == Description ==
 
-WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calculation with [coinmarketcap api](http://coinmarketcap.com/) API that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the changing of the altcoin price.
+This plugin will help you to accept bitcoin / any altcoin payment from your WooCommerce very easily. You can use your own coin's address to get paid. It doesn't required any subscription / payment to third party software. This plugin calculate coin price(real-time) from the most trusted coin exchange portals via API but you don't need your own API to set it up. This is automatic. You don't need to worry about the altcoin price changing time to time as it's real-time connected with exchange portals. So you can be relaxed by setting it up in your website.
 
 <blockquote>
 = Need Help on upgrade =
@@ -65,7 +65,6 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 * No 3rd party wallet signup / payment required 
 * Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
 * After a successful order from a client, check your crypto-currency balance & release the product by confirming that you have received coins.
-* Accept any altcoin listed in the [coinmarketcap.com](https://api.coinmarketcap.com/v2/listings/) api listings
 
 
 
@@ -132,9 +131,13 @@ English , Spanish , French, Dutch
 
 == Changelog ==
 
+= 1.1.9 =
+* Discount rounding error fixed
+* Coin searching error fixed
+
 = 1.1.8 =
-* New Fiat Currency Converter added from our own data - https://coinmarketstats.online
-* Check your currency - https://api.coinmarketstats.online/fiat/v1/listings
+* New Fiat Currency Converter added from our own data - <a href="https://coinmarketstats.online">https://coinmarketstats.online</a>
+* Check your currency - <a href="https://api.coinmarketstats.online/fiat/v1/listings">https://api.coinmarketstats.online/fiat/v1/listings</a>
 
 = 1.1.7 =
 * Database updated
