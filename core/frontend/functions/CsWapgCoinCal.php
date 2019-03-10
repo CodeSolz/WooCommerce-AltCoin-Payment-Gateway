@@ -123,11 +123,11 @@ class CsWapgCoinCal {
     private function apply_special_discount( $cartTotal, $customField ){
         if( $customField->offer_type == 1 ){
             //percent
-            $final_amount = (int)$cartTotal - ( ( $customField->offer_amount / 100 ) * $cartTotal );
+            $final_amount = (float)$cartTotal - (float)( ( $customField->offer_amount / 100 ) * $cartTotal );
         }
         elseif( $customField->offer_type == 2 ){
             //flat amount
-            $final_amount = (int)$cartTotal - $customField->offer_amount;
+            $final_amount = (float)$cartTotal - (float)$customField->offer_amount;
         }
         return $final_amount;
     }

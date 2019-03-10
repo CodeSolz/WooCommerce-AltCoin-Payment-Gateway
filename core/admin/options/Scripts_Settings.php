@@ -86,7 +86,7 @@ class Scripts_Settings {
                         var formData = new FormData( $this[0] );
                         formData.append( "action", "_cs_wapg_custom_call" );
                         formData.append( "method", $this.find('#method').val() );
-                        swal( { title: $this.find('#swal_title').val(), text: 'Please wait a while...', timer: 200000, imageUrl: '<?php echo CS_WAPG_PLUGIN_ASSET_URI .'img/loading-timer.gif'; ?>', showConfirmButton: false, html :true });
+                        swal({ title: $this.find('#swal_title').val(), text: 'Please wait a while...', timer: 200000, imageUrl: '<?php echo CS_WAPG_PLUGIN_ASSET_URI .'img/loading-timer.gif'; ?>', showConfirmButton: false, html :true });
                         $.ajax({
                             url: ajaxurl,
                             type: 'POST',

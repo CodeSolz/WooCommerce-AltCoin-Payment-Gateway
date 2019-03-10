@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\Actions;
+<?php namespace WooGateWayCoreLib\actions;
 
 /**
  * Class: Register custom menu

@@ -64,7 +64,7 @@ class CsFormBuilder {
         }
         
         //return html as string
-        if( false == $return_array ){
+        if ( false == $return_array ){
             echo implode( '', $html_fields );
         }
         

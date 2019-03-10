@@ -225,7 +225,7 @@ class CsAdminQuery {
      * get coin id
      */
     public function get_coin_id( $coin_name ){
-        $currencies = \file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json');
+        $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
         $currencies = json_decode($currencies);
         $coin_id = '';
         foreach( $currencies as $cur ){
@@ -241,7 +241,7 @@ class CsAdminQuery {
      * get coin name by id
      */
     public static function get_coin_name_id( $coin_id ){
-        $currencies = \file_get_contents( CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json' );
+        $currencies = file_get_contents( CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH );
         $currencies = json_decode( $currencies );
         $coin_name = '';
         foreach( $currencies as $cur ){
@@ -262,7 +262,7 @@ class CsAdminQuery {
         if( isset( $this->coin_name_arr ) && !empty($this->coin_name_arr ) ){
             return wp_send_json($this->coin_name_arr);
         }
-        $currencies = \file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json');
+        $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
         $currencies = json_decode($currencies);
         $ret = array();
         foreach( $currencies as $cur ){

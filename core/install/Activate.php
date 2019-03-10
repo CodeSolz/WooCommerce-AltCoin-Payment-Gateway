@@ -99,8 +99,9 @@ class Activate{
     }
     
     /**
+     * check db status
      * 
-     * @global type $wapg_current_db_versioncheck db status
+     * @global type $wapg_current_db_version
      */
     public static function check_db_status(){
         global $wapg_current_db_version, $wpdb, $wapg_tables;
