@@ -29,6 +29,9 @@
         <img alt="undefined" src="https://img.shields.io/wordpress/plugin/dt/woo-altcoin-payment-gateway.svg">
     </a>
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="Wordpress Plugin Active Installs" src="https://img.shields.io/wordpress/plugin/installs/woo-altcoin-payment-gateway.svg">
+    </a>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
         <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg">
     </a><br><br>
     <a href="https://codesolz.net">
@@ -39,7 +42,7 @@
 
 ### What does it do? 
 
-WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any altcoin payment from your woocommerce store directly to your crypto-currency address without subscription / payment to third party software. Real-time price calcualtion with http://coinmarketcap.com/ api that means when someone want to buy a product from your website and choose altcoin to pay, then this gateway immediately calculate the product price with current cryptocurrency market by coinmarketcap.com api. So you don't need to worry about the chaning of the altcoin price.
+This plugin will help you to accept bitcoin / any altcoin payment from your WooCommerce very easily. You can use your own coin's address to get paid. It doesn't required any subscription / payment to third party software. This plugin calculate coin price(real-time) from the most trusted coin exchange portals via API but you don't need your own API to set it up. This is automatic. You don't need to worry about the altcoin price changing time to time as it's real-time connected with exchange portals. So you can be relaxed by setting it up in your website.
 
 > *Start Accepting Any Cryptocurrency  in Few Seconds!*
 
@@ -47,22 +50,50 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 
 ### Key Features
 
-* Quick & Easy Installation
-* Accept any coin from 2000+ crypto currencies
-* No 3rd party wallet signup / payment required
+
+<blockquote>
+= Installation Process = 
+<ul>
+    <li> Quick & Very Easy Installation Process</li>
+</ul>
+
+= Number of Crypto Currencies = 
+<ul>
+    <li> Currently You can accept 2000+ crypto currencies ( manual order confirmation - free version ) </li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
+</ul>
+
+= Discount Feature On Cart = 
+<ul>
+    <li> Add Discount on cart for each coin separately</li>
+    <li> You can add different types of discount for each coin( percentage of total cart or a flat amount separately for each coin)</li>
+    <li> Show / hide discount offer box in single product page</li>
+</ul>
+
+= Order / Payment Confirmation Process = 
+<ul>
+    <li> There are 3 types of order confirmation process available </li>
+    <li> Free version is included with manual order confirmation </li>
+</ul>
+
+= Product Price Calculation = 
+<ul>
+    <li> Automatic & instant coin price calculation. So you don't need to worry about changing crypto-currency market price </li>
+    <li> Automatically convert product price to altcoin price </li>
+    <li> All secure and automatic price calculation by [coinmarketcap.com](http://coinmarketcap.com/) api</li>
+</ul>
+
+</blockquote>
+
+* No 3rd party wallet signup / payment required 
 * Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
 * After a successful order from a client, check your crypto-currency balance & release the product by confirming that you have received coins.
-* Accept any altcoin listed in the [coinmarketcap.com](https://api.coinmarketcap.com/v2/listings/) api listings
-* Automatic instant coin price calculation and will adjust to your product price. So you don't need to worry about changing cryptocurrency market price
-* Automatically convert product price to altcoin
-* Automatically price counting by [coinmarketcap.com](http://coinmarketcap.com/) api
-* All secure and automatic mode calculation
-* Manual checking required for payment confirmation
+
 
 ### How fiat currency works?
-* At first your local currency convert to USD and then it convert to coin price.
-* Everything done automatically in background during the checkout process. So, you don't need to worry about it.
-* Used [http://currencyconverterapi.com](http://currencyconverterapi.com) Currency converter api to convert your local currency to USD
+* At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
+* During the checkout process everything happen automatically in background.
+* Used [https://api.coinmarketstats.online](https://api.coinmarketstats.online) Currency converter api to convert your local currency to USD
 
 ### PHP, Wordpress & WooCommerce Version Checking
   - Works on all mentioned & higher version
@@ -76,7 +107,7 @@ WooCommerce AltCoin Payment Gateway plugin helps you to accept bitcoin / any alt
 * <a target="_blank" href="https://wordpress.org/plugins/polylang/">Polylang</a>
 * <a target="_blank" href="https://wordpress.org/plugins/loco-translate/">Loco Translate</a>
 
-### Supported Languages
+### Available Languages
 * English
 * Spanish
 * French
