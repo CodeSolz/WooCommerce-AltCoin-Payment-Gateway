@@ -67,17 +67,21 @@ class CsWapgCoinCal {
                 $special_discount_amount = $special_discount_type['discount'];
             }
             
-            if( $store_currency != 'USD' ){
-                $cartTotal = $this->store_currency_to_usd( $store_currency, $cartTotal );
-                if( isset( $cartTotal['error' ] ) ){
-                    wp_send_json( array('response' => false, 'msg' => $cartTotal['response'] ) );
-                }
-            }
-            
             $coin_price = $this->get_coin_martket_price( $coinId );
             if( isset( $coin_price['error' ] ) ){
                 wp_send_json( array('response' => false, 'msg' => $coin_price['response'] ) );
             }
+            
+            $altcoinPriceOfStoreCurrency = '';
+            if( $store_currency != 'USD' ){
+                $usd_conversion = $this->store_currency_to_usd( $store_currency, $cartTotal );
+                if( isset( $usd_conversion['error' ] ) ){
+                    wp_send_json( array('response' => false, 'msg' => $usd_conversion['response'] ) );
+                }
+                $cartTotal = $usd_conversion[0];
+                $altcoinPriceOfStoreCurrency = $this->convert_altcoin_price_to_store_currency( $usd_conversion[1], $coin_price);
+            }
+            
             
             //calculate the coin
             $totalCoin = $this->get_total_coin_amount( $coin_price, $cartTotal );
@@ -85,10 +89,11 @@ class CsWapgCoinCal {
             //return status
             wp_send_json( array( 'response' => true, 'cartTotal' => $woocommerce->cart->total, 'cartTotalAfterDiscount' => $cartTotalAfterDiscount, 
                 'currency_symbol' => $currency_symbol, 'totalCoin' => $totalCoin,
-                'coinPrice' => $coin_price, 'coinFullName' => $coinFullName,
+                'coinPrice' => round($coin_price, 2), 'coinFullName' => $coinFullName,
                 'coinName' => $coinName, 'coinAddress' => $coinAddress,
                 'special_discount_status' => $special_discount, 'special_discount_msg' => $special_discount_msg, 
-                'special_discount_amount' => $special_discount_amount 
+                'special_discount_amount' => $special_discount_amount,
+                'nativeAltCoinPrice' => round($altcoinPriceOfStoreCurrency, 2)
             ));
         }
     }
@@ -147,7 +152,9 @@ class CsWapgCoinCal {
         
         if( is_object( $response ) ){
             if( $response->data[0]->currency == $key ){
-                return  $response->data[0]->usd * $cart_total;
+                return  array( $response->data[0]->usd * $cart_total,
+                        $response->data[0]->usd
+                    );
             }else{
                 return array(
                     'error' => true,
@@ -194,4 +201,10 @@ class CsWapgCoinCal {
         return round( ( ( 1 / $coin_price ) * $cartTotal ), 8 );
     }
     
+    /**
+     * altcoin price to store currency
+     */
+    private function convert_altcoin_price_to_store_currency( $usd_value, $coin_price){
+        return ( 1 / $usd_value ) * $coin_price;
+    }
 }

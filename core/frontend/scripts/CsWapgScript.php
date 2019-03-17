@@ -50,6 +50,11 @@ class CsWapgScript {
                             ctfd = '<span class="woocommerce-cart-subtotal-after-discount">' + res.currency_symbol + res.cartTotalAfterDiscount + '</span><br>';
                         }
                         
+                        var stc = '';
+                        if( res.nativeAltCoinPrice > 0 ){
+                            stc = '<br><span class="price-tag"> ( 1 '+res.coinName+' = '+res.currency_symbol+''+ res.nativeAltCoinPrice +' ) </span>';
+                        }
+                        
                         return sdm +
                         '<h3 id="wapg_order_review_heading"><?php _e('You have to pay:', 'woo-altcoin-payment-gateway'); ?></h3>'+
                         '<div id="wapg_order_review" class="woocommerce-checkout-review-order">'+
@@ -64,7 +69,7 @@ class CsWapgScript {
                             '<tr class="cart_item">'+
                                 '<td class="product-name">'+
                                     res.coinFullName+'&nbsp;<strong class="product-quantity">&times; '+res.totalCoin+'</strong><br>'+
-                                    '<span class="price-tag"> ( 1 '+res.coinName+' = &#36;'+res.coinPrice+') </span>'+
+                                    '<span class="price-tag"> ( 1 '+res.coinName+' = &#36;'+res.coinPrice+' ) </span>'+stc+
                                 '</td>'+
                                 '<td class="product-total">'+
                                     '<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">'+res.currency_symbol+'</span>'+res.cartTotal+'</span>'+

@@ -43,11 +43,12 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         // vertical tab title
         $this->title = __( "AltCoin Payment", 'woo-altcoin-payment-gateway' );
 
+        $this->defaultOptn = get_option( $this->get_option_key() );
+        
+//        pre_print( $this->defaultOptn );
         //get icons
         $this->icon = $this->get_icon_url();
         $this->loader_icon = $this->get_loader_url();
-        
-        $this->defaultOptn = get_option( $this->get_option_key() );
 
         
         $this->has_fields = true;

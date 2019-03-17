@@ -112,6 +112,9 @@ class RegisterCustomMenu {
      * @return type
      */
     public function load_settings_page(){
+        //check woocommerce is loaded
+        $this->isWoocommerceInstalled();
+        
         return $this->pages->app_settings( $this->WcFuncInstance->get_payment_info() );
     }
     
@@ -157,7 +160,26 @@ class RegisterCustomMenu {
      * load custom scripts on admin footer
      */
     public function wapg_load_admin_footer_script(){
+        
+        
         Scripts_Settings::load_admin_footer_script( $this->current_screen->id );
+    }
+    
+    /**
+     * Check woocommerce plugin installed
+     * 
+     * @return boolean
+     */
+    private function isWoocommerceInstalled(){
+        if( FALSE === IS_WOOCOMMERCE_INSTALLED ){
+            ?>
+                <script>
+                    window.location.href = '<?php echo admin_url( 'plugins.php' ); ?>';
+                </script>
+            <?php
+                
+        }
+        return true;
     }
     
 }

@@ -17,8 +17,10 @@ class WooFunctions {
     public $altcoin_instance;
     
     public function __construct(){
-        if( !isset( $this->WcPg_Instance ) ){
-            $this->WcPg_Instance = new \WC_Payment_Gateways();
+        if ( class_exists( 'WC_Payment_Gateway' ) ){
+            if( !isset( $this->WcPg_Instance ) ){
+                $this->WcPg_Instance = new \WC_Payment_Gateways();
+            }
         }
     }
     

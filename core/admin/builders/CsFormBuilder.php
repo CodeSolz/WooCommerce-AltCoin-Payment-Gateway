@@ -89,6 +89,9 @@ class CsFormBuilder {
         if( $field['type'] == 'text' || $field['type'] == 'number' || $field['type'] == 'password' ){
             $input .= $this->generate_text_field($field_name, $field, $field_id);
         }
+        if( $field['type'] == 'textarea' ){
+            $input .= $this->generate_textarea_field($field_name, $field, $field_id);
+        }
         elseif( $field['type'] == 'select' ){
             $input .= $this->generate_select_field($field_name, $field, $field_id);
         }
@@ -170,9 +173,14 @@ class CsFormBuilder {
      * @return type
      */
     private function generate_attribute( $field_name, $field, $field_id ){
+//        pre_print($field);
         $input_item = '';
         foreach( $field as $item_id => $item_val ){
             if( $field['type'] == 'select' && ($item_id == 'placeholder' || $item_id == 'type' ) ){
+                continue;
+            }
+            
+            if( $field['type'] == 'textarea' && ($item_id == 'value' || $item_id == 'type' ) ){
                 continue;
             }
             
@@ -205,6 +213,19 @@ class CsFormBuilder {
     }
     
     /**
+     * Generate textarea filed
+     * 
+     * @param type $field_name
+     * @param type $field
+     * @param type $field_id
+     * @return type
+     */
+    private function generate_textarea_field(  $field_name, $field, $field_id ){
+        $input_item = $this->generate_attribute($field_name, $field, $field_id);
+        return "<textarea  {$input_item} >".$field['value']."</textarea>";
+    }
+    
+    /**
      * Generate text filed
      * 
      * @param type $field_name
@@ -214,7 +235,12 @@ class CsFormBuilder {
      */
     private function generate_checkbox_field(  $field_name, $field, $field_id ){
         $value = '';
-        if( isset( $field['value']) && !empty( $field['value'] ) ){
+        if( isset( $field['has_value']) && !empty( $field['has_value'] ) ){
+            $value = ' checked = "checked" ';
+        }
+        
+        //old fields
+        if( !isset( $field['has_value']) && isset( $field['value']) && !empty( $field['value'] ) ){
             $value = $field['value'] == 1 ? ' checked = "checked" ' : '';
             unset($field['value']);
         }
@@ -339,7 +365,21 @@ class CsFormBuilder {
     private function attr_id( $field_id ){
         return ' id = "cs_field_'.$field_id.'" ';
     }
-    
-    
+
+    /**
+     * 
+     * @param type $id
+     * @param type $values
+     * @param type $default_value
+     * @return stringGet field's value
+     */
+    public static function get_value( $id, $values = array(), $default_value = '' ){
+        if( isset( $values[ $id ] ) && !empty( $values[ $id ] ) ){
+            return $values[ $id ];
+        }else if( !empty( $default_value ) ){
+            return $default_value;
+        }
+        return '';
+    }
     
 }

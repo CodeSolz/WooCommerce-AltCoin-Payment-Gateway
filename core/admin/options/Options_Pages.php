@@ -48,56 +48,91 @@ class Options_Pages {
                             <div class="container">
                                 <div class="row">
                                     <div class="col-8">
-
-                                            <div class="form-group">
-                                                <div class="label">
-                                                    <label><?php _e('Enable / Disable', 'woo-altcoin-payment-gateway'); ?></label>
-                                                </div>
-                                                <div class="input-group">
-                                                    <input type="checkbox" name="cs_altcoin_config[enabled]" <?php if( !empty( $settings->defaultOptn['enabled'] ) ) { echo 'checked="checked"'; } ?> value="yes" />
-                                                    <p class="description"><?php _e('Enable AltCoin payment gateway', 'woo-altcoin-payment-gateway'); ?></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="label">
-                                                    <label><?php _e('Title', 'woo-altcoin-payment-gateway'); ?></label>
-                                                </div>
-                                                <div class="input-group">
-                                                    <input type="text" name="cs_altcoin_config[title]" placeholder="Enter your payment gateway title" class="form-control" value="<?php echo empty($settings) ? 'AltCoin Payment' : $settings->defaultOptn['title']; ?>" />
-                                                    <p class="description"><?php _e('Enter your payment gateway title. It will show in checkout page. e.g : AltCoin Payment', 'woo-altcoin-payment-gateway'); ?></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="label">
-                                                    <label><?php _e('Description', 'woo-altcoin-payment-gateway'); ?></label>
-                                                </div>
-                                                <div class="input-group">
-                                                    <textarea name="cs_altcoin_config[description]" placeholder="Enter your payment gateway description" class="form-control"><?php echo empty($settings) ? 'Make your payment directly into our AltCoin address. Your order won’t be shipped until the funds have cleared in our account.' : $settings->defaultOptn['description']; ?></textarea>
-                                                    <p class="description"><?php _e('Enter your payment gateway description.', 'woo-altcoin-payment-gateway'); ?></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="label">
-                                                    <label><?php _e('Payment Icon url', 'woo-altcoin-payment-gateway'); ?></label>
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="smartcat-uploader">
-                                                        <input type="text" readonly="" name="cs_altcoin_config[payment_icon_url]" placeholder="payment icon url" class="form-control" value="<?php echo isset($settings->defaultOptn['payment_icon_url']) && !empty($settings->defaultOptn['payment_icon_url']) ? $settings->defaultOptn['payment_icon_url'] : ( empty($settings->icon) ? CS_WAPG_PLUGIN_ASSET_URI .'img/crypto-currency.jpg' : $settings->icon ); ?>" />
-                                                    </div>
-                                                    <p class="description"><?php _e('Choose payment icon. This icon will show in checkout page beside the payment gateway name', 'woo-altcoin-payment-gateway'); ?></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group no-border">
-                                                <div class="label">
-                                                    <label><?php _e('Calculator Gif URL', 'woo-altcoin-payment-gateway'); ?></label>
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="smartcat-uploader">
-                                                        <input type="text" readonly="" name="cs_altcoin_config[loader_gif_url]" placeholder="calculator gif url" class="form-control" value="<?php echo isset($settings->defaultOptn['loader_gif_url']) && !empty($settings->defaultOptn['loader_gif_url']) ? $settings->defaultOptn['loader_gif_url'] : ( empty($settings->loader_icon) ? CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif' : $settings->loader_icon ); ?>" />
-                                                    </div>
-                                                    <p class="description"><?php _e('Choose price loading gif. This gif image will show in checkout page during the live price calculation', 'woo-altcoin-payment-gateway'); ?></p>
-                                                </div>
-                                            </div>
+                                        <?php
+                                            $fields = array(
+                                                'cs_altcoin_config[enabled]'    => array(
+                                                    'title'                     => __( 'Enable / Disable', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'checkbox',
+                                                    'value'                     => 'yes',
+                                                    'has_value'                 => CsFormBuilder::get_value( 'enabled', $settings->defaultOptn, ''),
+                                                    'desc_tip'                  => __( 'Enable AltCoin payment gateway', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[title]'=> array(
+                                                    'title'            => __( 'Title', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'text',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'title', $settings->defaultOptn, 'AltCoin Payment'),
+                                                    'placeholder'      => __( 'Enter your payment gateway title', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter your payment gateway title. It will show in checkout page. e.g : AltCoin Payment', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[description]'=> array(
+                                                    'title'            => __( 'Description', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'textarea',
+                                                    'class'            => "form-control",
+                                                    'value'            => CsFormBuilder::get_value( 'description', $settings->defaultOptn, 'Make your payment directly into our AltCoin address. Your order won’t be shipped until the funds have cleared in our account.'), 
+                                                    'placeholder'      => __( 'Enter your payment gateway description', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter your payment gateway description. It will show in checkout page.', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[select_box_lebel]'=> array(
+                                                    'title'            => __( 'Select Box Lebel', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'text',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'select_box_lebel', $settings->defaultOptn, 'Please select coin you want to pay:'),
+                                                    'placeholder'      => __( 'Enter select box lebel', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter select box lebel. It will show in checkout page. e.g : Please select coin you want to pay:', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[select_box_option_lebel]'=> array(
+                                                    'title'            => __( 'Select Box Option Lebel', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'text',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'select_box_option_lebel', $settings->defaultOptn, 'Please Select An AltCoin'),
+                                                    'placeholder'      => __( 'Enter select box option lebel', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter select box option lebel. It will show in checkout page. e.g : Please Select An AltCoin', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[select_box_lebel]'=> array(
+                                                    'title'            => __( 'Select Box Lebel', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'text',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'select_box_lebel', $settings->defaultOptn, 'Please select coin you want to pay:'),
+                                                    'placeholder'      => __( 'Enter select box lebel', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter select box lebel. It will show in checkout page. e.g : Please select coin you want to pay:', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[payment_icon_url]'  => array(
+                                                    'title'                     => __( 'Payment Icon url', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'text',
+                                                    'class'                     => "form-control coin_name",
+                                                    'required'                  => true,
+                                                    'placeholder'               => __( 'payment icon url', 'woo-altcoin-payment-gateway' ),
+                                                    'input_field_wrap_start'    => '<div class="smartcat-uploader">',
+                                                    'input_field_wrap_end'      => '</div>',
+                                                    'custom_attributes' => array(
+                                                        'readonly'     => '',
+                                                    ),
+                                                    'value' => CsFormBuilder::get_value( 'payment_icon_url', $settings->defaultOptn, CS_WAPG_PLUGIN_ASSET_URI .'img/icon-24x24.png' ), 
+                                                    'desc_tip'	=> __( 'Choose payment icon. This icon will show in checkout page beside the payment gateway name', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[loader_gif_url]'  => array(
+                                                    'title'                     => __( 'Calculator Gif URL', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'text',
+                                                    'class'                     => "form-control coin_name",
+                                                    'required'                  => true,
+                                                    'placeholder'               => __( 'Calculator Gif URL', 'woo-altcoin-payment-gateway' ),
+                                                    'input_field_wrap_start'    => '<div class="smartcat-uploader">',
+                                                    'input_field_wrap_end'      => '</div>',
+                                                    'custom_attributes' => array(
+                                                        'readonly'     => '',
+                                                    ),
+                                                    'value' => CsFormBuilder::get_value( 'loader_gif_url', $settings->defaultOptn, CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif' ), 
+                                                    'desc_tip'	=> __( 'Choose price loading gif. This gif image will show in checkout page during the live price calculation', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                            );
+                                        
+                                            (new CsFormBuilder())->generate_html_fields( $fields );
+                                        ?>
                                             
                                     </div>
                                 </div>
@@ -188,7 +223,7 @@ class Options_Pages {
                                                 'cs_add_new[coin_status]'=> array(
                                                     'title'            => __( ' Active / Deactivate', 'woo-altcoin-payment-gateway' ),
                                                     'type'             => 'checkbox',
-                                                    'value' => empty($coin_data) ? '' : $coin_data->status,
+                                                    'value'            => empty($coin_data) ? '' : $coin_data->status,
                                                     'desc_tip'         => __( 'Select this checkbox if you want to activate coin', 'woo-altcoin-payment-gateway' ),
                                                 ),
                                                 'st1' => array(
@@ -199,7 +234,7 @@ class Options_Pages {
                                                 'cs_add_new[offer_status]'=> array(
                                                     'title'            => __( 'Offer Active / Deactivate', 'woo-altcoin-payment-gateway' ),
                                                     'type'             => 'checkbox',
-                                                    'value' => empty($coin_data) ? '' : $coin_data->offer_status,
+                                                    'value'            => empty($coin_data) ? '' : $coin_data->offer_status,
                                                     'desc_tip'         => __( 'Select this checkbox if you want to activate offer', 'woo-altcoin-payment-gateway' ),
                                                 ),
                                                 'cs_add_new[special_discount_coin]'  => array(

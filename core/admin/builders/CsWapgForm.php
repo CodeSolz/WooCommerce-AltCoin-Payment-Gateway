@@ -56,10 +56,11 @@ class CsWapgForm {
         }
         $fields = array();
         
+        $label = isset($refObj->select_box_lebel) && !empty($refObj->select_box_lebel) ? $refObj->select_box_lebel : __( 'Please select coin you want to pay:', 'woo-altcoin-payment-gateway' );
         $default_fields = array(
                 'alt-con' => '<p class="form-row form-row-wide altCoinSelect">
-                        <label for="' . esc_attr( $refObj->id ) . '-alt-name">' . __( 'Please select coin you want to pay:', 'woo-altcoin-payment-gateway' ) . ' <span class="required">*</span></label>'.
-                        self::getActiveAltCoinSelect()
+                        <label for="' . esc_attr( $refObj->id ) . '-alt-name">' . $label . ' <span class="required">*</span></label>'.
+                        self::getActiveAltCoinSelect( $refObj )
                 .'</p><div class="coin-detail"><!--coin calculation--></div>'
         );
         
@@ -97,17 +98,19 @@ class CsWapgForm {
      * @param type $refObj
      * @return type
      */
-    public static function getActiveAltCoinSelect(){
+    public static function getActiveAltCoinSelect( $refObj = false ){
         $custom_fields = CsAdminQuery::get_coins( array( 'where' => " c.status = 1 " ) );
         if( empty($custom_fields)){
             return __( 'Sorry! No AltCoin is activate! Please contact administration for more information.', 'woo-altcoin-payment-gateway' );
         }
         
         $altCoin = '<select name="altcoin" id="CsaltCoin" class="select">';
-        $altCoin .= '<option value="0">===='.__( 'Please Slect An AltCoin!', 'woo-altcoin-payment-gateway').'====</option>';
+        $lebel = isset( $refObj->select_box_option_lebel ) && !empty($refObj->select_box_option_lebel) ? $refObj->select_box_option_lebel : __( 'Please Select An AltCoin', 'woo-altcoin-payment-gateway' );;
+        $altCoin .= '<option value="0">'.$lebel.'</option>';
         foreach( $custom_fields as $field){
             $altCoin .= '<option value="'.$field->cid.'">'.$field->name.'</option>';
         }
         return $altCoin .='</select>';
     }
 }
+
