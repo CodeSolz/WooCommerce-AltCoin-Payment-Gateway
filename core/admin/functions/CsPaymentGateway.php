@@ -32,4 +32,15 @@ class CsPaymentGateway {
             'text' => __( "Your settings have been saved.", 'woo-altcoin-payment-gateway' ),
         ));
     }
+    
+    
+    /**
+     * get settings value
+     * 
+     * @return type
+     */
+    public static function get_settings_options(){
+        $altcoin_id = WooFunctions::get_altcoin_gateway_settings_id();
+        return get_option( $altcoin_id );
+    }
 }

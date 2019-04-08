@@ -93,7 +93,8 @@ class CsWapgCoinCal {
                 'coinName' => $coinName, 'coinAddress' => $coinAddress,
                 'special_discount_status' => $special_discount, 'special_discount_msg' => $special_discount_msg, 
                 'special_discount_amount' => $special_discount_amount,
-                'nativeAltCoinPrice' => round($altcoinPriceOfStoreCurrency, 2)
+                'nativeAltCoinPrice' => round($altcoinPriceOfStoreCurrency, 2), 'store_currency_fullname' => $this->get_full_name_of_store_currency( $store_currency ),
+                'store_currency_shortname' => $store_currency
             ));
         }
     }
@@ -181,7 +182,17 @@ class CsWapgCoinCal {
         
         $getMarketPrice = json_decode( $response );
         if( isset( $getMarketPrice[0]->price_usd ) ){
-            return $getMarketPrice[0]->price_usd;
+            $price = (float)$getMarketPrice[0]->price_usd;
+            $market_cap_usd = (float)$getMarketPrice[0]->market_cap_usd;
+            if( $market_cap_usd > 0 ){
+                return $price;
+            }else{
+                //coin doesn't have any value
+                return array(
+                    'error' => true,
+                    'response' => __( 'Probably this currency is out of the market & doesn\'t have any value! Contact administration for more information..', 'woo-altcoin-payment-gateway' )
+                );
+            }
         }
         
         return array(
@@ -206,5 +217,15 @@ class CsWapgCoinCal {
      */
     private function convert_altcoin_price_to_store_currency( $usd_value, $coin_price){
         return ( 1 / $usd_value ) * $coin_price;
+    }
+    
+    /**
+     * Get currency full name
+     * 
+     * @return string
+     */
+    private function get_full_name_of_store_currency( $curr_short_name ){
+        $all_avail_currencies = get_woocommerce_currencies();
+        return isset( $all_avail_currencies[ $curr_short_name ] ) ? $all_avail_currencies[ $curr_short_name ] : '';
     }
 }

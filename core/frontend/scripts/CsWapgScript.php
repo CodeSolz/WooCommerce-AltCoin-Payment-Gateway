@@ -52,11 +52,16 @@ class CsWapgScript {
                         
                         var stc = '';
                         if( res.nativeAltCoinPrice > 0 ){
-                            stc = '<br><span class="price-tag"> ( 1 '+res.coinName+' = '+res.currency_symbol+''+ res.nativeAltCoinPrice +' ) </span>';
+                            stc = '<br><span class="price-tag"> 1 '+res.coinName+' = ' + res.currency_symbol + res.nativeAltCoinPrice +' (' + res.store_currency_shortname + ')  </span>';
+                        }
+                        
+                        var cfn = '';
+                        if( res.store_currency_fullname != '' ){
+                            cfn = '<br><span class="currency-fullname help-info"> ( '+res.store_currency_fullname+' ) </span>';
                         }
                         
                         return sdm +
-                        '<h3 id="wapg_order_review_heading"><?php _e('You have to pay:', 'woo-altcoin-payment-gateway'); ?></h3>'+
+                        '<h3 id="wapg_order_review_heading"><?php echo isset( $this->Ref->price_section_title ) && !empty($this->Ref->price_section_title) ? $this->Ref->price_section_title : __( 'You have to pay:', 'woo-altcoin-payment-gateway' ); ?></h3>'+
                         '<div id="wapg_order_review" class="woocommerce-checkout-review-order">'+
                             '<table class="shop_table woocommerce-checkout-review-order-table">'+
                         '<thead>'+
@@ -69,10 +74,11 @@ class CsWapgScript {
                             '<tr class="cart_item">'+
                                 '<td class="product-name">'+
                                     res.coinFullName+'&nbsp;<strong class="product-quantity">&times; '+res.totalCoin+'</strong><br>'+
-                                    '<span class="price-tag"> ( 1 '+res.coinName+' = &#36;'+res.coinPrice+' ) </span>'+stc+
+                                    '<span class="price-tag"> 1 '+res.coinName+' = &#36;'+res.coinPrice+' (USD) </span>'+stc+
                                 '</td>'+
                                 '<td class="product-total">'+
                                     '<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">'+res.currency_symbol+'</span>'+res.cartTotal+'</span>'+
+                                    cfn+
                                 '</td>'+
                             '</tr>' + sda +
                         '</tbody>'+
@@ -99,7 +105,7 @@ class CsWapgScript {
                         '<div class="coinAddress-info">'+
                             '<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
                             '<input id="alt-coinAddress" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
-                            '<p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t foget to add the transfer fee.", 'woo-altcoin-payment-gateway' ), 'https://coinmarketcap.com'); ?><p>'+
+                            '<p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t forget to add the transfer fee.", 'woo-altcoin-payment-gateway' ), 'https://coinmarketstats.online'); ?><p>'+
                         '</div>'+
                     '</div>'+
                     
@@ -163,7 +169,7 @@ class CsWapgScript {
                 .alt-info{font-style: italic;margin-bottom: 10px;border: 2px dashed #999;padding: 10px;margin-top: 25px;}
                 .coin-detail{margin-bottom: 1.5em;}
                 .coin-detail .loader{ text-align: center;}
-                .price-tag{font-style: italic;font-size: 11px;}
+                .price-tag, .help-info{font-style: italic;font-size: 11px;}
                 .qr-code{ max-height: 225px !important; }
                 .coinAddress-qr{text-align: center;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
                 .coinAddress-info{ position: relative;display: table-cell;vertical-align: top;padding: 10px 20px; width: 63%;}
