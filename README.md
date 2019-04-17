@@ -33,7 +33,9 @@
     </a>
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
         <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg">
-    </a><br><br>
+    </a>
+    [![HitCount](http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg)](http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway)
+    <br><br>
     <a href="https://codesolz.net">
         <img alt="undefined" src="https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg">
     </a>
