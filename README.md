@@ -20,6 +20,10 @@
         <img alt="undefined" src="https://img.shields.io/wordpress/plugin/tested/woo-altcoin-payment-gateway.svg">
     </a>
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
+        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg">
+    </a>
+    <br>
+    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
         <img alt="undefined" src="https://img.shields.io/wordpress/plugin/v/woo-altcoin-payment-gateway.svg">
     </a>
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
@@ -30,9 +34,6 @@
     </a>
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
         <img alt="Wordpress Plugin Active Installs" src="https://img.shields.io/wordpress/plugin/installs/woo-altcoin-payment-gateway.svg">
-    </a>
-    <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
-        <img alt="undefined" src="https://img.shields.io/wordpress/plugin/rating/woo-altcoin-payment-gateway.svg">
     </a>
     <a href="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
         <img alt="undefined" src="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
