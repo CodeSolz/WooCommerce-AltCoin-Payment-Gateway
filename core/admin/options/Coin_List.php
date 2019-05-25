@@ -87,7 +87,8 @@ class Coin_List extends \WP_List_Table {
     public function column_offer_info( $item ){
         if( $item->offer_status > 0 ){
         ?>
-            <table class="wp-list-table widefat fixed striped offer">
+            
+            <table class="wp-list-table widefat fixed striped offer hidden">
                 <tr>
                     <td width="20%"><?php _e( 'Status', 'woo-altcoin-payment-gateway' )?></td>
                     <td width="1%">:</td>
@@ -96,7 +97,7 @@ class Coin_List extends \WP_List_Table {
                     </td>
                 </tr>
                 <tr>
-                    <td><?php _e( 'Amount', 'woo-altcoin-payment-gateway' )?></td>
+                    <td><?php _e( 'Discount', 'woo-altcoin-payment-gateway' )?></td>
                     <td>:</td>
                     <td>
                     <?php echo $item->offer_amount .' '. Util::get_offer_type( $item->offer_type ); ?>
@@ -117,6 +118,7 @@ class Coin_List extends \WP_List_Table {
                     </td>
                 </tr>
             </table>
+            <div class="offer-more-link success-text"><a class="offer-more">Show Offer Information..</a></div>
         <?php
         }else{
             echo Util::get_offer_status( $item->offer_status );
@@ -167,11 +169,11 @@ class Coin_List extends \WP_List_Table {
         }
         
         $data = array();
-        $result = $wpdb->get_results( "SELECT *,c.id as cid, a.id as aid, o.id as oid from  {$wapg_tables['coins']} as c "
+        $result = $wpdb->get_results( "SELECT *,c.id as cid, a.id as aid, o.id as oid, GROUP_CONCAT(address SEPARATOR ', ') as address from  {$wapg_tables['coins']} as c "
                 . " left join {$wapg_tables['addresses']} as a on c.id = a.coin_id "
                 . " left join {$wapg_tables['offers']} as o on c.id = o.coin_id "
                 . "$search "
-                . "order by {$order} limit $this->item_per_page offset {$offset}");
+                . " group by c.name order by {$order} limit $this->item_per_page offset {$offset}");
                 
         if( $result ){
             foreach ($result as $item ){

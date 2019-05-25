@@ -35,6 +35,7 @@ class CsWapgScript {
      */
     public function altCoinCustomScript(){
         global $woocommerce;
+        
         ?>
             <script type="text/javascript">
                 var module = {
@@ -59,6 +60,31 @@ class CsWapgScript {
                         if( res.store_currency_fullname != '' ){
                             cfn = '<br><span class="currency-fullname help-info"> ( '+res.store_currency_fullname+' ) </span>';
                         }
+                        
+                        var ctc = '';
+                        if( res.checkoutType == 1 ){
+                            ctc = '<p class="form-row form-row-wide">'+
+                                '<input type="checkbox" name="payment_confirm" required=""/>'+
+                                '<?php _e( 'I have completed the coin transfer successfully! ', 'woo-altcoin-payment-gateway' ); ?>'+
+                            '</p>';
+                        }else if( res.checkoutType == 2 ){
+                            ctc = 
+                            '<p class="form-row form-row-wide">'+
+                            '<label for="user-alt-coinAddress"><?php _e( 'Please enter a secret word.', 'woo-altcoin-payment-gateway' ); ?><span class="required">*</span></label>'+
+                            '<input id="secret_word" name="secret_word" class="input-text " required  type="text" placeholder="<?php _e('please enter a secret word.', 'woo-altcoin-payment-gateway');?>" />'+
+                            '<span class="hints"><?php _e( 'Incidentally if you close this window or somehow you become disconnected, You can use this secret word to submit your order. Save the word in safe place.', 'woo-altcoin-payment-gateway' ); ?></span>'+
+                            '</p>'+
+                            '<div class="loader-coin-track hide"></div> '+
+                            '<div class="tracking-response hide"></div> '+
+                            '<p class="form-row form-row-wide section-btn-coin-track">'+
+                                '<input type="hidden" class="cs-form-status" value="1" /> '+
+                                '<input type="button" class="btn-coin-track" value="<?php _e( 'Track My Coin Transfer ', 'wccpg-txt-dom' ); ?>" /> '+
+                            '</p>'+
+                            '<p class="form-row form-row-wide tracking-notice">'+
+                                '<?php _e( 'N.B: After initiate the coin transfer, please click the "Track My Coin Transfer" button immediately. Do not close the window until the tracking process get done. Otherwise your order will not be proceed.', 'wccpg-txt-dom' ); ?>'+
+                            '</p>';
+                        }
+                        
                         
                         return sdm +
                         '<h3 id="wapg_order_review_heading"><?php echo isset( $this->Ref->price_section_title ) && !empty($this->Ref->price_section_title) ? $this->Ref->price_section_title : __( 'You have to pay:', 'woo-altcoin-payment-gateway' ); ?></h3>'+
@@ -104,22 +130,31 @@ class CsWapgScript {
                         '<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+res.coinName+':'+res.coinAddress+'?cart_total:'+res.totalCoin+'"/>'+
                         '<div class="coinAddress-info">'+
                             '<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
-                            '<input id="alt-coinAddress" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
-                            '<p class="form-row form-row-wide alt-info"><?php echo sprintf(__( "NB: Coin price has been calculated by %s price list. Please place the order after complete your coin transfer & don\'t forget to add the transfer fee.", 'woo-altcoin-payment-gateway' ), 'https://coinmarketstats.online'); ?><p>'+
+                            '<input id="alt-coinAddress" name="marchant_alt_address" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
+                            '<p class="form-row form-row-wide alt-info"><?php _e( "NB: Don\'t forget to add the transfer fee.", 'woo-altcoin-payment-gateway' ); ?><p>'+
                         '</div>'+
                     '</div>'+
                     
                     '<p class="form-row form-row-wide">'+
-                        '<label for="user-alt-coinAddress"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+res.coinName+'<?php _e( ' transaction reference or trxid:', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
-                        '<input id="user_alt_coinAddress" name="user_alt_address" class="input-text wc-altcoin-form-user-alt-res.coinAddress" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your transaction reference or trxid', 'woo-altcoin-payment-gateway');?>" />'+
+                        '<label for="user-alt-coinAddress"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+res.coinName+'<?php _e( ' transaction id:', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
+                        '<input id="user_alt_coinAddress" name="trxid" class="input-text wc-altcoin-form-user-alt-res.coinAddress" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your coin transaction id', 'woo-altcoin-payment-gateway');?>" />'+
                         '<input type="hidden" name="payment_info" value="'+res.cartTotal+'__'+res.totalCoin+'__'+res.coinName+'__'+res.coinAddress+'__'+res.coinPrice+'" />'+
                         sdf+
-                    '</p>'+
-                    '<p class="form-row form-row-wide">'+
-                        '<input type="checkbox" name="payment_confirm" required=""/>'+
-                        '<?php _e( 'I have completed the coin transfer successfully! ', 'woo-altcoin-payment-gateway' ); ?>'+
-                    '</p>';
-                    }
+                    '</p>' + ctc;
+                    },
+                    submit_auto_order: async function( form_data ){
+                        return new Promise( ( resolve, reject) => {
+                            jQuery.post( wapg_ajax.ajax_url, form_data)
+                                .done(function( res ) {resolve( res ) })
+                                .error(function( res ) {reject( res ) });
+                        });
+                    },
+                    disable_fields : function(){
+                        jQuery("#secret_word, #user_alt_coinAddress, #CsaltCoin").attr( 'readonly', '' );
+                    },        
+                    enable_fields : function(){
+                        jQuery("#secret_word, #user_alt_coinAddress, #CsaltCoin").removeAttr( 'readonly');
+                    }        
                 };
                 
                 jQuery(document).ready(function(){
@@ -146,6 +181,13 @@ class CsWapgScript {
                                 console.log( res );
                                 if( res.response === true ){
                                     jQuery(".coin-detail").html( module.altCoinPayment( res ) ).slideDown('slow');
+                                    if( res.checkoutType == 2 ){
+                                        setTimeout(()=>{
+                                            jQuery("#place_order").hide('slow');
+                                        }, 2000);
+                                    }else{
+                                        jQuery("#place_order").show('slow');
+                                    }
                                 }else{
                                     jQuery(".coin-detail").html( res.msg ).slideDown('slow');
                                 }
@@ -163,12 +205,104 @@ class CsWapgScript {
                         jQuery(this).next("p").slideUp('slow');
                     });
                     
+                    jQuery("body").on( 'click', '.btn-coin-track', function(){
+                        var $this = jQuery(this);
+                        jQuery(".loader-coin-track").show('slow').html('<img src="<?php echo $this->Ref->autotracking_gif_url; ?>" width = "120"/>');
+                        $this.attr( 'disabled', '' );
+                        $this.attr( 'value', 'Please wait...' );
+                        
+                        jQuery(".tracking-response").hide('slow').html();
+                        var form_data = {
+                            action : '_cs_wapg_custom_call',
+                            cs_token  : '<?php echo wp_create_nonce(SECURE_AUTH_SALT); ?>',
+                            data   : {
+                                method : 'frontend\\functions\\CsWapgAutoOrderConfirm@track_coin',
+                                form_data : jQuery('form.checkout').serialize()
+                            }
+                        };
+                        module.disable_fields();
+                        (async () => {
+                            
+                            //call first time
+                            console.log( 'api calling 1st..' );
+                            const response = await module.submit_auto_order( form_data )
+                                    .then( (res) => { console.log( res ); return res; })
+                                    .catch( (res) => { console.log( res ); return res; });
+                            
+                            if( typeof response.error !== 'undefined' && true === response.error ){
+                                jQuery(".loader-coin-track").show('slow').html( response.response );    
+                                $this.removeAttr( 'disabled' );
+                                module.enable_fields();
+                                $this.attr( 'value', 'Track My Coin Transfer' );
+                                console.log( 'exit1');
+                            }
+                            else if( typeof response.success !== 'undefined' && false === response.success ){
+                                jQuery(".tracking-response").show('slow').html( response.response );
+                                var heartbeat = window.setInterval( async function(){
+                                    console.log('api calling 2nd..');
+                                    const apiResponse = await module.submit_auto_order( form_data )
+                                                .then( (res) => { return res; })
+                                                .catch( (res) => { console.log( res ); return res; });
+                                    
+                                    if( typeof apiResponse.error !== 'undefined' && true === apiResponse.error ) {
+                                        jQuery(".loader-coin-track").show('slow').html( apiResponse.response );    
+                                        $this.removeAttr( 'disabled' );
+                                        clearInterval( heartbeat );
+                                        module.enable_fields();
+                                        $this.attr( 'value', 'Track My Coin Transfer' );
+                                        console.log( 'exit2');
+                                    }else if( typeof apiResponse.success !== 'undefined' && false === apiResponse.success ) {
+                                        //continue
+                                        jQuery(".tracking-response").show('slow').html( apiResponse.response );
+                                    }else if( typeof apiResponse.success !== 'undefined' && true === apiResponse.success ) {
+                                        //stop and submit order
+                                        clearInterval( heartbeat );
+                                        jQuery(".loader-coin-track").hide('slow');    
+                                        jQuery(".tracking-response").show('slow').html( apiResponse.response );
+                                        $this.removeAttr( 'disabled' );
+                                        var orderBtn = jQuery("#place_order");
+                                        orderBtn.show('slow');
+                                        if( orderBtn.length > 0 ) {
+                                            orderBtn.trigger( "click" );
+                                        }
+                                        module.enable_fields();
+                                        $this.attr( 'value', 'Successful..' );
+                                        console.log( 'exit3');
+                                    }
+
+                                }, 40000 );
+                            }
+                            else if( typeof response.success !== 'undefined' && true === response.success ){
+                                //successfull - submit the order
+                                jQuery(".loader-coin-track").hide('slow');    
+                                jQuery(".tracking-response").show('slow').html( response.response );
+                                console.log( 'exit4');
+                                $this.removeAttr( 'disabled' );
+                                var orderBtn = jQuery("#place_order");
+                                orderBtn.show('slow');
+                                if( orderBtn.length > 0 ) {
+                                    orderBtn.trigger( "click" );
+                                }
+                                $this.attr( 'value', 'Successful..' );
+                                module.enable_fields();
+                            }
+                            
+                        })();
+                        
+                        
+                        
+                        
+//                        console.log( orderBtn.length );
+//                        
+
+                    });
+                    
                 });
             </script>
             <style type="text/css">
                 .alt-info{font-style: italic;margin-bottom: 10px;border: 2px dashed #999;padding: 10px;margin-top: 25px;}
                 .coin-detail{margin-bottom: 1.5em;}
-                .coin-detail .loader{ text-align: center;}
+                .coin-detail .loader, .loader-coin-track{ text-align: center;}
                 .price-tag, .help-info{font-style: italic;font-size: 11px;}
                 .qr-code{ max-height: 225px !important; }
                 .coinAddress-qr{text-align: center;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
@@ -178,8 +312,16 @@ class CsWapgScript {
                 .special-discount-msg{ color: forestgreen; font-size: 15px; }
                 .con{ color: red; font-weight: bold; }
                 .blink{ animation: blink-animation 1s steps(5, start) infinite;-webkit-animation: blink-animation 1s steps(5, start) infinite;}
+                .hide{ display: none; }
                 @keyframes blink-animation {to {visibility: hidden;}}
                 @-webkit-keyframes blink-animation {to{visibility: hidden;}}
+                .loader-coin-track { margin-bottom: 60px; }
+                .hints{ font-size: 12px; font-style: italic; }
+                .tracking-notice{ font-size: 12px; border: 1px dashed; padding: 10px; font-style: italic; }
+                #secret_word{ margin-bottom: 10px }
+                .error-notice{ border: 1px solid red;padding: 8px;text-align: left;}
+                .success-notice{ background: forestgreen;padding: 12px;text-align: left;color: #fff;font-size: 14px; }
+                .tracking-response{ margin-bottom: 20px; }
             </style>
         <?php
     }

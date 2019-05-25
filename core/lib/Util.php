@@ -30,10 +30,20 @@ class Util {
      * @param type $method
      * @return type
      */
-    public static function remote_call( $url, $method = 'GET' ){
+    public static function remote_call( $url, $method = 'GET', $params = [] ){
         if( $method == 'GET' ){
             $response = wp_remote_get( $url, 
                 array( 'timeout' => 120, 'httpversion' => '1.1' ) 
+            );
+        }
+        elseif( $method == 'POST' ){
+            $response = wp_remote_post( $url, 
+                array( 
+                    'method' => 'POST',
+                    'timeout' => 120,
+                    'httpversion' => '1.1',
+                    'body' =>  isset($params['body']) ? $params['body'] : ''  
+                )    
             );
         }
 
@@ -57,14 +67,15 @@ class Util {
     }
     
     /**
+     * Get formatted time
      * 
      * @param type $datetime
      * @param type $format
-     * @return typeget formated date time
+     * @return string
      */
-    public static function get_formated_datetime( $datetime, $format = 'Y-m-d H:i:s' ){
+    public static function get_formated_datetime( $datetime = false, $format = 'Y-m-d H:i:s' ){
         self::set_wp_timezone();
-        return date( $format, strtotime( $datetime ) );
+        return false === $datetime ? date( $format) : date( $format, strtotime( $datetime ) );
     }
     
     /**
@@ -97,9 +108,9 @@ class Util {
      */
     public static function get_checkout_type( $type_id ){
         if( $type_id == 1 ){
-            return '<span class="badge badge-warning"> Manual</span>';
+            return '<span class="warning-text"> Manual</span>';
         }else{
-            
+            return '<span class="success-text"> Automatic</span>';
         }
     }
     
@@ -111,9 +122,9 @@ class Util {
      */
     public static function get_coin_status( $type_id ){
         if( $type_id == 1 ){
-            return '<span class="badge badge-success">Active</span>';
+            return '<span class="success-text">Active</span>';
         }else{
-            return '<span class="badge badge-warning">Inactive</span>';
+            return '<span class="warning-text">Inactive</span>';
         }
     }
     
@@ -125,9 +136,9 @@ class Util {
      */
     public static function get_offer_status( $type_id ){
         if( $type_id == 1 ){
-            return '<span class="badge badge-success">Active</span>';
+            return '<span class="success-text">Active</span>';
         }else{
-            return '<span class="badge badge-warning">None</span>';
+            return '<span class="warning-text">None</span>';
         }
     }
     
@@ -139,9 +150,9 @@ class Util {
      */
     public static function get_offer_type( $type_id ){
         if( $type_id == 1 ){
-            return 'percent(%)';
+            return 'percent(%) on total cart amount';
         }else{
-            return 'Flat Amount( Fiat Currency )';
+            return 'Flat Amount( Fiat Currency ) on total cart amount';
         }
     }
     
@@ -209,4 +220,42 @@ class Util {
         }
         return $user_input;
     }
+    
+    /**
+     * Get notice html
+     */
+    public static function notice_html( $notice ){
+        $notice_class = '';
+        if( isset($notice['error']) && true === $notice['error'] ){
+            $notice_class = 'error-notice';
+        }
+        else if( isset($notice['success']) && (true === $notice['success'] || false === $notice['success'] )){
+            $notice_class = 'success-notice';
+        }
+        $notice['response'] = '<div class="'.$notice_class.'">'.$notice['response'].'</div>';
+        
+        return $notice;
+    }
+    
+    /**
+     * Get WooCommerce version
+     * 
+     * @since 1.2.3
+     * @return string | boolean
+     */
+    public static function cs_get_woo_version_number() {
+	if ( ! function_exists( 'get_plugins' ) )
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	
+	$plugin_folder = get_plugins( '/' . 'woocommerce' );
+	$plugin_file = 'woocommerce.php';
+	
+	if ( isset( $plugin_folder[$plugin_file]['Version'] ) ) {
+		return $plugin_folder[$plugin_file]['Version'];
+
+	} else {
+            return NULL;
+	}
+    }
+    
 }

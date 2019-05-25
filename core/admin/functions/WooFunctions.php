@@ -17,11 +17,7 @@ class WooFunctions {
     public $altcoin_instance;
     
     public function __construct(){
-        if ( class_exists( 'WC_Payment_Gateway' ) ){
-            if( !isset( $this->WcPg_Instance ) ){
-                $this->WcPg_Instance = new \WC_Payment_Gateways();
-            }
-        }
+        
     }
     
     /**
@@ -30,6 +26,13 @@ class WooFunctions {
      * @return type
      */
     public function get_payment_info(){
+        
+        if ( class_exists( 'WC_Payment_Gateway' ) ){
+            if( !isset( $this->WcPg_Instance ) ){
+                $this->WcPg_Instance = new \WC_Payment_Gateways();
+            }
+        }
+        
         $payment_gateways = $this->WcPg_Instance->get_available_payment_gateways();
         
         if(isset($this->altcoin_instance)){
@@ -50,6 +53,5 @@ class WooFunctions {
     public static function get_altcoin_gateway_settings_id(){
         return 'woocommerce_wapg_altcoin_payment_settings';
     }
-    
     
 }

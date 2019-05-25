@@ -76,6 +76,14 @@ class RegisterCustomMenu {
             'cs-woo-altcoin-gateway-settings',
             array( $this, 'load_settings_page' )
         ); 
+        $altcoin_menu['register_automatic_order'] = add_submenu_page( 
+            CS_WAPG_PLUGIN_IDENTIFIER,
+            __( 'Automatic Order Confirmation Registration', 'woo-altcoin-payment-gateway' ),
+            "Automatic Order Settings",
+            'manage_options',
+            'cs-woo-altcoin-automatic-order-confirmation-settings',
+            array( $this, 'load_automatic_order_confirmation_settings_page' )
+        ); 
         $altcoin_menu['add_new_coin'] = add_submenu_page( 
             CS_WAPG_PLUGIN_IDENTIFIER,
             __( 'Add New Coin', 'woo-altcoin-payment-gateway' ),
@@ -93,8 +101,10 @@ class RegisterCustomMenu {
             array( $this, 'load_all_product_page' )
         ); 
         
+        
         //load script
         add_action( "load-{$altcoin_menu['default_settings']}", array( $this, 'register_admin_settings_scripts' ) );
+        add_action( "load-{$altcoin_menu['register_automatic_order']}", array( $this, 'register_admin_settings_scripts' ) );
         add_action( "load-{$altcoin_menu['add_new_coin']}", array( $this, 'register_admin_settings_scripts' ) );
         add_action( "load-{$altcoin_menu['all_coins_list']}", array( $this, 'register_admin_settings_scripts' ) );
         
@@ -116,6 +126,17 @@ class RegisterCustomMenu {
         $this->isWoocommerceInstalled();
         
         return $this->pages->app_settings( $this->WcFuncInstance->get_payment_info() );
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function load_automatic_order_confirmation_settings_page(){
+        //check woocommerce is loaded
+        $this->isWoocommerceInstalled();
+        
+        return $this->pages->auto_order_confirmation_settings();
     }
     
     /**

@@ -12,9 +12,9 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
+use WooGateWayCoreLib\lib\cartFunctions;
 use WooGateWayCoreLib\admin\builders\CsWapgForm;
 use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
-use WooGateWayCoreLib\lib\cartFunctions;
 
 class CsWapgFunctions extends \WC_Payment_Gateway{
     
@@ -49,6 +49,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         //get icons
         $this->icon = $this->get_icon_url();
         $this->loader_icon = $this->get_loader_url();
+        $this->autotracking_gif_url = $this->autotracking_gif_url();
 
         
         $this->has_fields = true;
@@ -80,7 +81,10 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         $order = wc_get_order( $order_id );
         $payment_confirm = isset($_POST['payment_confirm']) ? $this->validate_text_field( false, $_POST['payment_confirm']) : '';
         $payment_info = $this->validate_text_field( false, $_POST['payment_info'] );
-        $reference_trxid = $this->validate_text_field( false, $_POST['user_alt_address']);
+        $reference_trxid = $this->validate_text_field( false, $_POST['trxid']);
+        
+        //get checkout type
+        $checkout_type = cartFunctions::get_temp_log_checkout_type();
         
         if( empty($payment_info)){
             wc_add_notice( __( 'Sorry! Something went wrong. Please refresh this page and try again.', 'woo-altcoin-payment-gateway'), 'error' );
@@ -88,10 +92,10 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         }
         $payment_info = explode( '__', $payment_info);
         if( empty( $reference_trxid ) ){
-            wc_add_notice( sprintf(__( 'Please enter your %s transaction reference or trxID.', 'woo-altcoin-payment-gateway'), $payment_info[ 2 ] ), 'error' );
+            wc_add_notice( sprintf(__( 'Please enter your %s transaction trxID.', 'woo-altcoin-payment-gateway'), $payment_info[ 2 ] ), 'error' );
             return false;
         }
-        if( empty($payment_confirm)){
+        if( empty($payment_confirm) && ( empty($checkout_type) || $checkout_type!= 2) ){
             wc_add_notice( __( 'Please click the confirmation checkbox that you have already transfered the coin successfully!', 'woo-altcoin-payment-gateway'), 'error' );
             return false;
         }
@@ -109,7 +113,22 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
             'datetime' => Util::get_current_datetime()
         ));
         
-        $order->update_status('on-hold', __( 'Awaiting for admin payment confirmation checking.', 'woo-altcoin-payment-gateway' ) );
+        
+        if( !empty($checkout_type) && $checkout_type == 2 ){
+            //remove temp info
+            cartFunctions::delete_temp_log_checkout_type();
+            cartFunctions::delete_transaction_successful_log();
+            
+            $auto_setting_config = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
+            $status = isset($auto_setting_config['order_status']) && !empty($auto_setting_config['order_status']) ? $auto_setting_config['order_status'] : 'completed';
+            //automatic confirmation
+            $order->update_status( $status , __( 'Coin transaction has completed successfully.', 'woo-altcoin-payment-gateway' ) );
+            
+        }else{
+            //manual confirmation
+            $order->update_status('on-hold', __( 'Awaiting for admin payment confirmation checking.', 'woo-altcoin-payment-gateway' ) );
+        }
+        
 
         // Reduce stock levels
         wc_reduce_stock_levels( $order_id );
@@ -119,8 +138,8 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
 
         // Return thankyou redirect
         return array(
-                'result' 	=> 'success',
-                'redirect'	=> $this->get_return_url( $order )
+            'result' 	=> 'success',
+            'redirect'	=> $this->get_return_url( $order )
         );
     }    
     
@@ -147,6 +166,19 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
             return trim($this->defaultOptn['loader_gif_url']);
         }else{
             return CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif';
+        }
+    }
+    
+    /**
+     * Get Icon
+     * 
+     * @return type
+     */
+    public function autotracking_gif_url(){
+        if( isset($this->defaultOptn['autotracking_gif_url']) && !empty($this->defaultOptn['autotracking_gif_url'])){
+            return trim($this->defaultOptn['autotracking_gif_url']);
+        }else{
+            return CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif';
         }
     }
     

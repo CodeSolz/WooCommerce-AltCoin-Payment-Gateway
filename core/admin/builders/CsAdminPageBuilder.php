@@ -156,7 +156,7 @@ class CsAdminPageBuilder {
      */
     private function generate_footer(){
         return '<div class="panel-footer">
-            <p>Developed by : <a href="http://creativewebs2u.com" target="_blank">M.Tuhin</a></p>
+            <p>Developed by : <a href="https://codesolz.net" target="_blank">CodeSolz</a></p>
         </div>';
     }
 }

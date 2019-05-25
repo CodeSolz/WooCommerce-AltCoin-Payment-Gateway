@@ -50,6 +50,14 @@ class Activate{
             `offer_start` datetime,  
             `offer_end` datetime,  
             PRIMARY KEY ( `id`)
+            ) $charset_collate",
+            "CREATE TABLE IF NOT EXISTS `{$wapg_tables['coin_trxids']}`(
+            `id` bigint(20) NOT NULL auto_increment,
+            `cart_hash` varchar(128),
+            `transaction_id` varchar(1024),
+            `secret_word` varchar(1024),
+            `used_in` datetime,  
+            PRIMARY KEY ( `id`)
             ) $charset_collate"
         );
         
@@ -111,7 +119,15 @@ class Activate{
         }elseif( $get_installed_db_version != $wapg_current_db_version){
             //update db
             $update_sqls = array(
-                "ALTER TABLE `{$wapg_tables['addresses']}` CHANGE address address varchar(1024)"
+                "ALTER TABLE `{$wapg_tables['addresses']}` CHANGE address address varchar(1024)",
+                "CREATE TABLE IF NOT EXISTS `{$wapg_tables['coin_trxids']}`(
+                `id` bigint(20) NOT NULL auto_increment,
+                `cart_hash` varchar(128),
+                `transaction_id` varchar(1024),
+                `secret_word` varchar(1024),
+                `used_in` datetime,  
+                 PRIMARY KEY ( `id`)
+                ) $charset_collate"        
             );
             foreach ( $update_sqls as $sql ) {
                 if ( $wpdb->query( $sql ) === false ){

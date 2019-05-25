@@ -27,8 +27,8 @@ class Scripts_Settings {
         wp_enqueue_script ( 'sweetalert', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.min.js', false ); 
 
         if( $page_id == $altcoin_menu['add_new_coin'] ){
-            wp_enqueue_style ( 'jquery-typehead', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.css', false ); 
-            wp_enqueue_script ( 'jquery-typehead-js', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.js', false ); 
+            wp_enqueue_style ( 'jquery-typehead', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.css', false ); 
+            wp_enqueue_script ( 'jquery-typehead-js', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.js', false ); 
             wp_enqueue_style ( 'jquery-date-time-picker', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-date-time-picker/jquery.datetimepicker.min.css', false ); 
             wp_enqueue_script ( 'jquery-date-time-picker', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-date-time-picker/jquery.datetimepicker.full.min.js', false ); 
         }
@@ -53,21 +53,24 @@ class Scripts_Settings {
         if( $page_id == $altcoin_menu['add_new_coin'] ){
             self::load_jquery_typehead();
             
-            //add payment type changer
-            if( has_filter('filter_cs_wapg_payment_type_changer_script') ){
-                apply_filters( 'filter_cs_wapg_payment_type_changer_script', '' );
-            }else{
-                self::load_payment_type_changer();
-            }
-            
             //load jquery datetime picker
             self::load_jquery_date_time_picker();
+            
+            //coin type change
+            self::load_coin_type_changer();
         }
         
         //load form submit script on footer
         if( $page_id == $altcoin_menu['add_new_coin'] ||
-            $page_id == $altcoin_menu['default_settings'] ){
+            $page_id == $altcoin_menu['default_settings'] ||
+            $page_id == $altcoin_menu['register_automatic_order']
+            ){
             self::form_submitter();
+        }
+        
+        if( $page_id == $altcoin_menu['all_coins_list']
+            ){
+            self::show_more_less();
         }
         
         Util::markup_tag( __( 'admin footer script end', 'woo-altcoin-payment-gateway' ) );
@@ -137,18 +140,33 @@ class Scripts_Settings {
                         emptyTemplate: "No results for {{query}}",
                         searchOnFocus: true,
                         dynamic: true,
+//                        filter: false,
                         source: {
-                            ajax: {
-                                url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-                                type: 'POST',
-                                data: {
-                                    action: '_cs_wapg_custom_call',
-                                    method: 'admin\\functions\\CsAdminQuery@get_coin_name',
-                                    cs_token: '<?php echo wp_create_nonce( SECURE_AUTH_SALT ); ?>',
-                                    query : '{{query}}'
-                                },
-                                success: function( res ){
-//                                    console.log(  res );
+                            ajax: function( query ){
+                                $(".alert").hide();
+                                return {
+                                    url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                                    type: 'POST',
+//                                    path: "data",
+                                    data: {
+                                        action: '_cs_wapg_custom_call',
+                                        method: 'admin\\functions\\CsAdminQuery@get_coin_name',
+                                        cs_token: '<?php echo wp_create_nonce( SECURE_AUTH_SALT ); ?>',
+                                        oc_type : $("#cs_field_1").val(),
+                                        query : '{{query}}'
+                                    },
+                                    callback: {
+                                        done: function (data) {
+                                            if( typeof data.success !== 'undefined' && false === data.success ){
+                                                $('<div class="alert alert-warning typehead-error"> '+ data.response + '</div>').insertAfter(".typeahead__result");
+                                            }else{
+                                                return data;
+                                            }
+                                        },
+                                        fail: function( res ){
+                                            console.log(  res );
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -159,47 +177,7 @@ class Scripts_Settings {
         <?php
     }
     
-    /**
-     * load payment type changer
-     */
-    public static function load_payment_type_changer(){
-        ?>
-            <script type="text/javascript">
-                jQuery(document).ready(function( $ ){
-                    var form = {
-                        payment_type : function( type ){
-                            if( 1 === type ){
-                                $(".manual_payment_address").slideDown('slow');
-                            }else{
-                                $(".manual_payment_address").slideUp('slow');
-                            }
-                            $("#hidden_block_1").slideUp('slow');
-                        }
-                    };
-                    
-                    $("#cs_field_1").on( 'change', function(){
-                        var type_id = parseInt($(this).val());
-                        form.payment_type( type_id );
-                        if( 1 === type_id ) { return; }
-                        var data = {
-                            action: '_cs_wapg_custom_call',
-                            method: 'admin\\builders\\CsFormHelperLib@get_order_confirm_type_status',
-                            cs_token: '<?php echo wp_create_nonce( SECURE_AUTH_SALT ); ?>',
-                            type_id: type_id
-                        };
-                        $.post( ajaxurl, data, function( res ){
-                            console.log( res );
-                            if( false === res.status){
-                                $("#hidden_block_1").html( res.text ).slideDown('slow');
-                            }
-                        });
-                    });
-                    
-                });
-            </script>    
-        <?php
-    }
-    
+        
     /**
      * load jquery date time picker
      */
@@ -212,6 +190,70 @@ class Scripts_Settings {
                         format: 'Y-m-d h:i A',
         //                format:'unixtime'
                     });
+                });
+            </script>    
+        <?php
+    }
+    
+    
+    /**
+     * show more less 
+     */
+    private static function show_more_less(){
+        ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function( $ ){
+                    $('.address').each(function( e ){
+                        var text = $(this).text();
+                        if( text.length > 30 ){
+                            var show = text.substr( 0, 20 );
+                            var hidden = text.substr( 20, parseInt( text.length) );
+                            var moreLink = text.length > 30 ? '<br><a class="show-more">More..</a>' : '';
+                            $(this).html( show +'<span class="hidden-text ht-'+e+'">'+ hidden +'</span>' + moreLink);
+                        }
+                    });
+                    
+                    $('body').on('click', '.show-more', function(){
+                        var $mlBtn = $(this);
+                        $mlBtn.parent().find('.hidden-text').toggle();
+                        $mlBtn.text() === 'More..' ? $mlBtn.text('..less') : $mlBtn.text('More..');
+                        console.log( $(this).parent() );
+                    });
+                    $(".offer-more").on('click', function(){
+                        var $ofrBtn = $(this);
+                        console.log( 'clicked');
+                        $ofrBtn.parent().prev('table').toggle('slow');
+                        $ofrBtn.text() === 'Show Offer Information..' ? $ofrBtn.text('..less') : $ofrBtn.text('Show Offer Information..');
+                    });
+                });
+            </script>    
+        <?php
+    }
+    
+    
+    /**
+     * load jquery date time picker
+     */
+    private static function load_coin_type_changer(){
+        ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function( $ ){
+                    $(".coin-type-select").on( 'change', function(){
+                        var type = jQuery(this).val();
+                        var hiddenElements = jQuery( ".more_address_block input" );
+                        if( type == 2 ){
+                            $(".more_address_block").show('slow');
+                            hiddenElements.each( function(){
+                                $(this).attr( 'required', '' );
+                            });
+                        }else{
+                            hiddenElements.each( function(){
+                                $(this).removeAttr( 'required' );
+                            });
+                            $(".more_address_block").slideUp('slow');
+                        }
+                    });
+                    
                 });
             </script>    
         <?php

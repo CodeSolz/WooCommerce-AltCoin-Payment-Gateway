@@ -17,6 +17,7 @@ use WooGateWayCoreLib\admin\builders\CsFormHelperLib;
 use WooGateWayCoreLib\admin\options\Coin_List;
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 use WooGateWayCoreLib\lib\Util;
+use WooGateWayCoreLib\admin\functions\CsAutomaticOrderConfirmationSettings;
 
 class Options_Pages {
     
@@ -137,7 +138,21 @@ class Options_Pages {
                                                         'readonly'     => '',
                                                     ),
                                                     'value' => CsFormBuilder::get_value( 'loader_gif_url', $settings->defaultOptn, CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif' ), 
-                                                    'desc_tip'	=> __( 'Choose price loading gif. This gif image will show in checkout page during the live price calculation', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'	=> __( 'Choose a gif / loading image. This gif image will show in checkout page during the live price calculation', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[autotracking_gif_url]'  => array(
+                                                    'title'                     => __( 'Coin Tracking Gif URL', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'text',
+                                                    'class'                     => "form-control coin_name",
+                                                    'required'                  => true,
+                                                    'placeholder'               => __( 'Auto Tracking Gif URL', 'woo-altcoin-payment-gateway' ),
+                                                    'input_field_wrap_start'    => '<div class="smartcat-uploader">',
+                                                    'input_field_wrap_end'      => '</div>',
+                                                    'custom_attributes' => array(
+                                                        'readonly'     => '',
+                                                    ),
+                                                    'value' => CsFormBuilder::get_value( 'autotracking_gif_url', $settings->defaultOptn, CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif' ), 
+                                                    'desc_tip'	=> __( 'Choose a gif / loading image. This gif image will show during the coin tracking.', 'woo-altcoin-payment-gateway' ),
                                                 ),
                                                 'st3' => array(
                                                     'type' => 'section_title',
@@ -191,15 +206,137 @@ class Options_Pages {
         <?php
     }
     
+    public function auto_order_confirmation_settings(){
+        $settings_data = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
+        ?> 
+        <div class="wrap"> 
+            <div id="product_binder">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="title"><?php _e('Automatic Order Confirmation Settings', 'woo-altcoin-payment-gateway'); ?></h3>
+                        <p><?php _e('Please complete your registration for automatic order confirmation and setup the following configuration', 'woo-altcoin-payment-gateway'); ?></p>
+                    </div>
+                    <form method="post">
+                        <div class="panel-body bg-white no-bottom-margin">
+                            <div class="well">
+                                <ul>
+                                    <li> <b>Basic Hints</b>
+                                        <ol>
+                                            <li>
+                                                Please register here - <a href='http://myportal.coinmarketstats.online/' target="_blank">http://myportal.coinmarketstats.online</a> for your API Key.
+                                            </li>
+                                            <li>
+                                                After login to your dashboard, go to 'API Keys' menu. From bottom of the page you can generate your API key. 
+                                            </li>
+                                            <li>
+                                                You can purchase pro package for unlimited automatic order confirmation from your dashboard. Free package included 5 automatic order confirmation.
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <?php
+                                            $fields = array(
+                                                'cs_altcoin_config[cms_username]'=> array(
+                                                    'title'            => __( 'CoinMarketStats Username', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'text',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'cms_username', $settings_data, ''),
+                                                    'placeholder'      => __( 'Enter your username', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter your username used in the registration.', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[cms_pass]'=> array(
+                                                    'title'            => __( 'CoinMarketStats Password', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'password',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'cms_pass', $settings_data, ''),
+                                                    'placeholder'      => __( 'Enter your password', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter your password used in the registration.', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[api_key]'=> array(
+                                                    'title'            => __( 'API Key', 'woo-altcoin-payment-gateway' ),
+                                                    'type'             => 'text',
+                                                    'class'            => "form-control",
+                                                    'required'         => true,
+                                                    'value'            => CsFormBuilder::get_value( 'api_key', $settings_data, ''),
+                                                    'placeholder'      => __( 'Enter your API key', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => sprintf( __( 'Enter your API key. You can found your API key in the API menu in %s myportal area %s .', 'woo-altcoin-payment-gateway' ), "<a href='http://myportal.coinmarketstats.online/' target='_blank'>", '</a>'),
+                                                ),
+                                                'st1' => array(
+                                                    'type' => 'section_title',
+                                                    'title'         => __( 'Order Confirmation Settings', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Please set the following information for order confirmation and status', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[confirmation_count]'     => array(
+                                                    'title'                     => __( 'Minimum Confirmation For Transaction', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'select',
+                                                    'class'                     => "form-control coin-type-select",
+                                                    'required'                  => true,
+                                                    'placeholder'               => __( 'Please select confirmation count', 'woo-altcoin-payment-gateway' ),
+                                                    'options'                   => array(
+                                                        1 => 1, 2 => 2, 3 => 3, 4 => 4,5 => 5,6 => 6
+                                                    ),
+                                                    'value'                     => CsFormBuilder::get_value( 'confirmation_count', $settings_data, 6 ),
+                                                    'desc_tip'                  => __( 'Select how many confirmation will be treated as a successful transaction e.g : Standard is: 6, 3 is enough for payments $1,000 - $10,000', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                                'cs_altcoin_config[order_status]'     => array(
+                                                    'title'                     => __( 'Order Status', 'woo-altcoin-payment-gateway' ),
+                                                    'type'                      => 'select',
+                                                    'class'                     => "form-control coin-type-select",
+                                                    'required'                  => true,
+                                                    'placeholder'               => __( 'Please select order status', 'woo-altcoin-payment-gateway' ),
+                                                    'options'                   => array(
+                                                        'on-hold' => 'On Hold', 'processing' => 'Processing', 'completed' => 'Completed'
+                                                    ),
+                                                    'value'                     => CsFormBuilder::get_value( 'order_status', $settings_data, 'completed'),
+                                                    'desc_tip'                  => __( 'Please select order status after successful transaction e.g : Completed', 'woo-altcoin-payment-gateway' ),
+                                                ),
+                                            );
+                                        
+                                            (new CsFormBuilder())->generate_html_fields( $fields );
+                                        ?>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-submit-button">
+                            <?php 
+                                //add nonce field
+                                wp_nonce_field( SECURE_AUTH_SALT, 'cs_token' );
+                            ?>
+                            <input type="hidden" name="method" id="method" value="admin\functions\CsAutomaticOrderConfirmationSettings@save_settings" />
+                            <input type="hidden" name="swal_title" id="swal_title" value="Settings Updating" />
+                            <input type="submit" class="btn btn-custom-submit" value="Save Settings" />
+                        </div>
+                    </form>
+                    <?php $this->footer_copyright(); ?>
+                </div>
+            </div>
+       </div> 
+        <?php
+    }
+    
     /**
      * Add new product
      */
     public function add_new_coin(){
-        $coin_data = '';
-        
+        $coin_data = ''; $coin_addresses = [];
+        $hidden_block = ' hidden ';
         if( isset( $_GET['action'] ) && $_GET['action'] == 'update' ){
             $coin_data = CsAdminQuery::get_coin_by( 'id', Util::check_evil_script( $_GET['coin_id' ] ) );
+            $coin_addresses = array_map( 'trim', explode( ',', $coin_data->address ));
+            if( $coin_data->checkout_type == 2 ){
+                $hidden_block = '';
+            }
         }
+        
+//        pre_print( $coin_data );
         
         ?> 
         <div class="wrap"> 
@@ -216,43 +353,51 @@ class Options_Pages {
                                 <div class="col-8">
                                     <?php
                                             $fields = array(
-                                                'cs_add_new[checkout_type]'         => array(
+                                                'cs_add_new[checkout_type]'     => array(
                                                     'title'                     => __( 'Payment Confirmation Type', 'woo-altcoin-payment-gateway' ),
                                                     'type'                      => 'select',
-                                                    'class'                     => "form-control",
+                                                    'class'                     => "form-control coin-type-select",
                                                     'required'                  => true,
+                                                    'disabled'                  => empty($coin_data) ? '' : true,
                                                     'placeholder'               => __( 'Please select checkout type', 'woo-altcoin-payment-gateway' ),
                                                     'options'                   => CsFormHelperLib::order_confirm_options(),
                                                     'value'                     => empty($coin_data) ? '' : $coin_data->checkout_type,
                                                     'desc_tip'                  => __( 'Select payment type. Either manual or automatic order confirmation. e.g : Manual', 'woo-altcoin-payment-gateway' ),
-                                                    'hidden_div'                => array( 'attributes' => array( 'id' => 'hidden_block', 'class' => 'alert alert-warning hidden m-t-15'  ) )
+//                                                    'hidden_div'                => array( 'attributes' => array( 'id' => 'hidden_block', 'class' => 'alert alert-warning hidden m-t-15'  ) )
                                                 ),
                                                 'cs_add_new[coin_name]'         => array(
                                                     'title'                     => __( 'Enter Coin Name', 'woo-altcoin-payment-gateway' ),
                                                     'type'                      => 'text',
                                                     'class'                     => "form-control coin_name",
+                                                    'disabled'                  => empty($coin_data) ? '' : true,
                                                     'required'                  => true,
                                                     'placeholder'               => __( 'Please type coin name', 'woo-altcoin-payment-gateway' ),
                                                     'input_field_wrap_start'    => '<div class="typeahead__container"><div class="typeahead__field"><div class="typeahead__query">',
                                                     'input_field_wrap_end'      => '</div></div></div>',
                                                     'custom_attributes' => array(
                                                         'autofocus'     => '',
-                                                        'autocomplete'  => 'off'
+                                                        'autocomplete'  => 'off',
                                                     ),
                                                     'value' => empty($coin_data) ? '' : $coin_data->name,
-                                                    'desc_tip'	=> __( 'Enter coin name you want to add in to your payment gateway. Type slowly, it will take a while to appear the coin name in the dropdown list e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'	=> __( 'Enter coin name you want to add in to your payment gateway. It will take a while to appear the coin name in the dropdown list. Please be patient. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
                                                 ),
                                                 'cs_add_new[coin_address]'=> array(
-                                                    'section'          => '<div class="manual_payment_address">', 
+//                                                    'section'          => '<div class="manual_payment_address">', 
                                                     'title'            => __( 'Enter Coin address', 'woo-altcoin-payment-gateway' ),
                                                     'type'             => 'text',
                                                     'class'            => "form-control",
                                                     'required'         => true,
-                                                    'value' => empty($coin_data) ? '' : $coin_data->address,
+                                                    'value'            => empty($coin_addresses) ? '' : $coin_addresses[0],
                                                     'placeholder'      => __( 'Please enter coin address', 'woo-altcoin-payment-gateway' ),
-                                                    'desc_tip'         => __( 'Enter your coin address. e.g : 1KPLgee6crr7u1KQxwnnu4isizufxadVPZ ', 'woo-altcoin-payment-gateway' ),
+                                                    'desc_tip'         => __( 'Enter new generated coin address. Keep changing your coin address on a certain time to make transactions more safe. e.g : 1KPLgee6crr7u1KQxwnnu4isizufxadVPZ ', 'woo-altcoin-payment-gateway' ),
+                                                    'hidden_div'       => array( 'attributes' => array( 'id' => 'hidden_block', 'class' => "{$hidden_block} more_address_block"  ),
+                                                                                 'more_input_fields' => array( 'item' => 9, 'values' => $coin_addresses, 'attributes' => array(
+                                                                                    'type'             => 'text',
+                                                                                    'class'            => "form-control m-t-15",
+                                                                                    'placeholder'      => __( 'Please enter coin address', 'woo-altcoin-payment-gateway' ),
+                                                                                  ))
+                                                                                )
                                                 ),
-                                                
                                                 'cs_add_new[coin_status]'=> array(
                                                     'title'            => __( ' Active / Deactivate', 'woo-altcoin-payment-gateway' ),
                                                     'type'             => 'checkbox',

@@ -12,6 +12,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
+use WooGateWayCoreLib\lib\cartFunctions;
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 
 class CsWapgCoinCal {
@@ -39,19 +40,19 @@ class CsWapgCoinCal {
        
         $coin_id = sanitize_text_field($_POST['data']['coin_id']);
         
-        
         if( empty($coin_id) ){
             wp_send_json(array('response' => false, 'msg' => __( 'Something Went Wrong! Please try again.', 'woo-altcoin-payment-gateway' ) ) );
         }else{
-            $custom_fields = CsAdminQuery::get_coin_by( 'id', $coin_id );
-            if( empty( $custom_fields ) ){
+            $coin = CsAdminQuery::get_coin_by( 'id', $coin_id );
+            
+            if( empty( $coin ) ){
                 wp_send_json(array('response' => false, 'msg' => __( 'Something Went Wrong! Please try again.', 'woo-altcoin-payment-gateway' ) ) );
             }
             
-            $coinFullName = $custom_fields->name . '( ' . $custom_fields->coin_web_id . ' )';
-            $coinId  = $custom_fields->coin_web_id;
-            $coinAddress = $custom_fields->address;
-            $coinName = $custom_fields->coin_web_id;
+            $coinFullName = $coin->name . '( ' . $coin->coin_web_id . ' )';
+            $coinId  = $coin->coin_web_id;
+            $coinAddress = $this->get_coin_address( $coin );
+            $coinName = $coin->coin_web_id;
             $cartTotal = $woocommerce->cart->total;
             $store_currency = get_woocommerce_currency();
             $currency_symbol = get_woocommerce_currency_symbol();
@@ -59,10 +60,10 @@ class CsWapgCoinCal {
             //apply special discount if active
             $special_discount = false;
             $special_discount_msg = ''; $special_discount_amount = ''; $cartTotalAfterDiscount = '';
-            if( true === $this->is_offer_valid( $custom_fields ) ){
-                $cartTotalAfterDiscount = $cartTotal = $this->apply_special_discount( $cartTotal, $custom_fields );
+            if( true === $this->is_offer_valid( $coin ) ){
+                $cartTotalAfterDiscount = $cartTotal = $this->apply_special_discount( $cartTotal, $coin );
                 $special_discount = true;
-                $special_discount_type = Util::special_discount_msg( $currency_symbol, $custom_fields );
+                $special_discount_type = Util::special_discount_msg( $currency_symbol, $coin );
                 $special_discount_msg = $special_discount_type['msg'];
                 $special_discount_amount = $special_discount_type['discount'];
             }
@@ -87,15 +88,19 @@ class CsWapgCoinCal {
             $totalCoin = $this->get_total_coin_amount( $coin_price, $cartTotal );
             
             //return status
-            wp_send_json( array( 'response' => true, 'cartTotal' => $woocommerce->cart->total, 'cartTotalAfterDiscount' => $cartTotalAfterDiscount, 
+            $cart_info =  array( 'response' => true, 'cartTotal' => $woocommerce->cart->total, 'cartTotalAfterDiscount' => $cartTotalAfterDiscount, 
                 'currency_symbol' => $currency_symbol, 'totalCoin' => $totalCoin,
-                'coinPrice' => round($coin_price, 2), 'coinFullName' => $coinFullName,
-                'coinName' => $coinName, 'coinAddress' => $coinAddress,
+                'coinPrice' => $coin_price, 'coinFullName' => $coinFullName,
+                'coinName' => $coinName, 'coinAddress' => $coinAddress, 'checkoutType' => $coin->checkout_type,
                 'special_discount_status' => $special_discount, 'special_discount_msg' => $special_discount_msg, 
                 'special_discount_amount' => $special_discount_amount,
                 'nativeAltCoinPrice' => round($altcoinPriceOfStoreCurrency, 2), 'store_currency_fullname' => $this->get_full_name_of_store_currency( $store_currency ),
                 'store_currency_shortname' => $store_currency
-            ));
+            );
+            
+            //save cart info
+            cartFunctions::save_current_cart_payment_info( $cart_info );
+            wp_send_json( $cart_info );
         }
     }
     
@@ -228,4 +233,18 @@ class CsWapgCoinCal {
         $all_avail_currencies = get_woocommerce_currencies();
         return isset( $all_avail_currencies[ $curr_short_name ] ) ? $all_avail_currencies[ $curr_short_name ] : '';
     }
+    
+    /**
+     * Get coin address
+     */
+    private function get_coin_address( $coin ){
+        if( $coin->checkout_type == 2 ){
+            $coin_add_arr = explode( ',', $coin->address );
+            return $coin_add_arr[ array_rand( $coin_add_arr ) ];
+        }else{
+            return $coin->address;;
+        }
+    }
+    
+    
 }

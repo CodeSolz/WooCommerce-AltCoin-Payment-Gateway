@@ -24,7 +24,7 @@ class CsFormHelperLib {
     public static function order_confirm_options(){
         $options = array(
             '1'  => __( 'Manual', 'woo-altcoin-payment-gateway' ),
-            '2'     => __( 'Automatic ( extension required )', 'woo-altcoin-payment-gateway' )
+            '2'     => __( 'Automatic', 'woo-altcoin-payment-gateway' )
         );
         if(has_filter('filter_cs_wapg_order_confirm_options')) {
             $options = apply_filters( 'filter_cs_wapg_order_confirm_options', $options );

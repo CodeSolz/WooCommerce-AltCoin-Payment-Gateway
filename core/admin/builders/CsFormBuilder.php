@@ -117,12 +117,19 @@ class CsFormBuilder {
         if( isset( $field['input_field_wrap_end'] ) && !empty($field['input_field_wrap_end']) ){
             $input .= $field['input_field_wrap_end'];
         }
-        if( isset( $field['desc_tip'] ) && !empty($field['desc_tip']) ){
+        
+        //if no hidden fields show tip before hidden items
+        if( isset( $field['desc_tip'] ) && !empty($field['desc_tip']) && !isset($field['hidden_div'])){
             $input .= '<p class="description">'.$field['desc_tip'].'</p>';
         }
         
         if( isset($field['hidden_div']) ){
-            $input  .= $this->generate_alert_div( $field['hidden_div'], $field_id );
+            $input  .= $this->generate_hidden_div( $field_name, $field['hidden_div'], $field_id );
+        }
+        
+        //if hidden fields show tip after hidden items
+        if( isset( $field['desc_tip'] ) && !empty($field['desc_tip']) && isset($field['hidden_div'])){
+            $input .= '<p class="description">'.$field['desc_tip'].'</p>';
         }
         
         $input .= '</div>';
@@ -150,7 +157,7 @@ class CsFormBuilder {
      * @param type $args
      * @return string
      */
-    private function generate_alert_div( $args, $fields_number ){
+    private function generate_hidden_div( $field_name, $args, $fields_number ){
         $attributes = '';
         if( isset($args['attributes']) ){
             foreach( $args['attributes'] as $attr_key => $attr_val ){
@@ -160,8 +167,21 @@ class CsFormBuilder {
                 $attributes .= ' ' . $attr_key .'="' . $attr_val .'" ';
             }
         }
+        
+        $input = '';
+        if( isset($args['more_input_fields']) && !empty( $more_input_fields = $args['more_input_fields'] ) ){
+            $field = $more_input_fields['attributes'];
+            for( $i = 1; $i <= $more_input_fields['item']; $i++ ){
+                $field['value'] = isset( $more_input_fields['values'][$i] ) ? $more_input_fields['values'][$i] : '';
+                if( $field_name == 'cs_add_new[coin_address]'){
+                    $field_name = "more_coin_address[]";
+                }
+                $input .= $this->generate_text_field( $field_name, $field, $fields_number . '_' . $i );
+            }
+        }
+        
         $inner_html = isset($args['inner_html']) ? $args['inner_html'] : '';
-        return "<div {$attributes}>{$inner_html}</div>";
+        return "<div {$attributes}> {$input} {$inner_html}</div>";
     }
 
     /**
@@ -200,6 +220,17 @@ class CsFormBuilder {
     }
 
     /**
+     * get disabled fields val
+     */
+    private function get_disabled_field_val( $field_name, $field, $field_id ){
+        if( isset( $field['disabled']) && true === $field['disabled'] ){
+            $input_value = $field['value'];
+            return '<input type="hidden" value ="'.$input_value.'" name ="'.$field_name.'" />';
+        }
+        return false;
+    }
+    
+    /**
      * Generate text filed
      * 
      * @param type $field_name
@@ -209,7 +240,8 @@ class CsFormBuilder {
      */
     private function generate_text_field(  $field_name, $field, $field_id ){
         $input_item = $this->generate_attribute($field_name, $field, $field_id);
-        return "<input  {$input_item} />";
+        $disabled_field_val = $this->get_disabled_field_val( $field_name, $field, $field_id );
+        return "<input  {$input_item} /> {$disabled_field_val}";
     }
     
     /**
@@ -264,6 +296,10 @@ class CsFormBuilder {
             unset($field['value']);
         }
         
+        $cus_val = $field;
+        $cus_val['value'] = $value;
+        $disabled_field_val = $this->get_disabled_field_val( $field_name, $cus_val, $field_id );
+        
         $input_item = $this->generate_attribute($field_name, $field, $field_id);
         $input = "<select  {$input_item} >";
         $input .= '<option value="">==================== '.$field['placeholder'].' ====================</option>';
@@ -276,7 +312,7 @@ class CsFormBuilder {
         }
         $input .= "</select>";
         
-        return $input;
+        return $input . $disabled_field_val;
     }
 
     /**
@@ -332,8 +368,10 @@ class CsFormBuilder {
      * @param type $item
      * @return string
      */
-    private function attr_disabled(){
-        return ' disabled = "disabled" ';
+    private function attr_disabled( $val ){
+        if( true === $val ){
+            return ' disabled = "disabled" ';
+        }
     }
     
     /**
@@ -342,8 +380,22 @@ class CsFormBuilder {
      * @param type $item
      * @return string
      */
-    private function attr_required(){
-        return ' required = "required" ';
+    private function attr_required( $val ){
+        if( true === $val ){
+            return ' required = "required" ';
+        }
+    }
+    
+    /**
+     * attr readonly
+     * 
+     * @param type $item
+     * @return string
+     */
+    private function attr_readonly( $val ){
+        if( true === $val ) {
+            return ' readonly ';
+        }
     }
     
     /**

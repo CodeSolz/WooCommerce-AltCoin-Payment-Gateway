@@ -12,9 +12,11 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
+use WooGateWayCoreLib\admin\functions\CsAutomaticOrderConfirmationSettings;
 
 class CsAdminQuery {
     
+    private $auto_order_coins_list_url = 'https://myportal.coinmarketstats.online/api/auto-tracking-coin-list';
     private $coin_name_arr;
 
     /**
@@ -24,7 +26,6 @@ class CsAdminQuery {
      */
     public function add_new_coin( $user_data ){
         global $wpdb, $wapg_tables;
-//        $coin_info = $_POST['cs_add_new'];
         $coin_info = Util::check_evil_script( $user_data['cs_add_new'] );
         
         if( empty($coin_info['coin_address']) || empty( $coin_info['checkout_type'] ) || empty( $coin_info['coin_name'] ) ){
@@ -35,11 +36,21 @@ class CsAdminQuery {
             ));
         }
         
+        //check coin already exists
+        $check_coin_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coins']} where name = '%s' and checkout_type = %d ", $coin_info['coin_name'], $coin_info['checkout_type'] ) );
+        if( $check_coin_exists ){
+            wp_send_json( array(
+                'status' => false,
+                'title' => __( 'Error', 'woo-altcoin-payment-gateway' ),
+                'text' => sprintf( __( '"%s" already added. Please check the list from "All Coins" menu.', 'woo-altcoin-payment-gateway' ), $coin_info['coin_name'] ),
+            ));
+        }
+        
         if( empty( $coin_web_id = $this->get_coin_id( $coin_info['coin_name'] ) ) ){
             wp_send_json( array(
                 'status' => false,
                 'title' => __( 'Error', 'woo-altcoin-payment-gateway' ),
-                'text' => __( 'Coin is not in service. Please make sure you have selected the coin name from the appeared dropdown list when you have typed coin name. Still problem : please contact support@codesolz.net for more information.', 'woo-altcoin-payment-gateway' ),
+                'text' => __( 'Coin is not in service. Please make sure you have selected the coin name from the dropdown list when you have typed coin name. Still problem after selecting from dropdown? please contact support@codesolz.net for more information.', 'woo-altcoin-payment-gateway' ),
             ));
         }
         
@@ -105,6 +116,7 @@ class CsAdminQuery {
     public function udpate_coin( $user_data ){
         global $wpdb, $wapg_tables;
         $coin_info = Util::check_evil_script($user_data['cs_add_new']);
+        $more_address_fields = Util::check_evil_script($user_data['more_coin_address']);
         
         if( empty( $coin_id = $this->get_coin_id( $coin_info['coin_name'] ) ) ){
             wp_send_json( array(
@@ -129,16 +141,20 @@ class CsAdminQuery {
         );
         $wpdb->update( "{$wapg_tables['coins']}", $get_coin_info, array( 'id' => $coin_info['cid'] ));
         
-        $get_address_info = array(
-            'coin_id' => $coin_info['cid'],
-            'address' => $coin_info['coin_address'],
-            'lock_status' => 0
-        );
-        if( empty( $coin_info['aid'] ) ){
-            $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
+        if( $coin_info['checkout_type'] == 2 ){
+            $more_address_fields[] = $coin_info['coin_address'];
+            //get coin address id
+            $coin_address = $wpdb->get_results( $wpdb->prepare( "select id from {$wapg_tables['addresses']} where coin_id = %d ", $coin_info['cid'] ) );
+            for($i =0; $i < count($more_address_fields); $i++ ){
+                $coin_info['aid'] = empty($coin_address) ? '' : $coin_address[$i]->id;
+                $coin_info['coin_address'] = $more_address_fields[$i];
+                $this->coin_address_update( $coin_info );
+            }
         }else{
-            $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $coin_info['aid'] ) );
+            $this->coin_address_update( $coin_info );
         }
+        
+        
         
         $get_offer_info = array(
             'coin_id' => $coin_info['cid'],
@@ -161,6 +177,27 @@ class CsAdminQuery {
             'text' => __( 'Thank you! Coin has been updated successfully.', 'woo-altcoin-payment-gateway' ),
             'redirect_url' => admin_url( 'admin.php?page=cs-woo-altcoin-all-coins')
         ));
+    }
+    
+    /**
+     * coin address update
+     * 
+     */
+    private function coin_address_update( $coin_info ){
+        global $wpdb, $wapg_tables;
+        $get_address_info = array(
+            'coin_id' => $coin_info['cid'],
+            'address' => $coin_info['coin_address'],
+            'lock_status' => 0
+        );
+        
+        if( isset($coin_info['aid']) && !empty($coin_info['aid']) ) {
+            $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $coin_info['aid'] ) );
+        }else{
+            $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
+        }
+        
+        return true;
     }
     
     /**
@@ -197,10 +234,11 @@ class CsAdminQuery {
             $where = ' where '. $args['where'];
         }
         
-        $result = $wpdb->get_results( "SELECT *,c.id as cid, a.id as aid, o.id as oid from  {$wapg_tables['coins']} as c "
+        
+        $result = $wpdb->get_results( "SELECT *,c.id as cid, a.id as aid, o.id as oid, GROUP_CONCAT(address SEPARATOR ', ')  as address from  {$wapg_tables['coins']} as c "
                 . " left join {$wapg_tables['addresses']} as a on c.id = a.coin_id "
                 . " left join {$wapg_tables['offers']} as o on c.id = o.coin_id "
-                . " {$where} ");
+                . " {$where} group by a.coin_id ");
                 
         if( $result ){
             return $result;
@@ -254,21 +292,56 @@ class CsAdminQuery {
     }
     
     /**
-     * Get coin name
+     * Get coin name - dropdown typehead
      * 
      * @return type
      */
-    public function get_coin_name(){
-        if( isset( $this->coin_name_arr ) && !empty($this->coin_name_arr ) ){
-            return wp_send_json($this->coin_name_arr);
+    public function get_coin_name( $user_input ){
+        $oc_type = $user_input['oc_type'];
+        if( $oc_type == 1 ){
+            $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
+            $currencies = json_decode($currencies);
+            
+            $ret = array();
+            foreach( $currencies as $cur ){
+                $ret[] = $cur->name;
+            }
+            return wp_send_json($ret);
+        
+        }elseif( $oc_type == 2 ){
+            //get data from portal
+            $user_data = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
+            $api_status = Util::remote_call(
+                $this->auto_order_coins_list_url, 
+                'POST',
+                array(
+                    'body' => $user_data
+                )
+            );
+            
+            if( isset($api_status['error'])){
+                return wp_send_json(array(
+                    'success' => false,
+                    'response' => $api_status['response']
+                ));
+            }else{
+                $api_status = json_decode( $api_status);
+                if( isset( $api_status->success ) && $api_status->success == true ){
+                    return wp_send_json($api_status->coin_list);
+                }else{
+                    return wp_send_json(array(
+                        'success' => false,
+                        'response' => $api_status->message
+                    ));
+                }
+            }
+        }else{
+            return wp_send_json(array(
+                'success' => false,
+                'response' => 'Please select "Payment Confirmation Type" at first!'
+            ));
         }
-        $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
-        $currencies = json_decode($currencies);
-        $ret = array();
-        foreach( $currencies as $cur ){
-            $ret[] = $cur->name;
-        }
-        $this->coin_name_arr = $ret;
-        return wp_send_json($this->coin_name_arr);
+        
+        
     }
 }

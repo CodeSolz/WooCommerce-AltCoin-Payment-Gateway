@@ -23,6 +23,7 @@ if( ! isset( $wapg_tables ) ){
     $wapg_tables = array(
         'coins' => $wpdb->prefix . 'wapg_coins',
         'addresses' => $wpdb->prefix . 'wapg_coin_addresses',
-        'offers' => $wpdb->prefix . 'wapg_coin_offers'
+        'offers' => $wpdb->prefix . 'wapg_coin_offers',
+        'coin_trxids' => $wpdb->prefix . 'wapg_coin_transactions'
     );
 }
