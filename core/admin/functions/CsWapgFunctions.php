@@ -45,7 +45,6 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
 
         $this->defaultOptn = get_option( $this->get_option_key() );
         
-//        pre_print( $this->defaultOptn );
         //get icons
         $this->icon = $this->get_icon_url();
         $this->loader_icon = $this->get_loader_url();
@@ -62,7 +61,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
 
         // Turn these settings into variables we can use
         foreach ( $this->settings as $setting_key => $value ) {
-                $this->$setting_key = $value;
+            $this->$setting_key = $value;
         }
 
         // Save settings

@@ -86,19 +86,14 @@ class CsWapgAutoOrderConfirm {
         }
         
         $cartTotal = empty($cart_info['cartTotalAfterDiscount']) ? $cart_info['cartTotal'] : $cart_info['cartTotalAfterDiscount'];
-//        $api_url = sprintf( $this->tracking_api_url, 
-//                    $api_key, $cart_info['coinName'], '19GXrMDzkU6p5m7U29Qe8tGTJqTximXC17', Util::check_evil_script($trxid), 
-//                    $cart_info['totalCoin'], $cartTotal
-//                );
         $api_url = sprintf( $this->tracking_api_url, 
-                    $api_key, $cart_info['coinName'], '3BMEXjwM56TU9GiHne1dt9tV8gfGV2fru9', Util::check_evil_script($trxid), 
-                    0.02065, $cartTotal
+                    $api_key, $cart_info['coinName'], $cart_info['coinAddress'], Util::check_evil_script($trxid), 
+                    $cart_info['totalCoin'], $cartTotal
                 );
         
         
         $response = Util::remote_call( $api_url );
         $response = json_decode( $response );
-//        pre_print( $response );
         
         if( is_object( $response ) ){
             if( isset($response->error) && true === $response->error ){
@@ -131,21 +126,38 @@ class CsWapgAutoOrderConfirm {
                         
                         //send status
                         $api_url = sprintf( $this->force_end_api_url, 
-                            $api_key, 'forceend', '3BMEXjwM56TU9GiHne1dt9tV8gfGV2fru9', Util::check_evil_script($trxid), 
-                            0.02065, $cartTotal, 'completed'
+                            $api_key, 'forceend', $address, Util::check_evil_script($trxid), 
+                            $amount, $cartTotal, 'completed'
                         );
                         
-                        //save payment was successful for this cart
-                        cartFunctions::save_transaction_successful_log();
-                        //remove temp transaction data
-                        cartFunctions::temp_remove_trx_info( $trxid );
-                        //log checkout type
-                        cartFunctions::save_temp_log_checkout_type( 2 );
+                        $response1 = Util::remote_call( $api_url );
+                        $response1 = json_decode( $response1 );
                         
-                        return wp_send_json(Util::notice_html(array(
-                            'success' => true,
-                            'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' )
-                        )));
+                        if( is_object( $response1 ) ){
+                            if( isset($response1->error) && true === $response1->error ){
+                                
+                                return wp_send_json(Util::notice_html(array(
+                                    'success' => false,
+                                    'response' => $response->response
+                                )));
+                                
+                            }else{
+                                //save payment was successful for this cart
+                                cartFunctions::save_transaction_successful_log();
+                                //remove temp transaction data
+                                cartFunctions::temp_remove_trx_info( $trxid );
+                                //log checkout type
+                                cartFunctions::save_temp_log_checkout_type( 2 );
+
+                                return wp_send_json(Util::notice_html(array(
+                                    'success' => true,
+                                    'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' )
+                                )));
+                            }
+                        }
+                        
+                        
+                        
                     }
                     
                     
@@ -172,7 +184,8 @@ class CsWapgAutoOrderConfirm {
             }else{
                 return wp_send_json(Util::notice_html(array(
                     'success' => false,
-                    'response' => __( 'Transaction on processing. Getting confirmation data..', 'woo-altcoin-payment-gateway' )
+//                    'response' => __( 'Transaction on processing. Getting confirmation data..', 'woo-altcoin-payment-gateway' )
+                    'response' => implode(' - ', (array)$response)
                 )));
             }
         }

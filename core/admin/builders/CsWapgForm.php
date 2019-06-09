@@ -104,8 +104,6 @@ class CsWapgForm {
             return __( 'Sorry! No AltCoin is activate! Please contact administration for more information.', 'woo-altcoin-payment-gateway' );
         }
         
-//        pre_print( $custom_fields );
-        
         $altCoin = '<select name="altcoin" id="CsaltCoin" class="select">';
         $lebel = isset( $refObj->select_box_option_lebel ) && !empty($refObj->select_box_option_lebel) ? $refObj->select_box_option_lebel : __( 'Please Select An AltCoin', 'woo-altcoin-payment-gateway' );
         $altCoin .= '<option value="0">'.$lebel.'</option>';

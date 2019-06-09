@@ -1,6 +1,6 @@
 === WooCommerce AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
-Tags: woocommerce, altcoin payment, crypto-currency payment, altcoin payment gateway, bitcoin payment gateway, woocommerce bitcoin, woocommerce crypto-currency payment
+Tags: WooCommerce, altcoin payment, cryptocurrency payment, WooCommerce bitcoin, woocommerce altcoin 
 Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
@@ -26,20 +26,21 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 === Start Accepting Any Cryptocurrency in Few Seconds!===
 </blockquote>
 
+<blockquote>
+= Automatic order confirmation has been released!! =
+Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order confirmation</a>.
+</blockquote>
+
+
 == Key Features ==
 
 <blockquote>
-= Price = 
-<ul>
-    <li>Totally free plugin</li>
-</ul>
-
 = Don't have middlemen = 
 <ul>
-    <li>Question of trust? No worry. Use your own coin address from anywhere.</li>
+    <li>Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.</li>
 </ul>
 
-= Frontend Text & Brand Customization = 
+= White Label Solution = 
 <ul>
     <li>All text shown in checkout and product page are customizable.</li>
     <li>You can use your own logo or payment gateway name</li>
@@ -52,22 +53,39 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
     <li> Show / hide discount offer box in single product page</li>
 </ul>
 
-= Order / Payment Confirmation Process = 
+= Light Weight = 
 <ul>
-    <li> Free version included with manual order confirmation. Which means you need to check your coin address for coin transfer confirmation.</li>
-    <li> Pro version has automatic order confirmation. ( comming soon )</li>
+    <li> You don't have to load any extra library. Just download and install this plugin. Thats all.</li>
+</ul>
+
+= Store Order Processing - Free Version = 
+<ul>
+    <li> Unlimited manual order confirmation. Which means you need to check your coin manually after getting a order from your store.</li>
+    <li> Free version has 5+ automatic order confirmation for trail.</li>
+</ul>
+
+= Store Order Processing - PRO Version = 
+<ul>
+    <li> Unlimited manual order confirmation.</li>
+    <li> <a target="_blank" href="https://bit.ly/2IuZ96R">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/2IuZ96R">UPGRADE TO PRO </a> or check the trail</li>
 </ul>
 
 = Product Price Calculation = 
 <ul>
-    <li> Automatic & instant coin price calculation. </li>
-    <li> Automatically convert your woocommerce product price to bitcon / altcoin price. </li>
+    <li> Automatic & instant coin price calculation by most trusted exchange portal. </li>
+    <li> Automatically convert your WooCommerce product's price to Bitcon / Altcoin price. </li>
 </ul>
 
-= Number of Crypto Currencies = 
+= Number of Crypto Currencies - free version = 
 <ul>
     <li> Currently You can accept 2000+ crypto currencies ( manual order confirmation - free version ) </li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
+</ul>
+
+= Number of Crypto Currencies - PRO version = 
+<ul>
+    <li> Currently You can accept 1 Crypto-Currency as we are running a beta test. Soon it gonna be increase to high level. </li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin.</li>
 </ul>
 
 </blockquote>
@@ -139,6 +157,10 @@ English, Spanish, Russian, German, French, Dutch
 9. Front-end - after checkout - thank you page
 
 == Changelog ==
+
+= 1.2.3 =
+* The most awaited automatic order confirmation
+
 
 = 1.2.2 =
 * Checkout page text edit option added

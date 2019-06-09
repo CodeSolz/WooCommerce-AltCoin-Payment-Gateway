@@ -311,6 +311,7 @@ class Options_Pages {
                                 wp_nonce_field( SECURE_AUTH_SALT, 'cs_token' );
                             ?>
                             <input type="hidden" name="method" id="method" value="admin\functions\CsAutomaticOrderConfirmationSettings@save_settings" />
+                            <input type="hidden" name="cs_altcoin_config[cms_refferer]" value="<?php echo site_url(); ?>" />
                             <input type="hidden" name="swal_title" id="swal_title" value="Settings Updating" />
                             <input type="submit" class="btn btn-custom-submit" value="Save Settings" />
                         </div>

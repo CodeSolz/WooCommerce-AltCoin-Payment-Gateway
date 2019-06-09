@@ -239,8 +239,14 @@ class CsWapgCoinCal {
      */
     private function get_coin_address( $coin ){
         if( $coin->checkout_type == 2 ){
-            $coin_add_arr = explode( ',', $coin->address );
-            return $coin_add_arr[ array_rand( $coin_add_arr ) ];
+            
+            $cart_info = cartFunctions::get_current_cart_payment_info();
+            if( empty($cart_info)){
+                $coin_add_arr = explode( ',', $coin->address );
+                return $coin_add_arr[ array_rand( $coin_add_arr ) ];
+            }else{
+                return $cart_info['coinAddress'];
+            }
         }else{
             return $coin->address;;
         }

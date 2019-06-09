@@ -232,7 +232,10 @@ class Util {
         else if( isset($notice['success']) && (true === $notice['success'] || false === $notice['success'] )){
             $notice_class = 'success-notice';
         }
-        $notice['response'] = '<div class="'.$notice_class.'">'.$notice['response'].'</div>';
+        
+        $notice_msg = is_array($notice['response']) ? implode( ' ', $notice['response']) : $notice['response'];
+        
+        $notice['response'] = '<div class="'.$notice_class.'">'.$notice_msg.'</div>';
         
         return $notice;
     }
