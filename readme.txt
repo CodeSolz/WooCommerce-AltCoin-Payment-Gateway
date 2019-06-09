@@ -125,7 +125,7 @@ English, Spanish, Russian, German, French, Dutch
 
 <blockquote>
 = Pro Version for automatic order confirmation =
-  * Comming Soon!
+  * Check <a target="_blank" href="https://bit.ly/2IuZ96R">Pro version</a> from here
 
 = For Quick Support, feature request and bug reporting = 
 <ul>
