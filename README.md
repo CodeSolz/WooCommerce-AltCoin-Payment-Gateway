@@ -36,7 +36,7 @@
         <img alt="Wordpress Plugin Active Installs" src="https://img.shields.io/wordpress/plugin/installs/woo-altcoin-payment-gateway.svg">
     </a>
     <a href="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
-        <img alt="undefined" src="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
+        <img alt="HitCount" src="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
     </a>
     <br><br>
     <a href="https://codesolz.net">
@@ -47,9 +47,22 @@
 
 ### What does it do? 
 
-This plugin will help you to accept bitcoin / any altcoin payment from your WooCommerce very easily. You can use your own coin's address to get paid. It doesn't required any subscription / payment to third party software. This plugin calculate coin price(real-time) from the most trusted coin exchange portals via API but you don't need your own API to set it up. This is automatic. You don't need to worry about the altcoin price changing time to time as it's real-time connected with exchange portals. So you can be relaxed by setting it up in your website.
 
-> *Start Accepting Any Cryptocurrency  in Few Seconds!*
+Accept bitcoin / altcoin payment from your WooCommerce store without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
+
+<blockquote>
+## Need Help on upgrade ##
+Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
+</blockquote>
+
+<blockquote>
+### Start Accepting Any Cryptocurrency in Few Seconds!###
+</blockquote>
+
+<blockquote>
+### Automatic order confirmation has been released!! ###
+Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order confirmation</a>.
+</blockquote>
 
 
 
@@ -57,42 +70,60 @@ This plugin will help you to accept bitcoin / any altcoin payment from your WooC
 
 
 <blockquote>
-= Installation Process = 
+= Don't have middlemen = 
 <ul>
-    <li> Quick & Very Easy Installation Process</li>
+    <li>Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.</li>
 </ul>
 
-= Number of Crypto Currencies = 
+= White Label Solution = 
 <ul>
-    <li> Currently You can accept 2000+ crypto currencies ( manual order confirmation - free version ) </li>
-    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
+    <li>All text shown in checkout and product page are customizable.</li>
+    <li>You can use your own logo or payment gateway name</li>
 </ul>
 
-= Discount Feature On Cart = 
+= Discount Features = 
 <ul>
     <li> Add Discount on cart for each coin separately</li>
     <li> You can add different types of discount for each coin( percentage of total cart or a flat amount separately for each coin)</li>
     <li> Show / hide discount offer box in single product page</li>
 </ul>
 
-= Order / Payment Confirmation Process = 
+= Light Weight = 
 <ul>
-    <li> There are 3 types of order confirmation process available </li>
-    <li> Free version is included with manual order confirmation </li>
+    <li> You don't have to load any extra library. Just download and install this plugin. Thats all.</li>
+</ul>
+
+= Store Order Processing - Free Version = 
+<ul>
+    <li> Unlimited manual order confirmation. Which means you need to check your coin manually after getting a order from your store.</li>
+    <li> Free version has 5+ automatic order confirmation for trail.</li>
+</ul>
+
+= Store Order Processing - PRO Version = 
+<ul>
+    <li> Unlimited manual order confirmation.</li>
+    <li> <a target="_blank" href="https://bit.ly/2IuZ96R">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/2IuZ96R">UPGRADE TO PRO </a> or check the trail</li>
 </ul>
 
 = Product Price Calculation = 
 <ul>
-    <li> Automatic & instant coin price calculation. So you don't need to worry about changing crypto-currency market price </li>
-    <li> Automatically convert product price to altcoin price </li>
-    <li> All secure and automatic price calculation by [coinmarketcap.com](http://coinmarketcap.com/) api</li>
+    <li> Automatic & instant coin price calculation by most trusted exchange portal. </li>
+    <li> Automatically convert your WooCommerce product's price to Bitcon / Altcoin price. </li>
+</ul>
+
+= Number of Crypto Currencies - free version = 
+<ul>
+    <li> Currently You can accept 2000+ crypto currencies ( manual order confirmation - free version ) </li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
+</ul>
+
+= Number of Crypto Currencies - PRO version = 
+<ul>
+    <li> Currently You can accept 1 Crypto-Currency as we are running a beta test. Soon it gonna be increase to high level. </li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin.</li>
 </ul>
 
 </blockquote>
-
-* No 3rd party wallet signup / payment required 
-* Accept any crypto-currency to your own crypto-currency address generated from anywhere, not from a specific wallet address. 
-* After a successful order from a client, check your crypto-currency balance & release the product by confirming that you have received coins.
 
 
 ### How fiat currency works?
