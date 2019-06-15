@@ -37,7 +37,6 @@
     </a>
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
         <img src="https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2FCodeSolz%2FWooCommerce-AltCoin-Payment-Gateway%2Fblob%2Fmaster%2FREADME.md" alt="Hits">
-        
     </a>
     <br><br>
     <a href="https://codesolz.net">
