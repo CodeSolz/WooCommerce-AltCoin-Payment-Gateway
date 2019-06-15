@@ -35,8 +35,8 @@
     <a href="https://wordpress.org/plugins/woo-altcoin-payment-gateway">
         <img alt="Wordpress Plugin Active Installs" src="https://img.shields.io/wordpress/plugin/installs/woo-altcoin-payment-gateway.svg">
     </a>
-    <a href="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
-        <img alt="HitCount" src="http://hits.dwyl.io/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
+    <a href="http://hits.dwyl.io/codesolz/WooCommerce-AltCoin-Payment-Gateway">
+        <img alt="HitCount" src="http://hits.dwyl.io/codesolz/WooCommerce-AltCoin-Payment-Gateway.svg">
     </a>
     <br><br>
     <a href="https://codesolz.net">
