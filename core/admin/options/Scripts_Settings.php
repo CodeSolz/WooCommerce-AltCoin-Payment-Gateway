@@ -63,7 +63,9 @@ class Scripts_Settings {
         //load form submit script on footer
         if( $page_id == $altcoin_menu['add_new_coin'] ||
             $page_id == $altcoin_menu['default_settings'] ||
-            $page_id == $altcoin_menu['register_automatic_order']
+            $page_id == $altcoin_menu['register_automatic_order'] ||
+            $page_id == $altcoin_menu['checkout_options_settings'] ||
+            $page_id == $altcoin_menu['product_page_options_settings'] 
             ){
             self::form_submitter();
         }
@@ -88,8 +90,8 @@ class Scripts_Settings {
                         var $this = $(this);
                         var formData = new FormData( $this[0] );
                         formData.append( "action", "_cs_wapg_custom_call" );
-                        formData.append( "method", $this.find('#method').val() );
-                        swal({ title: $this.find('#swal_title').val(), text: 'Please wait a while...', timer: 200000, imageUrl: '<?php echo CS_WAPG_PLUGIN_ASSET_URI .'img/loading-timer.gif'; ?>', showConfirmButton: false, html :true });
+                        formData.append( "method", $this.find('#cs_field_method').val() );
+                        swal({ title: $this.find('#cs_field_swal_title').val(), text: 'Please wait a while...', timer: 200000, imageUrl: '<?php echo CS_WAPG_PLUGIN_ASSET_URI .'img/loading-timer.gif'; ?>', showConfirmButton: false, html :true });
                         $.ajax({
                             url: ajaxurl,
                             type: 'POST',

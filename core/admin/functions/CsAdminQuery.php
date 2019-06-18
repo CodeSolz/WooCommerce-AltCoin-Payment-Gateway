@@ -46,7 +46,7 @@ class CsAdminQuery {
             ));
         }
         
-        if( empty( $coin_web_id = $this->get_coin_id( $coin_info['coin_name'] ) ) ){
+        if( empty( $coin_web_id = $this->get_coin_id( $coin_info['coin_name'], $coin_info['checkout_type'] ) ) ){
             wp_send_json( array(
                 'status' => false,
                 'title' => __( 'Error', 'woo-altcoin-payment-gateway' ),
@@ -118,7 +118,7 @@ class CsAdminQuery {
         $coin_info = Util::check_evil_script($user_data['cs_add_new']);
         $more_address_fields = Util::check_evil_script($user_data['more_coin_address']);
         
-        if( empty( $coin_id = $this->get_coin_id( $coin_info['coin_name'] ) ) ){
+        if( empty( $coin_id = $this->get_coin_id( $coin_info['coin_name'], $coin_info['checkout_type'] ) ) ){
             wp_send_json( array(
                 'status' => false,
                 'title' => __( 'Error', 'woo-altcoin-payment-gateway' ),
@@ -262,14 +262,21 @@ class CsAdminQuery {
     /**
      * get coin id
      */
-    public function get_coin_id( $coin_name ){
-        $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
-        $currencies = json_decode($currencies);
+    public function get_coin_id( $coin_name, $checkout_type ){
         $coin_id = '';
-        foreach( $currencies as $cur ){
-            if( $cur->name == $coin_name ){
-                $coin_id = $cur->id;
-                break;
+        if( $checkout_type == 2 ){
+            $response = $this->get_auto_order_coins_list();
+            if( !isset( $response['success']) && in_array( $coin_name, $response ) ){
+                $coin_id = $coin_name;
+            }
+        }elseif( $checkout_type == 1 ){
+            $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
+            $currencies = json_decode($currencies);
+            foreach( $currencies as $cur ){
+                if( $cur->name == $coin_name ){
+                    $coin_id = $cur->id;
+                    break;
+                }
             }
         }
         return $coin_id;
@@ -309,39 +316,47 @@ class CsAdminQuery {
             return wp_send_json($ret);
         
         }elseif( $oc_type == 2 ){
-            //get data from portal
-            $user_data = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
-            $api_status = Util::remote_call(
-                $this->auto_order_coins_list_url, 
-                'POST',
-                array(
-                    'body' => $user_data
-                )
-            );
-            
-            if( isset($api_status['error'])){
-                return wp_send_json(array(
-                    'success' => false,
-                    'response' => $api_status['response']
-                ));
-            }else{
-                $api_status = json_decode( $api_status);
-                if( isset( $api_status->success ) && $api_status->success == true ){
-                    return wp_send_json($api_status->coin_list);
-                }else{
-                    return wp_send_json(array(
-                        'success' => false,
-                        'response' => $api_status->message
-                    ));
-                }
-            }
+            return wp_send_json( $this->get_auto_order_coins_list() );
         }else{
             return wp_send_json(array(
                 'success' => false,
                 'response' => 'Please select "Payment Confirmation Type" at first!'
             ));
         }
-        
-        
+    }
+    
+    /**
+     * Get list of coins for automatic 
+     * order confirmation
+     * 
+     * @return array
+     */
+    private function get_auto_order_coins_list(){
+        //get data from portal
+        $user_data = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
+        $api_status = Util::remote_call(
+            $this->auto_order_coins_list_url, 
+            'POST',
+            array(
+                'body' => $user_data
+            )
+        );
+
+        if( isset($api_status['error'])){
+            return wp_send_json(array(
+                'success' => false,
+                'response' => $api_status['response']
+            ));
+        }else{
+            $api_status = json_decode( $api_status);
+            if( isset( $api_status->success ) && $api_status->success == true ){
+                return $api_status->coin_list;
+            }else{
+                return wp_send_json(array(
+                    'success' => false,
+                    'response' => $api_status->message
+                ));
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://coinmarketstats.online/product/woo-altcoin-payment-gateway
  * Description:       A very light weight Cryptocurrency payment gateway for WooCommerce Store 
- * Version:           1.2.3
+ * Version:           1.2.5
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -39,7 +39,7 @@ if ( ! class_exists( 'Woocommerce_Altcoin_Payment_Gateway' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.2.3';
+        private static $version = '1.2.5';
         
         /**
          * Hold version
@@ -73,11 +73,14 @@ if ( ! class_exists( 'Woocommerce_Altcoin_Payment_Gateway' ) ){
             /**load textdomain */
             add_action( 'plugins_loaded', array( __CLASS__, 'init_textdomain' ), 15 );
             
-            /**load gateway*/
+            /**check plugin db*/
             add_action( 'plugins_loaded', array( __CLASS__, 'check_db' ), 17 );
             
+            /**check plugin version*/
+            add_action( 'plugins_loaded', array( __CLASS__, 'check_plugin_version' ), 19 );
+            
             /**load gateway*/
-            add_action( 'plugins_loaded', array( __CLASS__, 'init_gateway' ), 19 );
+            add_action( 'plugins_loaded', array( __CLASS__, 'init_gateway' ), 21 );
             
         }
         
@@ -127,7 +130,6 @@ if ( ! class_exists( 'Woocommerce_Altcoin_Payment_Gateway' ) ){
          * load action files
          */
         private static function load_action_files(){
-            
             foreach ( glob( CS_WAPG_BASE_DIR_PATH . "core/actions/*.php") as $cs_action_file ) {
                 $class_name = basename( $cs_action_file, '.php' );
                 $class =  self::$namespace . '\\actions\\'. $class_name; 
@@ -179,6 +181,14 @@ if ( ! class_exists( 'Woocommerce_Altcoin_Payment_Gateway' ) ){
         public static function check_db(){
             $cls_install = self::$namespace . "\install\Activate";
             $cls_install::check_db_status();
+        }
+        
+        /**
+         * Check plugin version
+         */
+        public static function check_plugin_version(){
+            $cls_install = self::$namespace . "\install\Activate";
+            $cls_install::import_old_settins();
         }
         
     }

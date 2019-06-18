@@ -186,7 +186,8 @@ class CsWapgCoinCal {
         }
         
         $getMarketPrice = json_decode( $response );
-        if( isset( $getMarketPrice[0]->price_usd ) ){
+        
+        if( !isset($getMarketPrice->error) && isset( $getMarketPrice[0] ) ){
             $price = (float)$getMarketPrice[0]->price_usd;
             $market_cap_usd = (float)$getMarketPrice[0]->market_cap_usd;
             if( $market_cap_usd > 0 ){
@@ -202,7 +203,7 @@ class CsWapgCoinCal {
         
         return array(
             'error' => true,
-            'response' => __( 'Coinmarketcap api error. Please contact administration.', 'woo-altcoin-payment-gateway' )
+            'response' => __( 'Coin not found in the exchange portal! Please contact administration.', 'woo-altcoin-payment-gateway' )
         );
     }
     

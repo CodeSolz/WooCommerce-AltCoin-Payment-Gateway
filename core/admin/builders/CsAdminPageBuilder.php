@@ -45,7 +45,7 @@ class CsAdminPageBuilder {
      * @return type
      */
     private function getClass( $class ){
-        $class_path = '\WooCustomProductBeautifier\\admin\\option_pages\\functions\\' . $class;
+        $class_path = '\WooGateWayCoreLib\\admin\\options\\pages\\' . $class;
 
         if( ! class_exists( $class_path ) ){
             return " Class / Method - '{$class_path}' - not found!";
@@ -77,8 +77,15 @@ class CsAdminPageBuilder {
         //init current screen
         $this->init_current_screen();
         
-        $content = isset( $argc['content'] ) ? $argc['content'] : '----';
-        return sprintf( $this->page_wrapper(), 
+        $content = '';
+        $top_notice = isset($argc['well']) ? $argc['well'] : '';
+        if( !empty($top_notice)){
+            $content = '<div class="well">'.$top_notice.'</div>';
+        }
+        
+        $content .= isset( $argc['content'] ) ? $argc['content'] : '----';
+        
+        return sprintf( $this->page_wrapper( $argc ), 
             $this->generate_header( $argc ), 
             $content, 
             $this->generate_button_block( $argc ), 
@@ -91,19 +98,21 @@ class CsAdminPageBuilder {
      * 
      * @return string
      */
-    private function page_wrapper(){
+    private function page_wrapper( $argc ){
         $form_start = '';
         $form_end = '';
-        if( !isset($argc['show_btn'] ) ){
+        if( isset($argc['show_btn'] ) ){
             $form_start = '<form method="post"  enctype="multipart/form-data">';
             $form_end = '</form>';
         }
+        
+        $body_class = isset($argc['body_class'] ) ? $argc['body_class'] : '';
         
         return "<div class=\"wrap\"> 
         <div id=\"product_binder\">
         <div class=\"panel\"> %s 
         {$form_start}
-        <div class=\"panel-body bg-white\">
+        <div class=\"panel-body bg-white {$body_class}\">
         <div class=\"container\"> %s 
         </div></div> %s %s
         {$form_end}
@@ -124,10 +133,7 @@ class CsAdminPageBuilder {
             <p> ' . $sub_title . ' </p>
         </div>';
         
-        $top_notice = isset($argc['well']) ? $argc['well'] : '';
-        if( !empty($top_notice)){
-            $res .= '<div class="well">'.$top_notice.'</div>';
-        }
+        
         return $res;
     }
     
@@ -141,10 +147,12 @@ class CsAdminPageBuilder {
             return false;
         }
         $btn_text = isset( $argc['btn_text'] ) ? $argc['btn_text'] : 'Submit';
+        $prepend_btn = isset( $argc['prepend_btn'] ) ? $argc['prepend_btn'] : '';
         $hidden_fields = isset( $argc['hidden_fields'] ) ? $argc['hidden_fields'] : '';
         return '<div class="section-submit-button">
             ' . $hidden_fields . '
-            ' . wp_nonce_field( SECURE_AUTH_SALT, 'cs_wcpb_token' ) . '
+            ' . wp_nonce_field( SECURE_AUTH_SALT, 'cs_token' ) . '
+            '.$prepend_btn.'
             <input type="submit" class="btn btn-custom-submit" value="'.$btn_text.'" />
         </div>';
     }
@@ -156,7 +164,7 @@ class CsAdminPageBuilder {
      */
     private function generate_footer(){
         return '<div class="panel-footer">
-            <p>Developed by : <a href="https://codesolz.net" target="_blank">CodeSolz</a></p>
+            <p>Thank you for choosing us! <a href="https://www.codesolz.net" target="_blank">codesolz.net</a></p>
         </div>';
     }
 }

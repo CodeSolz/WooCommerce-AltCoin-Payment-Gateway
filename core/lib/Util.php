@@ -235,9 +235,7 @@ class Util {
         
         $notice_msg = is_array($notice['response']) ? implode( ' ', $notice['response']) : $notice['response'];
         
-        $notice['response'] = '<div class="'.$notice_class.'">'.$notice_msg.'</div>';
-        
-        return $notice;
+        return array( 'response' => '<div class="'.$notice_class.'">'.$notice_msg.'</div>' );
     }
     
     /**
@@ -261,4 +259,21 @@ class Util {
 	}
     }
     
+    /**
+     * generate admin page url
+     * 
+     * @return string
+     */
+    public static function cs_generate_admin_url( $page_name ){
+        if( empty( $page_name ) ) return '';
+        return admin_url( "admin.php?page={$page_name}" );
+    }
+    
+    /**
+     * Get back to link / button
+     */
+    public static function generate_back_btn( $back_to, $class ){
+        $back_url = self::cs_generate_admin_url( $back_to );
+        return "<a href='{$back_url}' class='{$class}'>". __( '<< Back', 'woo-altcoin-payment-gateway' ) ."</a>";
+    }
 }

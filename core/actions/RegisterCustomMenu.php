@@ -13,7 +13,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 
-use WooGateWayCoreLib\admin\options\Options_Pages;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\options\Scripts_Settings;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
 
@@ -71,7 +71,7 @@ class RegisterCustomMenu {
         $altcoin_menu['default_settings'] = add_submenu_page( 
             CS_WAPG_PLUGIN_IDENTIFIER,
             __( 'Settings', 'woo-altcoin-payment-gateway' ),
-            "Settings",
+            "Default Settings",
             'manage_options',
             'cs-woo-altcoin-gateway-settings',
             array( $this, 'load_settings_page' )
@@ -79,18 +79,36 @@ class RegisterCustomMenu {
         $altcoin_menu['register_automatic_order'] = add_submenu_page( 
             CS_WAPG_PLUGIN_IDENTIFIER,
             __( 'Automatic Order Confirmation Registration', 'woo-altcoin-payment-gateway' ),
-            "Automatic Order Settings",
+            "Order Settings",
             'manage_options',
             'cs-woo-altcoin-automatic-order-confirmation-settings',
             array( $this, 'load_automatic_order_confirmation_settings_page' )
         ); 
+        $altcoin_menu['product_page_options_settings'] = add_submenu_page( 
+            CS_WAPG_PLUGIN_IDENTIFIER,
+            __( 'Product Page Options', 'woo-altcoin-payment-gateway' ),
+            "Product Page Options",
+            'manage_options',
+            'cs-woo-altcoin-product-option-settings',
+            array( $this, 'load_product_page_option_settings' )
+        ); 
+        
+        $altcoin_menu['checkout_options_settings'] = add_submenu_page( 
+            CS_WAPG_PLUGIN_IDENTIFIER,
+            __( 'Checkout Page', 'woo-altcoin-payment-gateway' ),
+            "Checkout Page Options",
+            'manage_options',
+            'cs-woo-altcoin-checkout-option-settings',
+            array( $this, 'load_checkout_settings_page' )
+        ); 
+        
         $altcoin_menu['add_new_coin'] = add_submenu_page( 
             CS_WAPG_PLUGIN_IDENTIFIER,
             __( 'Add New Coin', 'woo-altcoin-payment-gateway' ),
             "Add New Coin",
             'manage_options',
             'cs-woo-altcoin-add-new-coin',
-            array( $this, 'load_add_new_product_page' )
+            array( $this, 'load_add_new_coin_page' )
         ); 
         $altcoin_menu['all_coins_list'] = add_submenu_page( 
             CS_WAPG_PLUGIN_IDENTIFIER,
@@ -98,7 +116,7 @@ class RegisterCustomMenu {
             "All Coins",
             'manage_options',
             'cs-woo-altcoin-all-coins',
-            array( $this, 'load_all_product_page' )
+            array( $this, 'load_all_coins_list_page' )
         ); 
         
         
@@ -107,17 +125,20 @@ class RegisterCustomMenu {
         add_action( "load-{$altcoin_menu['register_automatic_order']}", array( $this, 'register_admin_settings_scripts' ) );
         add_action( "load-{$altcoin_menu['add_new_coin']}", array( $this, 'register_admin_settings_scripts' ) );
         add_action( "load-{$altcoin_menu['all_coins_list']}", array( $this, 'register_admin_settings_scripts' ) );
+        add_action( "load-{$altcoin_menu['checkout_options_settings']}", array( $this, 'register_admin_settings_scripts' ) );
+        add_action( "load-{$altcoin_menu['product_page_options_settings']}", array( $this, 'register_admin_settings_scripts' ) );
         
         remove_submenu_page( CS_WAPG_PLUGIN_IDENTIFIER, CS_WAPG_PLUGIN_IDENTIFIER );
         
         //init pages
-        $this->pages = new Options_Pages();
+        $this->pages = new CsAdminPageBuilder();
         
         //init gateway settings
         $this->WcFuncInstance = new WooFunctions();
     }
     
     /**
+     * Generate default settings page
      * 
      * @return type
      */
@@ -125,7 +146,55 @@ class RegisterCustomMenu {
         //check woocommerce is loaded
         $this->isWoocommerceInstalled();
         
-        return $this->pages->app_settings( $this->WcFuncInstance->get_payment_info() );
+        $Default_Settings = $this->pages->DefaultSettings();
+        if( is_object( $Default_Settings ) ) {
+            echo $Default_Settings->generate_default_settings( array_merge_recursive( array(
+                'title' => __( 'Gateway Default Settings', 'woo-altcoin-payment-gateway' ),
+                'sub_title' => __( 'Alltcoin payment gatway defult settings. Please fill up the following informaton correctly.', 'woo-altcoin-payment-gateway' ),
+            ), array( 'gateway_settings' => (array)$this->WcFuncInstance->get_payment_info() ) ) );
+        }else{
+            echo $Default_Settings;
+        }
+    }
+    
+    /**
+     * Generate checkout settings page
+     * 
+     * @return type
+     */
+    public function load_checkout_settings_page(){
+        //check woocommerce is loaded
+        $this->isWoocommerceInstalled();
+        
+        $Checkout_Page_Settings = $this->pages->CheckoutPageSettings();
+        if( is_object( $Checkout_Page_Settings ) ) {
+            echo $Checkout_Page_Settings->generate_checkout_settings( array(
+                'title' => __( 'Checkout Page Options', 'woo-altcoin-payment-gateway' ),
+                'sub_title' => __( 'Following options will be applied to the checkout page', 'woo-altcoin-payment-gateway' ),
+            ) );
+        }else{
+            echo $Checkout_Page_Settings;
+        }
+    }
+    
+    /**
+     * Generate product page options settings
+     * 
+     * @return type
+     */
+    public function load_product_page_option_settings(){
+        //check woocommerce is loaded
+        $this->isWoocommerceInstalled();
+        
+        $Product_PageOptions = $this->pages->ProductPageOptions();
+        if( is_object( $Product_PageOptions ) ) {
+            echo $Product_PageOptions->generate_product_options_settings( array(
+                'title' => __( 'Product Page Options', 'woo-altcoin-payment-gateway' ),
+                'sub_title' => __( 'Following options will be applied to the product\'s page', 'woo-altcoin-payment-gateway' ),
+            ) );
+        }else{
+            echo $Product_PageOptions;
+        }
     }
     
     /**
@@ -136,23 +205,47 @@ class RegisterCustomMenu {
         //check woocommerce is loaded
         $this->isWoocommerceInstalled();
         
-        return $this->pages->auto_order_confirmation_settings();
+        $Auto_Order_Settings = $this->pages->AutoOrderSettings();
+        if( is_object( $Auto_Order_Settings ) ) {
+            echo $Auto_Order_Settings->generate_settings( array(
+                'title' => __( 'Automatic Order Confirmation Settings', 'woo-altcoin-payment-gateway' ),
+                'sub_title' => __( 'Please complete your registration to use automatic order confirmation.', 'woo-altcoin-payment-gateway' ),
+            ) );
+        }else{
+            echo $Auto_Order_Settings;
+        }
     }
     
     /**
-     * Load about us page
+     * Load add new coin page
      * 
      * @return type
      */
-    public function load_add_new_product_page(){
-        return $this->pages->add_new_coin();
+    public function load_add_new_coin_page(){
+        $Add_New_Coin = $this->pages->AddNewCoin();
+        if( is_object( $Add_New_Coin ) ) {
+            echo $Add_New_Coin->add_new_coin( array(
+                'title' => __( 'Add New Coin', 'woo-altcoin-payment-gateway' ),
+                'sub_title' => __( 'Please fill up the following informaton correctly to add new coin to payment method.', 'woo-altcoin-payment-gateway' ),
+            ) );
+        }else{
+            echo $Add_New_Coin;
+        }
     }
     
     /**
      * load all products page
      */
-    public function load_all_product_page(){
-        return $this->pages->all_coins();
+    public function load_all_coins_list_page(){
+        $Coin_List = $this->pages->AllCoins();
+        if( is_object( $Coin_List ) ) {
+            echo $Coin_List->generate_coin_list( array(
+                'title' => __( 'All Coins', 'woo-altcoin-payment-gateway' ),
+                'sub_title' => __( 'Following coins has been added to the payment gateway\'s coin list.', 'woo-altcoin-payment-gateway' ),
+            ) );
+        }else{
+            echo $Coin_List;
+        }
     }
     
     /**

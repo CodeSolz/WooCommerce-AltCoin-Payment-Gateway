@@ -19,11 +19,6 @@ use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
 class CsWapgFunctions extends \WC_Payment_Gateway{
     
     /**
-     * Hold the loader icon url
-     */
-    public $loader_icon;
-    
-    /**
      * Hold Default option value
      *
      * @var type 
@@ -47,8 +42,6 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         
         //get icons
         $this->icon = $this->get_icon_url();
-        $this->loader_icon = $this->get_loader_url();
-        $this->autotracking_gif_url = $this->autotracking_gif_url();
 
         
         $this->has_fields = true;
@@ -155,31 +148,6 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         }
     }
     
-    /**
-     * Get Icon
-     * 
-     * @return type
-     */
-    public function get_loader_url(){
-        if( isset($this->defaultOptn['loader_gif_url']) && !empty($this->defaultOptn['loader_gif_url'])){
-            return trim($this->defaultOptn['loader_gif_url']);
-        }else{
-            return CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif';
-        }
-    }
-    
-    /**
-     * Get Icon
-     * 
-     * @return type
-     */
-    public function autotracking_gif_url(){
-        if( isset($this->defaultOptn['autotracking_gif_url']) && !empty($this->defaultOptn['autotracking_gif_url'])){
-            return trim($this->defaultOptn['autotracking_gif_url']);
-        }else{
-            return CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif';
-        }
-    }
     
     /**
      * Generate payment form

@@ -11,6 +11,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     exit;
 }
 
+use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
 
 class CsWapgScript {
     /**
@@ -22,7 +23,10 @@ class CsWapgScript {
     
     function __construct( $ref ){
         //get main ref
-        $this->Ref = $ref;
+//        $this->Ref = $ref;
+        $this->Ref = (object)CsPaymentGateway::get_wapg_options();
+        
+//        pre_print( $this->Ref );
         
         //load script on frontend footer
         add_action( 'wp_footer', array( $this, 'altCoinCustomScript') );
@@ -164,7 +168,7 @@ class CsWapgScript {
                         if( parseInt(val) === 0 ){
                             jQuery(".coin-detail").slideUp('slow').html('');
                         }else{
-                            jQuery(".coin-detail").html('<div class="loader"><img src="<?php echo $this->Ref->loader_icon; ?>" /></div>').slideDown('slow');
+                            jQuery(".coin-detail").html('<div class="loader"><img src="<?php echo $this->Ref->loader_gif_url; ?>" /></div>').slideDown('slow');
                             $orderSubmitBtn.attr('disabled', 'disabled');
                             
                             var form_data = {
@@ -285,16 +289,18 @@ class CsWapgScript {
                                 }
                                 $this.attr( 'value', 'Successful..' );
                                 module.enable_fields();
+                            }else if( typeof response.response !== 'undefined' ){
+                                jQuery(".loader-coin-track").show('slow').html( response.response );    
+                                $this.removeAttr( 'disabled' );
+                                clearInterval( heartbeat );
+                                module.enable_fields();
+                                $this.attr( 'value', 'Track My Coin Transfer' );
+                                console.log( 'exit5');
                             }
                             
                         })();
                         
                         
-                        
-                        
-//                        console.log( orderBtn.length );
-//                        
-
                     });
                     
                 });

@@ -163,6 +163,7 @@
 #product_binder .well{
     background: aliceblue;
     padding: 15px;
+    margin-bottom: 15px;
     /*font-style: italic;*/
 }
 #product_binder .well ul, #product_binder .well ul li{
@@ -364,3 +365,7 @@ ul.typeahead__list{
 #product_binder td{ vertical-align: middle;}
 #product_binder .success-text{ color: forestgreen; font-weight: bold; }
 #product_binder .warning-text{ color: red; font-weight: bold; }
+#product_binder .updated{ border:1px solid forestgreen; border-left: 4px solid forestgreen;box-shadow: none; background: aliceblue; }
+#product_binder .updated p{ color: forestgreen;font-weight: bold !important; }
+#product_binder .error{ border:1px solid red; border-left: 4px solid red;box-shadow: none;  }
+#product_binder .error p{ color: red;font-weight: bold !important; }

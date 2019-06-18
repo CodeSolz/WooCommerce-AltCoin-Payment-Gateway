@@ -65,11 +65,28 @@ class CsFormBuilder {
         
         //return html as string
         if ( false == $return_array ){
-            echo implode( '', $html_fields );
+            return implode( '', $html_fields );
         }
         
         //return array
         return $html_fields;
+    }
+    
+    /**
+     * Generate hidden fields
+     * 
+     * @param type $fields
+     * @return boolean | string
+     */
+    public function generate_hidden_fields( $fields ){
+        if( empty( $fields ) ) {
+            return false;
+        }
+        $hidden_fields = ''; $i = 1;
+        foreach( $fields as  $field_name => $field ){
+            $hidden_fields  .= $this->generate_text_field( $field_name, $field, $i );
+        }
+        return $hidden_fields;
     }
     
     /**
