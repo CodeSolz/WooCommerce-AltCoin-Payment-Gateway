@@ -27,10 +27,12 @@ class WooFunctions {
      */
     public function get_payment_info(){
         
-        if ( class_exists( 'WC_Payment_Gateway' ) ){
-            if( !isset( $this->WcPg_Instance ) ){
-                $this->WcPg_Instance = new \WC_Payment_Gateways();
-            }
+        if ( !class_exists( 'WC_Payment_Gateway' ) ){
+            return false;
+        }
+        
+        if( !isset( $this->WcPg_Instance ) ){
+            $this->WcPg_Instance = new \WC_Payment_Gateways();
         }
         
         $payment_gateways = $this->WcPg_Instance->get_available_payment_gateways();
@@ -43,6 +45,7 @@ class WooFunctions {
             $this->altcoin_instance = $payment_gateways['wapg_altcoin_payment'];
             return $this->altcoin_instance;
         }
+        
         return false;
     }
     

@@ -4,7 +4,7 @@
  * Plugin Name:       WooCommerce AltCoin Payment Gateway
  * Plugin URI:        https://coinmarketstats.online/product/woo-altcoin-payment-gateway
  * Description:       A very light weight Cryptocurrency payment gateway for WooCommerce Store 
- * Version:           1.2.5
+ * Version:           1.2.8
  * Author:            CodeSolz
  * Author URI:        https://www.codesolz.net
  * License:           GPLv3
@@ -39,14 +39,14 @@ if ( ! class_exists( 'Woocommerce_Altcoin_Payment_Gateway' ) ){
          * 
          * @var String 
          */
-        private static $version = '1.2.5';
+        private static $version = '1.2.8';
         
         /**
          * Hold version
          * 
          * @var String 
          */
-        private static $db_version = '1.0.2';
+        private static $db_version = '1.0.3';
 
         /**
          * Hold nameSpace
@@ -164,13 +164,19 @@ if ( ! class_exists( 'Woocommerce_Altcoin_Payment_Gateway' ) ){
          * @return \WooGateWayCoreLib\admin\settings\CsGateWaySettingsInit Gateway
          */
         public static function init_gateway(){
+            $CsWooPlMissing = self::$namespace . "\admin\\functions\\CsWapgNotice";
             if ( class_exists( 'WC_Payment_Gateway' ) ){
                 self::set_constant( 'IS_WOOCOMMERCE_INSTALLED', TRUE );
+                //check is upgraded or not
+                $CsAutoOrder = self::$namespace . "\\admin\\functions\\CsAutomaticOrderConfirmationSettings";
+                $isAutoOrder = $CsAutoOrder::get_order_confirm_settings_data();
+                if(empty($isAutoOrder)){
+                    new $CsWooPlMissing( 2 );
+                }
                 $CsGatewayInit = self::$namespace . "\admin\settings\CsGateWaySettings";
                 return new $CsGatewayInit();
             }else{
                 self::set_constant( 'IS_WOOCOMMERCE_INSTALLED', FALSE );
-                $CsWooPlMissing = self::$namespace . "\admin\\functions\\CsWapgNotice";
                 new $CsWooPlMissing( 1 );
             }
         }

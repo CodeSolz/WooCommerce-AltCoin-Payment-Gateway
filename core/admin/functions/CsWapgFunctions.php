@@ -70,13 +70,14 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
      * @return boolean
      */
     public function process_payment( $order_id ) {
+        
         $order = wc_get_order( $order_id );
         $payment_confirm = isset($_POST['payment_confirm']) ? $this->validate_text_field( false, $_POST['payment_confirm']) : '';
         $payment_info = $this->validate_text_field( false, $_POST['payment_info'] );
         $reference_trxid = $this->validate_text_field( false, $_POST['trxid']);
         
         //get checkout type
-        $checkout_type = cartFunctions::get_temp_log_checkout_type();
+        $checkout_type = cartFunctions::get_temp_log_checkout_type( $order_id );
         
         if( empty($payment_info)){
             wc_add_notice( __( 'Sorry! Something went wrong. Please refresh this page and try again.', 'woo-altcoin-payment-gateway'), 'error' );
@@ -108,8 +109,8 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         
         if( !empty($checkout_type) && $checkout_type == 2 ){
             //remove temp info
-            cartFunctions::delete_temp_log_checkout_type();
-            cartFunctions::delete_transaction_successful_log();
+            cartFunctions::delete_temp_log_checkout_type( $order_id );
+            cartFunctions::delete_transaction_successful_log( $order_id );
             
             $auto_setting_config = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
             $status = isset($auto_setting_config['order_status']) && !empty($auto_setting_config['order_status']) ? $auto_setting_config['order_status'] : 'completed';

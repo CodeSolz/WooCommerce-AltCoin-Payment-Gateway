@@ -319,10 +319,10 @@ class CsFormBuilder {
         
         $input_item = $this->generate_attribute($field_name, $field, $field_id);
         $input = "<select  {$input_item} >";
-        $input .= '<option value="">==================== '.$field['placeholder'].' ====================</option>';
+        $input .= '<option value="" disabled>==================== '.$field['placeholder'].' ====================</option>';
         foreach( $field['options'] as $key => $val ){
             $selected = '';
-            if( $key == $value ){
+            if( (is_array( $value ) && in_array( $key, $value ) ) || $key == $value ){
                 $selected = 'selected="selected"';
             }
             $input .= '<option value ="'.$key.'" '.$selected.' >'.$val.'</option>';
@@ -433,6 +433,16 @@ class CsFormBuilder {
      */
     private function attr_id( $field_id ){
         return ' id = "cs_field_'.$field_id.'" ';
+    }
+    
+    /**
+     * attr multiple
+     * 
+     * @param type $field_id
+     * @return string
+     */
+    private function attr_multiple( $field_id ){
+        return ' multiple = "'.$field_id.'" ';
     }
 
     /**

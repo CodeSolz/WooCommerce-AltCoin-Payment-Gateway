@@ -31,6 +31,7 @@ class Activate{
             `id` int(11) NOT NULL auto_increment,
             `name` varchar(56),
             `coin_web_id` varchar(56),
+            `symbol` varchar(20),
             `checkout_type` char(1),
             `status` char(1),
             PRIMARY KEY ( `id`)
@@ -72,40 +73,6 @@ class Activate{
         //add db version to db
         add_option( 'wapg_db_version', CS_WAPG_DB_VERSION );
         
-        //retrive old settings
-        $old_settings = get_site_option( 'cs_altcoin_fields' );
-        if( !empty($old_settings )) {
-            
-            foreach( json_decode( $old_settings) as $item ){
-                $get_name = CsAdminQuery::get_coin_name_id( $item->id );            
-                if( empty( $get_name ) ){
-                    continue;
-                }
-                
-                //install data on new tbl
-                $check_coin_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coins']} where coin_web_id = %s ", $item->id ) );
-                if( ! $check_coin_exists ) {
-                    $get_coin_info = array(
-                        'name' => $get_name,
-                        'coin_web_id' => $item->id,
-                        'checkout_type' => 1,
-                        'status' => 1
-                    );
-                    $wpdb->insert( "{$wapg_tables['coins']}", $get_coin_info );
-                    $coin_id = $wpdb->insert_id;
-                    
-                    $get_address_info = array(
-                        'coin_id' => $coin_id,
-                        'address' => $item->address,
-                        'lock_status' => 0
-                    );
-                    $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
-                }
-            }
-            
-            delete_option( 'cs_altcoin_fields' );
-        }
-        
     }
     
     /**
@@ -119,18 +86,33 @@ class Activate{
         if( empty( $get_installed_db_version ) ){
             self::on_activate();
         }elseif( $get_installed_db_version != $wapg_current_db_version){
+            
+            $update_sqls = [];
+            
+            $import_coin_symbol = false;
+            if( \version_compare( $get_installed_db_version, '1.0.2', '<=' ) ){
+                $update_sqls = array(
+                    "ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN symbol varchar(20) AFTER coin_web_id"        
+                );
+                $import_coin_symbol = true;
+            }
+            
+            if( \version_compare( $get_installed_db_version, '1.0.1', '<=' ) ){
+                $update_sqls = $update_sqls + array(
+                    "ALTER TABLE `{$wapg_tables['addresses']}` CHANGE address address varchar(1024)",
+                    "CREATE TABLE IF NOT EXISTS `{$wapg_tables['coin_trxids']}`(
+                    `id` bigint(20) NOT NULL auto_increment,
+                    `cart_hash` varchar(128),
+                    `transaction_id` varchar(1024),
+                    `secret_word` varchar(1024),
+                    `used_in` datetime,  
+                     PRIMARY KEY ( `id`)
+                    ) $charset_collate"
+                );
+            }
+            
+                
             //update db
-            $update_sqls = array(
-                "ALTER TABLE `{$wapg_tables['addresses']}` CHANGE address address varchar(1024)",
-                "CREATE TABLE IF NOT EXISTS `{$wapg_tables['coin_trxids']}`(
-                `id` bigint(20) NOT NULL auto_increment,
-                `cart_hash` varchar(128),
-                `transaction_id` varchar(1024),
-                `secret_word` varchar(1024),
-                `used_in` datetime,  
-                 PRIMARY KEY ( `id`)
-                ) $charset_collate"        
-            );
             foreach ( $update_sqls as $sql ) {
                 if ( $wpdb->query( $sql ) === false ){
                     continue;
@@ -140,9 +122,42 @@ class Activate{
             //add db version to db
             update_option( 'wapg_db_version', CS_WAPG_DB_VERSION );
             
+            if( true === $import_coin_symbol ){
+                self::import_coin_symbol();
+            }
+            
         }
     }
 
+    /**
+     * import coin symbol
+     * 
+     * @return boolean
+     */
+    public static function import_coin_symbol(){
+        global $wapg_current_db_version, $wpdb, $wapg_tables;
+        
+        $CsAdminQuery = new CsAdminQuery();
+        
+        $get_coins = $wpdb->get_results( " select * from `{$wapg_tables['coins']}` " );
+        if($get_coins){
+            foreach( $get_coins as $coin){
+                
+                $currencies = $CsAdminQuery->get_all_coins_list(array(
+                    'ticker' => $coin->coin_web_id
+                ));
+                
+                if( true === $currencies['success'] ){
+                    foreach( $currencies['data'] as $cur ){
+                        if( $cur->slug == $coin->coin_web_id ){
+                            $wpdb->update( $wapg_tables['coins'], array( 'symbol' => $cur->symbol ), array( 'coin_web_id' => $coin->coin_web_id ) );
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     /**
      * Import old settings

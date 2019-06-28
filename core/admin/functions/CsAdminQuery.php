@@ -17,6 +17,7 @@ use WooGateWayCoreLib\admin\functions\CsAutomaticOrderConfirmationSettings;
 class CsAdminQuery {
     
     private $auto_order_coins_list_url = 'https://myportal.coinmarketstats.online/api/auto-tracking-coin-list';
+    private $all_listed_coins_url = 'https://myportal.coinmarketstats.online/api/all-listed-coins';
     private $coin_name_arr;
 
     /**
@@ -57,7 +58,8 @@ class CsAdminQuery {
         
         $get_coin_info = array(
             'name' => sanitize_text_field( $coin_info['coin_name'] ),
-            'coin_web_id' => $coin_web_id,
+            'symbol' => $coin_web_id->symbol,
+            'coin_web_id' => $coin_web_id->slug,
             'checkout_type' => $coin_info['checkout_type'],
             'status' => isset( $coin_info['coin_status'] ) ? 1 : 0
         );
@@ -234,7 +236,6 @@ class CsAdminQuery {
             $where = ' where '. $args['where'];
         }
         
-        
         $result = $wpdb->get_results( "SELECT *,c.id as cid, a.id as aid, o.id as oid, GROUP_CONCAT(address SEPARATOR ', ')  as address from  {$wapg_tables['coins']} as c "
                 . " left join {$wapg_tables['addresses']} as a on c.id = a.coin_id "
                 . " left join {$wapg_tables['offers']} as o on c.id = o.coin_id "
@@ -263,40 +264,20 @@ class CsAdminQuery {
      * get coin id
      */
     public function get_coin_id( $coin_name, $checkout_type ){
-        $coin_id = '';
-        if( $checkout_type == 2 ){
-            $response = $this->get_auto_order_coins_list();
-            if( !isset( $response['success']) && in_array( $coin_name, $response ) ){
-                $coin_id = $coin_name;
-            }
-        }elseif( $checkout_type == 1 ){
-            $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
-            $currencies = json_decode($currencies);
-            foreach( $currencies as $cur ){
-                if( $cur->name == $coin_name ){
-                    $coin_id = $cur->id;
-                    break;
-                }
+        $currencies = $this->get_all_coins_list(array(
+            'ticker' => $coin_name
+        ));
+        
+        if( isset($currencies['success']) && $currencies['success'] == true && $currencies['data'][0]->name == $coin_name ){
+            if( $checkout_type == 2 && $currencies['data'][0]->is_automatic_order_paid == 1){
+                return $currencies['data'][0];
+            }elseif( $checkout_type == 1 ){
+                return $currencies['data'][0];
             }
         }
-        return $coin_id;
-    }
-    
-    /**
-     * get coin name by id
-     */
-    public static function get_coin_name_id( $coin_id ){
-        $currencies = file_get_contents( CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH );
-        $currencies = json_decode( $currencies );
-        $coin_name = '';
-        foreach( $currencies as $cur ){
-            if( $cur->id == $coin_id ){
-                $coin_name = $cur->name;
-                break;
-            }
-        }
-        return $coin_name;
-    }
+        
+        return false;
+    } 
     
     /**
      * Get coin name - dropdown typehead
@@ -306,14 +287,28 @@ class CsAdminQuery {
     public function get_coin_name( $user_input ){
         $oc_type = $user_input['oc_type'];
         if( $oc_type == 1 ){
-            $currencies = file_get_contents(CS_WAPG_PLUGIN_ASSET_URI . 'js/currencies.json', FILE_USE_INCLUDE_PATH);
-            $currencies = json_decode($currencies);
-            
-            $ret = array();
-            foreach( $currencies as $cur ){
-                $ret[] = $cur->name;
+            $query = $user_input['query'];
+            if( empty($query)){
+                return wp_send_json(array(
+                    'success' => false,
+                    'response' => 'Please enter coin name.'
+                ));
             }
-            return wp_send_json($ret);
+            $currencies = $this->get_all_coins_list(array(
+                'ticker' => $query
+            ));
+            
+            if( true === $currencies['success'] ){
+                $ret = array();
+                foreach( $currencies['data'] as $cur ){
+                    $ret[] = $cur->name;
+                }
+                return wp_send_json($ret);
+            }
+            return wp_send_json(array(
+                'success' => false,
+                'response' => 'Nothing found!'
+            ));
         
         }elseif( $oc_type == 2 ){
             return wp_send_json( $this->get_auto_order_coins_list() );
@@ -343,20 +338,56 @@ class CsAdminQuery {
         );
 
         if( isset($api_status['error'])){
-            return wp_send_json(array(
+            return array(
                 'success' => false,
                 'response' => $api_status['response']
-            ));
+            );
         }else{
             $api_status = json_decode( $api_status);
             if( isset( $api_status->success ) && $api_status->success == true ){
                 return $api_status->coin_list;
             }else{
-                return wp_send_json(array(
+                return array(
                     'success' => false,
                     'response' => $api_status->message
-                ));
+                );
             }
         }
     }
+    
+    /**
+     * Get list of all coins  
+     * 
+     * @return array
+     */
+    public function get_all_coins_list( $slug = [] ){
+        
+        $request_params = empty($slug) ? '' : '?'. http_build_query( $slug );
+        
+        $api_status = Util::remote_call(
+            $this->all_listed_coins_url . $request_params
+        );
+
+        if( isset($api_status['error'])){
+            return array(
+                'success' => false,
+                'response' => $api_status['response']
+            );
+        }else{
+            $api_status = json_decode( $api_status);
+            if( isset( $api_status->status ) && $api_status->status == 200 ){
+                return array(
+                    'success' => true,
+                    'data' => $api_status->data
+                );
+            }else{
+                return array(
+                    'success' => false,
+                    'response' => $api_status->response
+                );
+            }
+        }
+    }
+    
+    
 }

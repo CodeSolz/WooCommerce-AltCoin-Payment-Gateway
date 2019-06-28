@@ -33,6 +33,11 @@ class Scripts_Settings {
             wp_enqueue_script ( 'jquery-date-time-picker', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-date-time-picker/jquery.datetimepicker.full.min.js', false ); 
         }
         
+        if( $page_id == $altcoin_menu['product_page_options_settings'] ){
+            wp_enqueue_style ( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/css/select2.min.css', false ); 
+            wp_enqueue_script ( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/js/select2.min.js', false ); 
+        }
+        
         wp_enqueue_media();
         wp_enqueue_script ( 'media-uploader', CS_WAPG_PLUGIN_ASSET_URI . 'js/wp_media_uploader.js', false ); 
         wp_enqueue_style  ( 'wapg', CS_WAPG_PLUGIN_ASSET_URI . 'css/style.css', false ); 

@@ -34,24 +34,21 @@ class CsFormHelperLib {
     }
     
     /**
-     * Get checkout order status type
-     * 
-     * @param type $user_input
+     * Get all active coin list
      */
-    public function get_order_confirm_type_status( $user_input ){
-        $type_id = Util::check_evil_script( $user_input['type_id'] );
-        if( $type_id == 2 ){
-            if( defined( 'CS_WAPGE_VERSION' ) ){
-                wp_send_json(array(
-                    'status' => true
-                    ));
-            }else{
-                wp_send_json(array(
-                    'status' => false,
-                    'text' => __(' Extesion Required! Please visit <a href=""> To Buy</a> the extension. Contact us at <b>support@codesolz.net</b> for more information.', 'woo-altcoin-payment-gateway')
-                ));
+    public static function get_all_active_coins(){
+        global $wapg_current_db_version, $wpdb, $wapg_tables;
+        $coins = $wpdb->get_results( " select * from `{$wapg_tables['coins']}` where status = 1" );
+        if( $coins ){
+            $ret = [];
+            foreach( $coins as $coin ){
+                $ret += array(
+                    $coin->coin_web_id . '___' . $coin->symbol => $coin->name .'('. $coin->symbol . ')' 
+                ); 
             }
+            return $ret;
         }
+        return array( '0' => 'Please at first add coin from "Add New Coin" Menu' );
     }
     
 }

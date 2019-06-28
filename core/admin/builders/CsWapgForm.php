@@ -51,6 +51,8 @@ class CsWapgForm {
      * @param type $refObj
      */
     public static function customForm( $refObj ){
+        global $wp;
+        
         if ( $description = $refObj->get_description() ) {
             echo wpautop( wptexturize( $description ) );
         }
@@ -65,8 +67,11 @@ class CsWapgForm {
         );
         
         $fields = wp_parse_args( $fields, apply_filters( 'woocommerce_altcoin_form_fields', $default_fields, $refObj->id ) );
+        
+        $premade_order_id = isset($wp->query_vars['order-pay']) ? $wp->query_vars['order-pay'] : 0;
         ?>
         <fieldset id="wc-<?php echo esc_attr( $refObj->id ); ?>-cc-form" class='wc-altcoin-form wc-payment-form'>
+                <input type="hidden" name="is_premade_order" id="is_premade_order" value="<?php echo $premade_order_id; ?>" />
                 <?php do_action( 'woocommerce_altcoin_form_start', $refObj->id ); ?>
                 <?php
                         foreach ( $fields as $field ) {
@@ -93,7 +98,7 @@ class CsWapgForm {
     }
     
     /**
-     * Get Active altCoins
+     * Active altCoins List - checkout page
      * 
      * @param type $refObj
      * @return type
@@ -108,7 +113,7 @@ class CsWapgForm {
         $lebel = isset( $refObj->select_box_option_lebel ) && !empty($refObj->select_box_option_lebel) ? $refObj->select_box_option_lebel : __( 'Please Select An AltCoin', 'woo-altcoin-payment-gateway' );
         $altCoin .= '<option value="0">'.$lebel.'</option>';
         foreach( $custom_fields as $field){
-            $altCoin .= '<option value="'.$field->cid.'">'.$field->name.'</option>';
+            $altCoin .= '<option value="'.$field->cid.'">' . $field->name . '(' . $field->symbol .')</option>';
         }
         return $altCoin .='</select>';
     }

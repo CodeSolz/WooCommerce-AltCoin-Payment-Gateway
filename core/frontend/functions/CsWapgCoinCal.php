@@ -37,7 +37,8 @@ class CsWapgCoinCal {
      */
     public function calcualteCoinPrice(){
         global $woocommerce;
-       
+        
+        
         $coin_id = sanitize_text_field($_POST['data']['coin_id']);
         
         if( empty($coin_id) ){
@@ -49,13 +50,29 @@ class CsWapgCoinCal {
                 wp_send_json(array('response' => false, 'msg' => __( 'Something Went Wrong! Please try again.', 'woo-altcoin-payment-gateway' ) ) );
             }
             
+            $is_premade_order_id = isset($_POST['data']['pre_order_id']) ? sanitize_text_field($_POST['data']['pre_order_id']) : 0;
+            
             $coinFullName = $coin->name . '( ' . $coin->coin_web_id . ' )';
             $coinId  = $coin->coin_web_id;
-            $coinAddress = $this->get_coin_address( $coin );
+            $coinAddress = $this->get_coin_address( $coin, $is_premade_order_id );
             $coinName = $coin->coin_web_id;
-            $cartTotal = $woocommerce->cart->total;
-            $store_currency = get_woocommerce_currency();
-            $currency_symbol = get_woocommerce_currency_symbol();
+        
+            $cartOriginalTotal = 0;
+            if( $is_premade_order_id > 0 ) {
+                $pre_order = wc_get_order( $is_premade_order_id );
+                if( isset($order['total']) && $order['total'] == 0 ){
+                    wp_send_json(array('response' => false, 'msg' => __( 'Something Went Wrong! Please refresh the page and try again.', 'woo-altcoin-payment-gateway' ) ) );
+                }
+                $order_data = $pre_order->get_data();
+                $cartOriginalTotal = $order_data['total'];
+                $store_currency = $order_data['currency'];
+            }else{
+                $cartOriginalTotal = $woocommerce->cart->total;
+                $store_currency = get_woocommerce_currency();
+            }
+            
+            $cartTotal = $cartOriginalTotal;
+            $currency_symbol = get_woocommerce_currency_symbol( $store_currency );
             
             //apply special discount if active
             $special_discount = false;
@@ -88,18 +105,18 @@ class CsWapgCoinCal {
             $totalCoin = $this->get_total_coin_amount( $coin_price, $cartTotal );
             
             //return status
-            $cart_info =  array( 'response' => true, 'cartTotal' => $woocommerce->cart->total, 'cartTotalAfterDiscount' => $cartTotalAfterDiscount, 
+            $cart_info =  array( 'response' => true, 'cartTotal' => $cartOriginalTotal, 'cartTotalAfterDiscount' => $cartTotalAfterDiscount, 
                 'currency_symbol' => $currency_symbol, 'totalCoin' => $totalCoin,
                 'coinPrice' => $coin_price, 'coinFullName' => $coinFullName,
                 'coinName' => $coinName, 'coinAddress' => $coinAddress, 'checkoutType' => $coin->checkout_type,
                 'special_discount_status' => $special_discount, 'special_discount_msg' => $special_discount_msg, 
                 'special_discount_amount' => $special_discount_amount,
                 'nativeAltCoinPrice' => round($altcoinPriceOfStoreCurrency, 2), 'store_currency_fullname' => $this->get_full_name_of_store_currency( $store_currency ),
-                'store_currency_shortname' => $store_currency
+                'store_currency_shortname' => $store_currency, 'premadeOrderId' => $is_premade_order_id
             );
             
             //save cart info
-            cartFunctions::save_current_cart_payment_info( $cart_info );
+            cartFunctions::save_current_cart_payment_info( $cart_info, $is_premade_order_id );
             wp_send_json( $cart_info );
         }
     }
@@ -146,7 +163,7 @@ class CsWapgCoinCal {
     /**
      * Get converted store currency to usd
      */
-    private function store_currency_to_usd( $store_currency, $cart_total ){
+    public function store_currency_to_usd( $store_currency, $cart_total ){
         $key = strtolower($store_currency);
         $api_url = sprintf( $this->currency_converter_api_url , $key );
         $response = Util::remote_call( $api_url );
@@ -238,10 +255,10 @@ class CsWapgCoinCal {
     /**
      * Get coin address
      */
-    private function get_coin_address( $coin ){
+    private function get_coin_address( $coin, $is_premade_order_id ){
         if( $coin->checkout_type == 2 ){
             
-            $cart_info = cartFunctions::get_current_cart_payment_info();
+            $cart_info = cartFunctions::get_current_cart_payment_info( $is_premade_order_id );
             if( empty($cart_info)){
                 $coin_add_arr = explode( ',', $coin->address );
                 return $coin_add_arr[ array_rand( $coin_add_arr ) ];
@@ -253,5 +270,36 @@ class CsWapgCoinCal {
         }
     }
     
+    /**
+     * Get coin price
+     * 
+     * @since 1.2.8
+     * @return array
+     */
+    public function getCryptoLivePrices( $coins, $product_price ){
+        if( empty( $coins ) ) return false;
+        $coin_prices = [];
+        $store_currency = get_woocommerce_currency();
+        foreach( $coins as $coin ){
+            $coin_arr = explode('___', $coin );
+            $coin_price = $this->get_coin_martket_price( $coin_arr[0] );
+            
+            if( $store_currency != 'USD' ){
+                $usd_conversion = $this->store_currency_to_usd( $store_currency, $product_price );
+                if( isset( $usd_conversion['error' ] ) ){
+                    continue;
+                }
+                $product_price = $usd_conversion[0];
+                $altcoinPriceOfStoreCurrency = $this->convert_altcoin_price_to_store_currency( $usd_conversion[1], $coin_price);
+            }
+            //calculate the coin
+            $totalCoin = $this->get_total_coin_amount( $coin_price, $product_price );
+            
+            $coin_price_html = "<span style='white-space:nowrap'> {$totalCoin} ".$coin_arr[1]." </span>";
+            
+            $coin_prices += array( $coin_arr[0] => array( 'price' => $totalCoin, 'html' => $coin_price_html ) );
+        }
+        return $coin_prices;
+    }
     
 }

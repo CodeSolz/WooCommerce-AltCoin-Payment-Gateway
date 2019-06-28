@@ -6,7 +6,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.2.5
+Stable tag: 1.2.8
 Requires PHP: 6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -27,7 +27,7 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 </blockquote>
 
 <blockquote>
-= Automatic order confirmation has been released!! =
+= Automatic order confirmation / Pro version =
 Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order confirmation</a>.
 </blockquote>
 
@@ -35,6 +35,9 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 == Key Features ==
 
 <blockquote>
+= No transaction / mining or any kind of fees =
+= No KYC / Bank verification required =
+= Self hosted =
 = Don't have middlemen = 
 <ul>
     <li>Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.</li>
@@ -78,7 +81,7 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 
 = Number of Crypto Currencies - free version = 
 <ul>
-    <li> Currently You can accept 2000+ crypto currencies ( manual order confirmation - free version ) </li>
+    <li> Currently You can accept 2200+ crypto currencies ( manual order confirmation - free version ) </li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
 </ul>
 
@@ -146,17 +149,35 @@ English, Spanish, Russian, German, French, Dutch
 
 == Screenshots ==
 
-1. Back-End - Settings
-2. Back-End - add / update coin
-3. Back-End - All Coins List
-4. Back-End - order list
-5. Front-end - Special Discount Show on Product Page
-6. Front-end - Special Discount on checkout page
-7. Front-end - Checkout Page
-8. Front-end - Checkout Page - Coin Address Area
-9. Front-end - after checkout - thank you page
+1. Back-End - Default Settings
+2. Back-End - Automatic order confirmation settings
+3. Back-End - Product page settings
+4. Back-End - Checkout page settings
+5. Back-End - Add / Update new coin
+6. Back-End - All Coin List
+7. Front-end 
+8. Front-end  
+9. Front-end  
+10. Front-end  
+11. Front-end  
+12. Front-end  
+13. Front-end  
+14. Back-end - Order details
 
 == Changelog ==
+
+= 1.2.8 =
+* Coin Live Price added beside product price
+* Coin short name added. e.g: BTC
+
+
+= 1.2.7 =
+* Class error fixed - (pascal case error)
+
+= 1.2.6 =
+* New Cryptocurrencies added
+* Fixed issues of manually created order from admin panel 
+* Add new coin issue fixed
 
 = 1.2.5 =
 * upgrading issue fixed

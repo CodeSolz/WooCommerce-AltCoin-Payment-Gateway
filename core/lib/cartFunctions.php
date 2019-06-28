@@ -62,8 +62,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return string
      */
-    public static function get_current_cart_payment_info(){
-        return get_option( self::get_cart_id() .'_cart' );
+    public static function get_current_cart_payment_info( $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        return get_option( $optn_key .'_cart' );
     }
     
     /**
@@ -72,8 +76,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return string
      */
-    public static function save_current_cart_payment_info( $cart_info ){
-        update_option( self::get_cart_id() . '_cart', $cart_info );
+    public static function save_current_cart_payment_info( $cart_info, $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        update_option( $optn_key . '_cart', $cart_info );
     }
     
     /**
@@ -82,8 +90,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return string
      */
-    public static function save_transaction_successful_log(){
-        update_option( self::get_cart_id() .'_log', 'success' );
+    public static function save_transaction_successful_log( $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        update_option( $optn_key .'_log', 'success' );
     }
     
     /**
@@ -92,8 +104,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return string
      */
-    public static function get_transaction_successful_log(){
-        return get_option( self::get_cart_id() .'_log' );
+    public static function get_transaction_successful_log( $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        return get_option( $optn_key .'_log' );
     }
     
     /**
@@ -102,8 +118,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return string
      */
-    public static function delete_transaction_successful_log(){
-        return delete_option( self::get_cart_id() .'_log' );
+    public static function delete_transaction_successful_log( $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        return delete_option( $optn_key .'_log' );
     }
     
     /**
@@ -112,7 +132,7 @@ class cartFunctions {
      * @since 1.2.3
      * @return string
      */
-    public static function temp_update_trx_info( $trxid, $secret_word ){
+    public static function temp_update_trx_info( $trxid, $secret_word, $order_id = 0 ){
         global $wpdb, $wapg_tables;
         $check_trxid_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coin_trxids']} where transaction_id = '%s' ", $trxid ) );
         if( $check_trxid_exists ){
@@ -122,8 +142,14 @@ class cartFunctions {
             }
             return false;
         }else{
+            
+            $optn_key = '';
+            if(empty( $optn_key = self::get_cart_id())){
+                $optn_key = $order_id;
+            }
+            
             $wpdb->insert( $wapg_tables['coin_trxids'], array(
-                'cart_hash' =>self::get_cart_id(),
+                'cart_hash' => $optn_key,
                 'transaction_id' => $trxid,
                 'secret_word' => $secret_word,
                 'used_in' => Util::get_formated_datetime()
@@ -139,7 +165,7 @@ class cartFunctions {
      * @since 1.2.3
      * @return bolean
      */
-    public static function temp_remove_trx_info( $trxid ){
+    public static function temp_remove_trx_info( $trxid, $order_id = 0 ){
         global $wpdb, $wapg_tables;
         $wpdb->delete( $wapg_tables['coin_trxids'], array( 'transaction_id' => $trxid ));
         return true;
@@ -151,8 +177,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return bolean
      */
-    public static function save_temp_log_checkout_type( $type ){
-        update_option( self::get_cart_id() .'_ct', $type );
+    public static function save_temp_log_checkout_type( $type, $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        update_option( $optn_key .'_ct', $type );
         return true;
     }
     
@@ -162,8 +192,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return bolean
      */
-    public static function get_temp_log_checkout_type(){
-        return get_option( self::get_cart_id() .'_ct' );
+    public static function get_temp_log_checkout_type( $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        return get_option( $optn_key .'_ct' );
     }
     
     /**
@@ -172,8 +206,12 @@ class cartFunctions {
      * @since 1.2.3
      * @return bolean
      */
-    public static function delete_temp_log_checkout_type(){
-        delete_option( self::get_cart_id() .'_ct' );
+    public static function delete_temp_log_checkout_type( $order_id = 0 ){
+        $optn_key = '';
+        if(empty( $optn_key = self::get_cart_id())){
+            $optn_key = $order_id;
+        }
+        delete_option( $optn_key .'_ct' );
         return true;
     }
 }

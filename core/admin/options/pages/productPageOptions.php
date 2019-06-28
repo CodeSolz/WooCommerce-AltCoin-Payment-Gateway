@@ -15,6 +15,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
 use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
+use WooGateWayCoreLib\admin\builders\CsFormHelperLib;
 
 
 class ProductPageOptions {
@@ -53,8 +54,9 @@ class ProductPageOptions {
         
         $settings = CsPaymentGateway::get_product_page_options();
         
+        
         $fields = array(
-            'st3' => array(
+            'st1' => array(
                 'type' => 'section_title',
                 'title'         => __( 'Offer Message Text', 'woo-altcoin-payment-gateway' ),
                 'desc_tip'         => __( 'Please use the following options to change offer notification shown in the single product page', 'woo-altcoin-payment-gateway' ),
@@ -77,6 +79,28 @@ class ProductPageOptions {
                 'placeholder'      => __( 'Enter offer message text', 'woo-altcoin-payment-gateway' ),
                 'desc_tip'         => __( 'Enter offer notification text, this text will diplay top of the add to cart button in single product page', 'woo-altcoin-payment-gateway' ),
             ),
+            'st2' => array(
+                'type' => 'section_title',
+                'title'            => __( 'Show Live Coin Price', 'woo-altcoin-payment-gateway' ),
+                'desc_tip'         => __( 'Following options will enable you to show live coins price beside your product price', 'woo-altcoin-payment-gateway' ),
+            ),
+            'cs_altcoin_config[show_live_price]'    => array(
+                'title'                     => __( 'Enable / Disable', 'woo-altcoin-payment-gateway' ),
+                'type'                      => 'checkbox',
+                'value'                     => 'yes',
+                'has_value'                 => CsFormBuilder::get_value( 'show_live_price', $settings, ''),
+                'desc_tip'                  => __( 'Enable this option to show live coin price beside product price', 'woo-altcoin-payment-gateway' ),
+            ),
+            'cs_altcoin_config[show_live_coin_list][]'     => array(
+                'title'                     => __( 'Select Coin', 'woo-altcoin-payment-gateway' ),
+                'type'                      => 'select',
+                'class'                     => "form-control live_price_coins",
+                'multiple'                  => true,
+                'placeholder'               => __( 'Please select coin', 'woo-altcoin-payment-gateway' ),
+                'options'                   => CsFormHelperLib::get_all_active_coins(),
+                'value'                     => CsFormBuilder::get_value( 'show_live_coin_list', $settings, ''),
+                'desc_tip'                  => __( 'Select / Enter coin name to show for live price. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
+            )
         );
         
         $args['content'] = $this->Form_Generator->generate_html_fields( $fields );
@@ -110,6 +134,11 @@ class ProductPageOptions {
         ?>
             <script>
                 $.wpMediaUploader( { buttonClass : '.button-secondary' } );
+                
+                jQuery(document).ready(function($) {
+                    $('.live_price_coins').select2();
+                });
+                
             </script>
         <?php
     }

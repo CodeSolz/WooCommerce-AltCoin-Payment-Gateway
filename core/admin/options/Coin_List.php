@@ -69,7 +69,7 @@ class Coin_List extends \WP_List_Table {
     }
     
     public function column_name( $item ) {
-        echo $item->name;
+        echo $item->name . '(' . $item->symbol . ')';
         $edit_link = admin_url( "admin.php?page=cs-woo-altcoin-add-new-coin&action=update&coin_id={$item->cid}"); 
         echo '<div class="row-actions"><span class="edit">';
         echo '<a href="'.$edit_link.'">Edit</a>';

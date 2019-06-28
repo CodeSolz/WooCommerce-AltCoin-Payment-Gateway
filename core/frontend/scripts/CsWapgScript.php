@@ -23,10 +23,7 @@ class CsWapgScript {
     
     function __construct( $ref ){
         //get main ref
-//        $this->Ref = $ref;
         $this->Ref = (object)CsPaymentGateway::get_wapg_options();
-        
-//        pre_print( $this->Ref );
         
         //load script on frontend footer
         add_action( 'wp_footer', array( $this, 'altCoinCustomScript') );
@@ -39,7 +36,6 @@ class CsWapgScript {
      */
     public function altCoinCustomScript(){
         global $woocommerce;
-        
         ?>
             <script type="text/javascript">
                 var module = {
@@ -143,6 +139,7 @@ class CsWapgScript {
                         '<label for="user-alt-coinAddress"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+res.coinName+'<?php _e( ' transaction id:', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
                         '<input id="user_alt_coinAddress" name="trxid" class="input-text wc-altcoin-form-user-alt-res.coinAddress" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e('please enter here your coin transaction id', 'woo-altcoin-payment-gateway');?>" />'+
                         '<input type="hidden" name="payment_info" value="'+res.cartTotal+'__'+res.totalCoin+'__'+res.coinName+'__'+res.coinAddress+'__'+res.coinPrice+'" />'+
+                        '<input type="hidden" name="premade_order_id" value="'+res.premadeOrderId+'" />'+
                         sdf+
                     '</p>' + ctc;
                     },
@@ -163,6 +160,11 @@ class CsWapgScript {
                 
                 jQuery(document).ready(function(){
                     var $orderSubmitBtn = jQuery("#place_order");
+                    
+                    jQuery("body").on('change', 'input[name="payment_method"]', function(){
+                        $orderSubmitBtn.show('slow');
+                    });
+                    
                     jQuery('body').on( "change", '.select',function(){
                         var val = jQuery(this).val();
                         if( parseInt(val) === 0 ){
@@ -177,7 +179,8 @@ class CsWapgScript {
                                 data   : {
                                     method : 'frontend\\functions\\CsWapgCoinCal@calcualteCoinPrice',
                                     coin_id : val,
-                                    coin_name : jQuery(this).find("option:selected").text()
+                                    coin_name : jQuery(this).find("option:selected").text(),
+                                    pre_order_id: jQuery("#is_premade_order").val()
                                 }
                             };
                             
