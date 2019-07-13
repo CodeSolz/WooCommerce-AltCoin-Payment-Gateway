@@ -214,7 +214,7 @@ class Options_Pages {
                 <div class="panel">
                     <div class="panel-heading">
                         <h3 class="title"><?php _e('Automatic Order Confirmation Settings', 'woo-altcoin-payment-gateway'); ?></h3>
-                        <p><?php _e('Please complete your registration for automatic order confirmation and setup the following configuration', 'woo-altcoin-payment-gateway'); ?></p>
+                        <p><?php _e('Please complete your registration to use automatic order confirmation.', 'woo-altcoin-payment-gateway'); ?></p>
                     </div>
                     <form method="post">
                         <div class="panel-body bg-white no-bottom-margin">
@@ -515,7 +515,7 @@ class Options_Pages {
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="title"><?php _e('All Coins', 'woo-altcoin-payment-gateway'); ?></h3>
-                            <p><?php _e('All added coin to the payment gateway', 'woo-altcoin-payment-gateway'); ?></p>
+                            <p><?php _e('Following coins has been added to the payment gateway\'s coin list.', 'woo-altcoin-payment-gateway'); ?></p>
                         </div>
                         <div class="panel-body bg-white ">
                             <div class="container">

@@ -1,13 +1,16 @@
-=== WooCommerce AltCoin Payment Gateway ===
+=== WooCommerce Bitcoin / AltCoin Payment Gateway ===
+Donate link: https://www.paypal.me/wooAltCoinPayGatewy
 Contributors: codesolz, m.tuhin
-Tags: WooCommerce, altcoin payment, cryptocurrency payment, WooCommerce bitcoin, woocommerce altcoin 
+Tags: woocommerce bitcoin, woocommerce altcoin, woocommerce bitcoin payment, woocommerce cryptocurrency payment, woocommerce bitcoin payment gateway  
 Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 Requires PHP: 6.0
+WC requires at least: 3.0
+WC tested up to: 3.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -23,7 +26,7 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 </blockquote>
 
 <blockquote>
-=== Start Accepting Any Cryptocurrency in Few Seconds!===
+=== Start Accepting Any Cryptocurrency in Few Minutes!===
 </blockquote>
 
 <blockquote>
@@ -37,6 +40,7 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 <blockquote>
 = No transaction / mining or any kind of fees =
 = No KYC / Bank verification required =
+= No restriction on withdraw / transaction limit, as you are going to get paid directly to your own coin address =
 = Self hosted =
 = Don't have middlemen = 
 <ul>
@@ -87,8 +91,15 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 
 = Number of Crypto Currencies - PRO version = 
 <ul>
-    <li> Currently You can accept 1 Crypto-Currency as we are running a beta test. Soon it gonna be increase to high level. </li>
-    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin.</li>
+    <li> Currently You can accept following crypto-currencies </li>
+    <li> Bitcoin (BTC) </li>
+    <li> Bitcoin Cash (BCH) </li>
+    <li> Ethereum (ETH) </li>
+    <li> Litecoin (LTC) </li>
+    <li> Dogecoin (DOGE) </li>
+    <li> Ripple (XRP) </li>
+    <li> Dash (DASH) </li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
 
 </blockquote>
@@ -97,11 +108,6 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 <ul>
     <li> Quick & Very Easy Installation Process</li>
 </ul>
-
-=== How To Use Woocommer altcoin payment gateway - Basic Setup Tutorial ===
-
-[youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
-
 
 = How does the fiat currency works? =
 * At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
@@ -165,6 +171,9 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.2.9 =
+* Minor error fixed
 
 = 1.2.8 =
 * Coin Live Price added beside product price

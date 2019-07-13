@@ -1,0 +1,3 @@
+------------ command needed to run before starting the test ------------
+
+bin/install-wp-tests.sh wp_premium_plugins_development_temp root '' localhost latest

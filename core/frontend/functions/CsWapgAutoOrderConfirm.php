@@ -87,12 +87,14 @@ class CsWapgAutoOrderConfirm {
             )));
         }
         
+
+        $cart_info = array_map( 'trim', $cart_info);
         $cartTotal = empty($cart_info['cartTotalAfterDiscount']) ? $cart_info['cartTotal'] : $cart_info['cartTotalAfterDiscount'];
         $api_url = sprintf( $this->tracking_api_url, 
-                    $api_key, $cart_info['coinName'], $cart_info['coinAddress'], Util::check_evil_script($trxid), 
-                    $cart_info['totalCoin'], $cartTotal
-                );
-        
+            $api_key, $cart_info['coinName'], $cart_info['coinAddress'], Util::check_evil_script($trxid), 
+            $cart_info['totalCoin'], trim($cartTotal)
+        );
+
         
         $response = Util::remote_call( $api_url );
         $response = json_decode( $response );

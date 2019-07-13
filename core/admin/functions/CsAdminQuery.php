@@ -72,17 +72,33 @@ class CsAdminQuery {
             $coin_id = $wpdb->insert_id;
         }
         
-        $get_address_info = array(
-            'coin_id' => $coin_id,
-            'address' => $coin_info['coin_address'],
-            'lock_status' => 0
-        );
-        $check_coin_address_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['addresses']} where coin_id = %d ", $coin_id ) );
-        if( $check_coin_address_exists ) {
-            $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $check_coin_address_exists ) );
+
+        // $get_address_info = array(
+        //     'coin_id' => $coin_id,
+        //     'address' => $coin_info['coin_address'],
+        //     'lock_status' => 0
+        // );
+        // $check_coin_address_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['addresses']} where coin_id = %d ", $coin_id ) );
+        // if( $check_coin_address_exists ) {
+        //     $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $check_coin_address_exists ) );
+        // }else{
+        //     $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
+        // }
+
+        //add coin address
+        if( $coin_info['checkout_type'] == 2 ){
+            $coin_info['cid'] = $coin_id;
+            $more_address_fields = Util::check_evil_script($user_data['more_coin_address']);
+            $more_address_fields[] = $coin_info['coin_address'];
+            for($i =0; $i < count($more_address_fields); $i++ ){
+                $coin_info['aid'] = '';
+                $coin_info['coin_address'] = $more_address_fields[$i];
+                $this->coin_address_update( $coin_info );
+            }
         }else{
-            $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
+            $this->coin_address_update( $coin_info );
         }
+
         
         $get_offer_info = array(
             'coin_id' => $coin_id,

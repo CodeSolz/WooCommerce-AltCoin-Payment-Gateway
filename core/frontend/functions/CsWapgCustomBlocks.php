@@ -19,7 +19,7 @@ class CsWapgCustomBlocks {
     
     public static function special_discount_offer_box(){
         $offers = CsAdminQuery::get_offers_info();
-        $settings = CsPaymentGateway::get_settings_options();
+        $settings = CsPaymentGateway::get_checkout_page_options();
         if( $offers ) {
         ?>
             <div class="special-discount-notification">
@@ -39,7 +39,7 @@ class CsWapgCustomBlocks {
                 .special-discount-box{ background: aliceblue;border: 1px dashed black;padding: 10px;margin: 15px 0px; }
                 .special-discount-box ol{ margin: 10px 0px 0px 10px; }
                 .special-discount-box ol li{ font-style: italic; line-height: 16px; }
-                .special-discount-notification span.highlight{ color:forestgreen; animation: blink-animation 1s steps(5, start) infinite;-webkit-animation: blink-animation 1s steps(5, start) infinite;}
+                .special-discount-notification span.highlight{ cursor: pointer; color:forestgreen; animation: blink-animation 1s steps(5, start) infinite;-webkit-animation: blink-animation 1s steps(5, start) infinite;}
                 @keyframes blink-animation {to {visibility: hidden;}}
                 @-webkit-keyframes blink-animation {to{visibility: hidden;}}
                 .special-discount-notification a{ cursor: pointer; }
@@ -48,7 +48,7 @@ class CsWapgCustomBlocks {
             </style>
             <script type="text/javascript">
                 jQuery(document).ready(function(){
-                    jQuery(".spcl-msg-box").toggle( function(){
+                    jQuery(".special-discount-notification").toggle( function(){
                         jQuery(".special-discount-box").slideDown('slow');
                     }, function(){
                         jQuery(".special-discount-box").slideUp('slow');

@@ -16,6 +16,7 @@ use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\frontend\functions\CsWapgCustomTy;
 use WooGateWayCoreLib\frontend\functions\CsWapgCustomBlocks;
 use WooGateWayCoreLib\admin\functions\CsOrderDetails;
+use WooGateWayCoreLib\frontend\functions\CsMiscellaneous;
 
 class WooHooks {
     
@@ -40,6 +41,9 @@ class WooHooks {
         
         /*** Adding Meta container in admin shop_order page ***/
         add_action( 'add_meta_boxes', array( $this, 'wapg_order_coin_details_metabox' ) );
+        
+        /*** crypto price after product price ***/
+        add_filter( 'woocommerce_get_price_html', array( $this, 'wapg_wc_price_html' ), 10, 2 );
         
         /*** instance of user order details ***/
         $this->Thank_You_Page = new CsWapgCustomTy();
@@ -87,6 +91,16 @@ class WooHooks {
         }
         
         add_meta_box( 'cs_coin_detail', sprintf( __( ' %s - Coin Details', 'woo-altcoin-payment-gateway' ), $order->get_payment_method_title() ), array($this->Cs_Order_Detail, 'order_metabox_coin_details'), 'shop_order', 'normal', 'core' );
+    }
+    
+    /**
+     * add crypto price after product price
+     * 
+     * @since 1.2.8
+     * @return string Description
+     */
+    public function wapg_wc_price_html( $price, $obj ){
+        return CsMiscellaneous::show_coin_price( $price, $obj );
     }
     
 }

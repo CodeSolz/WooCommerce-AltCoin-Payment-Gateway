@@ -5,19 +5,62 @@
  * @package Woo_Altcoin_Payment_Gateway
  */
 
-class WoocommerceAltcoinPaymentTest extends WP_UnitTestCase {
+use WooGateWayCoreLib\admin\functions\CsAdminQuery;
+use WooGateWayCoreLib\frontend\functions\CsWapgCoinCal;
+
+class WooAltcoinPaymentGatewayTest extends WP_UnitTestCase {
+    
+    
     
     public function setUp()
     {
         parent::setUp();
-        $this->WAP = new Woocommerce_Altcoin_payment();
+        $this->WAP = new Woocommerce_Altcoin_Payment_Gateway();
     }
 
     /**
      * check plugin doesn't return any error
      */
-    public function testPluginLoadedSuccessfully(){
+    public function test_PluginLoadedSuccessfully(){
         $this->assertTrue( true );
     }
+    
+    /**
+     * 
+     */
+    public function AddNewCoin(){
+        $data = array(
+            'cs_add_new' => array(
+                'coin_name' => 'Bitcoin Scrypt',
+                'coin_address' => 'sdfsdsfsfsfsdfddd',
+                'checkout_type' => 1
+            )
+        );
+        
+        $CsAdminQuery = new CsAdminQuery();
+        $this->assertEquals( $CsAdminQuery->add_new_coin( $data ), '{"status":true,"title":"Success","text":"Thank you! Coin has been added successfully.","redirect_url":"http:\/\/example.org\/wp-admin\/admin.php?page=cs-woo-altcoin-all-coins"}' );
+    }
+    
+    public function test_calcualteCoinPrice(){
+//        $CsWapgCoinCal = new CsWapgCoinCal();
+//        $data = array( 'data' => array( 'coin_id' => 7 ),
+//            'testData' => true,
+//            'cart_total' => 50,
+//            'currency' => 'EUR',
+//            'symbol' => '$'
+//        );
+//        echo $CsWapgCoinCal->calcualteCoinPrice( $data );
+    }
+    
+    public function apply_special_discount(){
+        $data = array(
+            'offer_type' => 1,
+            'offer_amount' => 10,
+            
+        );
+        $CsWapgCoinCal = new CsWapgCoinCal();
+        $this->assetEquals( $CsWapgCoinCal->apply_special_discount( 27.99, $data ), 25.191 );
+    }
+    
     
 }
