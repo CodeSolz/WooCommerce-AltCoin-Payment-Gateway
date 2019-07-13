@@ -31,7 +31,7 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 
 <blockquote>
 = Automatic order confirmation / Pro version =
-Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order confirmation</a>.
+Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order confirmation</a>.
 </blockquote>
 
 
@@ -74,7 +74,7 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 = Store Order Processing - PRO Version = 
 <ul>
     <li> Unlimited manual order confirmation.</li>
-    <li> <a target="_blank" href="https://bit.ly/2IuZ96R">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/2IuZ96R">UPGRADE TO PRO </a> or check the trail</li>
+    <li> <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/30wTtk4">UPGRADE TO PRO </a> or check the trail</li>
 </ul>
 
 = Product Price Calculation = 
@@ -134,7 +134,7 @@ English, Spanish, Russian, German, French, Dutch
 
 <blockquote>
 = Pro Version for automatic order confirmation =
-  * Check <a target="_blank" href="https://bit.ly/2IuZ96R">Pro version</a> and start a trail, no credit card required
+  * Check <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> and start a trail, no credit card required
 
 = For Quick Support, feature request and bug reporting = 
 <ul>
