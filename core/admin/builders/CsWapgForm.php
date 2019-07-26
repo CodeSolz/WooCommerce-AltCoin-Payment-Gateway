@@ -13,6 +13,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 
+
 class CsWapgForm {
     
     /**
@@ -52,8 +53,9 @@ class CsWapgForm {
      */
     public static function customForm( $refObj ){
         global $wp;
-        
-        if ( $description = $refObj->get_description() ) {
+
+        if ( ( isset( $refObj->description ) && !empty( $description = $refObj->description ) ) ||  
+            ( isset( $refObj->defaultOptn['description'] ) && !empty( $description = $refObj->defaultOptn['description'] ) ) ) {
             echo wpautop( wptexturize( $description ) );
         }
         $fields = array();

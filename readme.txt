@@ -172,6 +172,9 @@ English, Spanish, Russian, German, French, Dutch
 
 == Changelog ==
 
+= 1.3.0 =
+* Checkout page option issue fixed
+
 = 1.2.9 =
 * Minor error fixed
 

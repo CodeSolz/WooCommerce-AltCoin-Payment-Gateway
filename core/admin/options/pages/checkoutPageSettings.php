@@ -49,7 +49,7 @@ class CheckoutPageSettings {
      * @return type
      */
     public function generate_checkout_settings( $args ){
-        $settings = (object)CsPaymentGateway::get_checkout_page_options();
+        $settings = CsPaymentGateway::get_checkout_page_options();
         
         $fields = array(
             'st1' => array(
@@ -62,7 +62,7 @@ class CheckoutPageSettings {
                 'type'             => 'text',
                 'class'            => "form-control",
                 'required'         => true,
-                'value'            => CsFormBuilder::get_value( 'select_box_lebel', $settings->select_box_lebel, 'Please select coin you want to pay:'),
+                'value'            => CsFormBuilder::get_value( 'select_box_lebel', $settings, 'Please select coin you want to pay:'),
                 'placeholder'      => __( 'Enter select box lebel', 'woo-altcoin-payment-gateway' ),
                 'desc_tip'         => __( 'Enter select box lebel. It will show in checkout page. e.g : Please select coin you want to pay:', 'woo-altcoin-payment-gateway' ),
             ),
@@ -71,7 +71,7 @@ class CheckoutPageSettings {
                 'type'             => 'text',
                 'class'            => "form-control",
                 'required'         => true,
-                'value'            => CsFormBuilder::get_value( 'select_box_option_lebel', $settings->select_box_option_lebel, 'Please Select An AltCoin'),
+                'value'            => CsFormBuilder::get_value( 'select_box_option_lebel', $settings, 'Please Select An AltCoin'),
                 'placeholder'      => __( 'Enter select box option lebel', 'woo-altcoin-payment-gateway' ),
                 'desc_tip'         => __( 'Enter select box option lebel. It will show in checkout page. e.g : Please Select An AltCoin', 'woo-altcoin-payment-gateway' ),
             ),
@@ -85,7 +85,7 @@ class CheckoutPageSettings {
                 'type'             => 'text',
                 'class'            => "form-control",
                 'required'         => true,
-                'value'            => CsFormBuilder::get_value( 'price_section_title', $settings->price_section_title, 'You have to pay:'),
+                'value'            => CsFormBuilder::get_value( 'price_section_title', $settings, 'You have to pay:'),
                 'placeholder'      => __( 'Enter price section title', 'woo-altcoin-payment-gateway' ),
                 'desc_tip'         => __( 'Enter price section title. It will show in checkout page. e.g : You have to pay:', 'woo-altcoin-payment-gateway' ),
             ),
@@ -100,7 +100,7 @@ class CheckoutPageSettings {
                 'custom_attributes' => array(
                     'readonly'     => '',
                 ),
-                'value' => CsFormBuilder::get_value( 'loader_gif_url', $settings->loader_gif_url, CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif' ), 
+                'value' => CsFormBuilder::get_value( 'loader_gif_url', $settings, CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif' ), 
                 'desc_tip'	=> __( 'Choose a gif / loading image. This gif image will show in checkout page during the live price calculation', 'woo-altcoin-payment-gateway' ),
             ),
             'cs_altcoin_config[autotracking_gif_url]'  => array(
@@ -114,7 +114,7 @@ class CheckoutPageSettings {
                 'custom_attributes' => array(
                     'readonly'     => '',
                 ),
-                'value' => CsFormBuilder::get_value( 'autotracking_gif_url', $settings->autotracking_gif_url, CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif' ), 
+                'value' => CsFormBuilder::get_value( 'autotracking_gif_url', $settings, CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif' ), 
                 'desc_tip'	=> __( 'Choose a gif / loading image. This gif image will show during the coin tracking for automatic order confirmation.', 'woo-altcoin-payment-gateway' ),
             )
         );

@@ -11,8 +11,6 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     exit;
 }
 
-use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
-
 class CsWapgScript {
     /**
      * Hold Main class reference
@@ -23,7 +21,7 @@ class CsWapgScript {
     
     function __construct( $ref ){
         //get main ref
-        $this->Ref = (object)CsPaymentGateway::get_wapg_options();
+        $this->Ref = $ref;
         
         //load script on frontend footer
         add_action( 'wp_footer', array( $this, 'altCoinCustomScript') );

@@ -15,6 +15,7 @@ use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\lib\cartFunctions;
 use WooGateWayCoreLib\admin\builders\CsWapgForm;
 use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
+use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
 
 class CsWapgFunctions extends \WC_Payment_Gateway{
     
@@ -56,6 +57,9 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         foreach ( $this->settings as $setting_key => $value ) {
             $this->$setting_key = $value;
         }
+
+
+        
 
         // Save settings
         if ( is_admin() ) {
@@ -156,8 +160,13 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
      * @return String
      */
     public function payment_fields(){
-        new CsWapgScript( $this );
-        return CsWapgForm::customForm( $this );
+        //get the custom settings if exists
+        $custom_settings_options = CsPaymentGateway::get_wapg_options();
+
+        $options = (object)\array_merge( (array)$this,  (array) $custom_settings_options );
+
+        new CsWapgScript( $options );
+        return CsWapgForm::customForm( $options );
     }
     
     /**
