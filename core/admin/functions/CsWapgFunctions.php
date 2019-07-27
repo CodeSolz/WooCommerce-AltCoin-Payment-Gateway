@@ -57,8 +57,6 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         foreach ( $this->settings as $setting_key => $value ) {
             $this->$setting_key = $value;
         }
-
-
         
 
         // Save settings
