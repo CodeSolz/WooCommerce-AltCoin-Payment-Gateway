@@ -5,9 +5,6 @@
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
-        <img alt="undefined" src="https://img.shields.io/travis/com/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg"> 
-    </a><br>
     <img alt="undefined" src="https://img.shields.io/github/last-commit/tuhin18003/WooCommerce-AltCoin-Payment-Gateway.svg">
     <a href="https://codeclimate.com/github/tuhin18003/WooCommerce-AltCoin-Payment-Gateway">
         <img alt="undefined" src="https://api.codeclimate.com/v1/badges/53342611d39bf5044b5f/maintainability">
