@@ -159,8 +159,8 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 - Free download from wordpress plugins directory - [Download Woo Altcoin Payment Gateway](https://wordpress.org/plugins/woo-altcoin-payment-gateway/)
 
 ### Credentials
-- *Created & Supported by - [CodeSolz.com](https://codesolz.com/)*
-- *For real-time support visit our website - [CodeSolz.com](https://codesolz.com/)*
+- *Created & Supported by - [CodeSolz.net](https://codesolz.net/)*
+- *For real-time support visit our website - [CodeSolz.net](https://codesolz.net/)*
 - *For more dedicated support or feature request write to us at - [support@codesolz.net](mailto:support@codesolz.net)*
 
 <a href="https://codesolz.net">
