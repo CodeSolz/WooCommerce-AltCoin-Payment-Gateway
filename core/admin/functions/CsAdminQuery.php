@@ -255,7 +255,7 @@ class CsAdminQuery {
         $result = $wpdb->get_results( "SELECT *,c.id as cid, a.id as aid, o.id as oid, GROUP_CONCAT(address SEPARATOR ', ')  as address from  {$wapg_tables['coins']} as c "
                 . " left join {$wapg_tables['addresses']} as a on c.id = a.coin_id "
                 . " left join {$wapg_tables['offers']} as o on c.id = o.coin_id "
-                . " {$where} group by a.coin_id ");
+                . " {$where} group by a.coin_id order by c.name asc");
                 
         if( $result ){
             return $result;

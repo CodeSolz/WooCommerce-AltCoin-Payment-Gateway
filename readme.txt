@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.2.9
+Stable tag: 1.3.1
 Requires PHP: 6.0
 WC requires at least: 3.0
 WC tested up to: 3.6
@@ -21,12 +21,25 @@ Accept bitcoin / altcoin payment from your WooCommerce store without help of mid
 Accept bitcoin / altcoin payment from your WooCommerce store without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
 
 <blockquote>
-= Need Help on upgrade =
-Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
+=== Start Accepting Any Cryptocurrency in Few Minutes!===
 </blockquote>
 
+== How does it works? == 
+This plugins has 2 order confirmation options, manual and automatic. What does this means, read bellow: 
+= Manual Order = 
 <blockquote>
-=== Start Accepting Any Cryptocurrency in Few Minutes!===
+    when someone place an order & pay for the product, you need to check your cryptocurrency address to confirm you have received the payment or not! The order will be on hold position in the store. This is free!
+</blockquote>
+= Automatic Order = 
+<blockquote>
+    In this option, the order's payment will be automatically get verified. So, you don't need to check it manually. You can set the order status from settings option. You can set it, e.g: on-hold, completed etc  This is paid version.
+</blockquote>
+      
+
+
+<blockquote>
+= Need Help on upgrade =
+Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
 </blockquote>
 
 <blockquote>
@@ -94,20 +107,37 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
     <li> Currently You can accept following crypto-currencies </li>
     <li> Bitcoin (BTC) </li>
     <li> Bitcoin Cash (BCH) </li>
+    <li> Bitcoin SV (BSV) </li>
     <li> Ethereum (ETH) </li>
     <li> Litecoin (LTC) </li>
     <li> Dogecoin (DOGE) </li>
     <li> Ripple (XRP) </li>
     <li> Dash (DASH) </li>
+    <li> Tether (USDT) </li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
 
 </blockquote>
 
-= Installation Process = 
-<ul>
-    <li> Quick & Very Easy Installation Process</li>
-</ul>
+== Installation Process & Documentation == 
+* How to setup bitcoin / altcoin payment gateway?
+    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup/)
+<hr />
+* How to enable a coin in payment gateway?
+    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-enable-a-coin-in-payment-gateway/)
+<hr />
+* How to add discount on a specific coin?
+    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-add-discount-on-a-specific-coin/)
+<hr />
+* How to add automatic order confirmation?
+    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-add-automatic-order-confirmation/)
+<hr />
+* How to setup product page options?
+    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-product-page-options/)
+<hr />
+* How to setup checkout page options?
+    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-checkout-page-options/)
+<hr />
 
 = How does the fiat currency works? =
 * At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
@@ -171,6 +201,10 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.3.1 =
+* Checkout page - Coin Select Box ordering fixed
+* Added new coin to automatic list - USDT, BSV
 
 = 1.3.0 =
 * Checkout page option issue fixed
