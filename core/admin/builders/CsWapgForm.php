@@ -54,6 +54,12 @@ class CsWapgForm {
     public static function customForm( $refObj ){
         global $wp;
 
+        $active_coins = CsAdminQuery::get_coins( array( 'where' => " c.status = 1 " ) );
+        if( empty($active_coins)){
+            _e( 'Sorry! No AltCoin is activate! Please contact administration for more information.', 'woo-altcoin-payment-gateway' );
+            return;
+        }
+
         if ( ( isset( $refObj->description ) && !empty( $description = $refObj->description ) ) ||  
             ( isset( $refObj->defaultOptn['description'] ) && !empty( $description = $refObj->defaultOptn['description'] ) ) ) {
             echo wpautop( wptexturize( $description ) );
@@ -64,7 +70,7 @@ class CsWapgForm {
         $default_fields = array(
                 'alt-con' => '<p class="form-row form-row-wide altCoinSelect">
                         <label for="' . esc_attr( $refObj->id ) . '-alt-name">' . $label . ' <span class="required">*</span></label>'.
-                        self::getActiveAltCoinSelect( $refObj )
+                        self::getActiveAltCoinSelect( $refObj, $active_coins )
                 .'</p><div class="coin-detail"><!--coin calculation--></div>'
         );
         
@@ -105,17 +111,12 @@ class CsWapgForm {
      * @param type $refObj
      * @return type
      */
-    public static function getActiveAltCoinSelect( $refObj = false ){
-        $custom_fields = CsAdminQuery::get_coins( array( 'where' => " c.status = 1 " ) );
-        if( empty($custom_fields)){
-            return __( 'Sorry! No AltCoin is activate! Please contact administration for more information.', 'woo-altcoin-payment-gateway' );
-        }
-        
+    public static function getActiveAltCoinSelect( $refObj = false, $active_coins ){
         $altCoin = '<select name="altcoin" id="CsaltCoin" class="select">';
         $lebel = isset( $refObj->select_box_option_lebel ) && !empty($refObj->select_box_option_lebel) ? $refObj->select_box_option_lebel : __( 'Please Select An AltCoin', 'woo-altcoin-payment-gateway' );
         $altCoin .= '<option value="0">'.$lebel.'</option>';
-        foreach( $custom_fields as $field){
-            $altCoin .= '<option value="'.$field->cid.'">' . $field->name . '(' . $field->symbol .')</option>';
+        foreach( $active_coins as $coin){
+            $altCoin .= '<option value="'.$coin->cid.'">' . $coin->name . '(' . $coin->symbol .')</option>';
         }
         return $altCoin .='</select>';
     }

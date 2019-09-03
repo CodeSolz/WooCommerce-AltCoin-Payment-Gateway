@@ -98,7 +98,7 @@ if (!class_exists('Woocommerce_Altcoin_Payment_Gateway')) {
                 'CS_WAPG_PLUGIN_ASSET_URI'  => plugin_dir_url(__FILE__) . 'assets/', //Define asset uri
                 'CS_WAPG_PLUGIN_LIB_URI'    => plugin_dir_url(__FILE__) . 'lib/', //Library uri
                 'CS_WAPG_PLUGIN_IDENTIFIER' => plugin_basename(__FILE__), //plugins identifier - base dir
-                'CS_WAPG_PLUGIN_NAME'       => 'WooCommerce AltCoin Payment Gateway' //Plugin name
+                'CS_WAPG_PLUGIN_NAME'       => 'WooCommerce AltCoin Payment Gateway', //Plugin name
             );
 
             foreach ($constants as $name => $value) {
