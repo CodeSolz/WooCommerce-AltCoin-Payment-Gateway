@@ -7,10 +7,10 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Requires PHP: 6.0
 WC requires at least: 3.0
-WC tested up to: 3.6
+WC tested up to: 3.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -201,6 +201,10 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.3.2 =
+* Little bug fixed
+* Starting to depricate some coins 
 
 = 1.3.1 =
 * Checkout page - Coin Select Box ordering fixed

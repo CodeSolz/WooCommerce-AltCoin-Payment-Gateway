@@ -63,7 +63,7 @@ class CsAdminQuery {
             'checkout_type' => $coin_info['checkout_type'],
             'status' => isset( $coin_info['coin_status'] ) ? 1 : 0
         );
-        $check_coin_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coins']} where coin_web_id = %s ", $coin_web_id ) );
+        $check_coin_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coins']} where coin_web_id = %s ", $coin_web_id->slug ) );
         if( $check_coin_exists ) {
             $coin_id = $check_coin_exists;
             $wpdb->update( "{$wapg_tables['coins']}", $get_coin_info, array( 'id' => $coin_id ));
@@ -72,19 +72,7 @@ class CsAdminQuery {
             $coin_id = $wpdb->insert_id;
         }
         
-
-        // $get_address_info = array(
-        //     'coin_id' => $coin_id,
-        //     'address' => $coin_info['coin_address'],
-        //     'lock_status' => 0
-        // );
-        // $check_coin_address_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['addresses']} where coin_id = %d ", $coin_id ) );
-        // if( $check_coin_address_exists ) {
-        //     $wpdb->update( "{$wapg_tables['addresses']}", $get_address_info, array( 'id' => $check_coin_address_exists ) );
-        // }else{
-        //     $wpdb->insert( "{$wapg_tables['addresses']}", $get_address_info );
-        // }
-
+      
         //add coin address
         if( $coin_info['checkout_type'] == 2 ){
             $coin_info['cid'] = $coin_id;
@@ -314,6 +302,14 @@ class CsAdminQuery {
                 'ticker' => $query
             ));
             
+            //check is coin active
+            if( false === $currencies['is_active'] ){
+                return wp_send_json(array(
+                    'success' => false,
+                    'response' => 'This coin is not activated! Please contact support@codesolz.net to activate this coin.'
+                ));
+            }
+
             if( true === $currencies['success'] ){
                 $ret = array();
                 foreach( $currencies['data'] as $cur ){
