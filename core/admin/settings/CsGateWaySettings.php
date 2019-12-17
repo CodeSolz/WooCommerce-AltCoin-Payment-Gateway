@@ -15,7 +15,7 @@ class CsGateWaySettings{
     
     function __construct() {
         // class add it too WooCommerce
-	add_filter( 'woocommerce_payment_gateways', array( $this, 'WAPG_authorizenet_init') );
+	    add_filter( 'woocommerce_payment_gateways', array( $this, 'WAPG_authorizenet_init') );
         
         //load ajax url into frontend
         add_action( 'wp_enqueue_scripts', array( __CLASS__, 'WAPG_frontEnd_Enqueue' ) );

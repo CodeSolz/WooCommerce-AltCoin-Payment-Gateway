@@ -74,8 +74,8 @@ class CsAdminQuery {
         
       
         //add coin address
+        $coin_info['cid'] = $coin_id;
         if( $coin_info['checkout_type'] == 2 ){
-            $coin_info['cid'] = $coin_id;
             $more_address_fields = Util::check_evil_script($user_data['more_coin_address']);
             $more_address_fields[] = $coin_info['coin_address'];
             for($i =0; $i < count($more_address_fields); $i++ ){
@@ -192,8 +192,8 @@ class CsAdminQuery {
     private function coin_address_update( $coin_info ){
         global $wpdb, $wapg_tables;
         $get_address_info = array(
-            'coin_id' => $coin_info['cid'],
-            'address' => $coin_info['coin_address'],
+            'coin_id' => isset($coin_info['cid']) ? $coin_info['cid'] : '',
+            'address' => isset($coin_info['coin_address']) ? $coin_info['coin_address'] : '',
             'lock_status' => 0
         );
         
@@ -303,7 +303,7 @@ class CsAdminQuery {
             ));
             
             //check is coin active
-            if( false === $currencies['is_active'] ){
+            if( false === $currencies['success'] ){
                 return wp_send_json(array(
                     'success' => false,
                     'response' => 'This coin is not activated! Please contact support@codesolz.net to activate this coin.'

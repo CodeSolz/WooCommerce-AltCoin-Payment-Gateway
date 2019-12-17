@@ -34,6 +34,7 @@ class CsWapgScript {
      */
     public function altCoinCustomScript(){
         global $woocommerce;
+
         ?>
             <script type="text/javascript">
                 var module = {

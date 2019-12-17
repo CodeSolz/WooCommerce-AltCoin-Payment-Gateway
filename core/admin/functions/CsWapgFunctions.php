@@ -163,17 +163,25 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
 
         $options = \array_merge( (array)$this,  (array) $custom_settings_options );
 
+        
         //check default loader image
         if( !isset($options['loader_gif_url']) ){
             $options += array(
                 'loader_gif_url' => CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif'
             );
         }
-
+        elseif( empty( $options['loader_gif_url'] ) ){
+            $options['loader_gif_url']= CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif';
+        }
+        
+        
         if( !isset($options['autotracking_gif_url']) ){
             $options += array(
                 'autotracking_gif_url' => CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif'
             );
+        }
+        elseif( empty( $options['autotracking_gif_url'] ) ){
+            $options['autotracking_gif_url']=  CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif';
         }
 
         $options = (object) $options;

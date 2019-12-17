@@ -6,11 +6,11 @@ Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 5.2
-Stable tag: 1.3.2
-Requires PHP: 6.0
+Tested up to: 5.3
+Stable tag: 1.3.3
+Requires PHP: 7.0
 WC requires at least: 3.0
-WC tested up to: 3.7
+WC tested up to: 3.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -201,6 +201,9 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.3.3 =
+* bug fixed
 
 = 1.3.2 =
 * Little bug fixed
