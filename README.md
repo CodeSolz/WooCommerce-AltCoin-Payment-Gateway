@@ -37,7 +37,7 @@
     </a>
     <br><br>
     <a href="https://codesolz.net">
-        <img alt="undefined" src="https://img.shields.io/badge/Created%20By-CodeSolz-brightgreen.svg">
+        <img alt="undefined" src="https://img.shields.io/badge/Created%20By-M.Tuhin-brightgreen.svg">
     </a>
 </p>
 <h2 align="center">WooCommerce AltCoin Payment Gateway - Wordpress plugin</h2>
