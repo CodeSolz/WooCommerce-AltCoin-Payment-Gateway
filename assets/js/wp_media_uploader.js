@@ -5,7 +5,6 @@
 */
 ( function( $) {
     $.wpMediaUploader = function( options ) {
-        
         var settings = $.extend({
             
             target : '.smartcat-uploader', // The class wrapping the textbox
@@ -26,7 +25,7 @@
         
         $( settings.target ).append( '<a href="#" class="' + settings.buttonClass.replace('.','') + '">' + settings.buttonText + '</a>' );
         
-        console.log( settings.preview);
+        // console.log( settings.preview);
         
         if( settings.preview !== false ){
             $( settings.target ).append('<div><br><img src="#" style="display: none; width: ' + settings.previewSize + '"/></div>')
@@ -55,7 +54,5 @@
             })
             .open();
         });
-        
-        
-    }
+    };
 })(jQuery);

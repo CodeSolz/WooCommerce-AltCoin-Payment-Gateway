@@ -184,8 +184,8 @@ class CsWapgCoinCal
         if (is_object($response)) {
             if ($response->data[0]->currency == $key) {
                 return  array(
-                    $response->data[0]->usd * $cart_total,
-                    $response->data[0]->usd
+                    (float) $response->data[0]->usd * (float) $cart_total,
+                    (float) $response->data[0]->usd
                 );
             } else {
                 return array(
@@ -213,7 +213,6 @@ class CsWapgCoinCal
         }
 
         $getMarketPrice = json_decode($response);
-
         if (!isset($getMarketPrice->error) && isset($getMarketPrice[0])) {
             $price = (float) $getMarketPrice[0]->price_usd;
             $market_cap_usd = (float) $getMarketPrice[0]->market_cap_usd;
@@ -271,9 +270,8 @@ class CsWapgCoinCal
     private function get_coin_address($coin, $is_premade_order_id)
     {
         if ($coin->checkout_type == 2) {
-
             $cart_info = cartFunctions::get_current_cart_payment_info($is_premade_order_id);
-            if (empty($cart_info)) {
+            if (  empty($cart_info) || $coin->coin_web_id != $cart_info['coinName'] ) {
                 $coin_add_arr = explode(',', $coin->address);
                 return $coin_add_arr[array_rand($coin_add_arr)];
             } else {

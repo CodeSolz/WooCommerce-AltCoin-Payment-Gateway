@@ -98,8 +98,10 @@ class CsPaymentGateway
     public function save_product_page_options()
     {
         $settings = Util::check_evil_script($_POST['cs_altcoin_config']);
-        array_walk($settings, 'sanitize_text_field');
-        update_option(self::$product_page_options_id, $settings, 'yes');
+        $selected_coins = Util::check_evil_script($_POST['show_live_coin_list']);
+
+        $config = $settings + array( 'show_live_coin_list' => $selected_coins );
+        update_option(self::$product_page_options_id, $config, 'yes');
 
         return wp_send_json(array(
             'status' => true,

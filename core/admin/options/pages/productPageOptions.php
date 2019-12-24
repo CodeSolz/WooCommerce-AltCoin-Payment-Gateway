@@ -12,10 +12,10 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     die();
 }
 
-use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
-use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
 use WooGateWayCoreLib\admin\builders\CsFormHelperLib;
+use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 
 
 class ProductPageOptions {
@@ -91,7 +91,7 @@ class ProductPageOptions {
                 'has_value'                 => CsFormBuilder::get_value( 'show_live_price', $settings, ''),
                 'desc_tip'                  => __( 'Enable this option to show live coin price beside product price', 'woo-altcoin-payment-gateway' ),
             ),
-            'cs_altcoin_config[show_live_coin_list][]'     => array(
+            'show_live_coin_list[]'     => array(
                 'title'                     => __( 'Select Coin', 'woo-altcoin-payment-gateway' ),
                 'type'                      => 'select',
                 'class'                     => "form-control live_price_coins",
@@ -133,12 +133,9 @@ class ProductPageOptions {
     public function default_page_scripts(){
         ?>
             <script>
-                $.wpMediaUploader( { buttonClass : '.button-secondary' } );
-                
                 jQuery(document).ready(function($) {
                     $('.live_price_coins').select2();
                 });
-                
             </script>
         <?php
     }

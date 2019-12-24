@@ -22,18 +22,17 @@ class Scripts_Settings {
     public static function load_admin_settings_scripts( $page_id ){
         global $altcoin_menu;
         
-        
         wp_enqueue_style  ( 'sweetalert', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.css', false ); 
         wp_enqueue_script ( 'sweetalert', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.min.js', false ); 
 
-        if( $page_id == $altcoin_menu['add_new_coin'] ){
+        if( isset($altcoin_menu['add_new_coin']) && $page_id == $altcoin_menu['add_new_coin'] ){
             wp_enqueue_style ( 'jquery-typehead', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.css', false ); 
             wp_enqueue_script ( 'jquery-typehead-js', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.js', false ); 
             wp_enqueue_style ( 'jquery-date-time-picker', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-date-time-picker/jquery.datetimepicker.min.css', false ); 
             wp_enqueue_script ( 'jquery-date-time-picker', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-date-time-picker/jquery.datetimepicker.full.min.js', false ); 
         }
         
-        if( $page_id == $altcoin_menu['product_page_options_settings'] ){
+        if( isset($altcoin_menu['product_page_options_settings']) && $page_id == $altcoin_menu['product_page_options_settings'] ){
             wp_enqueue_style ( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/css/select2.min.css', false ); 
             wp_enqueue_script ( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/js/select2.min.js', false ); 
         }

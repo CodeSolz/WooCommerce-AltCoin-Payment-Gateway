@@ -12,9 +12,9 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
     die();
 }
 
-use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
 use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 
 class CheckoutPageSettings {
     
@@ -148,8 +148,10 @@ class CheckoutPageSettings {
      */
     public function default_page_scripts(){
         ?>
-            <script>
-                $.wpMediaUploader( { buttonClass : '.button-secondary' } );
+            <script type="text/javascript">
+                jQuery(document).ready(function($){
+                    $.wpMediaUploader( { buttonClass : '.button-secondary' } );
+                });
             </script>
         <?php
     }

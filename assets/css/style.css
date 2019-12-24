@@ -106,9 +106,10 @@
     border: 2px solid aliceblue;
     box-shadow: none;
     border-radius: 4px;
+    line-height: inherit;
 }
 #product_binder input[type="search"]{
-    padding: 15px 10px;
+    padding: 2px 10px;
     border: 2px solid aliceblue;
     box-shadow: none;
     border-radius: 0px;
@@ -369,3 +370,6 @@ ul.typeahead__list{
 #product_binder .updated p{ color: forestgreen;font-weight: bold !important; }
 #product_binder .error{ border:1px solid red; border-left: 4px solid red;box-shadow: none;  }
 #product_binder .error p{ color: red;font-weight: bold !important; }
+#product_binder .select2-container{ width: 100% !important; }
+#product_binder .select2-search__field{ padding: 5px 10px !important; }
+#product_binder li.select2-selection__choice{ padding: 10px 12px; margin: 5px 4px 0px 0px; }

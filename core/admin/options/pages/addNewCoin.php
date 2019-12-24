@@ -13,10 +13,10 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
-use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
 use WooGateWayCoreLib\admin\builders\CsFormHelperLib;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 
 class AddNewCoin {
     
@@ -160,12 +160,20 @@ class AddNewCoin {
                         'placeholder'      => __( 'Please select offer start date', 'woo-altcoin-payment-gateway' ),
                         'after_text'      => __( ' to ', 'woo-altcoin-payment-gateway' ),
                         'value' => empty($coin_data) ? '' : $coin_data->offer_start,
+                        'custom_attributes' => array(
+                            'autofocus'     => '',
+                            'autocomplete'  => 'off',
+                        ),
                     ), 
                     'cs_add_new[offer_end_date]' => array(
                         'type'             => 'text',
                         'class'            => "form-control width-180 date-time-picker",
                         'placeholder'      => __( 'Please select offer end date', 'woo-altcoin-payment-gateway' ),
-                        'value' => empty($coin_data) ? '' : $coin_data->offer_end
+                        'value' => empty($coin_data) ? '' : $coin_data->offer_end,
+                        'custom_attributes' => array(
+                            'autofocus'     => '',
+                            'autocomplete'  => 'off',
+                        ),
                     ), 
                 ),
             ),

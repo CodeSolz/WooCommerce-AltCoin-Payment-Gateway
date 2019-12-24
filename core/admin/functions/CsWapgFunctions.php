@@ -177,11 +177,11 @@ class CsWapgFunctions extends \WC_Payment_Gateway{
         
         if( !isset($options['autotracking_gif_url']) ){
             $options += array(
-                'autotracking_gif_url' => CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif'
+                'autotracking_gif_url' => CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif'
             );
         }
         elseif( empty( $options['autotracking_gif_url'] ) ){
-            $options['autotracking_gif_url']=  CS_WAPG_PLUGIN_ASSET_URI .'img/calc_hand.gif';
+            $options['autotracking_gif_url']=  CS_WAPG_PLUGIN_ASSET_URI .'img/auto-tracking.gif';
         }
 
         $options = (object) $options;

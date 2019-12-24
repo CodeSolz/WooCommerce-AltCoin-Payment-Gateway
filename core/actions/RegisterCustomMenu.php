@@ -15,9 +15,9 @@ if (!defined('CS_WAPG_VERSION')) {
 }
 
 
-use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
-use WooGateWayCoreLib\admin\options\Scripts_Settings;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
+use WooGateWayCoreLib\admin\options\Scripts_Settings;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 
 class RegisterCustomMenu
 {
@@ -157,7 +157,7 @@ class RegisterCustomMenu
         if (is_object($Default_Settings)) {
             echo $Default_Settings->generate_default_settings(array_merge_recursive(array(
                 'title' => __('Gateway Default Settings', 'woo-altcoin-payment-gateway'),
-                'sub_title' => __('Alltcoin payment gatway defult settings. Please fill up the following informaton correctly.', 'woo-altcoin-payment-gateway'),
+                'sub_title' => __('Alltcoin payment gatway defult settings. Please fill up the following information correctly.', 'woo-altcoin-payment-gateway'),
             ), array('gateway_settings' => (array) $this->WcFuncInstance->get_payment_info())));
         } else {
             echo $Default_Settings;
@@ -237,7 +237,7 @@ class RegisterCustomMenu
         if (is_object($Add_New_Coin)) {
             echo $Add_New_Coin->add_new_coin(array(
                 'title' => __('Add New Coin', 'woo-altcoin-payment-gateway'),
-                'sub_title' => __('Please fill up the following informaton correctly to add new coin to payment method.', 'woo-altcoin-payment-gateway'),
+                'sub_title' => __('Please fill up the following information correctly to add new coin to payment method.', 'woo-altcoin-payment-gateway'),
             ));
         } else {
             echo $Add_New_Coin;
@@ -289,8 +289,6 @@ class RegisterCustomMenu
      */
     public function wapg_load_admin_footer_script()
     {
-
-
         Scripts_Settings::load_admin_footer_script($this->current_screen->id);
     }
 

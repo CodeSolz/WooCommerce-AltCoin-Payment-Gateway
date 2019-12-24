@@ -13,8 +13,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
-use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\functions\CsAutomaticOrderConfirmationSettings;
 
 class AutoOrderSettings {
@@ -77,7 +77,7 @@ class AutoOrderSettings {
                 'required'         => true,
                 'value'            => CsFormBuilder::get_value( 'api_key', $settings_data, ''),
                 'placeholder'      => __( 'Enter your API key', 'woo-altcoin-payment-gateway' ),
-                'desc_tip'         => sprintf( __( 'Enter your API key. You can found your API key in the API menu in %s myportal area %s .', 'woo-altcoin-payment-gateway' ), "<a href='http://myportal.coinmarketstats.online/' target='_blank'>", '</a>'),
+                'desc_tip'         => sprintf( __( 'Enter your API key. You can found your API key in the API menu in %s myportal area %s .', 'woo-altcoin-payment-gateway' ), "<a href='https://myportal.coinmarketstats.online/' target='_blank'>", '</a>'),
             ),
             'st1' => array(
                 'type' => 'section_title',
@@ -141,7 +141,7 @@ class AutoOrderSettings {
             <li> <b>Basic Hints</b>
                 <ol>
                     <li>
-                        Please register here - <a href='http://myportal.coinmarketstats.online/register' target=\"_blank\">http://myportal.coinmarketstats.online</a> for your API Key.
+                        Please register here - <a href='https://myportal.coinmarketstats.online/register' target=\"_blank\">https://myportal.coinmarketstats.online</a> for your API Key.
                     </li>
                     <li>
                         After login to your dashboard, go to 'API Keys' menu. From bottom of the page you can generate your API key. 

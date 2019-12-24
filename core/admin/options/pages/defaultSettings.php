@@ -13,8 +13,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
-use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 use WooGateWayCoreLib\admin\builders\CsFormBuilder;
+use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
 
 class DefaultSettings {
     
@@ -133,7 +133,9 @@ class DefaultSettings {
     public function default_page_scripts(){
         ?>
             <script>
-                $.wpMediaUploader( { buttonClass : '.button-secondary' } );
+                jQuery(document).ready(function($){
+                    $.wpMediaUploader( { buttonClass : '.button-secondary' } );
+                });
             </script>
         <?php
     }
