@@ -13,10 +13,10 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\lib\Util;
-use WooGateWayCoreLib\frontend\functions\CsWapgCustomTy;
-use WooGateWayCoreLib\frontend\functions\CsWapgCustomBlocks;
 use WooGateWayCoreLib\admin\functions\CsOrderDetails;
+use WooGateWayCoreLib\frontend\functions\CsWapgCustomTy;
 use WooGateWayCoreLib\frontend\functions\CsMiscellaneous;
+use WooGateWayCoreLib\frontend\functions\CsWapgCustomBlocks;
 
 class WooHooks {
     
@@ -100,7 +100,8 @@ class WooHooks {
      * @return string Description
      */
     public function wapg_wc_price_html( $price, $obj ){
-        return CsMiscellaneous::show_coin_price( $price, $obj );
+        $CsMiscellaneous = CsMiscellaneous::getInstance();
+        return $CsMiscellaneous->show_coin_price( $price, $obj );
     }
     
 }

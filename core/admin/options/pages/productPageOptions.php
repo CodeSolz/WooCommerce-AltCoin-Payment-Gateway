@@ -100,7 +100,21 @@ class ProductPageOptions {
                 'options'                   => CsFormHelperLib::get_all_active_coins(),
                 'value'                     => CsFormBuilder::get_value( 'show_live_coin_list', $settings, ''),
                 'desc_tip'                  => __( 'Select / Enter coin name to show for live price. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
-            )
+            ),
+            'cs_altcoin_config[variable_product_price_type]' => array(
+                'title'                     => __( 'Variable Product Price', 'woo-altcoin-payment-gateway' ),
+                'type'                      => 'select',
+                'class'                     => "form-control coin-type-select",
+                'required'                  => true,
+                'placeholder'               => __( 'Select price type', 'woo-altcoin-payment-gateway' ),
+                'options'                   => array(
+                    'min' => __( 'Show Min Price', 'woo-altcoin-payment-gateway' ),
+                    'max' => __( 'Show Max Price', 'woo-altcoin-payment-gateway' ),
+                    'both' => __( 'Show Both Price', 'woo-altcoin-payment-gateway' )
+                ),
+                'value'                     => CsFormBuilder::get_value( 'variable_product_price_type', $settings_data, 'both' ),
+                'desc_tip'                  => __( 'Please select if you want to show just min / max or both prices converted to cryptocurrencies. Default: both', 'woo-altcoin-payment-gateway' ),
+            ),
         );
         
         $args['content'] = $this->Form_Generator->generate_html_fields( $fields );

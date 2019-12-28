@@ -288,30 +288,66 @@ class CsWapgCoinCal
      * @since 1.2.8
      * @return array
      */
-    public function getCryptoLivePrices($coins, $product_price)
+    public function getCryptoLivePrices($coins, $product_price, $config = array() )
     {
         if (empty($coins)) return false;
         $coin_prices = [];
         $store_currency = get_woocommerce_currency();
+
         foreach ($coins as $coin) {
             $coin_arr = explode('___', $coin);
             $coin_price = $this->get_coin_martket_price($coin_arr[0]);
 
-            if ($store_currency != 'USD') {
-                $usd_conversion = $this->store_currency_to_usd($store_currency, $product_price);
-                if (isset($usd_conversion['error'])) {
-                    continue;
+            $showPricrRange = array();
+            $coinPriceHtml = '';
+            //variable product price range
+            if( is_array( $product_price ) ){
+                if( isset($config['variable_product_price_type']) && ( $config['variable_product_price_type'] == 'min' || $config['variable_product_price_type'] == 'max' ) ){
+                    $totalCoin = $this->getCryptoLiveCoinPrice( $store_currency, $product_price[ $config['variable_product_price_type'] ], $coin_price );
+                    $coinPriceHtml = \sprintf( "<span style='white-space:nowrap'>%s</span>", $totalCoin . ' %1$s' );
+                }else{
+                    $i = 0;
+                    foreach( $product_price as $key => $price_range ){
+                        $totalCoin = $this->getCryptoLiveCoinPrice( $store_currency, $price_range, $coin_price );
+                        if( $i > 0 ) {
+                            $coinPriceHtml .= " - ";
+                        }
+                        $coinPriceHtml .= \sprintf( "<span style='white-space:nowrap'>%s</span>", $totalCoin . ' %1$s' );
+                        $i++;
+                    }
+                    $showPricrRange = array( 'showPriceRange' => true );
                 }
-                $product_price = $usd_conversion[0];
-                $altcoinPriceOfStoreCurrency = $this->convert_altcoin_price_to_store_currency($usd_conversion[1], $coin_price);
+            }else{
+                $totalCoin = $this->getCryptoLiveCoinPrice( $store_currency, $product_price, $coin_price );
+                $coinPriceHtml = \sprintf( "<span style='white-space:nowrap'>%s</span>", $totalCoin . ' %1$s' );
             }
-            //calculate the coin
-            $totalCoin = $this->get_total_coin_amount($coin_price, $product_price);
 
-            $coin_price_html = "<span style='white-space:nowrap'> {$totalCoin} " . $coin_arr[1] . " </span>";
-
-            $coin_prices += array($coin_arr[0] => array('price' => $totalCoin, 'html' => $coin_price_html));
+            $coin_price_html = \sprintf( $coinPriceHtml, $coin_arr[1] );
+            
+            $coin_prices += array($coin_arr[0] => array( 'price' => $totalCoin, 'html' => $coin_price_html )  ) + $showPricrRange;
         }
         return $coin_prices;
     }
+
+    /**
+     * get crypto price
+     *
+     * @param [type] $store_currency
+     * @param [type] $product_price
+     * @param [type] $coin_price
+     * @return void
+     */
+    private function getCryptoLiveCoinPrice( $store_currency, $product_price, $coin_price ){
+        if ($store_currency != 'USD') {
+            $usd_conversion = $this->store_currency_to_usd($store_currency, $product_price);
+            if (isset($usd_conversion['error'])) {
+                return false;
+            }
+            $product_price = $usd_conversion[0];
+        }
+
+        //calculate the coin
+        return $this->get_total_coin_amount($coin_price, $product_price);
+    }
+
 }

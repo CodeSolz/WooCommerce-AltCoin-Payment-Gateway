@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 3.8
@@ -201,6 +201,9 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.3.6 =
+* added live coin price for variable product's price range
 
 = 1.3.5 =
 * bug fixed
