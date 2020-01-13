@@ -23,6 +23,9 @@ class CsWapgCustomTy {
      */
     public function order_summary( $order ){
         $payment_details = cartFunctions::get_payment_info( $order->id );
+        if( empty($payment_details ) ){
+            return;
+        }
         ?>
         <h2><?php _e( 'Coin Details', 'woo-altcoin-payment-gateway' ); ?></h2>
         <table class="woocommerce-table shop_table coin_info">

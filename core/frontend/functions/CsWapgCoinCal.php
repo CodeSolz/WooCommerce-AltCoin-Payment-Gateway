@@ -55,7 +55,7 @@ class CsWapgCoinCal
 
             $is_premade_order_id = isset($_POST['data']['pre_order_id']) ? Util::check_evil_script($_POST['data']['pre_order_id']) : 0;
 
-            $coinFullName = $coin->name . '( ' . $coin->coin_web_id . ' )';
+            $coinFullName = $coin->name . '( ' . $coin->symbol . ' )';
             $coinId  = $coin->coin_web_id;
             $coinAddress = $this->get_coin_address($coin, $is_premade_order_id);
             $coinName = $coin->coin_web_id;
@@ -75,7 +75,7 @@ class CsWapgCoinCal
             }
 
             $cartTotal = $cartOriginalTotal;
-            $currency_symbol = \get_woocommerce_currency_symbol($store_currency);
+            $currency_symbol = \get_woocommerce_currency_symbol();
 
             //apply special discount if active
             $special_discount = false;

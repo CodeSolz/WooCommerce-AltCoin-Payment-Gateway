@@ -190,7 +190,7 @@ class CsWapgScript {
                                     if( res.checkoutType == 2 ){
                                         setTimeout(()=>{
                                             jQuery("#place_order").hide('slow');
-                                        }, 2000);
+                                        }, 2000 );
                                     }else{
                                         jQuery("#place_order").show('slow');
                                     }

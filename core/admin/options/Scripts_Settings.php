@@ -104,22 +104,21 @@ class Scripts_Settings {
                             cache: false,
                             processData: false
                         })
-                        .done(function( data ){
-                            console.log(  data );
+                        .done(function( data ) {
                             if( true === data.status ){
                                 swal( { title: data.title, text: data.text, type : "success", html: true, timer: 5000 });
                                 if( typeof data.redirect_url !== 'undefined' ){
                                     window.location.href = data.redirect_url;
                                 }
                             }else if( false === data.status ){
-                                swal( { title: data.title, text: data.text, type : "error", html: true, timer: 5000 });
+                                swal({ title: data.title, text: data.text, type : "error", html: true, timer: 5000 });
                             }else{
                                 swal( { title: 'OOPS!', text: 'Something went wrong! Please try again by refreshing the page.', type : "error", html: true, timer: 5000 });
                             }
                         })
-                        .fail(function( errorThrown ){
+                        .fail(function( errorThrown ) {
                             console.log( 'Error: ' + errorThrown.responseText );
-                            swal( 'Response Error', errorThrown.responseText + '('+errorThrown.statusText +') ' , "error");
+                            swal( 'Response Error', errorThrown.responseText + '('+errorThrown.statusText +') ' , "error" );
                         });
                         return false;
                     });
