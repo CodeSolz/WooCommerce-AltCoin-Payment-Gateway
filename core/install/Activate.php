@@ -12,8 +12,8 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
-use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
+use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
 
 class Activate{
     
@@ -177,27 +177,20 @@ class Activate{
             $default_settings = get_option($WcFuncInstance->get_altcoin_gateway_settings_id());
 
             //check new page options settings
+            $array = array(
+                'select_box_lebel' => isset($default_settings['select_box_lebel']) ? $default_settings['select_box_lebel'] : '',
+                'select_box_option_lebel' => isset($default_settings['select_box_option_lebel']) ? $default_settings['select_box_option_lebel'] : '',
+                'price_section_title' => isset($default_settings['price_section_title']) ? $default_settings['price_section_title'] : '',
+                'loader_gif_url' => isset($default_settings['loader_gif_url']) ? $default_settings['loader_gif_url'] : '',
+                'autotracking_gif_url' => isset($default_settings['autotracking_gif_url']) ? $default_settings['autotracking_gif_url'] : ''
+            );
             $checkout_options = CsPaymentGateway::get_checkout_page_options();
             if( empty($checkout_options ) ){
-                $array = array(
-                    'select_box_lebel' => isset($default_settings['select_box_lebel']) ? $default_settings['select_box_lebel'] : '',
-                    'select_box_option_lebel' => isset($default_settings['select_box_option_lebel']) ? $default_settings['select_box_option_lebel'] : '',
-                    'price_section_title' => isset($default_settings['price_section_title']) ? $default_settings['price_section_title'] : '',
-                    'loader_gif_url' => isset($default_settings['loader_gif_url']) ? $default_settings['loader_gif_url'] : '',
-                    'autotracking_gif_url' => isset($default_settings['autotracking_gif_url']) ? $default_settings['autotracking_gif_url'] : ''
-                );
                 CsPaymentGateway::save_checkout_page_optn_from_old( $array );
             }
 
             $checkout_options = CsPaymentGateway::get_product_page_options();
             if( empty($checkout_options ) ){
-                $array = array(
-                    'select_box_lebel' => isset($default_settings['select_box_lebel']) ? $default_settings['select_box_lebel'] : '',
-                    'select_box_option_lebel' => isset($default_settings['select_box_option_lebel']) ? $default_settings['select_box_option_lebel'] : '',
-                    'price_section_title' => isset($default_settings['price_section_title']) ? $default_settings['price_section_title'] : '',
-                    'loader_gif_url' => isset($default_settings['loader_gif_url']) ? $default_settings['loader_gif_url'] : '',
-                    'autotracking_gif_url' => isset($default_settings['autotracking_gif_url']) ? $default_settings['autotracking_gif_url'] : ''
-                );
                 CsPaymentGateway::save_product_page_optn_from_old( $array );
             }
         }
