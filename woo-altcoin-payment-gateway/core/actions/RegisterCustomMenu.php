@@ -82,22 +82,6 @@ class RegisterCustomMenu
             'cs-woo-altcoin-gateway-settings',
             array($this, 'load_settings_page')
         );
-        $altcoin_menu['add_new_coin'] = add_submenu_page(
-            CS_WAPG_PLUGIN_IDENTIFIER,
-            __('Add New Coin', 'woo-altcoin-payment-gateway'),
-            "Add New Coin",
-            'manage_options',
-            'cs-woo-altcoin-add-new-coin',
-            array($this, 'load_add_new_coin_page')
-        );
-        $altcoin_menu['all_coins_list'] = add_submenu_page(
-            CS_WAPG_PLUGIN_IDENTIFIER,
-            __('All Coins', 'woo-altcoin-payment-gateway'),
-            "All Coins",
-            'manage_options',
-            'cs-woo-altcoin-all-coins',
-            array($this, 'load_all_coins_list_page')
-        );
         $altcoin_menu['register_automatic_order'] = add_submenu_page(
             CS_WAPG_PLUGIN_IDENTIFIER,
             __('Automatic Order Confirmation Registration', 'woo-altcoin-payment-gateway'),
@@ -123,6 +107,24 @@ class RegisterCustomMenu
             'cs-woo-altcoin-checkout-option-settings',
             array($this, 'load_checkout_settings_page')
         );
+
+        $altcoin_menu['add_new_coin'] = add_submenu_page(
+            CS_WAPG_PLUGIN_IDENTIFIER,
+            __('Add New Coin', 'woo-altcoin-payment-gateway'),
+            "Add New Coin",
+            'manage_options',
+            'cs-woo-altcoin-add-new-coin',
+            array($this, 'load_add_new_coin_page')
+        );
+        $altcoin_menu['all_coins_list'] = add_submenu_page(
+            CS_WAPG_PLUGIN_IDENTIFIER,
+            __('All Coins', 'woo-altcoin-payment-gateway'),
+            "All Coins",
+            'manage_options',
+            'cs-woo-altcoin-all-coins',
+            array($this, 'load_all_coins_list_page')
+        );
+
 
         //load script
         add_action("load-{$altcoin_menu['default_settings']}", array($this, 'register_admin_settings_scripts'));

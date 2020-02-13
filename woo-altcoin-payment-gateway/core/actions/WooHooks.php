@@ -50,12 +50,6 @@ class WooHooks {
         
         /*** check plugins info ***/
         add_action( 'wp_update_plugins', array( $this, 'wapg_check_plugin_info' ) );
-
-        /*** add settings link ***/
-        add_filter( 'plugin_action_links_' . CS_WAPG_PLUGIN_IDENTIFIER,  array( __class__, 'wapg_add_plugin_page_settings_link' ) );
-        
-        /*** add info link ***/
-        add_filter( 'plugin_row_meta', array( __class__, 'wapg_plugin_row_meta' ), 12, 2 );
         
         /*** instance of user order details ***/
         $this->Thank_You_Page = new CsWapgCustomTy();
@@ -125,42 +119,4 @@ class WooHooks {
         return (new WooFunctions())->wapg_get_plugins_info();
     }
 
-    /**
-     * Add settings links
-     *
-     * @param [type] $links
-     * @return void
-     */
-    public static function wapg_add_plugin_page_settings_link( $links ){
-        $links[] = '<a href="' .
-		Util::cs_generate_admin_url('cs-woo-altcoin-gateway-settings') .
-        '">' . __('Settings') . '</a>';
-        $links[] = '<a href="' .
-		Util::cs_generate_admin_url('cs-woo-altcoin-add-new-coin') .
-        '">' . __('Add New Coin') . '</a>';
-        
-	return $links;
-    }
-
-
-    /**
-	 * Show row meta on the plugin screen.
-	 *
-	 * @param mixed $links Plugin Row Meta.
-	 * @param mixed $file  Plugin Base file.
-	 *
-	 * @return array
-	 */
-	public static function wapg_plugin_row_meta( $links, $file ) {
-		if ( CS_WAPG_PLUGIN_IDENTIFIER === $file ) {
-			$row_meta = array(
-				'docs'    => '<a href="' . esc_url( 'http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/' ) . '" target = "_blank" aria-label="' . esc_attr__( 'View documentation', 'woo-altcoin-payment-gateway' ) . '">' . esc_html__( 'Docs', 'woo-altcoin-payment-gateway' ) . '</a>',
-				'support'    => '<a href="' . esc_url( 'http://codesolz.net' ) . '" target = "_blank" aria-label="' . esc_attr__( 'Premium support', 'woo-altcoin-payment-gateway' ) . '">' . esc_html__( 'Premium support', 'woo-altcoin-payment-gateway' ) . '</a>',
-			);
-
-			return array_merge( $links, $row_meta );
-		}
-
-		return (array) $links;
-	}
 }

@@ -1,0 +1,21 @@
+{
+    "name": "woo-commerce_alt-coin_payment_gateway",
+    "description": "woocommerce altcoin payment gateway",
+    "type": "composer-plugin",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "CodeSolz",
+            "email": "customer-support@codesolz.net"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "WooGateWayCoreLib\\" : "core/"
+        }
+    },
+    "require": {
+        "php" : ">=6.0.0"
+    },
+    "minimum-stability": "dev"
+}
