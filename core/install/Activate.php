@@ -32,6 +32,7 @@ class Activate{
             `name` varchar(56),
             `coin_web_id` varchar(56),
             `symbol` varchar(20),
+            `coin_type` varchar(1) DEFAULT 1,
             `checkout_type` char(1),
             `status` char(1),
             PRIMARY KEY ( `id`)
@@ -89,6 +90,12 @@ class Activate{
             
             $update_sqls = [];
             
+            if( \version_compare( $get_installed_db_version, '1.0.4', '<' ) ){
+                $update_sqls = array(
+                    "ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN coin_type varchar(1) DEFAULT 1 AFTER symbol"        
+                );
+            }
+
             $import_coin_symbol = false;
             if( \version_compare( $get_installed_db_version, '1.0.2', '<=' ) ){
                 $update_sqls = array(

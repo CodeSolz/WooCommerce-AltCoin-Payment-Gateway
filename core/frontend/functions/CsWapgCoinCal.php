@@ -35,6 +35,13 @@ class CsWapgCoinCal
     private $coinmarketcap_api_url = "https://api.coinmarketcap.com/v1/ticker/%s";
 
     /**
+     * Get coin price from CoinMarketStats
+     *
+     * @var string
+     */
+    private $coinmarketstats_api_url = "https://api.coinmarketstats.online/coin/v1/ticker/%s";
+
+    /**
      * Get Coin Price
      * 
      * @param type $coinName
@@ -57,6 +64,7 @@ class CsWapgCoinCal
 
             $coinFullName = $coin->name . '( ' . $coin->symbol . ' )';
             $coinId  = $coin->coin_web_id;
+            $coinType  = $coin->coin_type;
             $coinAddress = $this->get_coin_address($coin, $is_premade_order_id);
             $coinName = $coin->coin_web_id;
 
@@ -90,7 +98,7 @@ class CsWapgCoinCal
                 $special_discount_amount = $special_discount_type['discount'];
             }
 
-            $coin_price = $this->get_coin_martket_price($coinId);
+            $coin_price = $this->get_coin_martket_price($coinId, $coinType);
             if (isset($coin_price['error'])) {
                 wp_send_json(array('response' => false, 'msg' => $coin_price['response']));
             }
@@ -204,19 +212,26 @@ class CsWapgCoinCal
     /**
      * Get coin price from coin market cap
      */
-    private function get_coin_martket_price($coin_slug)
+    private function get_coin_martket_price($coin_slug, $coinType)
     {
-        $api_url = sprintf($this->coinmarketcap_api_url, $coin_slug);
+
+        if( $coinType == 1 ){
+            $api_url = sprintf($this->coinmarketcap_api_url, $coin_slug);
+        }elseif( $coinType == 2 ){
+            $api_url = sprintf($this->coinmarketstats_api_url, $coin_slug);
+        }
+
         $response = Util::remote_call($api_url);
         if (isset($response['error'])) {
             return $response;
         }
 
         $getMarketPrice = json_decode($response);
-        if (!isset($getMarketPrice->error) && isset($getMarketPrice[0])) {
+        
+        if ( !isset($getMarketPrice->error) && isset($getMarketPrice[0])) {
             $price = (float) $getMarketPrice[0]->price_usd;
             $market_cap_usd = (float) $getMarketPrice[0]->market_cap_usd;
-            if ($market_cap_usd > 0) {
+            if ($market_cap_usd > 0 || $coinType == 2) {
                 return $price;
             } else {
                 //coin doesn't have any value
@@ -296,7 +311,7 @@ class CsWapgCoinCal
 
         foreach ($coins as $coin) {
             $coin_arr = explode('___', $coin);
-            $coin_price = $this->get_coin_martket_price($coin_arr[0]);
+            $coin_price = $this->get_coin_martket_price($coin_arr[0], $coin_arr[2] );
 
             $showPricrRange = array();
             $coinPriceHtml = '';

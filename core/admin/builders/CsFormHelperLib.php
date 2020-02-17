@@ -43,7 +43,7 @@ class CsFormHelperLib {
             $ret = [];
             foreach( $coins as $coin ){
                 $ret += array(
-                    $coin->coin_web_id . '___' . $coin->symbol => $coin->name .'('. $coin->symbol . ')' 
+                    $coin->coin_web_id . '___' . $coin->symbol . '___' . $coin->coin_type => $coin->name .' ('. $coin->symbol . ')' 
                 ); 
             }
             return $ret;

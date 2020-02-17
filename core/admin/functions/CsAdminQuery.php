@@ -58,8 +58,9 @@ class CsAdminQuery {
         
         $get_coin_info = array(
             'name' => sanitize_text_field( $coin_info['coin_name'] ),
-            'symbol' => $coin_web_id->symbol,
             'coin_web_id' => $coin_web_id->slug,
+            'symbol' => $coin_web_id->symbol,
+            'coin_type' => $coin_web_id->is_paid == 1 ? 2 : 1,
             'checkout_type' => $coin_info['checkout_type'],
             'status' => isset( $coin_info['coin_status'] ) ? 1 : 0
         );
