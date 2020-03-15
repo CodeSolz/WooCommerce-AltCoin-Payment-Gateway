@@ -164,5 +164,5 @@ Check more for <a target="_blank" href="https://bit.ly/2IuZ96R">automatic order 
 - *For more dedicated support or feature request write to us at - [support@codesolz.net](mailto:support@codesolz.net)*
 
 <a href="https://codesolz.net">
-  <img src="https://codesolz.net/packages/uploads/2016/11/logo4-hover.png" alt="codesolz.net"/>
+  <img src="https://codesolz.net/images/brand-logo/logo.png" alt="codesolz.net"/>
 </a>
