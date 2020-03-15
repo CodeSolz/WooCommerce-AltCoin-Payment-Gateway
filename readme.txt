@@ -1,7 +1,7 @@
-=== WooCommerce Bitcoin / AltCoin Payment Gateway ===
-Donate link: https://www.paypal.me/wooAltCoinPayGatewy
+=== CS WooCommerce Bitcoin / AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
-Tags: woocommerce bitcoin, altcoin, bitcoin payment, cryptocurrency payment, bitcoin payment gateway  
+Tags: woocommerce, woocommerce bitcoin, woocommerce altcoin, altcoin, woocommerce crypto payment, woocommerce payment gateway, woocommerce easy crypto-currency payment,  bitcoin payment, cryptocurrency payment gateway, bitcoin payment gateway, receive bitcoin payment, bitcoin  
+Donate link: https://www.paypal.me/wooAltCoinPayGatewy
 Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages

@@ -2,7 +2,7 @@
 
 /**
  * @wordpress-plugin
- * Plugin Name:       WooCommerce Bitcoin / AltCoin Payment Gateway
+ * Plugin Name:       CS WooCommerce Bitcoin / AltCoin Payment Gateway
  * Plugin URI:        https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway
  * Description:       A very light weight Cryptocurrency payment gateway for WooCommerce Store. Accept Bitcoin, Bitcoin Cash, Ethereum, Dogecoin, Dash, Litecoin, Ripple & more crypto-currencies
  * Version:           1.3.9
@@ -98,7 +98,7 @@ if (!class_exists('Woocommerce_Altcoin_Payment_Gateway')) {
                 'CS_WAPG_PLUGIN_ASSET_URI'  => plugin_dir_url(__FILE__) . 'assets/', //Define asset uri
                 'CS_WAPG_PLUGIN_LIB_URI'    => plugin_dir_url(__FILE__) . 'lib/', //Library uri
                 'CS_WAPG_PLUGIN_IDENTIFIER' => plugin_basename(__FILE__), //plugins identifier - base dir
-                'CS_WAPG_PLUGIN_NAME'       => 'WooCommerce AltCoin Payment Gateway', //Plugin name
+                'CS_WAPG_PLUGIN_NAME'       => 'CS WooCommerce AltCoin Payment Gateway', //Plugin name
             );
 
             foreach ($constants as $name => $value) {

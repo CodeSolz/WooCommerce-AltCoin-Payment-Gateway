@@ -313,10 +313,10 @@ class CsWapgScript {
                 .coin-detail .loader, .loader-coin-track{ text-align: center;}
                 .price-tag, .help-info{font-style: italic;font-size: 11px;}
                 .qr-code{ max-height: 225px !important; }
-                .coinAddress-qr{text-align: center;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
+                .coinAddress-qr{text-align: center;background:#fff;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
                 .coinAddress-info{ position: relative;display: table-cell;vertical-align: top;padding: 10px 20px; width: 63%;}
                 .coinAddress-info h3{ font-size: 15px; }
-                .coinAddress-qr img{display: table-cell; padding: 0px 0px 11px 18px;}
+                .coinAddress-qr img{ display: table-cell;padding: 15px 0px 11px 22px !important;position: relative !important; }
                 .special-discount-msg{ color: forestgreen; font-size: 15px; }
                 .con{ color: red; font-weight: bold; }
                 .blink{ animation: blink-animation 1s steps(5, start) infinite;-webkit-animation: blink-animation 1s steps(5, start) infinite;}
