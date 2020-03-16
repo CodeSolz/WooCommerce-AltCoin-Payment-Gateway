@@ -7,10 +7,10 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 Requires PHP: 7.0
 WC requires at least: 3.0
-WC tested up to: 3.9
+WC tested up to: 4.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -204,6 +204,10 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.4.0 =
+* Major update : Coin Pricing API has been updated
+* Previous versions will not work anymore!
 
 = 1.3.9 =
 * Added new api for coin price calculation

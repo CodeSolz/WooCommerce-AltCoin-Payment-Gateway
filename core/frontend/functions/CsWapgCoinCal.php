@@ -30,9 +30,9 @@ class CsWapgCoinCal
 
     /**
      *
-     * @var type Coinmarketcap public api
+     * @var Coinmarketstats free api / upgraded from coinmarketcap to coin marketstars
      */
-    private $coinmarketcap_api_url = "https://api.coinmarketcap.com/v1/ticker/%s";
+    private $coinmarketstats_free_api_url = "https://api.coinmarketstats.online/coin/v1/ticker/free/%s";
 
     /**
      * Get coin price from CoinMarketStats
@@ -216,7 +216,7 @@ class CsWapgCoinCal
     {
 
         if( $coinType == 1 ){
-            $api_url = sprintf($this->coinmarketcap_api_url, $coin_slug);
+            $api_url = sprintf($this->coinmarketstats_free_api_url, $coin_slug);
         }elseif( $coinType == 2 ){
             $api_url = sprintf($this->coinmarketstats_api_url, $coin_slug);
         }

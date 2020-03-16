@@ -206,7 +206,7 @@ class CsWapgScript {
                         var $this = jQuery(this);
                         $this.select();
                         document.execCommand( 'Copy', false, null );
-                        $this.next("p").css('color','forestgreen').slideDown('slow').text('<?php _e( 'Address has been coppied to clipboard!', 'woo-altcoin-payment-gateway' ); ?> ');
+                        $this.next("p").css('color','forestgreen').slideDown('slow').text('<?php _e( 'Address has been copied to clipboard!', 'woo-altcoin-payment-gateway' ); ?> ');
                     }).on( 'blur', '.wc-altcoin-form-user-alt-coinAddress', function(){
                         jQuery(this).next("p").slideUp('slow');
                     });
