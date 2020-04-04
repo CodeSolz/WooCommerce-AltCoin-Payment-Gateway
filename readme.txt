@@ -6,7 +6,7 @@ Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 1.4.0
 Requires PHP: 7.0
 WC requires at least: 3.0
@@ -204,6 +204,9 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.4.1 =
+* Speed optimized on - live price showing 
 
 = 1.4.0 =
 * Major update : Coin Pricing API has been updated
