@@ -134,28 +134,28 @@ This plugins has 2 order confirmation options, manual and automatic. What does t
 
 
 
-== Setup Video Guide [old version] == 
+**Setup Video Guide [old version]**
 [youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
 
-== Installation Process & Documentation == 
+**Installation Process & Documentation**
 * How to setup bitcoin / altcoin payment gateway?
-    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup/)
-<hr />
+  👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup/)
+
 * How to enable a coin in payment gateway?
-    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-enable-a-coin-in-payment-gateway/)
-<hr />
+  👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-enable-a-coin-in-payment-gateway/)
+
 * How to add discount on a specific coin?
-    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-add-discount-on-a-specific-coin/)
-<hr />
+  👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-add-discount-on-a-specific-coin/)
+
 * How to add automatic order confirmation?
-    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-add-automatic-order-confirmation/)
-<hr />
+  👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-add-automatic-order-confirmation/)
+
 * How to setup product page options?
-    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-product-page-options/)
-<hr />
+  👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-product-page-options/)
+
 * How to setup checkout page options?
-    [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-checkout-page-options/)
-<hr />
+  👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-checkout-page-options/)
+
 
 = How does the fiat currency works? =
 * At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
