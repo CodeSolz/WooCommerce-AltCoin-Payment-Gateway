@@ -76,7 +76,7 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 </blockquote>
 
 
-== Key Features ==
+==Key Features==
 
 * No transaction / mining or any kind of fees
 * No KYC / Bank verification required
