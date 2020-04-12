@@ -82,11 +82,9 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 * No KYC / Bank verification required
 * No restriction on withdraw / transaction limit, as you are going to get paid directly to your own coin address
 * Self hosted
-<hr />
-**Don't have middlemen**
 
+**Don't have middlemen**
 * Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.
-<hr />
 
 **Multivendor Marketplace Supports**
 <ul>
