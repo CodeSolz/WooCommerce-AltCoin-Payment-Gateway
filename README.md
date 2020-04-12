@@ -134,6 +134,26 @@ This plugins has 2 order confirmation options, manual and automatic. What does t
 
 
 
+**How does the fiat currency works?**
+* At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
+* During the checkout process everything happen automatically in background.
+
+**Supported Fiat / Store Currencies**
+<blockquote>
+AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, INR, IQD, IRR, ISK, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XDR, XOF, XPF, YER, ZAR, ZMW
+</blockquote>
+
+
+**Officially Tested Translation**
+* WPML
+* <a target="_blank" href="https://wordpress.org/plugins/polylang/">Polylang</a>
+* <a target="_blank" href="https://wordpress.org/plugins/loco-translate/">Loco Translate</a>
+
+**Available Translation**
+<blockquote>
+English, Spanish, Russian, German, French, Dutch
+</blockquote>
+
 **Setup Video Guide [old version]**
 [youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
 
@@ -156,26 +176,9 @@ This plugins has 2 order confirmation options, manual and automatic. What does t
 * How to setup checkout page options?<br> 
   👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-checkout-page-options/)
 
-
-**How does the fiat currency works?**
-* At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
-* During the checkout process everything happen automatically in background.
-
-**Supported Fiat / Store Currencies**
-<blockquote>
-AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, INR, IQD, IRR, ISK, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XDR, XOF, XPF, YER, ZAR, ZMW
-</blockquote>
-
-
-**Officially Tested Translation**
-* WPML
-* <a target="_blank" href="https://wordpress.org/plugins/polylang/">Polylang</a>
-* <a target="_blank" href="https://wordpress.org/plugins/loco-translate/">Loco Translate</a>
-
-**Available Translation**
-<blockquote>
-English, Spanish, Russian, German, French, Dutch
-</blockquote>
+**Manual Installation**
+1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
 **Forum and Feature Request**
 
@@ -194,28 +197,6 @@ English, Spanish, Russian, German, French, Dutch
     <li> Check development status or issues in <a target="_blank" href="https://github.com/CodeSolz/WooCommerce-AltCoin-Payment-Gateway" > github.com/WooCommerce-AltCoin-Payment-Gateway </a>
 </ul>
 
-
-
-**Installation**
-1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-
-**Screenshots**
-
-1. Back-End - Default Settings
-2. Back-End - Automatic order confirmation settings
-3. Back-End - Product page settings
-4. Back-End - Checkout page settings
-5. Back-End - Add / Update new coin
-6. Back-End - All Coin List
-7. Front-end 
-8. Front-end  
-9. Front-end  
-10. Front-end  
-11. Front-end  
-12. Front-end  
-13. Front-end  
-14. Back-end - Order details
 
 **Changelog**
 
