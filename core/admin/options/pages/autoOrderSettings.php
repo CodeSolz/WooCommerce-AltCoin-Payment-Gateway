@@ -77,7 +77,7 @@ class AutoOrderSettings {
                 'required'         => true,
                 'value'            => CsFormBuilder::get_value( 'api_key', $settings_data, ''),
                 'placeholder'      => __( 'Enter your API key', 'woo-altcoin-payment-gateway' ),
-                'desc_tip'         => sprintf( __( 'Enter your API key. You can found your API key in the API menu in %s myportal area %s .', 'woo-altcoin-payment-gateway' ), "<a href='https://myportal.coinmarketstats.online/' target='_blank'>", '</a>'),
+                'desc_tip'         => sprintf( __( 'Enter your API key. You can find your API key in the "My API Keys" menu in %s myportal area %s .', 'woo-altcoin-payment-gateway' ), "<a href='https://myportal.coinmarketstats.online/dashboard/api' target='_blank'>", '</a>'),
             ),
             'st1' => array(
                 'type' => 'section_title',

@@ -191,7 +191,7 @@ class CsWapgCoinCal
 
         if (is_object($response)) {
             if ($response->data[0]->currency == $key) {
-                return  array(
+                return array(
                     (float) $response->data[0]->usd * (float) $cart_total,
                     (float) $response->data[0]->usd
                 );
@@ -285,13 +285,13 @@ class CsWapgCoinCal
     private function get_coin_address($coin, $is_premade_order_id)
     {
         if ($coin->checkout_type == 2) {
-            $cart_info = cartFunctions::get_current_cart_payment_info($is_premade_order_id);
-            if (  empty($cart_info) || $coin->coin_web_id != $cart_info['coinName'] ) {
+            // $cart_info = cartFunctions::get_current_cart_payment_info($is_premade_order_id);
+            // if (  empty($cart_info) || $coin->coin_web_id != $cart_info['coinName'] ) {
                 $coin_add_arr = explode(',', $coin->address);
                 return $coin_add_arr[array_rand($coin_add_arr)];
-            } else {
-                return $cart_info['coinAddress'];
-            }
+            // } else {
+            //     return $cart_info['coinAddress'];
+            // }
         } else {
             return $coin->address;;
         }

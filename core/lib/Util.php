@@ -238,7 +238,7 @@ class Util
     /**
      * Get notice html
      */
-    public static function notice_html($notice)
+    public static function notice_html( $notice )
     {
         $notice_class = '';
         if (isset($notice['error']) && true === $notice['error']) {
@@ -249,7 +249,14 @@ class Util
 
         $notice_msg = is_array($notice['response']) ? implode(' ', $notice['response']) : $notice['response'];
 
-        return array('response' => '<div class="' . $notice_class . '">' . $notice_msg . '</div>');
+        if( isset( $notice['response']) ){
+            $notice['response'] = '<div class="' . $notice_class . '">' . $notice_msg . '</div>';
+
+            return $notice;
+        }else{
+            return $notice + array( 'response' => '<div class="' . $notice_class . '">' . $notice_msg . '</div>');
+        }
+
     }
 
     /**

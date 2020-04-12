@@ -149,7 +149,7 @@ class cartFunctions
         global $wpdb, $wapg_tables;
         $check_trxid_exists = $wpdb->get_var($wpdb->prepare(" select id from {$wapg_tables['coin_trxids']} where transaction_id = '%s' ", $trxid));
         if ($check_trxid_exists) {
-            $check_coin_exists = $wpdb->get_var($wpdb->prepare(" select id from {$wapg_tables['coin_trxids']} where cart_hash = '%s' or secret_word = '%s' ", self::get_cart_id(), Util::check_evil_script($secret_word)));
+            $check_coin_exists = $wpdb->get_var($wpdb->prepare(" select id from {$wapg_tables['coin_trxids']} where secret_word = '%s' ", Util::check_evil_script($secret_word)));
             if ($check_coin_exists) {
                 return true;
             }

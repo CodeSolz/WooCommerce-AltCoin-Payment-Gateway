@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.4.0
+Stable tag: 1.4.4
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 4.0
@@ -60,6 +60,13 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
     <li>Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.</li>
 </ul>
 
+= Vendor Supports =
+<ul>
+    <li>
+        Multivendor <a href="https://wordpress.org/plugins/dokan-lite/">Dokan</a> supported
+    </li>
+</ul> 
+
 = White Label Solution = 
 <ul>
     <li>All text shown in checkout and product page are customizable.</li>
@@ -78,6 +85,12 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
     <li> You don't have to load any extra library. Just download and install this plugin. Thats all.</li>
 </ul>
 
+= Product Price Calculation = 
+<ul>
+    <li> Automatic & instant coin price calculation by most trusted exchange portal. </li>
+    <li> Automatically convert your WooCommerce product's price to Bitcon / Altcoin price. </li>
+</ul>
+
 = Store Order Processing - Free Version = 
 <ul>
     <li> Unlimited manual order confirmation. Which means you need to check your coin manually after getting a order from your store.</li>
@@ -88,12 +101,6 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 <ul>
     <li> Unlimited manual order confirmation.</li>
     <li> <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/30wTtk4">UPGRADE TO PRO </a> or check the trail</li>
-</ul>
-
-= Product Price Calculation = 
-<ul>
-    <li> Automatic & instant coin price calculation by most trusted exchange portal. </li>
-    <li> Automatically convert your WooCommerce product's price to Bitcon / Altcoin price. </li>
 </ul>
 
 = Number of Crypto Currencies - free version = 
@@ -205,16 +212,26 @@ English, Spanish, Russian, German, French, Dutch
 
 == Changelog ==
 
+= 1.4.4 =
+* **Feat:** Add <a href="https://wordpress.org/plugins/dokan-lite/">Multi Vendor Dokan</a> support
+* **Fix:** Until 'Dokan' new version comes with the update of the requested filter, You need to update one file manually to use this feature. Open - **dokan-lite\includes\Withdraw\functions.php** & replace line no 76 with this line : **return apply_filters( 'dokan_get_seller_active_withdraw_methods', $active_payment_methods, $vendor_id );**  
+
+= 1.4.3 =
+* **Fix:** Error fixed for automatic confirmation
+
+= 1.4.2 =
+* **Fix:** Error fixed on checkout
+
 = 1.4.1 =
-* Speed optimized on - live price showing 
+* **Improvement:** Speed optimized on - live price showing 
 
 = 1.4.0 =
-* Major update : Coin Pricing API has been updated
-* Previous versions will not work anymore!
+* **Improvement:** - **Major update:** Coin Pricing API has been updated
+* **Warning:** Previous versions will not work anymore!
 
 = 1.3.9 =
-* Added new api for coin price calculation
-* bug fixed
+* **Improvement:**  Added new api for coin price calculation
+* **Fix:** bug fixed
 
 = 1.3.8 =
 * bug fixed

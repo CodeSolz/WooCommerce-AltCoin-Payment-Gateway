@@ -54,12 +54,12 @@ class CsWapgAutoOrderConfirm {
         }
         
         //check transaction was successful - return true if success
-        if( cartFunctions::get_transaction_successful_log( $premade_order_id ) == 'success' ){
-            return wp_send_json(Util::notice_html(array(
-                'success' => true,
-                'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' )
-            )));
-        }
+        // if( cartFunctions::get_transaction_successful_log( $premade_order_id ) == 'success' ){
+        //     return wp_send_json(Util::notice_html(array(
+        //         'success' => true,
+        //         'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' )
+        //     )));
+        // }
         
         //check first time
         $trxid_validator = cartFunctions::temp_update_trx_info( $trxid, $secret_word, $premade_order_id );
@@ -153,19 +153,15 @@ class CsWapgAutoOrderConfirm {
                                 //log checkout type
                                 cartFunctions::save_temp_log_checkout_type( 2, $premade_order_id );
 
-                                return wp_send_json(Util::notice_html(array(
+                                return wp_send_json( Util::notice_html( array(
                                     'success' => true,
                                     'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' )
                                 )));
                             }
                         }
-                        
-                        
-                        
                     }
                     
-                    
-                    $response_msg = __( 'Your order is processing. Successfull transaction confirmation count on ' ) . $confirmation ."/{$con_count}";
+                    $response_msg = __( 'Your order is processing. Successful transaction confirmation count on ' ) . $confirmation ."/{$con_count}";
                 }
                 
                 return wp_send_json(Util::notice_html(array(

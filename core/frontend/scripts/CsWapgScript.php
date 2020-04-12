@@ -279,7 +279,7 @@ class CsWapgScript {
                                 }, 40000 );
                             }
                             else if( typeof response.success !== 'undefined' && true === response.success ){
-                                //successfull - submit the order
+                                //successful - submit the order
                                 jQuery(".loader-coin-track").hide('slow');    
                                 jQuery(".tracking-response").show('slow').html( response.response );
                                 console.log( 'exit4');
@@ -288,10 +288,11 @@ class CsWapgScript {
                                 orderBtn.show('slow');
                                 if( orderBtn.length > 0 ) {
                                     orderBtn.trigger( "click" );
+                                    jQuery("#place_order").show('slow');
                                 }
                                 $this.attr( 'value', 'Successful..' );
                                 module.enable_fields();
-                            }else if( typeof response.response !== 'undefined' ){
+                            }else if( typeof response.response !== 'undefined' ) {
                                 jQuery(".loader-coin-track").show('slow').html( response.response );    
                                 $this.removeAttr( 'disabled' );
                                 clearInterval( heartbeat );
