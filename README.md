@@ -137,7 +137,7 @@ This plugins has 2 order confirmation options, manual and automatic. What does t
 **Setup Video Guide [old version]**
 [youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
 
-**Installation Process & Documentation**
+### Installation Process & Documentation
 * How to setup bitcoin / altcoin payment gateway? <br> 
   👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup/)
 
@@ -157,44 +157,43 @@ This plugins has 2 order confirmation options, manual and automatic. What does t
   👉 [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-checkout-page-options/)
 
 
-= How does the fiat currency works? =
+**How does the fiat currency works?**
 * At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
 * During the checkout process everything happen automatically in background.
 
-= Supported Fiat / Store Currencies =
+**Supported Fiat / Store Currencies**
 <blockquote>
 AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLP, CNY, COP, CRC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, INR, IQD, IRR, ISK, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, STD, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XCD, XDR, XOF, XPF, YER, ZAR, ZMW
 </blockquote>
 
 
-= Officially Tested Translation =
-
+**Officially Tested Translation**
 * WPML
 * <a target="_blank" href="https://wordpress.org/plugins/polylang/">Polylang</a>
 * <a target="_blank" href="https://wordpress.org/plugins/loco-translate/">Loco Translate</a>
 
-= Available Translation  =
+**Available Translation**
 <blockquote>
 English, Spanish, Russian, German, French, Dutch
 </blockquote>
 
-= Forum and Feature Request = 
+**Forum and Feature Request**
 
-<blockquote>
-= Pro Version for automatic order confirmation =
-  * Check <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> and start a trail, no credit card required
+* Pro Version for automatic order confirmation =
+  👉 Check <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> and start a trail, no credit card required
 
-= For Quick Support, feature request and bug reporting = 
+* For Quick Support, feature request and bug reporting
 <ul>
     <li> Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a></li>
+    <li> Request features or suggestion in our <a target="_blank" href="http://forum.codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Support Forum</a></li>
     <li> For more dedicated support or feature request write to us at <a target="_blank" href="mailto:support@codesolz.net">support@codesolz.net</a> or create a ticket <a href="http://support.codesolz.net/public/create-ticket" target="_blank"> Support Center</a></li>
 </ul>
 
-= As it's open source, check our github development Status = 
+* As it's open source, check our github development Status
 <ul>
     <li> Check development status or issues in <a target="_blank" href="https://github.com/CodeSolz/WooCommerce-AltCoin-Payment-Gateway" > github.com/WooCommerce-AltCoin-Payment-Gateway </a>
 </ul>
-</blockquote>
+
 
 
 == Installation ==
