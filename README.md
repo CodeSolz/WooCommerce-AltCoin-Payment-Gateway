@@ -47,9 +47,8 @@
 
 Accept Bitcoin / Altcoin payment from your WooCommerce store or Multivendor Marketplace without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay secure as well as anonymous!
 
-<blockquote>
-=== Start Accepting Any Cryptocurrency in Few Minutes!===
-</blockquote>
+👉 **Start Accepting Any Cryptocurrency in Few Minutes!**
+
 
 == How does it works? == 
 This plugins has 2 order confirmation options, manual and automatic. What does this means, read bellow: 
