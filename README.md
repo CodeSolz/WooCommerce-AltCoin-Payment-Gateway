@@ -45,7 +45,7 @@
 ### What does it do? 
 
 
-Accept bitcoin / altcoin payment from your WooCommerce store without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
+Accept Bitcoin / Altcoin payment from your WooCommerce store or Multivendor Marketplace without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay secure as well as anonymous!
 
 <blockquote>
 === Start Accepting Any Cryptocurrency in Few Minutes!===
@@ -53,11 +53,12 @@ Accept bitcoin / altcoin payment from your WooCommerce store without help of mid
 
 == How does it works? == 
 This plugins has 2 order confirmation options, manual and automatic. What does this means, read bellow: 
-= Manual Order = 
+
+**Manual Order**
 <blockquote>
     when someone place an order & pay for the product, you need to check your cryptocurrency address to confirm you have received the payment or not! The order will be on hold position in the store. This is free!
 </blockquote>
-= Automatic Order = 
+**Automatic Order**
 <blockquote>
     In this option, the order's payment will be automatically get verified. So, you don't need to check it manually. You can set the order status from settings option. You can set it, e.g: on-hold, completed etc  This is paid version.
 </blockquote>
@@ -77,81 +78,72 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 
 == Key Features ==
 
-<blockquote>
-= No transaction / mining or any kind of fees =
-= No KYC / Bank verification required =
-= No restriction on withdraw / transaction limit, as you are going to get paid directly to your own coin address =
-= Self hosted =
-= Don't have middlemen = 
-<ul>
-    <li>Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.</li>
-</ul>
+* No transaction / mining or any kind of fees
+* No KYC / Bank verification required
+* No restriction on withdraw / transaction limit, as you are going to get paid directly to your own coin address
+* Self hosted
+<hr />
+**Don't have middlemen**
 
-= Vendor Supports =
+* Question of trust? No worry. Use your own coin address from anywhere. Even coin will not rotate with someone address, will be directly to your address.
+<hr />
+
+**Multivendor Marketplace Supports**
 <ul>
     <li>
         Multivendor <a href="https://wordpress.org/plugins/dokan-lite/">Dokan</a> supported
     </li>
 </ul> 
 
-= White Label Solution = 
+**White Label Solution**
 <ul>
     <li>All text shown in checkout and product page are customizable.</li>
     <li>You can use your own logo or payment gateway name</li>
 </ul>
 
-= Discount Features = 
+**Discount Features**
 <ul>
     <li> Add Discount on cart for each coin separately</li>
     <li> You can add different types of discount for each coin( percentage of total cart or a flat amount separately for each coin)</li>
     <li> Show / hide discount offer box in single product page</li>
 </ul>
 
-= Light Weight = 
+**Light Weight**
 <ul>
     <li> You don't have to load any extra library. Just download and install this plugin. Thats all.</li>
 </ul>
 
-= Product Price Calculation = 
+**Product Price Calculation**
 <ul>
     <li> Automatic & instant coin price calculation by most trusted exchange portal. </li>
     <li> Automatically convert your WooCommerce product's price to Bitcon / Altcoin price. </li>
 </ul>
 
-= Store Order Processing - Free Version = 
+**Store Order Processing - Free Version**
 <ul>
     <li> Unlimited manual order confirmation. Which means you need to check your coin manually after getting a order from your store.</li>
     <li> Free version has 5+ automatic order confirmation for trail.</li>
 </ul>
 
-= Store Order Processing - PRO Version = 
+**Store Order Processing - PRO Version**
 <ul>
     <li> Unlimited manual order confirmation.</li>
     <li> <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/30wTtk4">UPGRADE TO PRO </a> or check the trail</li>
 </ul>
 
-= Number of Crypto Currencies - free version = 
+**Number of Crypto Currencies - free version**
 <ul>
     <li> Currently You can accept 2200+ crypto currencies ( manual order confirmation - free version ) </li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
 </ul>
 
-= Number of Crypto Currencies - PRO version = 
+**Number of Crypto Currencies - PRO version**
 <ul>
-    <li> Currently You can accept following crypto-currencies </li>
-    <li> Bitcoin (BTC) </li>
-    <li> Bitcoin Cash (BCH) </li>
-    <li> Bitcoin SV (BSV) </li>
-    <li> Ethereum (ETH) </li>
-    <li> Litecoin (LTC) </li>
-    <li> Dogecoin (DOGE) </li>
-    <li> Ripple (XRP) </li>
-    <li> Dash (DASH) </li>
-    <li> Tether (USDT) </li>
+    <li> Currently You can accept 10 crypto currencies ( automatic order confirmation - pro version ) </li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
 
-</blockquote>
+
 
 == Setup Video Guide [old version] == 
 [youtube https://www.youtube.com/watch?v=flzobzwIZ5w]

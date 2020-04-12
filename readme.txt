@@ -14,11 +14,11 @@ WC tested up to: 4.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
-Accept bitcoin / altcoin payment from your WooCommerce store without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
+Accept Bitcoin / Altcoin payment from your WooCommerce store or Multivendor Marketplace without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
 
 == Description ==
 
-Accept bitcoin / altcoin payment from your WooCommerce store without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
+Accept Bitcoin / Altcoin payment from your WooCommerce store or Multivendor Marketplace without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay safe!
 
 <blockquote>
 === Start Accepting Any Cryptocurrency in Few Minutes!===
@@ -26,11 +26,11 @@ Accept bitcoin / altcoin payment from your WooCommerce store without help of mid
 
 == How does it works? == 
 This plugins has 2 order confirmation options, manual and automatic. What does this means, read bellow: 
-= Manual Order = 
+**Manual Order** 
 <blockquote>
     when someone place an order & pay for the product, you need to check your cryptocurrency address to confirm you have received the payment or not! The order will be on hold position in the store. This is free!
 </blockquote>
-= Automatic Order = 
+**Automatic Order** 
 <blockquote>
     In this option, the order's payment will be automatically get verified. So, you don't need to check it manually. You can set the order status from settings option. You can set it, e.g: on-hold, completed etc  This is paid version.
 </blockquote>
