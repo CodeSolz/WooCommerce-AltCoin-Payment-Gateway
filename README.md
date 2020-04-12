@@ -42,40 +42,32 @@
 </p>
 <h2 align="center">WooCommerce AltCoin Payment Gateway - Wordpress plugin</h2>
 
-### What does it do? 
-
+### Description 
 
 Accept Bitcoin / Altcoin payment from your WooCommerce store or Multivendor Marketplace without help of middle man! Use your own coin address to receive payment directly to that address. You can receive any amount of payment as it's directly to your address. There is no chance of FRAUD, STEALING or SCAM. Use this plugin and stay secure as well as anonymous!
 
 👉 **Start Accepting Any Cryptocurrency in Few Minutes!**
 
 
-== How does it works? == 
+### How does it works?
 This plugins has 2 order confirmation options, manual and automatic. What does this means, read bellow: 
 
 **Manual Order**
-<blockquote>
-    when someone place an order & pay for the product, you need to check your cryptocurrency address to confirm you have received the payment or not! The order will be on hold position in the store. This is free!
-</blockquote>
+* when someone place an order & pay for the product, you need to check your cryptocurrency address to confirm you have received the payment or not! The order will be on hold position in the store. This is free!
+
 **Automatic Order**
-<blockquote>
-    In this option, the order's payment will be automatically get verified. So, you don't need to check it manually. You can set the order status from settings option. You can set it, e.g: on-hold, completed etc  This is paid version.
-</blockquote>
+* In this option, the order's payment will be automatically get verified. So, you don't need to check it manually. You can set the order status from settings option. You can set it, e.g: on-hold, completed etc  This is paid version.
       
 
 
-<blockquote>
-= Need Help on upgrade =
-Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
-</blockquote>
+👉 **Need Help on upgrade**
+* Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
 
-<blockquote>
-= Automatic order confirmation / Pro version =
-Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order confirmation</a>.
-</blockquote>
+👉 **Automatic order confirmation / Pro version**
+* Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order confirmation</a>.
 
 
-==Key Features==
+### Key Features
 
 * No transaction / mining or any kind of fees
 * No KYC / Bank verification required
