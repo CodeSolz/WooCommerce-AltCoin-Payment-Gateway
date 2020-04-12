@@ -179,7 +179,7 @@ English, Spanish, Russian, German, French, Dutch
 
 **Forum and Feature Request**
 
-* Pro Version for automatic order confirmation =
+* Pro Version for automatic order confirmation<br>
   👉 Check <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> and start a trail, no credit card required
 
 * For Quick Support, feature request and bug reporting
@@ -196,11 +196,11 @@ English, Spanish, Russian, German, French, Dutch
 
 
 
-== Installation ==
+**Installation**
 1. Upload the WooCommerce_AltCoin_Payment_Gateway folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-== Screenshots ==
+**Screenshots**
 
 1. Back-End - Default Settings
 2. Back-End - Automatic order confirmation settings
@@ -217,168 +217,168 @@ English, Spanish, Russian, German, French, Dutch
 13. Front-end  
 14. Back-end - Order details
 
-== Changelog ==
+**Changelog**
 
-= 1.4.4 =
+**1.4.4**
 * **Feat:** Add <a href="https://wordpress.org/plugins/dokan-lite/">Multi Vendor Dokan</a> support
 * **Fix:** Until 'Dokan' new version comes with the update of the requested filter, You need to update one file manually to use this feature. Open - **dokan-lite\includes\Withdraw\functions.php** & replace line no 76 with this line : **return apply_filters( 'dokan_get_seller_active_withdraw_methods', $active_payment_methods, $vendor_id );**  
 
-= 1.4.3 =
+**1.4.3**
 * **Fix:** Error fixed for automatic confirmation
 
-= 1.4.2 =
+**1.4.2**
 * **Fix:** Error fixed on checkout
 
-= 1.4.1 =
+**1.4.1**
 * **Improvement:** Speed optimized on - live price showing 
 
-= 1.4.0 =
+**1.4.0**
 * **Improvement:** - **Major update:** Coin Pricing API has been updated
 * **Warning:** Previous versions will not work anymore!
 
-= 1.3.9 =
+**1.3.9**
 * **Improvement:**  Added new api for coin price calculation
 * **Fix:** bug fixed
 
-= 1.3.8 =
+**1.3.8**
 * bug fixed
 * upgraded api and upgrader function 
 
-= 1.3.7 =
+**1.3.7**
 * bug fixed
 
-= 1.3.6 =
+**1.3.6**
 * added live coin price for variable product's price range
 
-= 1.3.5 =
+**1.3.5**
 * bug fixed
 
-= 1.3.4 =
+**1.3.4**
 * bug fixed
 
-= 1.3.3 =
+**1.3.3**
 * bug fixed
 
-= 1.3.2 =
+**1.3.2**
 * Little bug fixed
 * Starting to depricate some coins 
 
-= 1.3.1 =
+**1.3.1**
 * Checkout page - Coin Select Box ordering fixed
 * Added new coin to automatic list - USDT, BSV
 
-= 1.3.0 =
+**1.3.0**
 * Checkout page option issue fixed
 
-= 1.2.9 =
+**1.2.9**
 * Minor error fixed
 
-= 1.2.8 =
+**1.2.8**
 * Coin Live Price added beside product price
 * Coin short name added. e.g: BTC
 
 
-= 1.2.7 =
+**1.2.7**
 * Class error fixed - (pascal case error)
 
-= 1.2.6 =
+**1.2.6**
 * New Cryptocurrencies added
 * Fixed issues of manually created order from admin panel 
 * Add new coin issue fixed
 
-= 1.2.5 =
+**1.2.5**
 * upgrading issue fixed
 
-= 1.2.4 =
+**1.2.4**
 * Extra options added
 * Little issue fixed
 
-= 1.2.3 =
+**1.2.3**
 * The most awaited automatic order confirmation
 
 
-= 1.2.2 =
+**1.2.2**
 * Checkout page text edit option added
 * Store currency displaying option added
 
-= 1.2.1 =
+**1.2.1**
 * Offer message text edit 
 * offer message display type changed
 
-= 1.2.0 =
+**1.2.0**
 * Calculator gif error fixed
 * Typo error fixed
 * Default Currency Price added 
 
-= 1.1.9 =
+**1.1.9**
 * Discount rounding error fixed
 * Coin searching error fixed
 
-= 1.1.8 =
+**1.1.8**
 * New Fiat Currency Converter added from our own data - <a href="https://coinmarketstats.online">https://coinmarketstats.online</a>
 * Check your currency - <a href="https://api.coinmarketstats.online/fiat/v1/listings">https://api.coinmarketstats.online/fiat/v1/listings</a>
 
-= 1.1.7 =
+**1.1.7**
 * Database updated
 
-= 1.1.6 =
+**1.1.6**
 * Minor bug fixed
 
-= 1.1.5 =
+**1.1.5**
 * PHP new version - standard upgraded
 
-= 1.1.4 =
+**1.1.4**
 * Minor bug fixed
 
-= 1.1.3 =
+**1.1.3**
 * Minor offer validity message fixed
 
-= 1.1.2 =
+**1.1.2**
 * Transaction reference / TrxID visible for both admin and client's side
 * Coin details on admin order page
 
-= 1.1.1 =
+**1.1.1**
 * QR - positioning fixed
 * QR - little bug fixed
 * PHP strict standard error fixed
 
-= 1.1.0 =
+**1.1.0**
 * Database upgraded
 
-= 1.0.9 =
+**1.0.9**
 * Fully New UI Added
 * Discount option added
 
-= 1.0.8 =
+**1.0.8**
 * New coins added
 * Minor bug fixed
 
-= 1.0.7 =
+**1.0.7**
 * Local Currency converter added
 * 156 currencies added. Eg. EUR, JPY, GBP, CHF, CAD, AUD, NZD, ZAR and more
 
-= 1.0.6 =
+**1.0.6**
 * Added new altCoins
 
-= 1.0.5 =
+**1.0.5**
 * Translation added - 3 languages
 
-= 1.0.4 =
+**1.0.4**
 * Minor encoding errors fixed
 * Add more coin drop down fixed
 
-= 1.0.3 =
+**1.0.3**
 * added 1500+ crypto-currencies
 
-= 1.0.2 =
+**1.0.2**
 * cart total update after shipping cost change 
 * Thank you page modified
 
-= 1.0.1 =
+**1.0.1**
 * QR code added
 * Easy address copy function
 
-= 1.0.0 =
+**1.0.0**
 * Initial release.
 
 ### useful links
