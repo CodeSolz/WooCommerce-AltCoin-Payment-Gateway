@@ -358,11 +358,11 @@ class CsWapgCoinCal
             if (isset($usd_conversion['error'])) {
                 return false;
             }
-            $product_price = $usd_conversion[0];
+            $product_price =  $usd_conversion[0];
         }
 
         //calculate the coin
-        return $this->get_total_coin_amount($coin_price, $product_price);
+        return $this->get_total_coin_amount( (float) $coin_price, (float) $product_price);
     }
 
 }
