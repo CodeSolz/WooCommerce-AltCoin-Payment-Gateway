@@ -200,9 +200,11 @@ English, Spanish, Russian, German, French, Dutch
 
 **Changelog**
 
+**1.4.5**
+* **Fix:** Live price error and speed issue fixed
+
 **1.4.4**
 * **Feat:** Add <a href="https://wordpress.org/plugins/dokan-lite/">Multi Vendor Dokan</a> support
-* **Fix:** Until 'Dokan' new version comes with the update of the requested filter, You need to update one file manually to use this feature. Open - **dokan-lite\includes\Withdraw\functions.php** & replace line no 76 with this line : **return apply_filters( 'dokan_get_seller_active_withdraw_methods', $active_payment_methods, $vendor_id );**  
 
 **1.4.3**
 * **Fix:** Error fixed for automatic confirmation
