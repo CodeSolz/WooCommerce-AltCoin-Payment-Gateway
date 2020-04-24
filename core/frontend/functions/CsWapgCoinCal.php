@@ -221,6 +221,13 @@ class CsWapgCoinCal
             $api_url = sprintf($this->coinmarketstats_api_url, $coin_slug);
         }
 
+        if( !isset($api_url)){
+            return array(
+                'error' => true,
+                'response' => __('Error Found! Please delete the current plugin and download a fresh copy and install it.', 'woo-altcoin-payment-gateway')
+            );
+        }
+
         $response = Util::remote_call($api_url);
         if (isset($response['error'])) {
             return $response;
@@ -309,37 +316,50 @@ class CsWapgCoinCal
         $coin_prices = [];
         $store_currency = get_woocommerce_currency();
 
+        $c = 0;
         foreach ($coins as $coin) {
             $coin_arr = explode('___', $coin);
-            $coin_price = $this->get_coin_martket_price($coin_arr[0], $coin_arr[2] );
+            if( !isset( $coin_arr[0]) || empty( $coin_arr[0]) || !isset( $coin_arr[2]) || empty( $coin_arr[2]) ){
+                continue;
+            }
+            $coin_price = $this->get_coin_martket_price( $coin_arr[0], $coin_arr[2] );
 
-            $showPricrRange = array();
+
+            $showPriceRange = array();
             $coinPriceHtml = '';
-            //variable product price range
             if( is_array( $product_price ) ){
+                //variable product price range
                 if( isset($config['variable_product_price_type']) && ( $config['variable_product_price_type'] == 'min' || $config['variable_product_price_type'] == 'max' ) ){
                     $totalCoin = $this->getCryptoLiveCoinPrice( $store_currency, $product_price[ $config['variable_product_price_type'] ], $coin_price );
                     $coinPriceHtml = \sprintf( "<span style='white-space:nowrap'>%s</span>", $totalCoin . ' %1$s' );
                 }else{
+                    if( $c > 0 ) {
+                        $coinPriceHtml .= " <br/> ";
+                    }
+                    
                     $i = 0;
                     foreach( $product_price as $key => $price_range ){
                         $totalCoin = $this->getCryptoLiveCoinPrice( $store_currency, $price_range, $coin_price );
                         if( $i > 0 ) {
                             $coinPriceHtml .= " - ";
                         }
-                        $coinPriceHtml .= \sprintf( "<span style='white-space:nowrap'>%s</span>", $totalCoin . ' %1$s' );
+                        $coinPriceHtml .= \sprintf( "<span style='white-space:nowrap' class='cs'>%s</span>", $totalCoin . ' %1$s' );
                         $i++;
                     }
-                    $showPricrRange = array( 'showPriceRange' => true );
+                    
+                    
+                    $showPriceRange = array( 'showPriceRange' => true );
                 }
             }else{
                 $totalCoin = $this->getCryptoLiveCoinPrice( $store_currency, $product_price, $coin_price );
-                $coinPriceHtml = \sprintf( "<span style='white-space:nowrap'>%s</span>", $totalCoin . ' %1$s' );
+                $coinPriceHtml = \sprintf( "<span style='white-space:nowrap' class='crypto-price'>%s</span>",  $totalCoin . ' %1$s' );
             }
 
             $coin_price_html = \sprintf( $coinPriceHtml, $coin_arr[1] );
             
-            $coin_prices += array($coin_arr[0] => array( 'price' => $totalCoin, 'html' => $coin_price_html )  ) + $showPricrRange;
+            $coin_prices += array( $coin_arr[0] => array( 'price' => $totalCoin, 'html' => $coin_price_html )  ) + $showPriceRange;
+
+            $c++;
         }
         return $coin_prices;
     }

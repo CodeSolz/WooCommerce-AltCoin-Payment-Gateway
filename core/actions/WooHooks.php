@@ -14,6 +14,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 
 use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
+use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
 use WooGateWayCoreLib\admin\functions\CsOrderDetails;
 use WooGateWayCoreLib\admin\options\Scripts_Settings;
 use WooGateWayCoreLib\frontend\functions\CsWapgCustomTy;
@@ -47,6 +48,9 @@ class WooHooks {
         
         /*** crypto price after product price ***/
         add_filter( 'woocommerce_get_price_html', array( $this, 'wapg_wc_price_html' ), 10, 2 );
+        
+        /*** crypto price hook ***/
+        add_action( 'wp_footer', array( $this, 'wapg_crypto_live_prices_ticker'));
         
         /*** check plugins info ***/
         add_action( 'wp_update_plugins', array( $this, 'wapg_check_plugin_info' ) );
@@ -113,7 +117,7 @@ class WooHooks {
      */
     public function wapg_wc_price_html( $price, $obj ){
         $CsMiscellaneous = CsMiscellaneous::getInstance();
-        return $CsMiscellaneous->show_coin_price( $price, $obj );
+        return $CsMiscellaneous->add_coin_price_placeholder( $price, $obj );
     }
 
     /**
@@ -139,7 +143,7 @@ class WooHooks {
 		Util::cs_generate_admin_url('cs-woo-altcoin-add-new-coin') .
         '">' . __('Add New Coin') . '</a>';
         
-	return $links;
+        return $links;
     }
 
 
@@ -162,5 +166,18 @@ class WooHooks {
 		}
 
 		return (array) $links;
-	}
+    }
+
+    /**
+     * Crypto Live Prices Ticker
+     *
+     * @return void
+     */
+    public function wapg_crypto_live_prices_ticker(){
+        if( is_shop() || is_product() ){
+            return CsWapgScript::crypto_live_price_ticker();
+        }
+    }
+    
+    
 }
