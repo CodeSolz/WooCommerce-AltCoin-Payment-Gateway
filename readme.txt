@@ -24,8 +24,8 @@ Accept Bitcoin / Altcoin payment from WooCommerce store or WooCommerce Multivend
 === Start Accepting Any Cryptocurrency in Few Minutes!===
 </blockquote>
 
-== How does it works? == 
-This plugins has 2 order confirmation options, manual and automatic. What does this means, read bellow: 
+== How does it work? == 
+This plugin's provide 2 options for order confirmation, manual and automatic. What does this means, read bellow: 
 
 **Manual Order**
 <blockquote>
@@ -106,13 +106,17 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 
 **Number of Crypto Currencies - free version**
 <ul>
-    <li> Currently You can accept 2200+ crypto currencies ( manual order confirmation - free version ) </li>
-    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> and get listed to free version.</li>
+    <li> Currently You can accept 2200+ crypto currencies ( manual order confirmation - free version, this list update automatically. can be less or more depending on the price ) </li>
 </ul>
 
 **Number of Crypto Currencies - PRO version**
 <ul>
     <li> Currently You can accept 10 crypto currencies ( automatic order confirmation - pro version ) </li>
+</ul>
+
+**Plugins more information & supported Coins List**
+<ul>
+    <li> Check our supported <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Supported coins list</a></li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
 
