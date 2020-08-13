@@ -11,12 +11,20 @@ class ComposerStaticInita5c5e0ae85d5ad777a3083998e92f9c9
         array (
             'WooGateWayCoreLib\\' => 18,
         ),
+        'D' => 
+        array (
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'WooGateWayCoreLib\\' => 
         array (
             0 => __DIR__ . '/../..' . '/core',
+        ),
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
     );
 

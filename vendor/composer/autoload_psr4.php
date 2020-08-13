@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'WooGateWayCoreLib\\' => array($baseDir . '/core'),
+    'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
 );

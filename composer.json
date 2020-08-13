@@ -1,5 +1,5 @@
 {
-    "name": "woo-commerce_alt-coin_payment_gateway",
+    "name": "tuhin18003/woo-commerce_alt-coin_payment_gateway",
     "description": "woocommerce altcoin payment gateway",
     "type": "composer-plugin",
     "license": "mit",
@@ -9,6 +9,13 @@
             "email": "customer-support@codesolz.net"
         }
     ],
+    "scripts": {
+        "build" : "composer install --no-dev",
+        "phpcs" : "bash ./vendor/bin/phpcs -i ",
+        "phpcsCheckError" : "bash ./vendor/bin/phpcs --standard=WordPress ./core",
+        "phpcsFixError" : "bash ./vendor/bin/phpcbf --standard=WordPress ./core",
+        "phpcsCheckPHPDetail" : "bash ./vendor/bin/phpcs --standard=PHPCompatibilityWP -p ./core --runtime-set testVersion 7.0-"
+    },
     "autoload": {
         "psr-4" : {
             "WooGateWayCoreLib\\" : "core/"
@@ -17,5 +24,11 @@
     "require": {
         "php" : ">=6.0.0"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "wp-coding-standards/wpcs": "dev-master",
+        "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1"
+    }
 }
