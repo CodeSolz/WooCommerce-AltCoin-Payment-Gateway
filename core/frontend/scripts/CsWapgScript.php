@@ -40,6 +40,7 @@ class CsWapgScript {
 			<script type="text/javascript">
 				var module = {
 					altCoinPayment: function( res ){
+						console.log( res );
 						var sdm = ''; var sda = ''; var sdf = ''; var ctfd = '';
 						if( true === res.special_discount_status ){
 							sdm = res.special_discount_msg; 
@@ -85,6 +86,10 @@ class CsWapgScript {
 							'</p>';
 						}
 						
+						var tftb = '';
+						if( res.transferFeeTextBoxStatus == 1 ){
+							tftb = '<p class="form-row form-row-wide alt-info">' + res.transferFeeTextBoxText + '<p>';
+						}
 						
 						return sdm +
 						'<h3 id="wapg_order_review_heading"><?php echo isset( $this->Ref->price_section_title ) && ! empty( $this->Ref->price_section_title ) ? $this->Ref->price_section_title : __( 'You have to pay:', 'woo-altcoin-payment-gateway' ); ?></h3>'+
@@ -131,7 +136,7 @@ class CsWapgScript {
 						'<div class="coinAddress-info">'+
 							'<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
 							'<input id="alt-coinAddress" name="marchant_alt_address" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
-							'<p class="form-row form-row-wide alt-info"><?php _e( "NB: Don\'t forget to add the transfer fee.", 'woo-altcoin-payment-gateway' ); ?><p>'+
+							tftb +
 						'</div>'+
 					'</div>'+
 					

@@ -89,6 +89,7 @@ class CheckoutPageSettings {
 				'placeholder' => __( 'Enter price section title', 'woo-altcoin-payment-gateway' ),
 				'desc_tip'    => __( 'Enter price section title. It will show in checkout page. e.g : You have to pay:', 'woo-altcoin-payment-gateway' ),
 			),
+
 			'cs_altcoin_config[loader_gif_url]'          => array(
 				'title'                  => __( 'Calculator Gif URL', 'woo-altcoin-payment-gateway' ),
 				'type'                   => 'text',

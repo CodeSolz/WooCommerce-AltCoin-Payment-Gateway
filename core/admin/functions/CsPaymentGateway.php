@@ -61,7 +61,7 @@ class CsPaymentGateway {
 	 */
 	public function save_checkout_page_options() {
 		$settings = Util::check_evil_script( $_POST['cs_altcoin_config'] );
-		array_walk( $settings, 'sanitize_text_field' );
+
 		update_option( self::$checkout_page_options_id, $settings, 'yes' );
 
 		return wp_send_json(

@@ -126,6 +126,34 @@ class AddNewCoin {
 			),
 			'st1'                                    => array(
 				'type'     => 'section_title',
+				'title'    => __( 'Coin Checkout Options', 'woo-altcoin-payment-gateway' ),
+				'desc_tip' => __( 'Please use the following options if you want to add these on checkout page.', 'woo-altcoin-payment-gateway' ),
+			),
+			'cs_add_new[transferFee]'                => array(
+				'title'    => __( 'Show / Hide <br> Transfer fee text box', 'woo-altcoin-payment-gateway' ),
+				'type'     => 'miscellaneous',
+				'desc_tip' => __( 'Please check the checkbox to show the transfer fee text box under the coin address on checkout page', 'woo-altcoin-payment-gateway' ),
+				'options'  => array(
+					'cs_add_new[transferFeeTextBoxStatus]' => array(
+						'type'        => 'checkbox',
+						'class'       => '',
+						'value'       => ! isset( $coin_data->transferFeeTextBoxStatus ) ? '' : $coin_data->transferFeeTextBoxStatus,
+						'placeholder' => __( 'Enter discount amount', 'woo-altcoin-payment-gateway' ),
+					),
+					'cs_add_new[transferFeeTextBoxText]'   => array(
+						'type'              => 'textarea',
+						'class'             => 'form-control m-t-15',
+						'value'             => ! isset( $coin_data->transferFeeTextBoxText ) ? 'NB: Don\'t forget to add the transfer fee.' : $coin_data->transferFeeTextBoxText,
+						'placeholder'       => __( 'Enter transfer fee text. Maxlength : 200', 'woo-altcoin-payment-gateway' ),
+						'custom_attributes' => array(
+							'maxlength' => 200,
+						),
+					),
+
+				),
+			),
+			'st2'                                    => array(
+				'type'     => 'section_title',
 				'title'    => __( 'Offer Settings', 'woo-altcoin-payment-gateway' ),
 				'desc_tip' => __( 'Please use the following options if you want to give special discount to customer when they use this coin on checkout. Ignore if you don\'t want add any offer', 'woo-altcoin-payment-gateway' ),
 			),

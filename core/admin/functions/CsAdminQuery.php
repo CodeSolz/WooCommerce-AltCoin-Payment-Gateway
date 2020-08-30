@@ -63,12 +63,14 @@ class CsAdminQuery {
 		}
 
 		$get_coin_info     = array(
-			'name'          => sanitize_text_field( $coin_info['coin_name'] ),
-			'coin_web_id'   => $coin_web_id->slug,
-			'symbol'        => $coin_web_id->symbol,
-			'coin_type'     => $coin_web_id->is_paid == 1 ? 2 : 1,
-			'checkout_type' => $coin_info['checkout_type'],
-			'status'        => isset( $coin_info['coin_status'] ) ? 1 : 0,
+			'name'                     => sanitize_text_field( $coin_info['coin_name'] ),
+			'coin_web_id'              => $coin_web_id->slug,
+			'symbol'                   => $coin_web_id->symbol,
+			'coin_type'                => $coin_web_id->is_paid == 1 ? 2 : 1,
+			'checkout_type'            => $coin_info['checkout_type'],
+			'status'                   => isset( $coin_info['coin_status'] ) ? 1 : 0,
+			'transferFeeTextBoxStatus' => isset( $coin_info['transferFeeTextBoxStatus'] ) ? 1 : 0,
+			'transferFeeTextBoxText'   => Util::check_evil_script( $coin_info['transferFeeTextBoxText'] ),
 		);
 		$check_coin_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coins']} where coin_web_id = %s ", $coin_web_id->slug ) );
 		if ( $check_coin_exists ) {
@@ -152,9 +154,11 @@ class CsAdminQuery {
 		}
 
 		$get_coin_info = array(
-			'name'          => $coin_info['coin_name'],
-			'checkout_type' => $coin_info['checkout_type'],
-			'status'        => isset( $coin_info['coin_status'] ) ? 1 : 0,
+			'name'                     => $coin_info['coin_name'],
+			'checkout_type'            => $coin_info['checkout_type'],
+			'status'                   => isset( $coin_info['coin_status'] ) ? 1 : 0,
+			'transferFeeTextBoxStatus' => isset( $coin_info['transferFeeTextBoxStatus'] ) ? 1 : 0,
+			'transferFeeTextBoxText'   => Util::check_evil_script( $coin_info['transferFeeTextBoxText'] ),
 		);
 		$wpdb->update( "{$wapg_tables['coins']}", $get_coin_info, array( 'id' => $coin_info['cid'] ) );
 

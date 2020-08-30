@@ -36,6 +36,8 @@ class Activate {
             `coin_type` varchar(1) DEFAULT 1,
             `checkout_type` char(1),
             `status` char(1),
+            `transferFeeTextBoxStatus` char(1) DEFAULT 1,
+            `transferFeeTextBoxText` mediumtext DEFAULT 'NB: Don\'t forget to add the transfer fee.',
             PRIMARY KEY ( `id`)
             ) $charset_collate",
 			"CREATE TABLE IF NOT EXISTS `{$wapg_tables['addresses']}`(
@@ -91,6 +93,14 @@ class Activate {
 
 			$update_sqls = array();
 
+			// added new column on db version : 1.0.5
+			if ( \version_compare( $get_installed_db_version, '1.0.5', '<' ) ) {
+				$update_sqls = array(
+					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxStatus char(1) DEFAULT 1 AFTER status",
+					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxText mediumtext DEFAULT 'NB: Don\'t forget to add the transfer fee.' AFTER status",
+				);
+			}
+
 			if ( \version_compare( $get_installed_db_version, '1.0.4', '<' ) ) {
 				$update_sqls = array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN coin_type varchar(1) DEFAULT 1 AFTER symbol",
@@ -132,6 +142,13 @@ class Activate {
 			if ( true === $import_coin_symbol ) {
 				self::import_coin_symbol();
 			}
+
+			// import old settings
+			self::import_old_settins();
+
+			// update plugin version
+			update_option( 'wapg_plugin_version', CS_WAPG_VERSION );
+
 		}
 	}
 
@@ -172,9 +189,6 @@ class Activate {
 	 */
 	public static function import_old_settins() {
 		$get_installed_plugin_version = get_site_option( 'wapg_plugin_version' );
-
-		// update plugin version
-		update_option( 'wapg_plugin_version', CS_WAPG_VERSION );
 
 		if ( \version_compare( $get_installed_plugin_version, '1.2.4', '>=' ) ) {
 			return; // already imported old settings

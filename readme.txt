@@ -7,10 +7,10 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.5
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 Requires PHP: 7.0
 WC requires at least: 3.0
-WC tested up to: 4.0
+WC tested up to: 4.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -111,13 +111,15 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 
 **Number of Crypto Currencies - PRO version**
 <ul>
-    <li> Currently You can accept 10 crypto currencies ( automatic order confirmation - pro version ) </li>
+    <li> Currently You can accept 10+ crypto currencies ( automatic order confirmation - pro version ) </li>
+    <li> Check the list in <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway"> CoinMarketStats.online</a> of accepted crypto for automatic order confirmation.  </li>
 </ul>
 
 **Plugins more information & supported Coins List**
 <ul>
-    <li> Check our supported <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Supported coins list</a></li>
-    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin. (There is a little charge to get listed to the automatic options list.)</li>
+    <li> Our coin get live price from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a></li>
+    <li> Check our supported crypto list from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a></li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin to <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a>. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
 
 
@@ -207,6 +209,10 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.4.7 =
+* **Feat:** Transfer fee text box show / hide
+* **Feat:** Edit transfer fee text box text
 
 = 1.4.6 =
 * **Improvement:** adjusted to the WordPress laest version

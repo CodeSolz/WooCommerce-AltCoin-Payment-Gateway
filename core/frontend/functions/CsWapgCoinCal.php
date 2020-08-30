@@ -17,6 +17,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\lib\cartFunctions;
 use WooGateWayCoreLib\admin\functions\CsAdminQuery;
+use WooGateWayCoreLib\admin\functions\CsPaymentGateway;
 
 class CsWapgCoinCal {
 
@@ -172,6 +173,11 @@ class CsWapgCoinCal {
 
 			// save cart info
 			cartFunctions::save_current_cart_payment_info( $cart_info, $is_premade_order_id );
+
+			$cart_info = array_merge( (array) $coin, $cart_info );
+
+			// pre_print( $cart_info );
+
 			wp_send_json( $cart_info );
 		}
 	}
