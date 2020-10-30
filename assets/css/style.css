@@ -374,3 +374,9 @@ ul.typeahead__list{
 #product_binder .select2-search__field{ padding: 5px 10px !important; }
 #product_binder li.select2-selection__choice{ padding: 10px 12px; margin: 5px 4px 0px 0px; }
 .wapg-message{ margin: 5px 0 15px !important;}
+
+#toplevel_page_woo-altcoin-payment-gateway-woocommerce-altcoin-payment > ul > li:nth-child(8) > a,
+#toplevel_page_woo-altcoin-payment-gateway-woocommerce-altcoin-payment > ul > li:nth-child(8) > a:hover{
+    color: #c60051;
+    font-weight: bold;
+}

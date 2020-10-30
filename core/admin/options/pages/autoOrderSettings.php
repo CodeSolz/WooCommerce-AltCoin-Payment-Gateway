@@ -53,13 +53,13 @@ class AutoOrderSettings {
 		$settings_data = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
 		$fields        = array(
 			'cs_altcoin_config[cms_username]'       => array(
-				'title'       => __( 'CoinMarketStats Username', 'woo-altcoin-payment-gateway' ),
+				'title'       => __( 'CoinMarketStats Email', 'woo-altcoin-payment-gateway' ),
 				'type'        => 'text',
 				'class'       => 'form-control',
 				'required'    => true,
 				'value'       => CsFormBuilder::get_value( 'cms_username', $settings_data, '' ),
-				'placeholder' => __( 'Enter your username', 'woo-altcoin-payment-gateway' ),
-				'desc_tip'    => __( 'Enter your username used in the registration.', 'woo-altcoin-payment-gateway' ),
+				'placeholder' => __( 'Enter your CoinMarketStats email', 'woo-altcoin-payment-gateway' ),
+				'desc_tip'    => __( 'Enter your email used in the registration.', 'woo-altcoin-payment-gateway' ),
 			),
 			'cs_altcoin_config[cms_pass]'           => array(
 				'title'       => __( 'CoinMarketStats Password', 'woo-altcoin-payment-gateway' ),

@@ -1,16 +1,16 @@
 === CS WooCommerce Bitcoin / AltCoin Payment Gateway ===
 Contributors: codesolz, m.tuhin
 Tags: woocommerce, woocommerce bitcoin, woocommerce altcoin, altcoin, woocommerce crypto payment, woocommerce payment gateway, woocommerce easy crypto-currency payment,  bitcoin payment, cryptocurrency payment gateway, bitcoin payment gateway, receive bitcoin payment, bitcoin  
-Donate link: https://www.paypal.me/wooAltCoinPayGatewy
+Donate link: https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway
 Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.5
-Stable tag: 1.4.7
+Stable tag: 1.4.9
 Requires PHP: 7.0
 WC requires at least: 3.0
-WC tested up to: 4.4
+WC tested up to: 4.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -124,8 +124,8 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 
 
 
-== Setup Video Guide [old version] == 
-[youtube https://www.youtube.com/watch?v=flzobzwIZ5w]
+== How to install, setup and activate coin in the payment gateway == 
+[youtube https://www.youtube.com/watch?v=avNGnR34WnQ]
 
 == Installation Process & Documentation == 
 * How to setup bitcoin / altcoin payment gateway?
@@ -209,6 +209,12 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.4.9 =
+* **Important Fix:** Some error fixed
+
+= 1.4.8 =
+* **Important Fix:** SQL error fixed
 
 = 1.4.7 =
 * **Feat:** Transfer fee text box show / hide

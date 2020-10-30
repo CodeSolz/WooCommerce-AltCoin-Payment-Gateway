@@ -37,7 +37,7 @@ class Activate {
             `checkout_type` char(1),
             `status` char(1),
             `transferFeeTextBoxStatus` char(1) DEFAULT 1,
-            `transferFeeTextBoxText` mediumtext DEFAULT 'NB: Don\'t forget to add the transfer fee.',
+            `transferFeeTextBoxText` mediumtext,
             PRIMARY KEY ( `id`)
             ) $charset_collate",
 			"CREATE TABLE IF NOT EXISTS `{$wapg_tables['addresses']}`(
@@ -93,11 +93,18 @@ class Activate {
 
 			$update_sqls = array();
 
+			// added new column on db version : 1.0.6
+			if ( \version_compare( $get_installed_db_version, '1.0.6', '<' ) ) {
+				$update_sqls = array(
+					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxText mediumtext AFTER status",
+				);
+			}
+
 			// added new column on db version : 1.0.5
 			if ( \version_compare( $get_installed_db_version, '1.0.5', '<' ) ) {
 				$update_sqls = array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxStatus char(1) DEFAULT 1 AFTER status",
-					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxText mediumtext DEFAULT 'NB: Don\'t forget to add the transfer fee.' AFTER status",
+					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxText mediumtext AFTER status",
 				);
 			}
 

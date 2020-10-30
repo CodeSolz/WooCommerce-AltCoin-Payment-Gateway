@@ -14,10 +14,11 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 	die();
 }
 
-
+use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
 use WooGateWayCoreLib\admin\options\Scripts_Settings;
 use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
+use WooGateWayCoreLib\admin\functions\CsAutomaticOrderConfirmationSettings as AutoConfirm;
 
 class RegisterCustomMenu {
 
@@ -120,6 +121,19 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-checkout-option-settings',
 			array( $this, 'load_checkout_settings_page' )
 		);
+
+		if(false === AutoConfirm::hasPaid()){
+			$altcoin_menu['wapg_go_pro'] = add_submenu_page(
+				CS_WAPG_PLUGIN_IDENTIFIER,
+				__( 'Go Pro', 'woo-altcoin-payment-gateway' ),
+				'<span class="dashicons dashicons-star-filled" style="font-size: 17px"></span> ' . __( 'Go Pro', 'woo-altcoin-payment-gateway' ),
+				'manage_options',
+				'cs-wapg-go-pro',
+				array( $this, 'wapg_gopro_redirects' )
+			);
+
+		}
+
 
 		// load script
 		add_action( "load-{$altcoin_menu['default_settings']}", array( $this, 'register_admin_settings_scripts' ) );
@@ -308,4 +322,21 @@ class RegisterCustomMenu {
 		}
 		return true;
 	}
+
+	/**
+	 * Handler expernal redirect
+	 *
+	 * @return void
+	 */
+	public function wapg_gopro_redirects() {
+		if ( empty( $_GET['page'] ) ) {
+			return;
+		}
+
+		if ( 'cs-wapg-go-pro' === $_GET['page'] ) {
+			\wp_redirect( Util::cs_get_pro_link( 'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wp-menu&utm_campaign=gopro&utm_medium=wp-dash' ) );
+			die;
+		}
+	}
+
 }

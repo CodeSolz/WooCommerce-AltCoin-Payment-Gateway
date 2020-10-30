@@ -71,4 +71,21 @@ class CsAutomaticOrderConfirmationSettings {
 	public static function get_order_confirm_settings_data() {
 		return get_option( self::$settings_key );
 	}
+
+	/**
+	 * Has Paid installed
+	 *
+	 * @return boolean
+	 */
+	public static function hasPaid(){
+		$getSettings = get_option( self::$settings_key );
+		if($getSettings){
+			if(isset($getSettings['id']) && isset($getSettings['cms_username']) && isset($getSettings['cms_pass'])){
+				if( $getSettings['id'] == md5( trim($getSettings['cms_username']).trim($getSettings['cms_pass']).'paid')){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
