@@ -371,5 +371,5 @@ class Util {
 
 		return $link;
 	}
-	
+
 }

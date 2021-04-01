@@ -77,11 +77,11 @@ class CsAutomaticOrderConfirmationSettings {
 	 *
 	 * @return boolean
 	 */
-	public static function hasPaid(){
+	public static function hasPaid() {
 		$getSettings = get_option( self::$settings_key );
-		if($getSettings){
-			if(isset($getSettings['id']) && isset($getSettings['cms_username']) && isset($getSettings['cms_pass'])){
-				if( $getSettings['id'] == md5( trim($getSettings['cms_username']).trim($getSettings['cms_pass']).'paid')){
+		if ( $getSettings ) {
+			if ( isset( $getSettings['id'] ) && isset( $getSettings['cms_username'] ) && isset( $getSettings['cms_pass'] ) ) {
+				if ( $getSettings['id'] == md5( trim( $getSettings['cms_username'] ) . trim( $getSettings['cms_pass'] ) . 'paid' ) ) {
 					return true;
 				}
 			}

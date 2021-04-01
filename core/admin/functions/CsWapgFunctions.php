@@ -77,20 +77,18 @@ class CsWapgFunctions extends \WC_Payment_Gateway {
 		$payment_info    = $this->validate_text_field( false, $_POST['payment_info'] );
 		$reference_trxid = $this->validate_text_field( false, $_POST['trxid'] );
 
-		// get checkout type
-		$checkout_type = cartFunctions::get_temp_log_checkout_type( $order_id );
-
 		if ( empty( $payment_info ) ) {
 			wc_add_notice( __( 'Sorry! Something went wrong. Please refresh this page and try again.', 'woo-altcoin-payment-gateway' ), 'error' );
 			return false;
 		}
 		$payment_info = explode( '__', $payment_info );
+
 		if ( empty( $reference_trxid ) ) {
 			wc_add_notice( sprintf( __( 'Please enter your %s transaction trxID.', 'woo-altcoin-payment-gateway' ), $payment_info[2] ), 'error' );
 			return false;
 		}
-		if ( empty( $payment_confirm ) && ( empty( $checkout_type ) || $checkout_type != 2 ) ) {
-			wc_add_notice( __( 'Please click the confirmation checkbox that you have already transfered the coin successfully!', 'woo-altcoin-payment-gateway' ), 'error' );
+		if ( empty( $payment_confirm ) && isset( $payment_info[5] ) && $payment_info[5] != 2 ) {
+			wc_add_notice( __( 'Please click the confirmation checkbox that you have already transferred the coin successfully!', 'woo-altcoin-payment-gateway' ), 'error' );
 			return false;
 		}
 
@@ -110,10 +108,10 @@ class CsWapgFunctions extends \WC_Payment_Gateway {
 			)
 		);
 
-		if ( ! empty( $checkout_type ) && $checkout_type == 2 ) {
+		if ( isset( $payment_info[5] ) && $payment_info[5] == 2 ) {
+
 			// remove temp info
-			cartFunctions::delete_temp_log_checkout_type( $order_id );
-			cartFunctions::delete_transaction_successful_log( $order_id );
+			cartFunctions::temp_remove_trx_info( $reference_trxid );
 
 			$auto_setting_config = CsAutomaticOrderConfirmationSettings::get_order_confirm_settings_data();
 			$status              = isset( $auto_setting_config['order_status'] ) && ! empty( $auto_setting_config['order_status'] ) ? $auto_setting_config['order_status'] : 'completed';

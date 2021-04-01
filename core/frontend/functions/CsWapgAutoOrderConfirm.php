@@ -24,7 +24,7 @@ class CsWapgAutoOrderConfirm {
 	 *
 	 * @var type
 	 */
-	private $tracking_api_url = 'https://api.coinmarketstats.online/trxid_validator/v1/%s/%s/%s/%s/%s/%s';
+	private $tracking_api_url = 'https://api.coinmarketstats.online/trxid_validator/v1/%s/%s/%s/%s/%s/%s/%s';
 
 	/**
 	 * Force end
@@ -61,14 +61,6 @@ class CsWapgAutoOrderConfirm {
 				)
 			);
 		}
-
-		// check transaction was successful - return true if success
-		// if( cartFunctions::get_transaction_successful_log( $premade_order_id ) == 'success' ){
-		// return wp_send_json(Util::notice_html(array(
-		// 'success' => true,
-		// 'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' )
-		// )));
-		// }
 
 		// check first time
 		$trxid_validator = cartFunctions::temp_update_trx_info( $trxid, $secret_word, $premade_order_id );
@@ -109,11 +101,13 @@ class CsWapgAutoOrderConfirm {
 
 		$cart_info = array_map( 'trim', $cart_info );
 		$cartTotal = empty( $cart_info['cartTotalAfterDiscount'] ) ? $cart_info['cartTotal'] : $cart_info['cartTotalAfterDiscount'];
-		$api_url   = sprintf(
+
+		$api_url = sprintf(
 			$this->tracking_api_url,
 			$api_key,
 			$cart_info['coinName'],
 			$cart_info['coinAddress'],
+			! isset( $config['coin_percentage'] ) || empty( $config['coin_percentage'] ) ? 100 : $config['coin_percentage'],
 			Util::check_evil_script( $trxid ),
 			$cart_info['totalCoin'],
 			trim( $cartTotal )
@@ -181,12 +175,8 @@ class CsWapgAutoOrderConfirm {
 								);
 
 							} else {
-								// save payment was successful for this cart
-								cartFunctions::save_transaction_successful_log( $premade_order_id );
 								// remove temp transaction data
 								cartFunctions::temp_remove_trx_info( $trxid, $premade_order_id );
-								// log checkout type
-								cartFunctions::save_temp_log_checkout_type( 2, $premade_order_id );
 
 								return wp_send_json(
 									Util::notice_html(
@@ -212,12 +202,9 @@ class CsWapgAutoOrderConfirm {
 					)
 				);
 			} elseif ( isset( $response->success ) && true === $response->success && true === $response->is_valid_for_order ) {
-				// save payment was successful for this cart
-				cartFunctions::save_transaction_successful_log( $premade_order_id );
+
 				// remove temp transaction data
 				cartFunctions::temp_remove_trx_info( $trxid, $premade_order_id );
-				// log checkout type
-				cartFunctions::save_temp_log_checkout_type( 2, $premade_order_id );
 
 				return wp_send_json(
 					Util::notice_html(

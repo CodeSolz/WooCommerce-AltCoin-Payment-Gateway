@@ -65,7 +65,7 @@ class CsWapgScript {
 						var ctc = '';
 						if( res.checkoutType == 1 ){
 							ctc = '<p class="form-row form-row-wide">'+
-								'<input type="checkbox" name="payment_confirm" required=""/>'+
+								'<input type="checkbox" name="payment_confirm" required="" style="display:inline;"/>'+
 								'<?php _e( 'I have completed the coin transfer successfully! ', 'woo-altcoin-payment-gateway' ); ?>'+
 							'</p>';
 						}else if( res.checkoutType == 2 ){
@@ -141,9 +141,9 @@ class CsWapgScript {
 					'</div>'+
 					
 					'<p class="form-row form-row-wide">'+
-						'<label for="user-alt-coinAddress"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+res.coinName+'<?php _e( ' transaction id:', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
+						'<label for="user-alt-coinAddress"><?php _e( 'Please enter your ', 'woo-altcoin-payment-gateway' ); ?>'+res.coinName+'<?php _e( ' transaction hash / id :', 'woo-altcoin-payment-gateway' ); ?> <span class="required">*</span></label>'+
 						'<input id="user_alt_coinAddress" name="trxid" class="input-text wc-altcoin-form-user-alt-res.coinAddress" inputmode="numeric" required  autocorrect="no" autocapitalize="no" spellcheck="no" type="text" placeholder="<?php _e( 'please enter here your coin transaction id', 'woo-altcoin-payment-gateway' ); ?>" />'+
-						'<input type="hidden" name="payment_info" value="'+res.cartTotal+'__'+res.totalCoin+'__'+res.coinName+'__'+res.coinAddress+'__'+res.coinPrice+'" />'+
+						'<input type="hidden" name="payment_info" value="'+res.cartTotal+'__'+res.totalCoin+'__'+res.coinName+'__'+res.coinAddress+'__'+res.coinPrice+'__'+res.checkoutType+'" />'+
 						'<input type="hidden" name="premade_order_id" value="'+res.premadeOrderId+'" />'+
 						sdf+
 					'</p>' + ctc;
@@ -160,6 +160,12 @@ class CsWapgScript {
 					},        
 					enable_fields : function(){
 						jQuery("#secret_word, #user_alt_coinAddress, #CsaltCoin").removeAttr( 'readonly');
+					},
+					qrWidth : function(){
+						var qrWidth = jQuery(".coinAddress-qr").width();
+						if( parseInt(qrWidth) < 400 ){
+							jQuery(".coinAddress-qr").addClass('coinAddress-qr-sm');
+						}
 					}        
 				};
 				
@@ -200,6 +206,9 @@ class CsWapgScript {
 									}else{
 										jQuery("#place_order").show('slow');
 									}
+
+									//call 
+									module.qrWidth();
 								}else{
 									jQuery(".coin-detail").html( res.msg ).slideDown('slow');
 								}
@@ -313,6 +322,8 @@ class CsWapgScript {
 					});
 					
 				});
+
+			
 			</script>
 			<style type="text/css">
 				.alt-info{font-style: italic;margin-bottom: 10px;border: 2px dashed #999;padding: 10px;margin-top: 25px;}
@@ -324,6 +335,8 @@ class CsWapgScript {
 				.coinAddress-info{ position: relative;display: table-cell;vertical-align: top;padding: 10px 20px; width: 63%;}
 				.coinAddress-info h3{ font-size: 15px; }
 				.coinAddress-qr img{ display: table-cell;padding: 15px 0px 11px 22px !important;position: relative !important; }
+				.coinAddress-qr-sm{ display: block; }
+				.coinAddress-qr-sm img{ float: none !important; margin: 0 auto; padding: 0px !important; display: block; }
 				.special-discount-msg{ color: forestgreen; font-size: 15px; }
 				.con{ color: red; font-weight: bold; }
 				.blink{ animation: blink-animation 1s steps(5, start) infinite;-webkit-animation: blink-animation 1s steps(5, start) infinite;}

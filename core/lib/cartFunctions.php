@@ -189,7 +189,8 @@ class cartFunctions {
 		if ( empty( $optn_key = self::get_cart_id() ) ) {
 			$optn_key = $order_id;
 		}
-		update_option( $optn_key . '_ct', $type );
+
+		update_option( $order_id . '_ct', $type );
 		return true;
 	}
 

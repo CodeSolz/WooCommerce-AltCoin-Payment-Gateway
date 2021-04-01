@@ -101,6 +101,19 @@ class AutoOrderSettings {
 				'value'       => CsFormBuilder::get_value( 'confirmation_count', $settings_data, 6 ),
 				'desc_tip'    => __( 'Select how many confirmation will be treated as a successful transaction e.g : Standard is: 6, 3 is enough for payments $1,000 - $10,000', 'woo-altcoin-payment-gateway' ),
 			),
+			'cs_altcoin_config[coin_percentage]'    => array(
+				'title'             => __( 'Partial Payment(%)', 'woo-altcoin-payment-gateway' ),
+				'type'              => 'number',
+				'class'             => 'form-control field-width-120-px',
+				'required'          => true,
+				'custom_attributes' => array(
+					'step' => 'any',
+					'max'  => 100,
+				),
+				'value'             => CsFormBuilder::get_value( 'coin_percentage', $settings_data, '' ),
+				'placeholder'       => __( 'e.g : 99 ', 'woo-altcoin-payment-gateway' ),
+				'desc_tip'          => __( 'Auto confirmation mode will automatically confirm payments that are within this percentage of the total amount requested. e.g : 99', 'woo-altcoin-payment-gateway' ),
+			),
 			'cs_altcoin_config[order_status]'       => array(
 				'title'       => __( 'Order Status', 'woo-altcoin-payment-gateway' ),
 				'type'        => 'select',

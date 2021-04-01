@@ -122,7 +122,7 @@ class RegisterCustomMenu {
 			array( $this, 'load_checkout_settings_page' )
 		);
 
-		if(false === AutoConfirm::hasPaid()){
+		if ( false === AutoConfirm::hasPaid() ) {
 			$altcoin_menu['wapg_go_pro'] = add_submenu_page(
 				CS_WAPG_PLUGIN_IDENTIFIER,
 				__( 'Go Pro', 'woo-altcoin-payment-gateway' ),
@@ -133,7 +133,6 @@ class RegisterCustomMenu {
 			);
 
 		}
-
 
 		// load script
 		add_action( "load-{$altcoin_menu['default_settings']}", array( $this, 'register_admin_settings_scripts' ) );

@@ -102,7 +102,7 @@ class WooHooks {
 		$order_id = isset( $post->ID ) ? $post->ID : Util::check_evil_script( $_GET['post'] );
 		// Get an instance of the WC_Order object
 		$order = wc_get_order( $order_id );
-		if ( $order->get_payment_method() != 'wapg_altcoin_payment' ) {
+		if ( false !== $order->get_payment_method() && $order->get_payment_method() != 'wapg_altcoin_payment' ) {
 			return;
 		}
 

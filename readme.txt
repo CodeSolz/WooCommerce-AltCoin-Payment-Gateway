@@ -1,16 +1,16 @@
-=== CS WooCommerce Bitcoin / AltCoin Payment Gateway ===
-Contributors: codesolz, m.tuhin
+=== Bitcoin / AltCoin Payment Gateway for WooCommerce & Multivendor store / shop ===
+Contributors: codesolz, m.tuhin, coinmarketstats
 Tags: woocommerce, woocommerce bitcoin, woocommerce altcoin, altcoin, woocommerce crypto payment, woocommerce payment gateway, woocommerce easy crypto-currency payment,  bitcoin payment, cryptocurrency payment gateway, bitcoin payment gateway, receive bitcoin payment, bitcoin  
 Donate link: https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway
 Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 5.5
-Stable tag: 1.4.9
+Tested up to: 5.7
+Stable tag: 1.5.1
 Requires PHP: 7.0
 WC requires at least: 3.0
-WC tested up to: 4.6
+WC tested up to: 5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -45,7 +45,7 @@ Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress
 
 <blockquote>
 = Automatic order confirmation / Pro version =
-Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order confirmation</a>.
+Check more for <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">automatic order confirmation</a>.
 </blockquote>
 
 
@@ -101,7 +101,7 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 **Store Order Processing - PRO Version**
 <ul>
     <li> Unlimited manual order confirmation.</li>
-    <li> <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://bit.ly/30wTtk4">UPGRADE TO PRO </a> or check the trail</li>
+    <li> <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">UPGRADE TO PRO </a> or check the trail</li>
 </ul>
 
 **Number of Crypto Currencies - free version**
@@ -117,7 +117,7 @@ Check more for <a target="_blank" href="https://bit.ly/30wTtk4">automatic order 
 
 **Plugins more information & supported Coins List**
 <ul>
-    <li> Our coin get live price from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a></li>
+    <li> Our coin get live price from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a> . The prices are collected from live exchange portal like : Bittrex, CoinMarketCap, CoinGecko, Binance etc..</li>
     <li> Check our supported crypto list from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a></li>
     <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin to <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a>. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
@@ -172,7 +172,7 @@ English, Spanish, Russian, German, French, Dutch
 
 <blockquote>
 = Pro Version for automatic order confirmation =
-  * Check <a target="_blank" href="https://bit.ly/30wTtk4">Pro version</a> and start a trail, no credit card required
+  * Check <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Pro version</a> and start a trail, no credit card required
 
 = For Quick Support, feature request and bug reporting = 
 <ul>
@@ -209,6 +209,14 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.5.1 =
+* **Improvement:** Automatic order confirmation
+* **Improvement:** Upgraded to WordPress & WooCommerce latest version
+
+= 1.5.0 =
+* **Major Fix:** Pro version partial percentage - acceptance
+* **Improvement:** Upgraded to WordPress & WooCommerce latest version
 
 = 1.4.9 =
 * **Important Fix:** Some error fixed

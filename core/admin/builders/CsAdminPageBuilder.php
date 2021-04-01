@@ -165,7 +165,7 @@ class CsAdminPageBuilder {
 	 */
 	private function generate_footer() {
 		return '<div class="panel-footer">
-            <p>Thank you for choosing us! <a href="https://www.codesolz.net" target="_blank">codesolz.net</a></p>
+            <p>Thank you for choosing us! <a href="http://coinmarketstats.online" target="_blank">coinmarketstats.online</a></p>
         </div>';
 	}
 }
