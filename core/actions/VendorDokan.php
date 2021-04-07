@@ -1,7 +1,7 @@
 <?php namespace WooGateWayCoreLib\Actions;
 
 /**
- * Class: Woocommerce Dokan Vendor Support
+ * Class: Woocommerce Dokan Multi-Vendor Support
  *
  * @package Actions
  * @since 1.4.4
@@ -25,6 +25,7 @@ class VendorDokan {
 		add_filter( 'dokan_withdraw_methods', array( $this, 'cs_dokan_withdrawl_method' ), 50 );
 		add_filter( 'dokan_get_seller_active_withdraw_methods', array( $this, 'cs_dokan_seller_active_withdrawl_methods' ), 10 );
 		add_action( 'dokan_store_profile_saved', array( $this, 'cs_dokan_payment_settings' ), 20, 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'cs_dokan_get_payment_details' ) );
 	}
 
 	 /**
@@ -39,7 +40,7 @@ class VendorDokan {
 		if ( $coins ) {
 			foreach ( $coins as $coin ) {
 				$coinMethods = array();
-				if ( ! empty( $coin->name ) && ! in_array( $coinMethods, $coin->coin_web_id ) ) {
+				if ( ! empty( $coin->name ) && ! in_array( $coin->coin_web_id, $coinMethods ) ) {
 					$methods[ $coin->coin_web_id ] = array(
 						'title'    => $coin->name,
 						'callback' => array( $this, $this->cs_payment_method_prefix . $coin->coin_web_id ),
@@ -133,6 +134,19 @@ class VendorDokan {
 		}
 		return true;
 	}
+
+
+	/**
+	 * Get payment details
+	 *
+	 * @return void
+	 */
+	function cs_dokan_get_payment_details() {
+		$src = 'jQuery(document).ready(function($) { wp.hooks.addFilter( "dokan_get_payment_details", "dokan_get_payment_details", function(details, method, data){ if( typeof data[method].coin_address !== "undefined" ) { return data[method].coin_address; }else { return details; } }); });';
+		wp_add_inline_script( 'jquery', $src );
+	}
+
+
 
 }
 

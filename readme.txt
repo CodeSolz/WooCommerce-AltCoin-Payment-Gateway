@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.7
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -64,7 +64,7 @@ Check more for <a target="_blank" href="https://coinmarketstats.online/product/w
 **Multivendor Marketplace Supports**
 <ul>
     <li>
-        Multivendor <a href="https://wordpress.org/plugins/dokan-lite/">Dokan</a> supported
+        Multivendor <a href="https://wordpress.org/plugins/dokan-lite/">Dokan</a> supported. <a href="https://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/multi-vendor-setup/dokan-setup/">Setup Demo & Documentation</a>
     </li>
 </ul> 
 
@@ -147,6 +147,10 @@ Check more for <a target="_blank" href="https://coinmarketstats.online/product/w
     [Demo & Documentation](http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/how-to-setup-checkout-page-options/)
 <hr />
 
+* How to setup multivendor?
+    [Demo & Documentation](https://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/multi-vendor-setup/)
+<hr />
+
 = How does the fiat currency works? =
 * At first your store currency convert to USD( if not USD ) and then it convert to coin price by exchange market price.
 * During the checkout process everything happen automatically in background.
@@ -209,6 +213,9 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.5.2 =
+* **Improvement:** Dokan Multivendor supported
 
 = 1.5.1 =
 * **Improvement:** Automatic order confirmation
