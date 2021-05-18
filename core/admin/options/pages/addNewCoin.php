@@ -223,7 +223,7 @@ class AddNewCoin {
 		);
 
 		// apply hook
-		$fields = apply_filters( 'filter_cs_wapg_add_new_coin_fields', $fields, $args );
+		$fields = apply_filters( 'filter_cs_wapg_add_new_coin_fields', $fields, $coin_data, $args );
 
 		$args['content'] = $this->Form_Generator->generate_html_fields( $fields );
 

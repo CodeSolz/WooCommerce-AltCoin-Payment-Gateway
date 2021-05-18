@@ -42,6 +42,8 @@ class RegisterCustomMenu {
 	 */
 	public $current_screen;
 
+	private static $_instance;
+
 	public function __construct() {
 		 // call WordPress admin menu hook
 		add_action( 'admin_menu', array( $this, 'cs_register_wapg_menu' ) );
@@ -126,7 +128,7 @@ class RegisterCustomMenu {
 			$altcoin_menu['wapg_go_pro'] = add_submenu_page(
 				CS_WAPG_PLUGIN_IDENTIFIER,
 				__( 'Go Pro', 'woo-altcoin-payment-gateway' ),
-				'<span class="dashicons dashicons-star-filled" style="font-size: 17px"></span> ' . __( 'Go Pro', 'woo-altcoin-payment-gateway' ),
+				'<span class="dashicons dashicons-star-filled wapg-go-pro-link" style="font-size: 17px"></span> <span class="wapg-go-pro-link">' . __( 'Go Pro Plan', 'woo-altcoin-payment-gateway' ) . '</span>',
 				'manage_options',
 				'cs-wapg-go-pro',
 				array( $this, 'wapg_gopro_redirects' )
@@ -336,6 +338,18 @@ class RegisterCustomMenu {
 			\wp_redirect( Util::cs_get_pro_link( 'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wp-menu&utm_campaign=gopro&utm_medium=wp-dash' ) );
 			die;
 		}
+	}
+
+	/**
+	 * generate instance
+	 *
+	 * @return void
+	 */
+	public static function get_instance() {
+		if ( ! ( self::$_instance instanceof self ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 	}
 
 }

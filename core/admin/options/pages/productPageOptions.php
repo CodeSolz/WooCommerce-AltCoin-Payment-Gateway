@@ -34,9 +34,16 @@ class ProductPageOptions {
 	 */
 	private $Form_Generator;
 
+	/**
+	 * Set current page dat
+	 */
+	private $settings;
+
 
 	public function __construct( CsAdminPageBuilder $AdminPageGenerator ) {
 		$this->Admin_Page_Generator = $AdminPageGenerator;
+
+		$this->settings = CsPaymentGateway::get_product_page_options();
 
 		/*create obj form generator*/
 		$this->Form_Generator = new CsFormBuilder();
@@ -52,7 +59,11 @@ class ProductPageOptions {
 	 */
 	public function generate_product_options_settings( $args ) {
 
-		$settings = CsPaymentGateway::get_product_page_options();
+		
+
+		// pre_print(
+		// 	$settings
+		// );
 
 		$fields = array(
 			'st1'                                     => array(
@@ -65,7 +76,7 @@ class ProductPageOptions {
 				'type'        => 'text',
 				'class'       => 'form-control',
 				'required'    => true,
-				'value'       => CsFormBuilder::get_value( 'offer_msg_blink_text', $settings, 'Special Offers Available!' ),
+				'value'       => CsFormBuilder::get_value( 'offer_msg_blink_text', $this->settings, 'Special Offers Available!' ),
 				'placeholder' => __( 'Enter offer blink text', 'woo-altcoin-payment-gateway' ),
 				'desc_tip'    => __( 'Enter offer notification blink text, this text will diplay top of the add to cart button in single product page', 'woo-altcoin-payment-gateway' ),
 			),
@@ -74,7 +85,7 @@ class ProductPageOptions {
 				'type'        => 'text',
 				'class'       => 'form-control',
 				'required'    => true,
-				'value'       => CsFormBuilder::get_value( 'offer_msg_text', $settings, 'You will get special discount, if you pay with following AltCoins' ),
+				'value'       => CsFormBuilder::get_value( 'offer_msg_text', $this->settings, 'You will get special discount, if you pay with following AltCoins' ),
 				'placeholder' => __( 'Enter offer message text', 'woo-altcoin-payment-gateway' ),
 				'desc_tip'    => __( 'Enter offer notification text, this text will diplay top of the add to cart button in single product page', 'woo-altcoin-payment-gateway' ),
 			),
@@ -87,7 +98,7 @@ class ProductPageOptions {
 				'title'     => __( 'Enable / Disable', 'woo-altcoin-payment-gateway' ),
 				'type'      => 'checkbox',
 				'value'     => 'yes',
-				'has_value' => CsFormBuilder::get_value( 'show_live_price', $settings, '' ),
+				'has_value' => CsFormBuilder::get_value( 'show_live_price', $this->settings, '' ),
 				'desc_tip'  => __( 'Enable this option to show live coin price beside product price', 'woo-altcoin-payment-gateway' ),
 			),
 			'show_live_coin_list[]'                   => array(
@@ -97,7 +108,7 @@ class ProductPageOptions {
 				'multiple'    => true,
 				'placeholder' => __( 'Please select coin', 'woo-altcoin-payment-gateway' ),
 				'options'     => CsFormHelperLib::get_all_active_coins(),
-				'value'       => CsFormBuilder::get_value( 'show_live_coin_list', $settings, '' ),
+				'value'       => CsFormBuilder::get_value( 'show_live_coin_list', $this->settings, '' ),
 				'desc_tip'    => __( 'Select / Enter coin name to show for live price. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
 			),
 			'cs_altcoin_config[variable_product_price_type]' => array(
@@ -111,7 +122,7 @@ class ProductPageOptions {
 					'max'  => __( 'Show Max Price', 'woo-altcoin-payment-gateway' ),
 					'both' => __( 'Show Both Price', 'woo-altcoin-payment-gateway' ),
 				),
-				'value'       => CsFormBuilder::get_value( 'variable_product_price_type', $settings_data, 'both' ),
+				'value'       => CsFormBuilder::get_value( 'variable_product_price_type', $this->settings, 'both' ),
 				'desc_tip'    => __( 'Please select if you want to show just min / max or both prices converted to cryptocurrencies. Default: both', 'woo-altcoin-payment-gateway' ),
 			),
 		);
@@ -144,10 +155,15 @@ class ProductPageOptions {
 	 * Add custom scripts
 	 */
 	public function default_page_scripts() {
+		// pre_print(
+		// 	$this->settings['show_live_coin_list']
+		// );
 		?>
 			<script>
 				jQuery(document).ready(function($) {
 					$('.live_price_coins').select2();
+
+					$('.live_price_coins').val(<?php echo implode( ',', $this->settings['show_live_coin_list']); ?>).trigger('change');
 				});
 			</script>
 		<?php

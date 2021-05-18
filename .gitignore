@@ -8,3 +8,6 @@
 /bin/
 
 core/actions/VendorWcfm.php
+
+/node_modules/
+/src/

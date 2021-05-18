@@ -105,7 +105,7 @@ class CsFormBuilder {
 			$input .= $field['input_field_wrap_start'];
 		}
 
-		if ( $field['type'] == 'text' || $field['type'] == 'number' || $field['type'] == 'password' ) {
+		if ( $field['type'] == 'text' || $field['type'] == 'email' || $field['type'] == 'number' || $field['type'] == 'password' ) {
 			$input .= $this->generate_text_field( $field_name, $field, $field_id );
 		}
 		if ( $field['type'] == 'textarea' ) {
@@ -314,7 +314,7 @@ class CsFormBuilder {
 			unset( $field['value'] );
 		}
 
-		// pre_print( $field['options'] );
+		// pre_print( $field );
 
 		$cus_val            = $field;
 		$cus_val['value']   = $value;
@@ -466,7 +466,7 @@ class CsFormBuilder {
 		 */
 	public static function get_value( $id, $values = array(), $default_value = '' ) {
 		if ( isset( $values[ $id ] ) && ! empty( $values[ $id ] ) ) {
-			return Util::cs_esc_html( $values[ $id ] );
+			return is_array($values[ $id ] ) ? $values[ $id ] :  Util::cs_esc_html( $values[ $id ] );
 		} elseif ( ! empty( $default_value ) ) {
 			return Util::cs_esc_html( $default_value );
 		}

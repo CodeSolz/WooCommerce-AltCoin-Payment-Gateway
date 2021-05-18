@@ -47,10 +47,8 @@ class WooHooks {
 		add_action( 'add_meta_boxes', array( $this, 'wapg_order_coin_details_metabox' ) );
 
 		/*** crypto price after product price */
-		add_filter( 'woocommerce_get_price_html', array( $this, 'wapg_wc_price_html' ), 10, 2 );
+		add_filter( 'woocommerce_get_price_html', array( $this, 'wapg_wc_price_html' ), 20, 2 );
 
-		/*** crypto price hook */
-		add_action( 'wp_footer', array( $this, 'wapg_crypto_live_prices_ticker' ) );
 
 		/*** check plugins info */
 		add_action( 'wp_update_plugins', array( $this, 'wapg_check_plugin_info' ) );
@@ -158,8 +156,8 @@ class WooHooks {
 	public static function wapg_plugin_row_meta( $links, $file ) {
 		if ( CS_WAPG_PLUGIN_IDENTIFIER === $file ) {
 			$row_meta = array(
-				'docs'    => '<a href="' . esc_url( 'http://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/' ) . '" target = "_blank" aria-label="' . esc_attr__( 'View documentation', 'woo-altcoin-payment-gateway' ) . '">' . esc_html__( 'Docs', 'woo-altcoin-payment-gateway' ) . '</a>',
-				'support' => '<a href="' . esc_url( 'http://codesolz.net' ) . '" target = "_blank" aria-label="' . esc_attr__( 'Premium support', 'woo-altcoin-payment-gateway' ) . '">' . esc_html__( 'Premium support', 'woo-altcoin-payment-gateway' ) . '</a>',
+				'docs'    => '<a href="' . esc_url( 'https://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/' ) . '" target = "_blank" aria-label="' . esc_attr__( 'View documentation', 'woo-altcoin-payment-gateway' ) . '">' . esc_html__( 'Docs', 'woo-altcoin-payment-gateway' ) . '</a>',
+				'support' => '<a href="' . esc_url( 'https://coinmarketstats.online' ) . '" target = "_blank" aria-label="' . esc_attr__( 'Premium support', 'woo-altcoin-payment-gateway' ) . '">' . esc_html__( 'Premium support', 'woo-altcoin-payment-gateway' ) . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );
@@ -168,16 +166,7 @@ class WooHooks {
 		return (array) $links;
 	}
 
-	/**
-	 * Crypto Live Prices Ticker
-	 *
-	 * @return void
-	 */
-	public function wapg_crypto_live_prices_ticker() {
-		if ( is_shop() || is_product() ) {
-			return CsWapgScript::crypto_live_price_ticker();
-		}
-	}
+	
 
 
 }

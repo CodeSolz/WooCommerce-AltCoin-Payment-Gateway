@@ -64,14 +64,23 @@ class Scripts_Settings {
 			self::load_coin_type_changer();
 		}
 
+		//menu id
+		$apply_script_on = array(
+			'add_new_coin', 'default_settings', 'register_automatic_order', 'checkout_options_settings', 'product_page_options_settings'
+		);
+
+		$add_script_on = apply_filters( 'wapg_add_form_submitter_script', $apply_script_on );
+
 		// load form submit script on footer
-		if ( $page_id == $altcoin_menu['add_new_coin'] ||
-			$page_id == $altcoin_menu['default_settings'] ||
-			$page_id == $altcoin_menu['register_automatic_order'] ||
-			$page_id == $altcoin_menu['checkout_options_settings'] ||
-			$page_id == $altcoin_menu['product_page_options_settings']
-			) {
-			self::form_submitter();
+		if( $add_script_on ){
+			foreach( $add_script_on as $menu_id ){
+				if( isset( $altcoin_menu[ $menu_id ] ) && empty( $get_menu_id = $altcoin_menu[ $menu_id ]) ){
+					continue;
+				}
+				if( $page_id == $get_menu_id ){
+					self::form_submitter();
+				}
+			}
 		}
 
 		if ( $page_id == $altcoin_menu['all_coins_list']
@@ -93,7 +102,13 @@ class Scripts_Settings {
 						e.preventDefault();
 						var $this = $(this);
 						var formData = new FormData( $this[0] );
-						formData.append( "action", "_cs_wapg_custom_call" );
+
+						var action = $this.find('#cs_field_action').val();
+						if( typeof action === 'undefined' || action.length == 0 ){
+							action = "_cs_wapg_custom_call";
+						}
+
+						formData.append( "action", action );
 						formData.append( "method", $this.find('#cs_field_method').val() );
 						swal({ title: $this.find('#cs_field_swal_title').val(), text: 'Please wait a while...', timer: 200000, imageUrl: '<?php echo CS_WAPG_PLUGIN_ASSET_URI . 'img/loading-timer.gif'; ?>', showConfirmButton: false, html :true });
 						$.ajax({

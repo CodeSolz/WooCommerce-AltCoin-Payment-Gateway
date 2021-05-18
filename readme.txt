@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.7
-Stable tag: 1.5.2
+Stable tag: 1.5.6
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -65,6 +65,9 @@ Check more for <a target="_blank" href="https://coinmarketstats.online/product/w
 <ul>
     <li>
         Multivendor <a href="https://wordpress.org/plugins/dokan-lite/">Dokan</a> supported. <a href="https://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/multi-vendor-setup/dokan-setup/">Setup Demo & Documentation</a>
+    </li>
+    <li>
+        Multivendor <a href="https://wordpress.org/plugins/dokan-lite/">WCFM</a> supported. This required <a href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway-for-wcfm">PRO addons, get the addons</a>. <a href="https://docs.coinmarketstats.online/docs/woocommerce-bitcoin-altcoin-payment-gateway/multi-vendor-setup/wcfm-setup/">Setup Demo & Documentation</a>
     </li>
 </ul> 
 
@@ -213,6 +216,20 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.5.6 =
+* **Fix:** Live price issue beside product price
+* **Update:** Languages pot file
+
+= 1.5.5 =
+* **Fix:** Live price issue
+
+= 1.5.4 =
+* **Improvement:** Live price show after product price
+* **Fix:** Product page option settings fix
+
+= 1.5.3 =
+* **Improvement:** WCFM Multivendor supported
 
 = 1.5.2 =
 * **Improvement:** Dokan Multivendor supported

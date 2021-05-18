@@ -50,6 +50,13 @@ class wapgNotice {
 	}
 
 	public function action_admin_notices() {
+		global $altcoin_menu;
+		$screen = get_current_screen();
+
+		if ( \in_array( $screen->id, $altcoin_menu ) ) {
+			return;
+		}
+
 		foreach ( explode( ',', self::TYPES ) as $type ) {
 			foreach ( $this->admin_notices->{$type} as $admin_notice ) {
 

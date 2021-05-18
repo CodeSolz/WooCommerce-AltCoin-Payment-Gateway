@@ -1,272 +1,1047 @@
-# Copyright (C) 2018 WooCommerce AltCoin Payment Gateway
-# This file is distributed under the same license as the WooCommerce AltCoin Payment Gateway package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR CoinMarketStats
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: WooCommerce AltCoin Payment Gateway\n"
-"POT-Creation-Date: 2018-09-21 05:39+0600\n"
-"PO-Revision-Date: 2018-09-19 02:16+0600\n"
-"Last-Translator: M.Tuhin <tuhin@codesolz.net>\n"
-"Language-Team: CodeSolz <customer-support@codesolz.net>\n"
+"Project-Id-Version: WooCommerce AltCoin Payment Gateway 1.5.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-19 00:28+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: woocommerce-altcoin-payment.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: lib/core/admin/builders/CsWapgForm.php:34
-#: lib/core/admin/builders/CsWapgForm.php:57
-msgid "Select AltCoin"
+#: actions/CustomAjax.php:32
+msgid "Invalid token"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:40
-#: lib/core/admin/builders/CsWapgForm.php:63
-msgid "Select AltCoin where do you want to receive your payment"
+#: actions/CustomAjax.php:33
+msgid "Sorry! we are unable recognize your auth!"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:45
+#: actions/CustomAjax.php:48
+msgid "Invalid Request"
+msgstr ""
+
+#: actions/CustomAjax.php:49
+msgid "Method parameter missing / invalid!"
+msgstr ""
+
+#: actions/CustomAjax.php:59
+msgid "Invalid Library"
+msgstr ""
+
+#: actions/CustomAjax.php:60
 #, php-format
-msgid "Enter %s %s %s address."
+msgid "Library Class \"%s\" not found! "
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:49
-#: lib/core/admin/builders/CsWapgForm.php:71
-msgid "please enter here your coin address"
+#: actions/CustomAjax.php:69
+msgid "Invalid Method"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:68
+#: actions/CustomAjax.php:70
 #, php-format
-msgid "Enter %s altcoin %s address."
+msgid "Method \"%1$s\" not found in Class \"%2$s\"! "
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:79
+#: actions/RegisterCustomMenu.php:68
+msgid "WooAltCoin Payment"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:79 actions/WooHooks.php:139
+msgid "Settings"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:87 actions/RegisterCustomMenu.php:256
+#: actions/WooHooks.php:142
+msgid "Add New Coin"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:95 actions/RegisterCustomMenu.php:273
+msgid "All Coins"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:103
+msgid "Automatic Order Confirmation Registration"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:111 actions/RegisterCustomMenu.php:216
+msgid "Product Page Options"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:120
+msgid "Checkout Page"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:130
+msgid "Go Pro"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:131
+msgid "Go Pro Plan"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:170
+msgid "Gateway Default Settings"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:171
+msgid ""
+"Alltcoin payment gatway defult settings. Please fill up the following "
+"information correctly."
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:194
+msgid "Checkout Page Options"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:195
+msgid "Following options will be applied to the checkout page"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:217
+msgid "Following options will be applied to the product's page"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:237
+msgid "Automatic Order Confirmation Settings"
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:238
+msgid "Please complete your registration to use automatic order confirmation."
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:257
+msgid ""
+"Please fill up the following information correctly to add new coin to "
+"payment method."
+msgstr ""
+
+#: actions/RegisterCustomMenu.php:274
+msgid "Following coins has been added to the payment gateway's coin list."
+msgstr ""
+
+#: actions/VendorDokan.php:106
+msgid "Address"
+msgstr ""
+
+#: actions/WooHooks.php:107
+#, php-format
+msgid " %s - Coin Details"
+msgstr ""
+
+#: actions/WooHooks.php:159
+msgid "View documentation"
+msgstr ""
+
+#: actions/WooHooks.php:159
+msgid "Docs"
+msgstr ""
+
+#: actions/WooHooks.php:160
+msgid "Premium support"
+msgstr ""
+
+#: admin/builders/CsFormHelperLib.php:26
+msgid "Manual"
+msgstr ""
+
+#: admin/builders/CsFormHelperLib.php:27
+msgid "Automatic"
+msgstr ""
+
+#: admin/builders/CsWapgForm.php:29 admin/options/pages/DefaultSettings.php:58
+#: admin/options/pages/ProductPageOptions.php:98
 msgid "Enable / Disable"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:80
+#: admin/builders/CsWapgForm.php:30 admin/options/pages/DefaultSettings.php:62
 msgid "Enable AltCoin payment gateway"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:85
+#: admin/builders/CsWapgForm.php:35
 msgid "Title"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:87
-#: lib/core/admin/builders/CsWapgForm.php:93
+#: admin/builders/CsWapgForm.php:37 admin/builders/CsWapgForm.php:43
 msgid "Payment title of checkout process."
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:88
+#: admin/builders/CsWapgForm.php:38
 msgid "AltCoin"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:91
+#: admin/builders/CsWapgForm.php:41 admin/options/pages/DefaultSettings.php:74
 msgid "Description"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:94
+#: admin/builders/CsWapgForm.php:44
 msgid ""
 "Make your payment directly into our AltCoin address. Your order won’t be "
 "shipped until the funds have cleared in our account."
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:98
-msgid "Payment Icon url"
+#: admin/builders/CsWapgForm.php:60
+msgid ""
+"Sorry! No AltCoin is activate! Please contact administration for more "
+"information."
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:100
-msgid "Image next to the gateway’s name"
-msgstr ""
-
-#: lib/core/admin/builders/CsWapgForm.php:103
-msgid "Calculator Gif URL"
-msgstr ""
-
-#: lib/core/admin/builders/CsWapgForm.php:105
-msgid "Calculating gif when price being calculate"
-msgstr ""
-
-#: lib/core/admin/builders/CsWapgForm.php:123
+#: admin/builders/CsWapgForm.php:70
 msgid "Please select coin you want to pay:"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:165
-#: lib/core/admin/builders/CsWapgForm.php:167
-#: lib/core/admin/builders/CsWapgForm.php:198
-msgid "Please Slect An AltCoin!"
+#: admin/builders/CsWapgForm.php:117
+msgid "Please Select An AltCoin"
 msgstr ""
 
-#: lib/core/admin/builders/CsWapgForm.php:196
-msgid "Sorry! No AltCoin Payment is actived!"
+#: admin/functions/CsAdminQuery.php:37 admin/functions/CsAdminQuery.php:49
+#: admin/functions/CsAdminQuery.php:59 admin/functions/CsAdminQuery.php:140
+#: admin/functions/CsAdminQuery.php:150
+#: admin/functions/CsAutomaticOrderConfirmationSettings.php:39
+#: admin/functions/CsAutomaticOrderConfirmationSettings.php:60
+msgid "Error"
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:44
-#: lib/core/admin/functions/CsWapgFunctions.php:50
-msgid "AltCoin Payment"
+#: admin/functions/CsAdminQuery.php:38
+msgid "One or more required field is empty"
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:47
+#: admin/functions/CsAdminQuery.php:50
+#, php-format
+msgid "\"%s\" already added. Please check the list from \"All Coins\" menu."
+msgstr ""
+
+#: admin/functions/CsAdminQuery.php:60
 msgid ""
-"AltCoin Payment Gateway Plugin for WooCommerce. If you want to remove any "
-"active altcoin, just make the address field blank and save it."
+"Coin is not in service. Please make sure you have selected the coin name "
+"from the dropdown list when you have typed coin name. Still problem after "
+"selecting from dropdown? please contact support@codesolz.net for more "
+"information."
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:93
-msgid "Sorry! Something went wrong. Please refresh this page and try again."
+#: admin/functions/CsAdminQuery.php:118 admin/functions/CsAdminQuery.php:196
+#: admin/functions/CsAutomaticOrderConfirmationSettings.php:52
+#: admin/functions/CsPaymentGateway.php:40
+#: admin/functions/CsPaymentGateway.php:70
+#: admin/functions/CsPaymentGateway.php:106
+msgid "Success"
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:98
-#, php-format
-msgid "Please enter your %s address."
+#: admin/functions/CsAdminQuery.php:119
+msgid "Thank you! Coin has been added successfully."
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:102
-msgid "Please confirm the coin transfer!"
+#: admin/functions/CsAdminQuery.php:141
+msgid "Ops! \""
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:117
-#, php-format
-msgid ""
-"Order Info: Total Payment : %s has made on : %s at your address : %s . Coin "
-"price was: $%s. User %s address: %s . User confirmed that coin transfer was "
-"successfull!"
+#: admin/functions/CsAdminQuery.php:151 admin/options/pages/AddNewCoin.php:103
+#: admin/options/pages/AddNewCoin.php:116
+msgid "Please enter coin address"
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:120
-msgid "Awaiting for admin payment confirmation checking."
+#: admin/functions/CsAdminQuery.php:197
+msgid "Thank you! Coin has been updated successfully."
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:211
-msgid "Select AltCoin "
+#: admin/functions/CsAutomaticOrderConfirmationSettings.php:53
+msgid "Your API has been integrated successfully."
 msgstr ""
 
-#: lib/core/admin/functions/CsWapgFunctions.php:226
-msgid "Enter "
-msgstr ""
-
-#: lib/core/admin/functions/CsWapgFunctions.php:226
-msgid " altcoin "
-msgstr ""
-
-#: lib/core/admin/functions/CsWapgFunctions.php:226
-msgid " address:"
-msgstr ""
-
-#: lib/core/admin/functions/CsWapgFunctions.php:231
-msgid "enter here your altcon address"
-msgstr ""
-
-#: lib/core/admin/functions/CsWapgInit.php:56
-#, php-format
-msgid "Welcome to %s %s"
-msgstr ""
-
-#: lib/core/admin/functions/CsWapgInit.php:58
-#, php-format
-msgid ""
-"Your plugin is ready to use. <a href=\"%s\">Click here</a> for go to "
-"settings."
-msgstr ""
-
-#: lib/core/admin/functions/CsWapgNotice.php:34
-msgid ""
-"In order to use 'WooCommerce AltCoin Payment Gateway' plugin at first you "
-"need to install woocommerce."
-msgstr ""
-
-#: lib/core/admin/hooks/hooks.php:45
-msgid "Settings"
-msgstr ""
-
-#: lib/core/frontend/functions/CsWapgCoinCal.php:50
-#, php-format
-msgid "%s API couldn't reach! Please try again or contact customer support. %s"
-msgstr ""
-
-#: lib/core/frontend/functions/CsWapgCustomTy.php:26
-msgid "Coin Details"
-msgstr ""
-
-#: lib/core/frontend/functions/CsWapgCustomTy.php:30
-#: lib/core/frontend/scripts/CsWapgScript.php:47
+#: admin/functions/CsOrderDetails.php:32
+#: frontend/functions/CsWapgCustomTy.php:35
+#: frontend/scripts/CsWapgScript.php:100
 msgid "Coin"
 msgstr ""
 
-#: lib/core/frontend/functions/CsWapgCustomTy.php:31
-#: lib/core/frontend/functions/CsWapgCustomTy.php:47
-#: lib/core/frontend/scripts/CsWapgScript.php:48
-#: lib/core/frontend/scripts/CsWapgScript.php:68
+#: admin/functions/CsOrderDetails.php:33 admin/functions/CsOrderDetails.php:55
+#: frontend/functions/CsWapgCustomTy.php:36
+#: frontend/functions/CsWapgCustomTy.php:58
+#: frontend/scripts/CsWapgScript.php:101
 msgid "Total"
 msgstr ""
 
-#: lib/core/frontend/functions/CsWapgCustomTy.php:43
-#: lib/core/frontend/scripts/CsWapgScript.php:64
+#: admin/functions/CsOrderDetails.php:46 admin/options/Coin_List.php:47
+#: frontend/functions/CsWapgCustomTy.php:49
+#: frontend/scripts/CsWapgScript.php:48
+msgid "Special Discount"
+msgstr ""
+
+#: admin/functions/CsOrderDetails.php:51
+#: frontend/functions/CsWapgCustomTy.php:54
+#: frontend/scripts/CsWapgScript.php:118
 msgid "Subtotal"
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:42
-msgid "You have to pay:"
+#: admin/functions/CsOrderDetails.php:61
+msgid "Coin Sent To(your altcoin address)"
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:68
-msgid "(*Transfer Fee Not Included)"
+#: admin/functions/CsOrderDetails.php:66
+#: frontend/functions/CsWapgCustomTy.php:68
+msgid "Transaction Reference / TrxID"
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:76
-msgid "Please pay to this address:"
+#: admin/functions/CsPaymentGateway.php:41
+#: admin/functions/CsPaymentGateway.php:71
+#: admin/functions/CsPaymentGateway.php:107
+msgid "Your settings have been saved."
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:83
+#: admin/functions/CsWapgFunctions.php:35
+#: admin/functions/CsWapgFunctions.php:41
+msgid "AltCoin Payment"
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:38
+msgid "AltCoin Payment Gateway Plugin for WooCommerce."
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:81
+msgid "Sorry! Something went wrong. Please refresh this page and try again."
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:87
+#, php-format
+msgid "Please enter your %s transaction trxID."
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:91
+msgid ""
+"Please click the confirmation checkbox that you have already transferred the "
+"coin successfully!"
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:119
+msgid "Coin transaction has completed successfully."
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:123
+msgid "Awaiting for admin payment confirmation checking."
+msgstr ""
+
+#: admin/functions/CsWapgFunctions.php:202
+msgid "Advance Settings"
+msgstr ""
+
+#: admin/notices/wapgAdminNotice.php:29
 #, php-format
 msgid ""
-"NB: Coin price has been calculated by %s price list. Please place the order "
-"after complete your coin transfer & don\\'t foget to add the transfer fee."
+"You are using free manual version. There is a pro version which can track "
+"your order and coin transfer automatically. Let's check the  %1$s trial "
+"version of pro plugin%2$s"
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:88
-msgid "Please enter your "
+#: admin/notices/wapgAdminNotice.php:43
+#, php-format
+msgid "In order to use %s"
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:88
-msgid " address in case of refunds:"
+#: admin/notices/wapgAdminNotice.php:56
+#, php-format
+msgid ""
+"Your API has been expired. Automatic coin tracking not working anymore on "
+"your store.  If you were using trial version %1$sPurchase pro plan%2$s to re-"
+"activate automatic tracking or %1$sPurchase new plan%2$s to extend validity "
+"if you were already using pro package.\n"
+"            To continue using free version, %3$sdelete the coins%2$s which "
+"has been listed as automatic from %3$sall coins list%2$s. "
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:89
-msgid "please enter here your AltCoin address in case of refunds"
+#: admin/options/Coin_List.php:29
+msgid "coin"
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:94
+#: admin/options/Coin_List.php:30
+msgid "coins"
+msgstr ""
+
+#: admin/options/Coin_List.php:43
+msgid "Coin Name"
+msgstr ""
+
+#: admin/options/Coin_List.php:44
+msgid "Coin address"
+msgstr ""
+
+#: admin/options/Coin_List.php:45
+msgid "Order / Transaction Confirmation"
+msgstr ""
+
+#: admin/options/Coin_List.php:46 admin/options/Coin_List.php:95
+msgid "Status"
+msgstr ""
+
+#: admin/options/Coin_List.php:102
+msgid "Discount"
+msgstr ""
+
+#: admin/options/Coin_List.php:109
+msgid "Offer Start"
+msgstr ""
+
+#: admin/options/Coin_List.php:116
+msgid "Offer End"
+msgstr ""
+
+#: admin/options/Coin_List.php:131
+msgid "Sorry! No Coin Found!"
+msgstr ""
+
+#: admin/options/Coin_List.php:142
+msgid "Delete"
+msgstr ""
+
+#: admin/options/Coin_List.php:226
+msgid "Coin has been deleted successfully!"
+msgstr ""
+
+#: admin/options/Scripts_Settings.php:54
+msgid "admin footer script start"
+msgstr ""
+
+#: admin/options/Scripts_Settings.php:91
+msgid "admin footer script end"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:63
+#: admin/options/pages/AddNewCoin.php:236
+msgid "Update Coin"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:69
+msgid "Payment Confirmation Type"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:74
+msgid "Please select checkout type"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:77
+msgid ""
+"Select payment type. Either manual or automatic order confirmation. e.g : "
+"Manual"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:81
+msgid "Enter Coin Name"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:86
+msgid "Please type coin name"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:94
+msgid ""
+"Enter coin name you want to add in to your payment gateway. It will take a "
+"while to appear the coin name in the dropdown list. Please be patient. e.g : "
+"Bitcoin"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:98
+msgid "Enter Coin address"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:104
+msgid ""
+"Enter new generated coin address. Keep changing your coin address on a "
+"certain time to make transactions more safe. e.g : "
+"1KPLgee6crr7u1KQxwnnu4isizufxadVPZ "
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:122
+msgid " Active / Deactivate"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:125
+msgid "Select this checkbox if you want to activate coin"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:129
+msgid "Coin Checkout Options"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:130
+msgid ""
+"Please use the following options if you want to add these on checkout page."
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:133
+msgid "Show / Hide <br> Transfer fee text box"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:135
+msgid ""
+"Please check the checkbox to show the transfer fee text box under the coin "
+"address on checkout page"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:141
+#: admin/options/pages/AddNewCoin.php:175
+msgid "Enter discount amount"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:147
+msgid "Enter transfer fee text. Maxlength : 200"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:157
+msgid "Offer Settings"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:158
+msgid ""
+"Please use the following options if you want to give special discount to "
+"customer when they use this coin on checkout. Ignore if you don't want add "
+"any offer"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:161
+msgid "Offer Active / Deactivate"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:164
+msgid "Select this checkbox if you want to activate offer"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:167
+msgid "Discount On Cart Total"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:169
+msgid ""
+"Enter discount amount. Either percent or total flat amount. Discount will be "
+"apply to total amount. e.g : 10 percent"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:180
+msgid "Select Discount Type"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:190
+msgid "Offer Validity"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:192
+msgid "Please select offer start and end date"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:197
+msgid "Please select offer start date"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:198
+msgid " to "
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:208
+msgid "Please select offer end date"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:218
+msgid "Offer Message Show / Hide"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:221
+msgid ""
+"Select this checkbox if you want to show offer message on product page "
+"bellow product price."
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:230
+msgid "Adding Coin"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:231
+msgid "Add Coin"
+msgstr ""
+
+#: admin/options/pages/AddNewCoin.php:235
+msgid "Updating Coin"
+msgstr ""
+
+#: admin/options/pages/AllCoins.php:51
+msgid "Search Coin"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:56
+msgid "CoinMarketStats Email"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:61
+msgid "Enter your CoinMarketStats email"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:62
+msgid "Enter your email used in the registration."
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:65
+msgid "CoinMarketStats Password"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:70
+msgid "Enter your password"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:71
+msgid "Enter your password used in the registration."
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:74
+msgid "API Key"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:79
+msgid "Enter your API key"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:80
+#, php-format
+msgid ""
+"Enter your API key. You can find your API key in the \"My API Keys\" menu in "
+"%1$s myportal area %2$s ."
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:84
+msgid "Order Confirmation Settings"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:85
+msgid "Please set the following information for order confirmation and status"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:88
+msgid "Minimum Confirmation For Transaction"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:92
+msgid "Please select confirmation count"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:102
+msgid ""
+"Select how many confirmation will be treated as a successful transaction e."
+"g : Standard is: 6, 3 is enough for payments $1,000 - $10,000"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:105
+msgid "Partial Payment(%)"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:114
+msgid "e.g : 99 "
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:115
+msgid ""
+"Auto confirmation mode will automatically confirm payments that are within "
+"this percentage of the total amount requested. e.g : 99"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:118
+msgid "Order Status"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:122
+msgid "Please select order status"
+msgstr ""
+
+#: admin/options/pages/AutoOrderSettings.php:129
+msgid "Please select order status after successful transaction e.g : Completed"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:57
+msgid "Coin List - Select Box"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:58
+msgid ""
+"Please use the following options if you want to change the text of Select "
+"box label and placeholder text"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:61
+msgid "Select Box Lebel Text"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:66
+msgid "Enter select box lebel"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:67
+msgid ""
+"Enter select box lebel. It will show in checkout page. e.g : Please select "
+"coin you want to pay:"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:70
+msgid "Select Box Placeholder Text"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:75
+msgid "Enter select box option lebel"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:76
+msgid ""
+"Enter select box option lebel. It will show in checkout page. e.g : Please "
+"Select An AltCoin"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:80
+msgid "Coin Price Section"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:81
+msgid ""
+"Please use the following options to change the coin price section's text and "
+"images."
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:84
+msgid "Price Section Title"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:89
+msgid "Enter price section title"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:90
+msgid ""
+"Enter price section title. It will show in checkout page. e.g : You have to "
+"pay:"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:94
+#: admin/options/pages/CheckoutPageSettings.php:98
+msgid "Calculator Gif URL"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:105
+msgid ""
+"Choose a gif / loading image. This gif image will show in checkout page "
+"during the live price calculation"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:108
+msgid "Coin Tracking Gif URL"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:112
+msgid "Auto Tracking Gif URL"
+msgstr ""
+
+#: admin/options/pages/CheckoutPageSettings.php:119
+msgid ""
+"Choose a gif / loading image. This gif image will show during the coin "
+"tracking for automatic order confirmation."
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:65
+msgid "Payment Gateway Name"
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:70
+msgid "Enter your payment gateway title"
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:71
+msgid ""
+"Enter your payment gateway title. It will show in checkout page. e.g : "
+"AltCoin Payment"
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:78
+msgid "Enter your payment gateway description"
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:79
+msgid "Enter your payment gateway description. It will show in checkout page."
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:82
+msgid "Payment Gateway Icon"
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:86
+msgid "payment icon url"
+msgstr ""
+
+#: admin/options/pages/DefaultSettings.php:93
+msgid ""
+"Choose payment icon. This icon will show in checkout page beside the payment "
+"gateway name"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:71
+msgid "Offer Message Text"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:72
+msgid ""
+"Please use the following options to change offer notification shown in the "
+"single product page"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:75
+msgid "Offer Blink Text"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:80
+msgid "Enter offer blink text"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:81
+msgid ""
+"Enter offer notification blink text, this text will diplay top of the add to "
+"cart button in single product page"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:84
+msgid "Offer Notification Box Title Text"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:89
+msgid "Enter offer message text"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:90
+msgid ""
+"Enter offer notification text, this text will diplay top of the add to cart "
+"button in single product page"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:94
+msgid "Show Live Coin Price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:95
+msgid ""
+"Following options will enable you to show live coins price beside your "
+"product price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:102
+msgid "Enable this option to show live coin price beside product price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:105
+msgid "Select Coin"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:109
+msgid "Please select coin"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:112
+msgid "Select / Enter coin name to show for live price. e.g : Bitcoin"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:115
+msgid "Variable Product Price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:119
+msgid "Select price type"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:121
+msgid "Show Min Price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:122
+msgid "Show Max Price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:123
+msgid "Show Both Price"
+msgstr ""
+
+#: admin/options/pages/ProductPageOptions.php:126
+msgid ""
+"Please select if you want to show just min / max or both prices converted to "
+"cryptocurrencies. Default: both"
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:48
+msgid ""
+"Please enter your coin transaction ID. Make sure you have fill up all the "
+"required fields marked as (*)"
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:59
+msgid ""
+"Please enter a secret word. Make sure you have fill up all the required "
+"fields marked as (*)."
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:72
+msgid ""
+"We are unable to match your payment information. Make sure you have entered "
+"the correct \"secret word\" used first time with this transaction id."
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:84
+msgid "Api key not found! Please contact site administrator."
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:96
+msgid "Something went wrong. Please refresh the page and try again."
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:185
+#: frontend/functions/CsWapgAutoOrderConfirm.php:213
+msgid ""
+"Thank you! Transaction completed successfully. Your order is processing "
+"right now!"
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:193
+msgid "Your order is processing. Successful transaction confirmation count on "
+msgstr ""
+
+#: frontend/functions/CsWapgAutoOrderConfirm.php:233
+msgid "Something went wrong! Please refresh the page and try again."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:59
+#: frontend/functions/CsWapgCoinCal.php:72
+msgid "Something Went Wrong! Please try again."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:96
+msgid "Something Went Wrong! Please refresh the page and try again."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:245
+msgid ""
+"Currency not found. Please contact support@codesolz.net to add your currency."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:252
+msgid "Currency converter not working! Please contact administration."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:269
+msgid ""
+"Error Found! Please delete the current plugin and download a fresh copy and "
+"install it."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:289
+msgid ""
+"Probably this currency is out of the market & doesn't have any value! "
+"Contact administration for more information.."
+msgstr ""
+
+#: frontend/functions/CsWapgCoinCal.php:296
+msgid "Coin not found in the exchange portal! Please contact administration."
+msgstr ""
+
+#: frontend/functions/CsWapgCustomBlocks.php:27
+msgid "Special Discount!"
+msgstr ""
+
+#: frontend/functions/CsWapgCustomBlocks.php:27
+msgid "Click here"
+msgstr ""
+
+#: frontend/functions/CsWapgCustomBlocks.php:27
+msgid "to see more.."
+msgstr ""
+
+#: frontend/functions/CsWapgCustomBlocks.php:32
+msgid "You will get special discount, if you pay with following AltCoins"
+msgstr ""
+
+#: frontend/functions/CsWapgCustomTy.php:31
+msgid "Coin Details"
+msgstr ""
+
+#: frontend/functions/CsWapgCustomTy.php:64
+msgid "Coin Sent To(marchent altcoin address)"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:69
 msgid "I have completed the coin transfer successfully! "
 msgstr ""
 
-#: lib/core/frontend/scripts/CsWapgScript.php:130
-msgid "Address has been coppied to clipboard!"
+#: frontend/scripts/CsWapgScript.php:74
+msgid "Please enter a secret word."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "WooCommerce AltCoin Payment Gateway"
+#: frontend/scripts/CsWapgScript.php:75
+msgid "please enter a secret word."
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "https://wordpresspremiumplugins.com/plugins/woo-altcoin-payment-gateway"
+#: frontend/scripts/CsWapgScript.php:76
+msgid ""
+"Incidentally if you close this window or somehow you become disconnected, "
+"You can use this secret word to submit your order. Save the word in safe "
+"place."
 msgstr ""
 
-#. Description of the plugin/theme
-msgid "Woocommerce payment gateway to accept crypto currency in your store."
+#: frontend/scripts/CsWapgScript.php:82
+msgid "Track My Coin Transfer "
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "CodeSolz"
+#: frontend/scripts/CsWapgScript.php:85
+msgid ""
+"N.B: After initiate the coin transfer, please click the \"Track My Coin "
+"Transfer\" button immediately. Do not close the window until the tracking "
+"process get done. Otherwise your order will not be proceed."
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://www.codesolz.net"
+#: frontend/scripts/CsWapgScript.php:95
+msgid "You have to pay:"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:124
+msgid "Net Payable Amount"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:124
+msgid "(*Transfer Fee Not Included)"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:132
+msgid "Please pay to following address:"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:144
+msgid "Please enter your "
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:144
+msgid " transaction hash / id :"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:145
+msgid "please enter here your coin transaction id"
+msgstr ""
+
+#: frontend/scripts/CsWapgScript.php:224
+msgid "Address has been copied to clipboard!"
+msgstr ""
+
+#: lib/Util.php:173
+#, php-format
+msgid "You have got %s special discount of total amount!"
+msgstr ""
+
+#: lib/Util.php:174
+msgid "Congratulation!"
+msgstr ""
+
+#: lib/Util.php:347
+msgid "<< Back"
 msgstr ""
