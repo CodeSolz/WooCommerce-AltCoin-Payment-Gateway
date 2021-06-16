@@ -5,7 +5,7 @@
  *
  * @package Admin
  * @since 1.2.4
- * @author CodeSolz <customer-support@codesolz.net>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {
@@ -95,7 +95,7 @@ class AddNewCoin {
 			),
 			'cs_add_new[coin_address]'               => array(
 				// 'section'          => '<div class="manual_payment_address">',
-						'title' => __( 'Enter Coin address', 'woo-altcoin-payment-gateway' ),
+				'title' => __( 'Enter Coin Wallet Address', 'woo-altcoin-payment-gateway' ),
 				'type'          => 'text',
 				'class'         => 'form-control',
 				'required'      => true,

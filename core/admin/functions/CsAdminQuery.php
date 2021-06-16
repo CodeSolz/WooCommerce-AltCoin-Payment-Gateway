@@ -5,7 +5,7 @@
  *
  * @package WAPG Admin
  * @since 1.0.0
- * @author CodeSolz <customer-service@codesolz.com>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {
@@ -57,7 +57,7 @@ class CsAdminQuery {
 				array(
 					'status' => false,
 					'title'  => __( 'Error', 'woo-altcoin-payment-gateway' ),
-					'text'   => __( 'Coin is not in service. Please make sure you have selected the coin name from the dropdown list when you have typed coin name. Still problem after selecting from dropdown? please contact support@codesolz.net for more information.', 'woo-altcoin-payment-gateway' ),
+					'text'   => __( 'Coin is not in service. Please make sure you have selected the coin name from the dropdown list when you have typed coin name. Still problem after selecting from dropdown? please contact support@coinmarketstats.online for more information.', 'woo-altcoin-payment-gateway' ),
 				)
 			);
 		}
@@ -72,6 +72,9 @@ class CsAdminQuery {
 			'transferFeeTextBoxStatus' => isset( $coin_info['transferFeeTextBoxStatus'] ) ? 1 : 0,
 			'transferFeeTextBoxText'   => Util::check_evil_script( $coin_info['transferFeeTextBoxText'] ),
 		);
+
+		$get_coin_info = apply_filters( 'wapg_add_new_coin_before_save', $get_coin_info, $coin_info );
+
 		$check_coin_exists = $wpdb->get_var( $wpdb->prepare( " select id from {$wapg_tables['coins']} where coin_web_id = %s ", $coin_web_id->slug ) );
 		if ( $check_coin_exists ) {
 			$coin_id = $check_coin_exists;
@@ -160,6 +163,9 @@ class CsAdminQuery {
 			'transferFeeTextBoxStatus' => isset( $coin_info['transferFeeTextBoxStatus'] ) ? 1 : 0,
 			'transferFeeTextBoxText'   => Util::check_evil_script( $coin_info['transferFeeTextBoxText'] ),
 		);
+
+		$get_coin_info = apply_filters( 'wapg_add_new_coin_before_save', $get_coin_info, $coin_info );
+
 		$wpdb->update( "{$wapg_tables['coins']}", $get_coin_info, array( 'id' => $coin_info['cid'] ) );
 
 		if ( $coin_info['checkout_type'] == 2 ) {
@@ -329,7 +335,7 @@ class CsAdminQuery {
 				return wp_send_json(
 					array(
 						'success'  => false,
-						'response' => 'This coin is not activated! Please contact support@codesolz.net to activate this coin.',
+						'response' => 'This coin is not activated! Please contact support@coinmarketstats.online to activate this coin.',
 					)
 				);
 			}

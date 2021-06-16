@@ -5,7 +5,7 @@
  *
  * @package WAPG FE
  * @since 1.2.3
- * @author CodeSolz <customer-service@codesolz.com>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {

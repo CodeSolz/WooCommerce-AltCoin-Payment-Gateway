@@ -5,7 +5,7 @@
  *
  * @package Library
  * @since 1.0.0
- * @author CodeSolz <customer-service@codesolz.com>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {

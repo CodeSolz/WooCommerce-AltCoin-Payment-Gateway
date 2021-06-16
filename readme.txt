@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.7
-Stable tag: 1.5.6
+Stable tag: 1.5.8
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -40,7 +40,7 @@ This plugin's provide 2 options for order confirmation, manual and automatic. Wh
 
 <blockquote>
 = Need Help on upgrade =
-Visit us to  <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
+Visit us to  <a target="_blank" href="https://coinmarketstats.online/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">get support and more customization information</a>
 </blockquote>
 
 <blockquote>
@@ -122,7 +122,7 @@ Check more for <a target="_blank" href="https://coinmarketstats.online/product/w
 <ul>
     <li> Our coin get live price from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a> . The prices are collected from live exchange portal like : Bittrex, CoinMarketCap, CoinGecko, Binance etc..</li>
     <li> Check our supported crypto list from <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a></li>
-    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin to <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a>. (There is a little charge to get listed to the automatic options list.)</li>
+    <li> Your coin is not listed? Visit our website <a target="_blank" href="https://coinmarketstats.online/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a> & ask how you can make listed your coin to <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">CoinMarketStats.online</a>. (There is a little charge to get listed to the automatic options list.)</li>
 </ul>
 
 
@@ -183,8 +183,8 @@ English, Spanish, Russian, German, French, Dutch
 
 = For Quick Support, feature request and bug reporting = 
 <ul>
-    <li> Visit our website <a target="_blank" href="https://codesolz.net/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a></li>
-    <li> For more dedicated support or feature request write to us at <a target="_blank" href="mailto:support@codesolz.net">support@codesolz.net</a> or create a ticket <a href="http://support.codesolz.net/public/create-ticket" target="_blank"> Support Center</a></li>
+    <li> Visit our website <a target="_blank" href="https://coinmarketstats.online/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">To Get Instant Support</a></li>
+    <li> For more dedicated support or feature request write to us at <a target="_blank" href="mailto:support@coinmarketstats.online">support@coinmarketstats.online</a> </li>
 </ul>
 
 = As it's open source, check our github development Status = 
@@ -216,6 +216,13 @@ English, Spanish, Russian, German, French, Dutch
 14. Back-end - Order details
 
 == Changelog ==
+
+= 1.5.8 =
+* **Feat:** Currency symbol position - works with WooCommerce default settings
+* **Upgrade:** QR code
+
+= 1.5.7 =
+* **Fix:** Live price issue
 
 = 1.5.6 =
 * **Fix:** Live price issue beside product price

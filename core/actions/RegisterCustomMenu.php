@@ -7,7 +7,7 @@ namespace WooGateWayCoreLib\actions;
  *
  * @package Admin
  * @since 1.0.0
- * @author CodeSolz <customer-support@codesolz.net>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {

@@ -7,7 +7,7 @@ namespace WooGateWayCoreLib\frontend\functions;
  *
  * @package WAPG Admin
  * @since 1.0.0
- * @author CodeSolz <customer-service@codesolz.com>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {
@@ -108,6 +108,7 @@ class CsWapgCoinCal {
 
 			$cartTotal       = $cartOriginalTotal;
 			$currency_symbol = \get_woocommerce_currency_symbol();
+			$currency_pos = get_option( 'woocommerce_currency_pos' );
 
 			// apply special discount if active
 			$special_discount        = false;
@@ -120,6 +121,14 @@ class CsWapgCoinCal {
 				$special_discount_type   = Util::special_discount_msg( $currency_symbol, $coin );
 				$special_discount_msg    = $special_discount_type['msg'];
 				$special_discount_amount = $special_discount_type['discount'];
+			}
+
+			/** Apply filter on cart total */
+			$custom_fields = array();
+			if( has_filter( 'wapg_cart_total' )){
+				$filteredData = apply_filters( 'wapg_cart_total', array( 'cartTotal' => $cartTotal, 'coinInfo' => $coin ) );
+				$custom_fields = isset($filteredData['custom_fields']) ? $filteredData['custom_fields'] : [];
+				$cartTotalAfterDiscount  = $cartTotal = isset($filteredData['cartTotal']) ? $filteredData['cartTotal'] : $cartTotal;
 			}
 
 			$coin_price = $this->get_coin_martket_price( $coinId, $coinType );
@@ -151,11 +160,12 @@ class CsWapgCoinCal {
 			$totalCoin = $this->get_total_coin_amount( $coin_price, $cartTotal );
 
 			// return status
-			$cart_info = array(
+			$cart_info = array_merge_recursive( array(
 				'response'                 => true,
 				'cartTotal'                => $cartOriginalTotal,
 				'cartTotalAfterDiscount'   => $cartTotalAfterDiscount,
 				'currency_symbol'          => $currency_symbol,
+				'currency_pos'             => $currency_pos,
 				'totalCoin'                => $totalCoin,
 				'coinPrice'                => $coin_price,
 				'coinFullName'             => $coinFullName,
@@ -169,7 +179,7 @@ class CsWapgCoinCal {
 				'store_currency_fullname'  => $this->get_full_name_of_store_currency( $store_currency ),
 				'store_currency_shortname' => $store_currency,
 				'premadeOrderId'           => $is_premade_order_id,
-			);
+			), $custom_fields );
 
 			// save cart info
 			cartFunctions::save_current_cart_payment_info( $cart_info, $is_premade_order_id );
@@ -242,7 +252,7 @@ class CsWapgCoinCal {
 			} else {
 				return array(
 					'error'    => true,
-					'response' => __( 'Currency not found. Please contact support@codesolz.net to add your currency.', 'woo-altcoin-payment-gateway' ),
+					'response' => __( 'Currency not found. Please contact support@coinmarketstats.online to add your currency.', 'woo-altcoin-payment-gateway' ),
 				);
 			}
 		}

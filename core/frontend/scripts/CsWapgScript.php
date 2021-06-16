@@ -5,7 +5,7 @@
  *
  * @package WAPG Admin
  * @since 1.0.0
- * @author CodeSolz <customer-service@codesolz.com>
+ * @author CoinMarketStats <support@coinmarketstats.online>
  */
 
 if ( ! defined( 'CS_WAPG_VERSION' ) ) {
@@ -49,12 +49,16 @@ class CsWapgScript {
 								'<td><span class="woocommerce-Price-amount amount">'+res.special_discount_amount+'</span></td>'+
 							'</tr>';
 							sdf = '<input type="hidden" name="special_discount_amount" value="'+res.special_discount_amount+'" />';
-							ctfd = '<span class="woocommerce-cart-subtotal-after-discount">' + res.currency_symbol + res.cartTotalAfterDiscount + '</span><br>';
+
+							ctfd = '<span class="woocommerce-cart-subtotal-after-discount">' + module.currencyPos( res, res.cartTotalAfterDiscount) + '</span><br>';
 						}
+
+						//add special hook
+						<?php do_action( 'wapg_checkout_script'); ?>
 						
 						var stc = '';
 						if( res.nativeAltCoinPrice > 0 ){
-							stc = '<br><span class="price-tag"> 1 '+res.coinName+' = ' + res.currency_symbol + res.nativeAltCoinPrice +' (' + res.store_currency_shortname + ')  </span>';
+							stc = '<br><span class="price-tag"> 1 '+res.coinName+' = ' + module.currencyPos( res, res.nativeAltCoinPrice) +' (' + res.store_currency_shortname + ')  </span>';
 						}
 						
 						var cfn = '';
@@ -108,7 +112,7 @@ class CsWapgScript {
 									'<span class="price-tag"> 1 '+res.coinName+' = &#36;'+res.coinPrice+' (USD) </span>'+stc+
 								'</td>'+
 								'<td class="product-total">'+
-									'<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">'+res.currency_symbol+'</span>'+res.cartTotal+'</span>'+
+									'<span class="woocommerce-Price-amount amount"> '+ module.currencyPos( res, res.cartTotal) +'</span>'+
 									cfn+
 								'</td>'+
 							'</tr>' + sda +
@@ -132,7 +136,7 @@ class CsWapgScript {
 						'<label for="alt-coinAddress"><?php _e( 'Please pay to following address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
 					'</p>'+
 					'<div class="coinAddress-qr">'+
-						'<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+res.coinName+':'+res.coinAddress+'?cart_total:'+res.totalCoin+'"/>'+
+						'<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+(res.coinName).trim()+':'+(res.coinAddress).trim()+'?amount:'+res.totalCoin+'"/>'+
 						'<div class="coinAddress-info">'+
 							'<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
 							'<input id="alt-coinAddress" name="marchant_alt_address" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
@@ -166,6 +170,20 @@ class CsWapgScript {
 						if( parseInt(qrWidth) < 400 ){
 							jQuery(".coinAddress-qr").addClass('coinAddress-qr-sm');
 						}
+					},
+					currencyPos : function( res, priceValue ){
+						if( res.currency_pos == 'left' ){
+							return res.currency_symbol + priceValue;
+						}
+						else if( res.currency_pos == 'right' ){
+							return priceValue + res.currency_symbol;
+						}
+						else if( res.currency_pos == 'left_space' ){
+							return res.currency_symbol+'&nbsp;'+priceValue;
+						}
+						else if( res.currency_pos == 'right_space' ){
+							return priceValue +'&nbsp;'+ res.currency_symbol;
+						}
 					}        
 				};
 				
@@ -196,7 +214,7 @@ class CsWapgScript {
 							};
 							
 							jQuery.post( wapg_ajax.ajax_url, form_data, function ( res ) {
-								console.log( res );
+								// console.log( res );
 								if( res.response === true ){
 									jQuery(".coin-detail").html( module.altCoinPayment( res ) ).slideDown('slow');
 									if( res.checkoutType == 2 ){
@@ -245,25 +263,25 @@ class CsWapgScript {
 						(async () => {
 							
 							//call first time
-							console.log( 'api calling 1st..' );
+							// console.log( 'api calling 1st..' );
 							const response = await module.submit_auto_order( form_data )
-									.then( (res) => { console.log( res ); return res; })
-									.catch( (res) => { console.log( res ); return res; });
+									.then( (res) => {  return res; })
+									.catch( (res) => { return res; });
 							
 							if( typeof response.error !== 'undefined' && true === response.error ){
 								jQuery(".loader-coin-track").show('slow').html( response.response );    
 								$this.removeAttr( 'disabled' );
 								module.enable_fields();
 								$this.attr( 'value', 'Track My Coin Transfer' );
-								console.log( 'exit1');
+								// console.log( 'exit1');
 							}
 							else if( typeof response.success !== 'undefined' && false === response.success ){
 								jQuery(".tracking-response").show('slow').html( response.response );
 								var heartbeat = window.setInterval( async function(){
-									console.log('api calling 2nd..');
+									// console.log('api calling 2nd..');
 									const apiResponse = await module.submit_auto_order( form_data )
 												.then( (res) => { return res; })
-												.catch( (res) => { console.log( res ); return res; });
+												.catch( (res) => { return res; });
 									
 									if( typeof apiResponse.error !== 'undefined' && true === apiResponse.error ) {
 										jQuery(".loader-coin-track").show('slow').html( apiResponse.response );    
@@ -271,7 +289,7 @@ class CsWapgScript {
 										clearInterval( heartbeat );
 										module.enable_fields();
 										$this.attr( 'value', 'Track My Coin Transfer' );
-										console.log( 'exit2');
+										// console.log( 'exit2');
 									}else if( typeof apiResponse.success !== 'undefined' && false === apiResponse.success ) {
 										//continue
 										jQuery(".tracking-response").show('slow').html( apiResponse.response );
@@ -288,7 +306,7 @@ class CsWapgScript {
 										}
 										module.enable_fields();
 										$this.attr( 'value', 'Successful..' );
-										console.log( 'exit3');
+										// console.log( 'exit3');
 									}
 
 								}, 40000 );
@@ -297,7 +315,7 @@ class CsWapgScript {
 								//successful - submit the order
 								jQuery(".loader-coin-track").hide('slow');    
 								jQuery(".tracking-response").show('slow').html( response.response );
-								console.log( 'exit4');
+								// console.log( 'exit4');
 								$this.removeAttr( 'disabled' );
 								var orderBtn = jQuery("#place_order");
 								orderBtn.show('slow');
@@ -313,7 +331,7 @@ class CsWapgScript {
 								clearInterval( heartbeat );
 								module.enable_fields();
 								$this.attr( 'value', 'Track My Coin Transfer' );
-								console.log( 'exit5');
+								// console.log( 'exit5');
 							}
 							
 						})();
