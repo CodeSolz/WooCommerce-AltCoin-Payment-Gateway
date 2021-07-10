@@ -1,7 +1,7 @@
-<?php namespace WooGateWayCoreLib\Actions;
+<?php namespace WooGateWayCoreLib\actions;
 
 /**
- * Class: Woocommerce Dokan Multi-Vendor Support
+ * Class: WooCommerce Dokan Multi-Vendor Support
  *
  * @package Actions
  * @since 1.4.4

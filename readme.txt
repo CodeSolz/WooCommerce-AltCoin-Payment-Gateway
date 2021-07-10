@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.7
-Stable tag: 1.5.8
+Stable tag: 1.5.9
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -93,6 +93,11 @@ Check more for <a target="_blank" href="https://coinmarketstats.online/product/w
 <ul>
     <li> Automatic & instant coin price calculation by most trusted exchange portal. </li>
     <li> Automatically convert your WooCommerce product's price to Bitcon / Altcoin price. </li>
+</ul>
+
+**Widget**
+<ul>
+    <li> Show coin price on a tag cloud animated widget</li>
 </ul>
 
 **Store Order Processing - Free Version**
@@ -214,8 +219,13 @@ English, Spanish, Russian, German, French, Dutch
 12. Front-end  
 13. Front-end  
 14. Back-end - Order details
+14. frontend - widget
 
 == Changelog ==
+
+= 1.5.9 =
+* **Feat:** Tag cloud widget for showing coin prices 
+* **Upgrade:** QR code
 
 = 1.5.8 =
 * **Feat:** Currency symbol position - works with WooCommerce default settings

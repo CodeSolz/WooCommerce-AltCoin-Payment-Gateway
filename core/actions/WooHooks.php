@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\Actions;
+<?php namespace WooGateWayCoreLib\actions;
 
 /**
  * Class: Woocommerce Default Hooks
@@ -14,7 +14,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 
 use WooGateWayCoreLib\lib\Util;
 use WooGateWayCoreLib\admin\functions\WooFunctions;
-use WooGateWayCoreLib\frontend\scripts\CsWapgScript;
+use WooGateWayCoreLib\admin\functions\widget\CsPriceDisplay;
 use WooGateWayCoreLib\admin\functions\CsOrderDetails;
 use WooGateWayCoreLib\admin\options\Scripts_Settings;
 use WooGateWayCoreLib\frontend\functions\CsWapgCustomTy;
@@ -64,6 +64,12 @@ class WooHooks {
 
 		/*** instance of admin order detail */
 		$this->Cs_Order_Detail = new CsOrderDetails();
+		
+		/*** register widget */
+		add_action( 'widgets_init', function(){
+			register_widget( 'WooGateWayCoreLib\admin\functions\widget\CsPriceDisplay' );
+		});
+		
 	}
 
 	/**
@@ -94,14 +100,14 @@ class WooHooks {
 		global $post;
 
 		if ( isset( $post->post_type ) && $post->post_type != 'shop_order' ) {
-			return;
+			return '';
 		}
 
 		$order_id = isset( $post->ID ) ? $post->ID : Util::check_evil_script( $_GET['post'] );
 		// Get an instance of the WC_Order object
 		$order = wc_get_order( $order_id );
 		if ( false !== $order->get_payment_method() && $order->get_payment_method() != 'wapg_altcoin_payment' ) {
-			return;
+			return '';
 		}
 
 		add_meta_box( 'cs_coin_detail', sprintf( __( ' %s - Coin Details', 'woo-altcoin-payment-gateway' ), $order->get_payment_method_title() ), array( $this->Cs_Order_Detail, 'order_metabox_coin_details' ), 'shop_order', 'normal', 'core' );

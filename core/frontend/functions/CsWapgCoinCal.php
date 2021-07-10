@@ -354,5 +354,7 @@ class CsWapgCoinCal {
 	}
 
 
+	
+
 
 }

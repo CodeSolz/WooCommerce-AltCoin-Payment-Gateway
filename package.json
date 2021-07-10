@@ -29,6 +29,7 @@
     "webpack-fix-style-only-entries": "^0.5.1"
   },
   "dependencies": {
+    "3d-word-cloud": "^1.0.3",
     "idempotent-babel-polyfill": "^7.4.4"
   }
 }

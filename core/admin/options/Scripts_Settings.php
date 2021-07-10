@@ -32,13 +32,18 @@ class Scripts_Settings {
 			wp_enqueue_script( 'jquery-date-time-picker', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-date-time-picker/jquery.datetimepicker.full.min.js', false );
 		}
 
-		if ( isset( $altcoin_menu['product_page_options_settings'] ) && $page_id == $altcoin_menu['product_page_options_settings'] ) {
+		if ( ( isset( $altcoin_menu['product_page_options_settings'] ) && $page_id == $altcoin_menu['product_page_options_settings'] ) ||
+				( isset( $altcoin_menu['widget_options_settings'] ) && $page_id == $altcoin_menu['widget_options_settings'])
+			) {
 			wp_enqueue_style( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/css/select2.min.css', false );
 			wp_enqueue_script( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/js/select2.min.js', false );
 		}
 
-		wp_enqueue_media();
-		wp_enqueue_script( 'media-uploader', CS_WAPG_PLUGIN_ASSET_URI . 'js/wp_media_uploader.js', false );
+		if ( isset( $altcoin_menu['default_settings'] ) && $page_id == $altcoin_menu['default_settings'] ) { 
+			wp_enqueue_media();
+			wp_enqueue_script( 'wapg-media-uploader', CS_WAPG_PLUGIN_ASSET_URI . 'js/wp.media.uploader.min.js', false );
+		}
+
 		wp_enqueue_style( 'wapg', CS_WAPG_PLUGIN_ASSET_URI . 'css/style.css', false );
 	}
 
@@ -66,7 +71,9 @@ class Scripts_Settings {
 
 		//menu id
 		$apply_script_on = array(
-			'add_new_coin', 'default_settings', 'register_automatic_order', 'checkout_options_settings', 'product_page_options_settings'
+			'add_new_coin', 'default_settings', 'register_automatic_order', 
+			'checkout_options_settings', 'product_page_options_settings', 
+			'widget_options_settings'
 		);
 
 		$add_script_on = apply_filters( 'wapg_add_form_submitter_script', $apply_script_on );

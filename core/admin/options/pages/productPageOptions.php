@@ -155,9 +155,6 @@ class ProductPageOptions {
 	 * Add custom scripts
 	 */
 	public function default_page_scripts() {
-		// pre_print(
-		// 	$this->settings['show_live_coin_list']
-		// );
 		?>
 			<script>
 				jQuery(document).ready(function($) {

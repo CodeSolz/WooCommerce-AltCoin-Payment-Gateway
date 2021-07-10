@@ -136,7 +136,7 @@ class CsWapgScript {
 						'<label for="alt-coinAddress"><?php _e( 'Please pay to following address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
 					'</p>'+
 					'<div class="coinAddress-qr">'+
-						'<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+(res.coinName).trim()+':'+(res.coinAddress).trim()+'?amount:'+res.totalCoin+'"/>'+
+						'<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+(res.coinName).trim()+':'+(res.coinAddress).trim()+'?amount='+res.totalCoin+'"/>'+
 						'<div class="coinAddress-info">'+
 							'<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
 							'<input id="alt-coinAddress" name="marchant_alt_address" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+

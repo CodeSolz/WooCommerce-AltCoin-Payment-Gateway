@@ -133,4 +133,6 @@ class CsPaymentGateway {
 
 		return array_merge_recursive( $default_option, $checkout_options );
 	}
+
+	
 }
