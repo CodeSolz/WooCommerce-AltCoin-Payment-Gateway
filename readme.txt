@@ -6,8 +6,8 @@ Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 5.7
-Stable tag: 1.5.9
+Tested up to: 5.8
+Stable tag: 1.6.0
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -222,6 +222,12 @@ English, Spanish, Russian, German, French, Dutch
 14. frontend - widget
 
 == Changelog ==
+
+= 1.6.0 =
+* **Fix:** PHP8 array_merge_recursive issue
+* **Fix:** GamiPress Conflict
+* **Upgrade:** QR code
+* **Upgrade:** WordPress 5.8 compatible
 
 = 1.5.9 =
 * **Feat:** Tag cloud widget for showing coin prices 
