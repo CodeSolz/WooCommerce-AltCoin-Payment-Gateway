@@ -1,4 +1,4 @@
-<?php namespace WooGateWayCoreLib\admin\options;
+<?php namespace WooGateWayCoreLib\admin\options\functions;
 
 /**
  * Class: Coin LIst
@@ -38,13 +38,15 @@ class Coin_List extends \WP_List_Table {
 	 * @return typeGenerate column
 	 */
 	public function get_columns() {
-		return array(
-			'cb'            => '<input type="checkbox" />',
-			'name'          => __( 'Coin Name', 'woo-altcoin-payment-gateway' ),
-			'address'       => __( 'Coin address', 'woo-altcoin-payment-gateway' ),
-			'checkout_type' => __( 'Order / Transaction Confirmation', 'woo-altcoin-payment-gateway' ),
-			'status'        => __( 'Status', 'woo-altcoin-payment-gateway' ),
-			'offer_info'    => __( 'Special Discount', 'woo-altcoin-payment-gateway' ),
+		return apply_filters( 'wapg_all_coins_table_cols', 
+			array(
+				'cb'            => '<input type="checkbox" />',
+				'name'          => __( 'Coin Name', 'woo-altcoin-payment-gateway' ),
+				'address'       => __( 'Coin address', 'woo-altcoin-payment-gateway' ),
+				'checkout_type' => __( 'Order / Transaction Confirmation', 'woo-altcoin-payment-gateway' ),
+				'status'        => __( 'Status', 'woo-altcoin-payment-gateway' ),
+				'offer_info'    => __( 'Special Discount', 'woo-altcoin-payment-gateway' ),
+			)
 		);
 	}
 
@@ -71,7 +73,7 @@ class Coin_List extends \WP_List_Table {
 	}
 
 	public function column_name( $item ) {
-		echo $item->name . '(' . $item->symbol . ')';
+		echo $item->name . ' <span class="coin-ticker">(' . $item->symbol . ')</span> ';
 		$edit_link = admin_url( "admin.php?page=cs-woo-altcoin-add-new-coin&action=update&coin_id={$item->cid}" );
 		echo '<div class="row-actions"><span class="edit">';
 		echo '<a href="' . $edit_link . '">Edit</a>';
@@ -124,6 +126,14 @@ class Coin_List extends \WP_List_Table {
 			<?php
 		} else {
 			echo Util::get_offer_status( $item->offer_status );
+		}
+	}
+
+	public function column_margin_network_fee( $item ){
+		if( has_action( 'wapg_margin_network_fee_col_data' )){
+			do_action( 'wapg_margin_network_fee_col_data', $item );
+		}else{
+			return '---';
 		}
 	}
 

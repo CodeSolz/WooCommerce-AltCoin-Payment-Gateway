@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.8
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -103,13 +103,13 @@ Check more for <a target="_blank" href="https://coinmarketstats.online/product/w
 **Store Order Processing - Free Version**
 <ul>
     <li> Unlimited manual order confirmation. Which means you need to check your coin manually after getting a order from your store.</li>
-    <li> Free version has 5+ automatic order confirmation for trail.</li>
+    <li> Free version has 5+ automatic order confirmation for trial.</li>
 </ul>
 
 **Store Order Processing - PRO Version**
 <ul>
     <li> Unlimited manual order confirmation.</li>
-    <li> <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">UPGRADE TO PRO </a> or check the trail</li>
+    <li> <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Pro version</a> has unlimited automatic order confirmation. <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">UPGRADE TO PRO </a> or check the trial</li>
 </ul>
 
 **Number of Crypto Currencies - free version**
@@ -184,7 +184,7 @@ English, Spanish, Russian, German, French, Dutch
 
 <blockquote>
 = Pro Version for automatic order confirmation =
-  * Check <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Pro version</a> and start a trail, no credit card required
+  * Check <a target="_blank" href="https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-altcoin-payment-gateway">Pro version</a> and start a trial, no credit card required
 
 = For Quick Support, feature request and bug reporting = 
 <ul>
@@ -222,6 +222,10 @@ English, Spanish, Russian, German, French, Dutch
 14. frontend - widget
 
 == Changelog ==
+
+= 1.6.1 =
+* **Fix:** GamiPress Conflict
+* **Fix:** String escaping issue
 
 = 1.6.0 =
 * **Fix:** PHP8 array_merge_recursive issue

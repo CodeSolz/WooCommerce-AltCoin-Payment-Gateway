@@ -44,7 +44,7 @@ class Scripts_Settings {
 			wp_enqueue_script( 'wapg-media-uploader', CS_WAPG_PLUGIN_ASSET_URI . 'js/wp.media.uploader.min.js', false );
 		}
 
-		wp_enqueue_style( 'wapg', CS_WAPG_PLUGIN_ASSET_URI . 'css/style.css', false );
+		wp_enqueue_style( 'wapg', CS_WAPG_PLUGIN_ASSET_URI . 'css/style.min.css', false );
 	}
 
 	/**

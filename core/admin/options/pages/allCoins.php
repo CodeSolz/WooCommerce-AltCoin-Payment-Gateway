@@ -13,7 +13,7 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 }
 
 use WooGateWayCoreLib\admin\builders\CsAdminPageBuilder;
-use WooGateWayCoreLib\admin\options\Coin_List;
+use WooGateWayCoreLib\admin\options\functions\Coin_List;
 use WooGateWayCoreLib\lib\Util;
 
 class AllCoins {
@@ -40,7 +40,7 @@ class AllCoins {
 		$page = isset( $_GET['page'] ) ? Util::check_evil_script( $_GET['page'] ) : '';
 		if ( isset( $_GET['s'] ) && ! empty( $_GET['s'] ) ) {
 			$back_url     = Util::cs_generate_admin_url( $page );
-			$args['well'] = "<p class='search-keyword'>Search results for : '<b>" . $_GET['s'] . "</b>' </p> <a href='{$back_url}' class='button'><< Back to all</a> ";
+			$args['well'] = "<p class='search-keyword'>Search results for : '<b>" . Util::cs_sanitize_prnt_str( $_GET['s'] ) . "</b>' </p> <a href='{$back_url}' class='button'><< Back to all</a> ";
 		}
 
 		ob_start();

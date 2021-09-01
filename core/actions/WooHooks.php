@@ -109,10 +109,16 @@ class WooHooks {
 			return '';
 		}
 		$order = wc_get_order( $order_id );
+		if( !is_object( $order ) ){
+			return '';
+		}
+
 		if ( 
-			\method_exists( $order, 'get_payment_method' ) &&
-			false !== $order->get_payment_method() && 
-			$order->get_payment_method() != 'wapg_altcoin_payment' 
+				is_null( $order->get_payment_method_title() ) ||
+				is_bool( $order->get_payment_method_title() ) ||
+				is_null( $order->get_payment_method() ) ||
+				is_bool( $order->get_payment_method() ) ||
+				$order->get_payment_method() != 'wapg_altcoin_payment' 
 			) {
 			return '';
 		}

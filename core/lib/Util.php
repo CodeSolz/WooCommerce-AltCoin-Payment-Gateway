@@ -268,7 +268,17 @@ class Util {
 	 * @return void
 	 */
 	public static function cs_esc_html( $value ) {
-		return \esc_html( \stripslashes_deep( trim( $value ) ) );
+		return \esc_html( self::cs_stripslashes( $value ) );
+	}
+
+	/**
+	 * Print strings
+	 *
+	 * @param [type] $value
+	 * @return void
+	 */
+	public static function cs_sanitize_prnt_str( $value ) {
+		return \esc_attr ( self::cs_esc_html( $value ) );
 	}
 
 	/**
