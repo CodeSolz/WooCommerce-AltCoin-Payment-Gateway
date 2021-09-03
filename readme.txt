@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.8
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -222,6 +222,9 @@ English, Spanish, Russian, German, French, Dutch
 14. frontend - widget
 
 == Changelog ==
+
+= 1.6.2 =
+* **Fix:** file missing
 
 = 1.6.1 =
 * **Fix:** GamiPress Conflict
