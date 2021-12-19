@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.8
-Stable tag: 1.6.2
+Stable tag: 1.6.6
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -222,6 +222,19 @@ English, Spanish, Russian, German, French, Dutch
 14. frontend - widget
 
 == Changelog ==
+
+= 1.6.6 =
+* **Improve:** settings : product page options - JS issue fixed
+
+= 1.6.5 =
+* **Feat:** Automatically stop checkout facility if coin price goes down to 0
+* **Improve:** Checkout pricing section
+
+= 1.6.4 =
+* **Upgrade:** QR code - responsive - only coin address
+
+= 1.6.3 =
+* **Fix:** file missing - fatal error
 
 = 1.6.2 =
 * **Fix:** file missing

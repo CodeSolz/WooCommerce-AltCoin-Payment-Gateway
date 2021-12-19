@@ -26,7 +26,9 @@ class CsWapgScript {
 
 		// load script on frontend footer
 		add_action( 'wp_footer', array( $this, 'altCoinCustomScript' ) );
+
 	}
+	
 
 	/**
 	 * cart page
@@ -77,7 +79,7 @@ class CsWapgScript {
 							'<p class="form-row form-row-wide">'+
 							'<label for="user-alt-coinAddress"><?php _e( 'Please enter a secret word.', 'woo-altcoin-payment-gateway' ); ?><span class="required">*</span></label>'+
 							'<input id="secret_word" name="secret_word" class="input-text " required  type="text" placeholder="<?php _e( 'please enter a secret word.', 'woo-altcoin-payment-gateway' ); ?>" />'+
-							'<span class="hints"><?php _e( 'Incidentally if you close this window or somehow you become disconnected, You can use this secret word to submit your order. Save the word in safe place.', 'woo-altcoin-payment-gateway' ); ?></span>'+
+							'<span class="hints"><?php _e( 'Incidentally if you close this window or somehow you disconnected from the internet, You can use this secret word to submit your order. Save the word in safe place.', 'woo-altcoin-payment-gateway' ); ?></span>'+
 							'</p>'+
 							'<div class="loader-coin-track hide"></div> '+
 							'<div class="tracking-response hide"></div> '+
@@ -125,8 +127,10 @@ class CsWapgScript {
 						'</td>'+
 					'</tr>'+
 					'<tr class="order-total">'+
-			'<th><?php _e( 'Net Payable Amount', 'woo-altcoin-payment-gateway' ); ?><span class="price-tag"><br><?php _e( '(*Transfer Fee Not Included)', 'woo-altcoin-payment-gateway' ); ?></span></th>'+
-			'<td>'+
+						'<th><?php _e( 'Net Payable Amount', 'woo-altcoin-payment-gateway' ); ?>' +
+							'<span class="price-tag"><br><?php _e( '(*Transfer Fee Not Included)', 'woo-altcoin-payment-gateway' ); ?></span>' +
+						'</th>'+
+						'<td>'+
 						'<strong><span class="woocommerce-Price-amount amount">'+res.totalCoin+' - <span class="woocommerce-Price-currencySymbol">'+res.coinFullName+'</span></span></strong>'+
 						'</td>'+
 					'</tr>'+
@@ -136,10 +140,10 @@ class CsWapgScript {
 						'<label for="alt-coinAddress"><?php _e( 'Please pay to following address:', 'woo-altcoin-payment-gateway' ); ?></label>'+
 					'</p>'+
 					'<div class="coinAddress-qr">'+
-						'<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+(res.coinName).trim()+':'+(res.coinAddress).trim()+'?amount='+res.totalCoin+'"/>'+
+						'<img class="qr-code" src="https://chart.googleapis.com/chart?chs=225x225&cht=qr&chl='+(res.coinAddress).trim()+'"/>'+
 						'<div class="coinAddress-info">'+
 							'<h3><strong>'+res.totalCoin+'</strong> '+res.coinFullName+'</h3>'+
-							'<input id="alt-coinAddress" name="marchant_alt_address" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
+							'<input id="alt-coinAddress" name="marchant_alt_address" readonly="readonly" class="input-text wc-altcoin-form-user-alt-coinAddress" value="'+res.coinAddress+'" type="text" /><p></p>'+
 							tftb +
 						'</div>'+
 					'</div>'+
@@ -167,11 +171,15 @@ class CsWapgScript {
 					},
 					qrWidth : function(){
 						var qrWidth = jQuery(".coinAddress-qr").width();
-						if( parseInt(qrWidth) < 400 ){
+						console.log( 'width: ' + qrWidth );
+						if( parseInt(qrWidth) <= 900 ){
 							jQuery(".coinAddress-qr").addClass('coinAddress-qr-sm');
+						}else{
+							jQuery(".coinAddress-qr").removeClass('coinAddress-qr-sm');
 						}
 					},
 					currencyPos : function( res, priceValue ){
+						priceValue = parseFloat( priceValue ).toFixed(2);
 						if( res.currency_pos == 'left' ){
 							return res.currency_symbol + priceValue;
 						}
@@ -233,6 +241,13 @@ class CsWapgScript {
 								$orderSubmitBtn.removeAttr('disabled');
 							});
 						}
+
+						//load responsive QR 
+						jQuery(window).on('resize', function () {
+							// console.log( 'hi');
+							module.qrWidth();
+						});
+
 					});
 					
 					jQuery("body").on( 'focus', '.wc-altcoin-form-user-alt-coinAddress', function(){
@@ -350,7 +365,7 @@ class CsWapgScript {
 				.price-tag, .help-info{font-style: italic;font-size: 11px;}
 				.qr-code{ max-height: 225px !important; }
 				.coinAddress-qr{text-align: center;background:#fff;border: 2px dashed #999;padding: 16px 0px 5px 0px;margin-bottom: 15px; display: table;width: 100%; }
-				.coinAddress-info{ position: relative;display: table-cell;vertical-align: top;padding: 10px 20px; width: 63%;}
+				.coinAddress-info{ position: relative; vertical-align: top;padding: 10px 20px; width: 100%;}
 				.coinAddress-info h3{ font-size: 15px; }
 				.coinAddress-qr img{ display: table-cell;padding: 15px 0px 11px 22px !important;position: relative !important; }
 				.coinAddress-qr-sm{ display: block; }

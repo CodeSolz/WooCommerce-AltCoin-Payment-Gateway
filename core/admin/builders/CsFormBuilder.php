@@ -314,7 +314,7 @@ class CsFormBuilder {
 			unset( $field['value'] );
 		}
 
-		// pre_print( $field );
+		// pre_print( $value );
 
 		$cus_val            = $field;
 		$cus_val['value']   = $value;

@@ -51,4 +51,5 @@ class CsFormHelperLib {
 		return array( '0' => 'Please at first add coin from "Add New Coin" Menu' );
 	}
 
+
 }

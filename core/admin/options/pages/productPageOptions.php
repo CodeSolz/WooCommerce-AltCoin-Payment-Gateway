@@ -59,12 +59,6 @@ class ProductPageOptions {
 	 */
 	public function generate_product_options_settings( $args ) {
 
-		
-
-		// pre_print(
-		// 	$settings
-		// );
-
 		$fields = array(
 			'st1'                                     => array(
 				'type'     => 'section_title',
@@ -108,7 +102,7 @@ class ProductPageOptions {
 				'multiple'    => true,
 				'placeholder' => __( 'Please select coin', 'woo-altcoin-payment-gateway' ),
 				'options'     => CsFormHelperLib::get_all_active_coins(),
-				'value'       => CsFormBuilder::get_value( 'show_live_coin_list', $this->settings, '' ),
+				'value'     => CsFormBuilder::get_value( 'show_live_coin_list', $this->settings, '' ),
 				'desc_tip'    => __( 'Select / Enter coin name to show for live price. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
 			),
 			'cs_altcoin_config[variable_product_price_type]' => array(
@@ -159,8 +153,6 @@ class ProductPageOptions {
 			<script>
 				jQuery(document).ready(function($) {
 					$('.live_price_coins').select2();
-
-					$('.live_price_coins').val(<?php echo implode( ',', $this->settings['show_live_coin_list']); ?>).trigger('change');
 				});
 			</script>
 		<?php

@@ -57,7 +57,13 @@ class CsAdminQuery {
 				array(
 					'status' => false,
 					'title'  => __( 'Error', 'woo-altcoin-payment-gateway' ),
-					'text'   => __( 'Coin is not in service. Please make sure you have selected the coin name from the dropdown list when you have typed coin name. Still problem after selecting from dropdown? please contact support@coinmarketstats.online for more information.', 'woo-altcoin-payment-gateway' ),
+					'text'   => sprintf( 
+							__( ' %s is not available to use. Please check the available coins list from  - %s ', 
+								'woo-altcoin-payment-gateway' 
+							),
+							$coin_info['coin_name'],
+							'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway'
+						),
 				)
 			);
 		}
@@ -141,7 +147,13 @@ class CsAdminQuery {
 				array(
 					'status' => false,
 					'title'  => __( 'Error', 'woo-altcoin-payment-gateway' ),
-					'text'   => __( 'Ops! "' . $coin_info['coin_name'] . '" coin is not in service. Please try differnt coin name', 'woo-altcoin-payment-gateway' ),
+					'text'   => sprintf( 
+						__( ' %s is not available to use. Please check the available coins list from  - %s ', 
+							'woo-altcoin-payment-gateway' 
+						),
+						$coin_info['coin_name'],
+						'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway'
+					),
 				)
 			);
 		}

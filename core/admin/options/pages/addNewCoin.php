@@ -152,6 +152,7 @@ class AddNewCoin {
 
 				),
 			),
+			
 			'st2'                                    => array(
 				'type'     => 'section_title',
 				'title'    => __( 'Offer Settings', 'woo-altcoin-payment-gateway' ),
@@ -166,7 +167,7 @@ class AddNewCoin {
 			'cs_add_new[special_discount_coin]'      => array(
 				'title'    => __( 'Discount On Cart Total', 'woo-altcoin-payment-gateway' ),
 				'type'     => 'miscellaneous',
-				'desc_tip' => __( 'Enter discount amount. Either percent or total flat amount. Discount will be apply to total amount. e.g : 10 percent', 'woo-altcoin-payment-gateway' ),
+				'desc_tip' => __( 'Enter discount amount. Either percent or total flat amount. Discount will be applied to total amount. e.g : 10 percent', 'woo-altcoin-payment-gateway' ),
 				'options'  => array(
 					'cs_add_new[offer_amount]' => array(
 						'type'        => 'text',
@@ -180,7 +181,7 @@ class AddNewCoin {
 						'placeholder' => __( 'Select Discount Type', 'woo-altcoin-payment-gateway' ),
 						'options'     => array(
 							'1' => 'Percent(%)',
-							'2' => 'Flat Amount(fiat amount)',
+							'2' => 'Flat Amount(amount in fiat currency)',
 						),
 						'value'       => empty( $coin_data ) ? '' : $coin_data->offer_type,
 					),

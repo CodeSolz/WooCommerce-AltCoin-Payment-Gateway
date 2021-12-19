@@ -10,7 +10,9 @@ module.exports = {
     "./assets/css/style": "./src/backend/scss/style.scss",
     "./assets/js/wapg_app": "./src/frontend/js/appMain.js",
     "./assets/js/cs.widgets": "./src/frontend/js/widgets/priceDisplay.js",
-    "./assets/css/widgets": "./src/frontend/scss/widgets/widgets.scss"
+    "./assets/css/widgets": "./src/frontend/scss/widgets/widgets.scss",
+    "./assets/js/checkout": "./src/frontend/js/checkout.js",
+    "./assets/css/checkout": "./src/frontend/scss/checkout.scss",
   },
   output: {
     filename: "[name].min.js",

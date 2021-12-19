@@ -54,6 +54,10 @@ class CsWidgets{
                 if ( ! isset( $response['error'] ) ) {
 
                     $response = \json_decode( $response);
+                    if( isset($response->code) && !empty( $response->code ) ){
+                        continue;
+                    }
+
                     $coinPrices = array_merge_recursive( $coinPrices, array( array(
                             'label' => ( $coin[1] ) .' $'. (float) $response[0]->price_usd,
                             'url' => $tag_cloud_url,
