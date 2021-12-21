@@ -251,7 +251,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway {
 			'wapg_checkout',
 			array(
 				'options' => $checkout_options,
-				'script_hook' => do_action( 'cs_wapg_checkout_script' ),
+				'checkout_script_hook' => do_action( 'cs_wapg_checkout_script' ),
 				'nonce' => wp_create_nonce( SECURE_AUTH_SALT ),
 				'custom_text' => array(
 					'sd' => __( 'Special Discount', 'woo-altcoin-payment-gateway' ),

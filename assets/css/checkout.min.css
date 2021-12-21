@@ -10,65 +10,52 @@
 
 .coin-detail {
   margin-bottom: 1.5em; }
-  .coin-detail .loader, .coin-detail {
+  .coin-detail .loader,
+  .coin-detail .loader-coin-track {
     text-align: center; }
-
-.coin-detail .loader, .loader-coin-track {
-  text-align: center; }
-
-.price-tag, .help-info {
-  font-style: italic;
-  font-size: 11px; }
-
-.qr-code {
-  max-height: 225px !important; }
-
-.coinAddress-qr {
-  text-align: center;
-  background: #fff;
-  border: 2px dashed #999;
-  padding: 16px 0px 5px 0px;
-  margin-bottom: 15px;
-  display: table;
-  width: 100%; }
-
-.coinAddress-info {
-  position: relative;
-  vertical-align: top;
-  padding: 10px 20px;
-  width: 100%; }
-
-.coinAddress-info h3 {
-  font-size: 15px; }
-
-.coinAddress-qr img {
-  display: table-cell;
-  padding: 15px 0px 11px 22px !important;
-  position: relative !important; }
-
-.coinAddress-qr-sm {
-  display: block; }
-
-.coinAddress-qr-sm img {
-  float: none !important;
-  margin: 0 auto;
-  padding: 0px !important;
-  display: block; }
-
-.special-discount-msg {
-  color: forestgreen;
-  font-size: 15px; }
-
-.con {
-  color: red;
-  font-weight: bold; }
-
-.blink {
-  animation: blink-animation 1s steps(5, start) infinite;
-  -webkit-animation: blink-animation 1s steps(5, start) infinite; }
-
-.hide {
-  display: none; }
+  .coin-detail .price-tag,
+  .coin-detail .help-info {
+    font-style: italic;
+    font-size: 11px; }
+  .coin-detail .qr-code {
+    max-height: 225px !important; }
+  .coin-detail .coinAddress-qr {
+    text-align: center;
+    background: #fff;
+    border: 2px dashed #999;
+    padding: 16px 0px 5px 0px;
+    margin-bottom: 15px;
+    display: table;
+    width: 100%; }
+  .coin-detail .coinAddress-info {
+    position: relative;
+    vertical-align: top;
+    padding: 10px 20px;
+    width: 100%; }
+    .coin-detail .coinAddress-info h3 {
+      font-size: 15px; }
+    .coin-detail .coinAddress-info img {
+      display: table-cell;
+      padding: 15px 0px 11px 22px !important;
+      position: relative !important; }
+  .coin-detail .coinAddress-qr-sm {
+    display: block; }
+    .coin-detail .coinAddress-qr-sm img {
+      float: none !important;
+      margin: 0 auto;
+      padding: 0px !important;
+      display: block; }
+  .coin-detail .special-discount-msg {
+    color: forestgreen;
+    font-size: 15px; }
+  .coin-detail .con {
+    color: red;
+    font-weight: bold; }
+  .coin-detail .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite; }
+  .coin-detail .hide {
+    display: none; }
 
 @keyframes blink-animation {
   to {
@@ -77,35 +64,28 @@
 @-webkit-keyframes blink-animation {
   to {
     visibility: hidden; } }
-
-.loader-coin-track {
-  margin-bottom: 60px; }
-
-.hints {
-  font-size: 12px;
-  font-style: italic; }
-
-.tracking-notice {
-  font-size: 12px;
-  border: 1px dashed;
-  padding: 10px;
-  font-style: italic; }
-
-#secret_word {
-  margin-bottom: 10px; }
-
-.error-notice {
-  border: 1px solid red;
-  padding: 8px;
-  text-align: left; }
-
-.success-notice {
-  background: forestgreen;
-  padding: 12px;
-  text-align: left;
-  color: #fff;
-  font-size: 14px; }
-
-.tracking-response {
-  margin-bottom: 20px; }
+  .coin-detail .loader-coin-track {
+    margin-bottom: 60px; }
+  .coin-detail .hints {
+    font-size: 12px;
+    font-style: italic; }
+  .coin-detail .tracking-notice {
+    font-size: 12px;
+    border: 1px dashed;
+    padding: 10px;
+    font-style: italic; }
+  .coin-detail #secret_word {
+    margin-bottom: 10px; }
+  .coin-detail .error-notice {
+    border: 1px solid red;
+    padding: 8px;
+    text-align: left; }
+  .coin-detail .success-notice {
+    background: forestgreen;
+    padding: 12px;
+    text-align: left;
+    color: #fff;
+    font-size: 14px; }
+  .coin-detail .tracking-response {
+    margin-bottom: 20px; }
 
