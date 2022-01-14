@@ -7,7 +7,7 @@ Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
 Tested up to: 5.8
-Stable tag: 1.6.6
+Stable tag: 1.6.7
 Requires PHP: 7.0
 WC requires at least: 3.0
 WC tested up to: 5.0
@@ -223,7 +223,14 @@ English, Spanish, Russian, German, French, Dutch
 
 == Changelog ==
 
+= 1.6.7 =
+* **New:** Checkout page - transfer fee not included text - is now customizable.
+* **Improve:** Database query updated
+* **Fix:** Configuration settting not saving
+* **Fix:** Configuration settting not saving
+
 = 1.6.6 =
+* **Fix:** Checkout page - coin price loading issue
 * **Improve:** settings : product page options - JS issue fixed
 
 = 1.6.5 =

@@ -152,6 +152,15 @@ class AddNewCoin {
 
 				),
 			),
+
+			'cs_add_new[fee_info_text]'            => array(
+				'title'       => __( 'Transfer Fee Text', 'woo-altcoin-payment-gateway' ),
+				'type'        => 'text',
+				'class'       => 'form-control',
+				'value'       => ! isset( $coin_data->fee_info_text ) ? __( '(*Transfer Fee Not Included)', 'woo-altcoin-payment-gateway' ) : $coin_data->fee_info_text,
+				'placeholder' => __( 'Enter text for user to include crypto transfer fee', 'woo-altcoin-payment-gateway' ),
+				'desc_tip'    => __( 'Enter transfer fee text for user. It will show in checkout page, under the "Net Payable Amount" text. ', 'woo-altcoin-payment-gateway' ),
+			),
 			
 			'st2'                                    => array(
 				'type'     => 'section_title',

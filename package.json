@@ -31,6 +31,8 @@
   "dependencies": {
     "3d-word-cloud": "^1.1.2",
     "idempotent-babel-polyfill": "^7.4.4",
-    "localforage": "^1.10.0"
+    "localforage": "^1.10.0",
+    "sweetalert2": "^11.3.5"
   }
+  
 }

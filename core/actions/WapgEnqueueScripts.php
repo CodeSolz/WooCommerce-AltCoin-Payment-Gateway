@@ -17,6 +17,8 @@ class WapgEnqueueScripts{
 
     function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'wapg_frontend_scripts' ), 15 );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'wapg_enqueue_admin_script' ), 15 );
 	}
 
     /**
@@ -53,6 +55,48 @@ class WapgEnqueueScripts{
         );
 
     }
+
+	/**
+	 * Form Submitter
+	 *
+	 * @param [type] $hook
+	 * @return void
+	 */
+	public function wapg_enqueue_admin_script( $page_id ){
+		global $altcoin_menu;
+
+		//menu id
+		$apply_script_on = array(
+			'add_new_coin', 'default_settings', 'register_automatic_order', 
+			'checkout_options_settings', 'product_page_options_settings', 
+			'widget_options_settings'
+		);
+
+		$add_script_on = apply_filters( 'wapg_add_form_submitter_script', $apply_script_on );
+
+		// load form submit script on footer
+		if( $add_script_on ){
+			foreach( $add_script_on as $menu_id ){
+				if( isset( $altcoin_menu[ $menu_id ] ) && empty( $get_menu_id = $altcoin_menu[ $menu_id ]) ){
+					continue;
+				}
+				if( $page_id == $get_menu_id ){
+					// pre_print('hi dolly');
+
+					wp_enqueue_script( 'wapg-form-submitter', CS_WAPG_PLUGIN_ASSET_URI . 'js/form.submitter.min.js', array(), CS_WAPG_VERSION, true );
+					wp_localize_script(
+						'wapg-form-submitter',
+						'wapg_form_vars',
+						array(
+							'lgif' => CS_WAPG_PLUGIN_ASSET_URI . 'img/loading-timer.gif',
+						)
+					);
+				}
+			}
+		}
+		
+
+	}
 
 
 

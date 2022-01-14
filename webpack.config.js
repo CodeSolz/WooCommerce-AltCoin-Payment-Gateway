@@ -7,7 +7,9 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 module.exports = {
   entry: {
     "./assets/js/wp.media.uploader": "./src/backend/js/mediaUploader.js",
+    "./assets/js/form.submitter": "./src/backend/js/formSubmitter.js",
     "./assets/css/style": "./src/backend/scss/style.scss",
+
     "./assets/js/wapg_app": "./src/frontend/js/appMain.js",
     "./assets/js/cs.widgets": "./src/frontend/js/widgets/priceDisplay.js",
     "./assets/css/widgets": "./src/frontend/scss/widgets/widgets.scss",

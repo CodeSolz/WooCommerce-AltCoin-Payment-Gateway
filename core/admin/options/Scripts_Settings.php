@@ -22,8 +22,6 @@ class Scripts_Settings {
 	public static function load_admin_settings_scripts( $page_id ) {
 		global $altcoin_menu;
 
-		wp_enqueue_style( 'sweetalert', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.css', false );
-		wp_enqueue_script( 'sweetalert', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/sweetalert/dist/sweetalert.min.js', false );
 
 		if ( isset( $altcoin_menu['add_new_coin'] ) && $page_id == $altcoin_menu['add_new_coin'] ) {
 			wp_enqueue_style( 'jquery-typehead', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.css', false );
@@ -58,6 +56,7 @@ class Scripts_Settings {
 
 		Util::markup_tag( __( 'admin footer script start', 'woo-altcoin-payment-gateway' ) );
 
+
 		// load typehead script
 		if ( $page_id == $altcoin_menu['add_new_coin'] ) {
 			self::load_jquery_typehead();
@@ -69,26 +68,6 @@ class Scripts_Settings {
 			self::load_coin_type_changer();
 		}
 
-		//menu id
-		$apply_script_on = array(
-			'add_new_coin', 'default_settings', 'register_automatic_order', 
-			'checkout_options_settings', 'product_page_options_settings', 
-			'widget_options_settings'
-		);
-
-		$add_script_on = apply_filters( 'wapg_add_form_submitter_script', $apply_script_on );
-
-		// load form submit script on footer
-		if( $add_script_on ){
-			foreach( $add_script_on as $menu_id ){
-				if( isset( $altcoin_menu[ $menu_id ] ) && empty( $get_menu_id = $altcoin_menu[ $menu_id ]) ){
-					continue;
-				}
-				if( $page_id == $get_menu_id ){
-					self::form_submitter();
-				}
-			}
-		}
 
 		if ( $page_id == $altcoin_menu['all_coins_list']
 			) {

@@ -38,6 +38,7 @@ class Activate {
             `status` char(1),
             `transferFeeTextBoxStatus` char(1) DEFAULT 1,
             `transferFeeTextBoxText` mediumtext,
+            `fee_info_text` mediumtext,
             PRIMARY KEY ( `id`)
             ) $charset_collate",
 			"CREATE TABLE IF NOT EXISTS `{$wapg_tables['addresses']}`(
@@ -93,30 +94,37 @@ class Activate {
 
 			$update_sqls = array();
 
+			// added new column on db version : 1.0.7
+			if ( \version_compare( $get_installed_db_version, '1.0.7', '<' ) ) {
+				$update_sqls = array(
+					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN fee_info_text mediumtext AFTER transferFeeTextBoxText",
+				);
+			}
+
+
 			// added new column on db version : 1.0.6
 			if ( \version_compare( $get_installed_db_version, '1.0.6', '<' ) ) {
-				$update_sqls = array(
+				$update_sqls += array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxText mediumtext AFTER status",
 				);
 			}
 
 			// added new column on db version : 1.0.5
 			if ( \version_compare( $get_installed_db_version, '1.0.5', '<' ) ) {
-				$update_sqls = array(
+				$update_sqls += array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxStatus char(1) DEFAULT 1 AFTER status",
-					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN transferFeeTextBoxText mediumtext AFTER status",
 				);
 			}
 
 			if ( \version_compare( $get_installed_db_version, '1.0.4', '<' ) ) {
-				$update_sqls = array(
+				$update_sqls += array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN coin_type varchar(1) DEFAULT 1 AFTER symbol",
 				);
 			}
 
 			$import_coin_symbol = false;
 			if ( \version_compare( $get_installed_db_version, '1.0.2', '<=' ) ) {
-				$update_sqls        = array(
+				$update_sqls        += array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN symbol varchar(20) AFTER coin_web_id",
 				);
 				$import_coin_symbol = true;
