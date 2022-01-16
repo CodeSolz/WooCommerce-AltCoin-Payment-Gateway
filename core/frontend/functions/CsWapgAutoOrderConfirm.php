@@ -24,12 +24,12 @@ class CsWapgAutoOrderConfirm {
 	 *
 	 * @var type
 	 */
-	private $tracking_api_url = 'https://api.coinmarketstats.online/trxid_validator/v1/%s/%s/%s/%s/%s/%s/%s';
-
-	/**
-	 * Force end
-	 */
-	private $force_end_api_url = 'https://api.coinmarketstats.online/trxid_validator/v1/%s/%s/%s/%s/%s/%s/%s';
+	
+	private $api_config = array(
+		'api_base' => 'https://api.coinmarketstats.online',
+		'api_slug' => 'trxid_validator',
+		'api_version' => 'v1'
+	);
 
 
 	public function track_coin( $raw_data ) {
@@ -93,7 +93,7 @@ class CsWapgAutoOrderConfirm {
 				Util::notice_html(
 					array(
 						'error'    => true,
-						'response' => __( 'Something went wrong. Please refresh the page and try again.', 'woo-altcoin-payment-gateway' ),
+						'response' => __( 'Cart information not found! Please uninstall the this plugin and install a fresh copy then upgrade your WooCommerce store. ', 'woo-altcoin-payment-gateway' ),
 					)
 				)
 			);
@@ -102,24 +102,28 @@ class CsWapgAutoOrderConfirm {
 		$cart_info = array_map( 'trim', $cart_info );
 		$cartTotal = empty( $cart_info['cartTotalAfterDiscount'] ) ? $cart_info['cartTotal'] : $cart_info['cartTotalAfterDiscount'];
 
-		$api_url = sprintf(
-			$this->tracking_api_url,
+		$api_url = $this->api_url_builder(array(
 			$api_key,
 			$cart_info['coinName'],
 			$cart_info['coinAddress'],
 			! isset( $config['coin_percentage'] ) || empty( $config['coin_percentage'] ) ? 100 : $config['coin_percentage'],
 			Util::check_evil_script( $trxid ),
 			$cart_info['totalCoin'],
-			trim( $cartTotal )
-		);
+			(float) $cartTotal,
+			$secret_word,
+			isset( $config['confirmation_count'] ) && ! empty( $config['confirmation_count'] ) ?
+							$config['confirmation_count'] : 6
+		));
 
 		$response = Util::remote_call( $api_url );
 		$response = json_decode( $response );
 
+
 		if ( is_object( $response ) ) {
 			if ( isset( $response->error ) && true === $response->error ) {
 				// remove temp transaction data
-				cartFunctions::temp_remove_trx_info( $trxid, $premade_order_id );
+				// cartFunctions::temp_remove_trx_info( $trxid, $premade_order_id );
+
 				return wp_send_json(
 					Util::notice_html(
 						array(
@@ -140,56 +144,6 @@ class CsWapgAutoOrderConfirm {
 					if ( isset( $response->confirmation ) && $response->confirmation > 0 ) {
 						$confirmation = $response->confirmation;
 					}
-
-					$con_count = isset( $config['confirmation_count'] ) && ! empty( $config['confirmation_count'] ) ?
-							$config['confirmation_count'] : 6;
-
-					// force successful confirmation
-					if ( $confirmation >= $con_count ) {
-
-						// send status
-						$api_url = sprintf(
-							$this->force_end_api_url,
-							$api_key,
-							'forceend',
-							$address,
-							Util::check_evil_script( $trxid ),
-							$amount,
-							$cartTotal,
-							'completed'
-						);
-
-						$response1 = Util::remote_call( $api_url );
-						$response1 = json_decode( $response1 );
-
-						if ( is_object( $response1 ) ) {
-							if ( isset( $response1->error ) && true === $response1->error ) {
-
-								return wp_send_json(
-									Util::notice_html(
-										array(
-											'success'  => false,
-											'response' => $response->response,
-										)
-									)
-								);
-
-							} else {
-								// remove temp transaction data
-								cartFunctions::temp_remove_trx_info( $trxid, $premade_order_id );
-
-								return wp_send_json(
-									Util::notice_html(
-										array(
-											'success'  => true,
-											'response' => __( 'Thank you! Transaction completed successfully. Your order is processing right now!', 'woo-altcoin-payment-gateway' ),
-										)
-									)
-								);
-							}
-						}
-					}
-
 					$response_msg = __( 'Your order is processing. Successful transaction confirmation count on ' ) . $confirmation . "/{$con_count}";
 				}
 
@@ -225,16 +179,36 @@ class CsWapgAutoOrderConfirm {
 					)
 				);
 			}
+
 		} else {
 			return wp_send_json(
 				Util::notice_html(
 					array(
 						'error'    => true,
-						'response' => __( 'Something went wrong! Please refresh the page and try again.', 'woo-altcoin-payment-gateway' ),
+						'response' => __( 'Unable to retrieve rest api data from server. Please make sure your server allow to call rest api.', 'woo-altcoin-payment-gateway' ),
 					)
 				)
 			);
 		}
+
+	}
+
+
+	/**
+	 * Build rest api url
+	 *
+	 * @param array $params
+	 * @return void
+	 */
+	private function api_url_builder( $params = [] ){
+		if( empty( $params ) ){
+			return false;
+		}
+		$sep = '/';
+		$params = \array_map( 'trim', $params );
+
+		return \implode( $sep, $this->api_config ) 
+			. $sep . \implode( $sep, $params );
 
 	}
 
