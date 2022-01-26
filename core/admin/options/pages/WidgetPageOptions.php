@@ -112,8 +112,6 @@ class WidgetPageOptions {
 			<script>
 				jQuery(document).ready(function($) {
 					$('.live_price_coins').select2();
-
-					$('.live_price_coins').val(<?php echo implode( ',', $this->settings['altcoin_display_coin_prices']['show_coins']); ?>).trigger('change');
 				});
 			</script>
 		<?php

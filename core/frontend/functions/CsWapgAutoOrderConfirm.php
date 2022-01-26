@@ -102,6 +102,9 @@ class CsWapgAutoOrderConfirm {
 		$cart_info = array_map( 'trim', $cart_info );
 		$cartTotal = empty( $cart_info['cartTotalAfterDiscount'] ) ? $cart_info['cartTotal'] : $cart_info['cartTotalAfterDiscount'];
 
+		$con_count = isset( $config['confirmation_count'] ) && ! empty( $config['confirmation_count'] ) ?
+							$config['confirmation_count'] : 6;
+
 		$api_url = $this->api_url_builder(array(
 			$api_key,
 			$cart_info['coinName'],
