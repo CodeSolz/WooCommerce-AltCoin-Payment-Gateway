@@ -223,253 +223,253 @@ English, Spanish, Russian, German, French, Dutch
 
 == Changelog ==
 
-= 1.6.9 =
+= V1.6.9 ( Jan 27, 2022 ) =
 * **Improvement:** WordPress 5.9 & PHP 8 compatible
 
-= 1.6.8 =
+= V1.6.8 =
 * **BigImprovement:** Automatic confirmation issue fixed
 
-= 1.6.7 =
+= V1.6.7 =
 * **New:** Checkout page - transfer fee not included text - is now customizable.
 * **Improve:** Database query updated
 * **Fix:** Configuration settting not saving
 
-= 1.6.6 =
+= V1.6.6 =
 * **Fix:** Checkout page - coin price loading issue
 * **Improve:** settings : product page options - JS issue fixed
 
-= 1.6.5 =
+= V1.6.5 =
 * **Feat:** Automatically stop checkout facility if coin price goes down to 0
 * **Improve:** Checkout pricing section
 
-= 1.6.4 =
+= V1.6.4 =
 * **Upgrade:** QR code - responsive - only coin address
 
-= 1.6.3 =
+= V1.6.3 =
 * **Fix:** file missing - fatal error
 
-= 1.6.2 =
+= V1.6.2 =
 * **Fix:** file missing
 
-= 1.6.1 =
+= V1.6.1 =
 * **Fix:** GamiPress Conflict
 * **Fix:** String escaping issue
 
-= 1.6.0 =
+= V1.6.0 =
 * **Fix:** PHP8 array_merge_recursive issue
 * **Fix:** GamiPress Conflict
 * **Upgrade:** QR code
 * **Upgrade:** WordPress 5.8 compatible
 
-= 1.5.9 =
+= V1.5.9 =
 * **Feat:** Tag cloud widget for showing coin prices 
 * **Upgrade:** QR code
 
-= 1.5.8 =
+= V1.5.8 =
 * **Feat:** Currency symbol position - works with WooCommerce default settings
 * **Upgrade:** QR code
 
-= 1.5.7 =
+= V1.5.7 =
 * **Fix:** Live price issue
 
-= 1.5.6 =
+= V1.5.6 =
 * **Fix:** Live price issue beside product price
 * **Update:** Languages pot file
 
-= 1.5.5 =
+= V1.5.5 =
 * **Fix:** Live price issue
 
-= 1.5.4 =
+= V1.5.4 =
 * **Improvement:** Live price show after product price
 * **Fix:** Product page option settings fix
 
-= 1.5.3 =
+= V1.5.3 =
 * **Improvement:** WCFM Multivendor supported
 
-= 1.5.2 =
+= V1.5.2 =
 * **Improvement:** Dokan Multivendor supported
 
-= 1.5.1 =
+= V1.5.1 =
 * **Improvement:** Automatic order confirmation
 * **Improvement:** Upgraded to WordPress & WooCommerce latest version
 
-= 1.5.0 =
+= V1.5.0 =
 * **Major Fix:** Pro version partial percentage - acceptance
 * **Improvement:** Upgraded to WordPress & WooCommerce latest version
 
-= 1.4.9 =
+= V1.4.9 =
 * **Important Fix:** Some error fixed
 
-= 1.4.8 =
+= V1.4.8 =
 * **Important Fix:** SQL error fixed
 
-= 1.4.7 =
+= V1.4.7 =
 * **Feat:** Transfer fee text box show / hide
 * **Feat:** Edit transfer fee text box text
 
-= 1.4.6 =
+= V1.4.6 =
 * **Improvement:** adjusted to the WordPress laest version
 
-= 1.4.5 =
+= V1.4.5 =
 * **Fix:** Live price error and speed issue fixed
 
-= 1.4.4 =
+= V1.4.4 =
 * **Feat:** Add <a href="https://wordpress.org/plugins/dokan-lite/">Multi Vendor Dokan</a> support
 
-= 1.4.3 =
+= V1.4.3 =
 * **Fix:** Error fixed for automatic confirmation
 
-= 1.4.2 =
+= V1.4.2 =
 * **Fix:** Error fixed on checkout
 
-= 1.4.1 =
+= V1.4.1 =
 * **Improvement:** Speed optimized on - live price showing 
 
-= 1.4.0 =
+= V1.4.0 =
 * **Improvement:** - **Major update:** Coin Pricing API has been updated
 * **Warning:** Previous versions will not work anymore!
 
-= 1.3.9 =
+= V1.3.9 =
 * **Improvement:**  Added new api for coin price calculation
 * **Fix:** bug fixed
 
-= 1.3.8 =
+= V1.3.8 =
 * bug fixed
 * upgraded api and upgrader function 
 
-= 1.3.7 =
+= V1.3.7 =
 * bug fixed
 
-= 1.3.6 =
+= V1.3.6 =
 * added live coin price for variable product's price range
 
-= 1.3.5 =
+= V1.3.5 =
 * bug fixed
 
-= 1.3.4 =
+= V1.3.4 =
 * bug fixed
 
-= 1.3.3 =
+= V1.3.3 =
 * bug fixed
 
-= 1.3.2 =
+= V1.3.2 =
 * Little bug fixed
 * Starting to depricate some coins 
 
-= 1.3.1 =
+= V1.3.1 =
 * Checkout page - Coin Select Box ordering fixed
 * Added new coin to automatic list - USDT, BSV
 
-= 1.3.0 =
+= V1.3.0 =
 * Checkout page option issue fixed
 
-= 1.2.9 =
+= V1.2.9 =
 * Minor error fixed
 
-= 1.2.8 =
+= V1.2.8 =
 * Coin Live Price added beside product price
 * Coin short name added. e.g: BTC
 
 
-= 1.2.7 =
+= V1.2.7 =
 * Class error fixed - (pascal case error)
 
-= 1.2.6 =
+= V1.2.6 =
 * New Cryptocurrencies added
 * Fixed issues of manually created order from admin panel 
 * Add new coin issue fixed
 
-= 1.2.5 =
+= V1.2.5 =
 * upgrading issue fixed
 
-= 1.2.4 =
+= V1.2.4 =
 * Extra options added
 * Little issue fixed
 
-= 1.2.3 =
+= V1.2.3 =
 * The most awaited automatic order confirmation
 
 
-= 1.2.2 =
+= V1.2.2 =
 * Checkout page text edit option added
 * Store currency displaying option added
 
-= 1.2.1 =
+= V1.2.1 =
 * Offer message text edit 
 * offer message display type changed
 
-= 1.2.0 =
+= V1.2.0 =
 * Calculator gif error fixed
 * Typo error fixed
 * Default Currency Price added 
 
-= 1.1.9 =
+= V1.1.9 =
 * Discount rounding error fixed
 * Coin searching error fixed
 
-= 1.1.8 =
+= V1.1.8 =
 * New Fiat Currency Converter added from our own data - <a href="https://coinmarketstats.online">https://coinmarketstats.online</a>
 * Check your currency - <a href="https://api.coinmarketstats.online/fiat/v1/listings">https://api.coinmarketstats.online/fiat/v1/listings</a>
 
-= 1.1.7 =
+= V1.1.7 =
 * Database updated
 
-= 1.1.6 =
+= V1.1.6 =
 * Minor bug fixed
 
-= 1.1.5 =
+= V1.1.5 =
 * PHP new version - standard upgraded
 
-= 1.1.4 =
+= V1.1.4 =
 * Minor bug fixed
 
-= 1.1.3 =
+= V1.1.3 =
 * Minor offer validity message fixed
 
-= 1.1.2 =
+= V1.1.2 =
 * Transaction reference / TrxID visible for both admin and client's side
 * Coin details on admin order page
 
-= 1.1.1 =
+= V1.1.1 =
 * QR - positioning fixed
 * QR - little bug fixed
 * PHP strict standard error fixed
 
-= 1.1.0 =
+= V1.1.0 =
 * Database upgraded
 
-= 1.0.9 =
+= V1.0.9 =
 * Fully New UI Added
 * Discount option added
 
-= 1.0.8 =
+= V1.0.8 =
 * New coins added
 * Minor bug fixed
 
-= 1.0.7 =
+= V1.0.7 =
 * Local Currency converter added
 * 156 currencies added. Eg. EUR, JPY, GBP, CHF, CAD, AUD, NZD, ZAR and more
 
-= 1.0.6 =
+= V1.0.6 =
 * Added new altCoins
 
-= 1.0.5 =
+= V1.0.5 =
 * Translation added - 3 languages
 
-= 1.0.4 =
+= V1.0.4 =
 * Minor encoding errors fixed
 * Add more coin drop down fixed
 
-= 1.0.3 =
+= V1.0.3 =
 * added 1500+ crypto-currencies
 
-= 1.0.2 =
+= V1.0.2 =
 * cart total update after shipping cost change 
 * Thank you page modified
 
-= 1.0.1 =
+= V1.0.1 =
 * QR code added
 * Easy address copy function
 
-= 1.0.0 =
+= V1.0.0 =
 * Initial release.
