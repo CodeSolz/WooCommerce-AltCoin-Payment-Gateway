@@ -157,6 +157,7 @@ class CsWapgCoinCal {
 				}
 				$cartTotal                   = $usd_conversion[0];
 				$altcoinPriceOfStoreCurrency = $this->convert_altcoin_price_to_store_currency( $usd_conversion[1], $coin_price );
+				$altcoinPriceOfStoreCurrency = round( $altcoinPriceOfStoreCurrency, 2 );
 			}
 
 			// calculate the coin
@@ -178,7 +179,7 @@ class CsWapgCoinCal {
 				'special_discount_status'  => $special_discount,
 				'special_discount_msg'     => $special_discount_msg,
 				'special_discount_amount'  => $special_discount_amount,
-				'nativeAltCoinPrice'       => round( $altcoinPriceOfStoreCurrency, 2 ),
+				'nativeAltCoinPrice'       => $altcoinPriceOfStoreCurrency,
 				'store_currency_fullname'  => $this->get_full_name_of_store_currency( $store_currency ),
 				'store_currency_shortname' => $store_currency,
 				'premadeOrderId'           => $is_premade_order_id

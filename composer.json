@@ -11,10 +11,10 @@
     ],
     "scripts": {
         "build" : "composer install --no-dev",
-        "phpcs" : "bash ./vendor/bin/phpcs -i ",
-        "phpcsCheckError" : "bash ./vendor/bin/phpcs --standard=WordPress ./core ./woocommerce-altcoin-payment.php",
-        "phpcsFixError" : "bash ./vendor/bin/phpcbf --standard=WordPress ./core ./woocommerce-altcoin-payment.php",
-        "phpcsCheckPHPDetail" : "bash ./vendor/bin/phpcs --standard=PHPCompatibilityWP -p ./core --runtime-set testVersion 7.0-"
+        "phpcs" : "php ./vendor/bin/phpcs -i ",
+        "phpcsCheckError" : "php ./vendor/bin/phpcs --standard=WordPress ./core ./woocommerce-altcoin-payment.php",
+        "phpcsFixError" : "php ./vendor/bin/phpcbf --standard=WordPress ./core ./woocommerce-altcoin-payment.php",
+        "phpcsCheckPHPDetail" : "php ./vendor/bin/phpcs --standard=PHPCompatibilityWP -p ./core --runtime-set testVersion 7.0-"
     },
     "autoload": {
         "psr-4" : {
@@ -22,13 +22,19 @@
         }
     },
     "require": {
-        "php" : ">=6.0.0"
+        "php" : ">=7.0.0"
     },
     "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
     "require-dev": {
+        "wp-coding-standards/wpcs": "dev-master",
+        "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
         "phpcompatibility/php-compatibility": "^9.3",
         "phpcompatibility/phpcompatibility-wp": "^2.1",
-        "wp-coding-standards/wpcs": "dev-master",
-        "dealerdirect/phpcodesniffer-composer-installer": "dev-master"
+        "tuhin18003/advance-var-dumper": "dev-master"
     }
 }

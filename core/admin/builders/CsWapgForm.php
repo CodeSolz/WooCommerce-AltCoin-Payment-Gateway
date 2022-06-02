@@ -112,7 +112,7 @@ class CsWapgForm {
 	 * @param type $refObj
 	 * @return type
 	 */
-	public static function getActiveAltCoinSelect( $refObj = false, $active_coins ) {
+	public static function getActiveAltCoinSelect( $refObj = false, $active_coins = '' ) {
 		$altCoin  = '<select name="altcoin" id="CsaltCoin" class="select">';
 		$lebel    = isset( $refObj->select_box_option_lebel ) && ! empty( $refObj->select_box_option_lebel ) ? $refObj->select_box_option_lebel : __( 'Please Select An AltCoin', 'woo-altcoin-payment-gateway' );
 		$altCoin .= '<option value="0">' . $lebel . '</option>';

@@ -1,1 +1,91 @@
-.alt-info{border:2px dashed #999;font-style:italic;margin-bottom:10px;margin-top:25px;padding:10px}.coin-detail{margin-bottom:1.5em}.coin-detail .loader,.coin-detail .loader-coin-track{text-align:center}.coin-detail .help-info,.coin-detail .price-tag{font-size:11px;font-style:italic}.coin-detail .qr-code{max-height:225px!important}.coin-detail .coinAddress-qr{background:#fff;border:2px dashed #999;display:table;margin-bottom:15px;padding:16px 0 5px;text-align:center;width:100%}.coin-detail .coinAddress-info{padding:10px 20px;position:relative;vertical-align:top;width:100%}.coin-detail .coinAddress-info h3{font-size:15px}.coin-detail .coinAddress-info img{display:table-cell;padding:15px 0 11px 22px!important;position:relative!important}.coin-detail .coinAddress-qr-sm{display:block}.coin-detail .coinAddress-qr-sm img{display:block;float:none!important;margin:0 auto;padding:0!important}.coin-detail .special-discount-msg{color:#228b22;font-size:15px}.coin-detail .con{color:red;font-weight:700}.coin-detail .blink{animation:blink-animation 1s steps(5,start) infinite;-webkit-animation:blink-animation 1s steps(5,start) infinite}.coin-detail .hide{display:none}@keyframes blink-animation{to{visibility:hidden}}@-webkit-keyframes blink-animation{to{visibility:hidden}}.coin-detail .loader-coin-track{margin-bottom:60px}.coin-detail .hints,.coin-detail .tracking-notice{font-size:12px;font-style:italic}.coin-detail .tracking-notice{border:1px dashed;padding:10px}.coin-detail #secret_word{margin-bottom:10px}.coin-detail .error-notice{border:1px solid red;padding:8px;text-align:left}.coin-detail .success-notice{background:#228b22;color:#fff;font-size:14px;padding:12px;text-align:left}.coin-detail .tracking-response{margin-bottom:20px}
+/*!********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/frontend/scss/checkout.scss ***!
+  \********************************************************************************************************************************************************************/
+.alt-info {
+  font-style: italic;
+  margin-bottom: 10px;
+  border: 2px dashed #999;
+  padding: 10px;
+  margin-top: 25px; }
+
+.coin-detail {
+  margin-bottom: 1.5em; }
+  .coin-detail .loader,
+  .coin-detail .loader-coin-track {
+    text-align: center; }
+  .coin-detail .price-tag,
+  .coin-detail .help-info {
+    font-style: italic;
+    font-size: 11px; }
+  .coin-detail .qr-code {
+    max-height: 225px !important; }
+  .coin-detail .coinAddress-qr {
+    text-align: center;
+    background: #fff;
+    border: 2px dashed #999;
+    padding: 16px 0px 5px 0px;
+    margin-bottom: 15px;
+    display: table;
+    width: 100%; }
+  .coin-detail .coinAddress-info {
+    position: relative;
+    vertical-align: top;
+    padding: 10px 20px;
+    width: 100%; }
+    .coin-detail .coinAddress-info h3 {
+      font-size: 15px; }
+    .coin-detail .coinAddress-info img {
+      display: table-cell;
+      padding: 15px 0px 11px 22px !important;
+      position: relative !important; }
+  .coin-detail .coinAddress-qr-sm {
+    display: block; }
+    .coin-detail .coinAddress-qr-sm img {
+      float: none !important;
+      margin: 0 auto;
+      padding: 0px !important;
+      display: block; }
+  .coin-detail .special-discount-msg {
+    color: forestgreen;
+    font-size: 15px; }
+  .coin-detail .con {
+    color: red;
+    font-weight: bold; }
+  .coin-detail .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite; }
+  .coin-detail .hide {
+    display: none; }
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden; } }
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden; } }
+  .coin-detail .loader-coin-track {
+    margin-bottom: 60px; }
+  .coin-detail .hints {
+    font-size: 12px;
+    font-style: italic; }
+  .coin-detail .tracking-notice {
+    font-size: 12px;
+    border: 1px dashed;
+    padding: 10px;
+    font-style: italic; }
+  .coin-detail #secret_word {
+    margin-bottom: 10px; }
+  .coin-detail .error-notice {
+    border: 1px solid red;
+    padding: 8px;
+    text-align: left; }
+  .coin-detail .success-notice {
+    background: forestgreen;
+    padding: 12px;
+    text-align: left;
+    color: #fff;
+    font-size: 14px; }
+  .coin-detail .tracking-response {
+    margin-bottom: 20px; }
+

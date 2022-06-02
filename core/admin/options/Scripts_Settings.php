@@ -78,59 +78,6 @@ class Scripts_Settings {
 	}
 
 	/**
-	 * load admin scripts to footer
-	 */
-	public static function form_submitter() {
-		?>
-			<script type="text/javascript">
-				jQuery(document).ready(function( $ ){
-					$("form").submit(function(e){
-						e.preventDefault();
-						var $this = $(this);
-						var formData = new FormData( $this[0] );
-
-						var action = $this.find('#cs_field_action').val();
-						if( typeof action === 'undefined' || action.length == 0 ){
-							action = "_cs_wapg_custom_call";
-						}
-
-						formData.append( "action", action );
-						formData.append( "method", $this.find('#cs_field_method').val() );
-						swal({ title: $this.find('#cs_field_swal_title').val(), text: 'Please wait a while...', timer: 200000, imageUrl: '<?php echo CS_WAPG_PLUGIN_ASSET_URI . 'img/loading-timer.gif'; ?>', showConfirmButton: false, html :true });
-						$.ajax({
-							url: ajaxurl,
-							type: 'POST',
-							data: formData,
-							contentType: false,
-							cache: false,
-							processData: false
-						})
-						.done(function( data ) {
-							if( true === data.status ){
-								swal( { title: data.title, text: data.text, type : "success", html: true, timer: 5000 });
-								if( typeof data.redirect_url !== 'undefined' ){
-									window.location.href = data.redirect_url;
-								}
-							}else if( false === data.status ){
-								swal({ title: data.title, text: data.text, type : "error", html: true, timer: 5000 });
-							}else{
-								swal( { title: 'OOPS!', text: 'Something went wrong! Please try again by refreshing the page.', type : "error", html: true, timer: 5000 });
-							}
-						})
-						.fail(function( errorThrown ) {
-							console.log( 'Error: ' + errorThrown.responseText );
-							swal( 'Response Error', errorThrown.responseText + '('+errorThrown.statusText +') ' , "error" );
-						});
-						return false;
-					});
-					
-				});
-			</script>
-		<?php
-	}
-
-
-	/**
 	 * @return string
 	 */
 	public static function load_jquery_typehead() {

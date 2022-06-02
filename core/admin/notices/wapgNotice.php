@@ -37,7 +37,7 @@ class wapgNotice {
 	}
 
 	public function action_admin_init() {
-		$dismiss_option = filter_input( INPUT_GET, 'wapg_notice_dismiss', FILTER_SANITIZE_STRING );
+		$dismiss_option = filter_input( INPUT_GET, 'wapg_notice_dismiss', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 		if ( is_string( $dismiss_option ) ) {
 			update_option( "wapg_notice_dismissed_$dismiss_option", true );
 			wp_die();
