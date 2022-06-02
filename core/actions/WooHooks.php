@@ -49,7 +49,6 @@ class WooHooks {
 		/*** crypto price after product price */
 		add_filter( 'woocommerce_get_price_html', array( $this, 'wapg_wc_price_html' ), 20, 2 );
 
-
 		/*** check plugins info */
 		add_action( 'wp_update_plugins', array( $this, 'wapg_check_plugin_info' ) );
 
@@ -64,12 +63,15 @@ class WooHooks {
 
 		/*** instance of admin order detail */
 		$this->Cs_Order_Detail = new CsOrderDetails();
-		
+
 		/*** register widget */
-		add_action( 'widgets_init', function(){
-			register_widget( 'WooGateWayCoreLib\admin\functions\widget\CsPriceDisplay' );
-		});
-		
+		add_action(
+			'widgets_init',
+			function() {
+				register_widget( 'WooGateWayCoreLib\admin\functions\widget\CsPriceDisplay' );
+			}
+		);
+
 	}
 
 	/**
@@ -105,20 +107,19 @@ class WooHooks {
 
 		$order_id = isset( $post->ID ) ? $post->ID : Util::check_evil_script( $_GET['post'] );
 		// Get an instance of the WC_Order object
-		if( ! function_exists('wc_get_order') ){
+		if ( ! function_exists( 'wc_get_order' ) ) {
 			return '';
 		}
 		$order = wc_get_order( $order_id );
-		if( !is_object( $order ) ){
+		if ( ! is_object( $order ) ) {
 			return '';
 		}
 
-		if ( 
-				is_null( $order->get_payment_method_title() ) ||
+		if ( is_null( $order->get_payment_method_title() ) ||
 				is_bool( $order->get_payment_method_title() ) ||
 				is_null( $order->get_payment_method() ) ||
 				is_bool( $order->get_payment_method() ) ||
-				$order->get_payment_method() != 'wapg_altcoin_payment' 
+				$order->get_payment_method() != 'wapg_altcoin_payment'
 			) {
 			return '';
 		}
@@ -185,7 +186,7 @@ class WooHooks {
 		return (array) $links;
 	}
 
-	
+
 
 
 }

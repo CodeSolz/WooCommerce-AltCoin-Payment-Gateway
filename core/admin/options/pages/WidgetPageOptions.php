@@ -62,12 +62,12 @@ class WidgetPageOptions {
 	public function generate_product_options_settings( $args ) {
 
 		$fields = array(
-			'st1'                                     => array(
+			'st1'          => array(
 				'type'     => 'section_title',
 				'title'    => __( 'Widget : Display Coin Prices', 'woo-altcoin-payment-gateway' ),
-				'desc_tip' => sprintf( __( 'Following options will take place on the widget %s Altcoin - Display Coin Prices %s ', 'woo-altcoin-payment-gateway' ), '<a href="' . \get_admin_url() . 'widgets.php">', '</a>' ),
+				'desc_tip' => sprintf( __( 'Following options will take place on the widget %1$s Altcoin - Display Coin Prices %2$s ', 'woo-altcoin-payment-gateway' ), '<a href="' . \get_admin_url() . 'widgets.php">', '</a>' ),
 			),
-			'show_coins[]'                   => array(
+			'show_coins[]' => array(
 				'title'       => __( 'Select Coin', 'woo-altcoin-payment-gateway' ),
 				'type'        => 'select',
 				'class'       => 'form-control live_price_coins',
@@ -77,7 +77,7 @@ class WidgetPageOptions {
 				'value'       => CsFormBuilder::get_value( 'show_coins', $this->settings['altcoin_display_coin_prices'], '' ),
 				'desc_tip'    => __( 'Select / Enter coin name to show on the widget. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
 			),
-			
+
 		);
 
 		$args['content'] = $this->Form_Generator->generate_html_fields( $fields );

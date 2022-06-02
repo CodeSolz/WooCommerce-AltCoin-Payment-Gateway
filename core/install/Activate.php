@@ -101,7 +101,6 @@ class Activate {
 				);
 			}
 
-
 			// added new column on db version : 1.0.6
 			if ( \version_compare( $get_installed_db_version, '1.0.6', '<' ) ) {
 				$update_sqls += array(
@@ -124,7 +123,7 @@ class Activate {
 
 			$import_coin_symbol = false;
 			if ( \version_compare( $get_installed_db_version, '1.0.2', '<=' ) ) {
-				$update_sqls        += array(
+				$update_sqls       += array(
 					"ALTER TABLE `{$wapg_tables['coins']}` ADD COLUMN symbol varchar(20) AFTER coin_web_id",
 				);
 				$import_coin_symbol = true;

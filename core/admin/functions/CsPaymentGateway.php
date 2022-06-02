@@ -128,11 +128,11 @@ class CsPaymentGateway {
 	 */
 	public static function get_wapg_options() {
 		$checkout_options = self::get_checkout_page_options();
-		$altcoin_id        = WooFunctions::get_altcoin_gateway_settings_id();
-		$default_option    = get_option( $altcoin_id );
+		$altcoin_id       = WooFunctions::get_altcoin_gateway_settings_id();
+		$default_option   = get_option( $altcoin_id );
 
-		return array_merge_recursive( (array)$default_option, (array)$checkout_options );
+		return array_merge_recursive( (array) $default_option, (array) $checkout_options );
 	}
 
-	
+
 }

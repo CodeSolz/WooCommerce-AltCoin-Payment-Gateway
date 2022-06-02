@@ -48,19 +48,19 @@ class CsMiscellaneous {
 	 *
 	 * @return void
 	 */
-	public static function get_crypto_prices(){
+	public static function get_crypto_prices() {
 		$settings = CsPaymentGateway::get_product_page_options();
-		if( ! isset( $settings['show_live_price'] ) || $settings['show_live_price'] != 'yes' ) {
+		if ( ! isset( $settings['show_live_price'] ) || $settings['show_live_price'] != 'yes' ) {
 			return wp_send_json(
 				array(
-					'show_live_price' => false
+					'show_live_price' => false,
 				)
 			);
 		}
 
-		$prices = [];
+		$prices        = array();
 		$CsWapgCoinCal = new CsWapgCoinCal();
-		if( !empty( $coins = $settings['show_live_coin_list'])) {
+		if ( ! empty( $coins = $settings['show_live_coin_list'] ) ) {
 
 			foreach ( $coins as $coin ) {
 				$coin_arr = explode( '___', $coin );
@@ -68,11 +68,12 @@ class CsMiscellaneous {
 					continue;
 				}
 
-				$settings = \array_merge_recursive( $settings,
+				$settings = \array_merge_recursive(
+					$settings,
 					array(
 						'crypto_prices' => array(
-							$coin => $CsWapgCoinCal->get_coin_martket_price( $coin_arr[0], $coin_arr[2] )
-						)
+							$coin => $CsWapgCoinCal->get_coin_martket_price( $coin_arr[0], $coin_arr[2] ),
+						),
 					)
 				);
 
@@ -80,11 +81,11 @@ class CsMiscellaneous {
 		}
 
 		$store_currency = \get_woocommerce_currency();
-		$settings = \array_merge_recursive( $settings, array( 'store_currerncy' => $store_currency ) );
+		$settings       = \array_merge_recursive( $settings, array( 'store_currerncy' => $store_currency ) );
 		if ( $store_currency != 'USD' ) {
 			$usd_conversion = $CsWapgCoinCal->store_currency_to_usd( $store_currency, 1 );
 			if ( ! isset( $usd_conversion['error'] ) ) {
-				$settings = \array_merge_recursive( $settings, array( 'converted_usd_price' => $usd_conversion[1] ));
+				$settings = \array_merge_recursive( $settings, array( 'converted_usd_price' => $usd_conversion[1] ) );
 			}
 		}
 
@@ -112,7 +113,7 @@ class CsMiscellaneous {
 				'max' => (float) $currentProductObj->get_variation_price( 'max' ),
 			);
 		} else {
-			return empty(  $price = $currentProductObj->get_sale_price() ) ?
+			return empty( $price = $currentProductObj->get_sale_price() ) ?
 							(float) $currentProductObj->get_price() :
 							(float) $price;
 		}

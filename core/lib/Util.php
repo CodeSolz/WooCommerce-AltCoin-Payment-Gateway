@@ -278,7 +278,7 @@ class Util {
 	 * @return void
 	 */
 	public static function cs_sanitize_prnt_str( $value ) {
-		return \esc_attr ( self::cs_esc_html( $value ) );
+		return \esc_attr( self::cs_esc_html( $value ) );
 	}
 
 	/**

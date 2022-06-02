@@ -28,7 +28,7 @@ class CsWapgScript {
 		add_action( 'wp_footer', array( $this, 'altCoinCustomScript' ) );
 
 	}
-	
+
 
 	/**
 	 * cart page
@@ -56,7 +56,7 @@ class CsWapgScript {
 						}
 
 						//add special hook
-						<?php do_action( 'wapg_checkout_script'); ?>
+						<?php do_action( 'wapg_checkout_script' ); ?>
 						
 						var stc = '';
 						if( res.nativeAltCoinPrice > 0 ){

@@ -74,7 +74,7 @@ class RegisterCustomMenu {
 			57
 		);
 
-		$altcoin_menu['default_settings']              = add_submenu_page(
+		$altcoin_menu['default_settings'] = add_submenu_page(
 			CS_WAPG_PLUGIN_IDENTIFIER,
 			__( 'Settings', 'woo-altcoin-payment-gateway' ),
 			'Default Settings',
@@ -82,7 +82,7 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-gateway-settings',
 			array( $this, 'load_settings_page' )
 		);
-		$altcoin_menu['all_coins_list']                = add_submenu_page(
+		$altcoin_menu['all_coins_list']   = add_submenu_page(
 			CS_WAPG_PLUGIN_IDENTIFIER,
 			__( 'All Coins', 'woo-altcoin-payment-gateway' ),
 			'All Coins',
@@ -90,7 +90,7 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-all-coins',
 			array( $this, 'load_all_coins_list_page' )
 		);
-		$altcoin_menu['add_new_coin']                  = add_submenu_page(
+		$altcoin_menu['add_new_coin']     = add_submenu_page(
 			CS_WAPG_PLUGIN_IDENTIFIER,
 			__( 'Add New Coin', 'woo-altcoin-payment-gateway' ),
 			'Add New Coin',
@@ -98,8 +98,7 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-add-new-coin',
 			array( $this, 'load_add_new_coin_page' )
 		);
-		
-		
+
 		$altcoin_menu['product_page_options_settings'] = add_submenu_page(
 			CS_WAPG_PLUGIN_IDENTIFIER,
 			__( 'Product Page Options', 'woo-altcoin-payment-gateway' ),
@@ -117,7 +116,7 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-checkout-option-settings',
 			array( $this, 'load_checkout_settings_page' )
 		);
-		$altcoin_menu['widget_options_settings'] = add_submenu_page(
+		$altcoin_menu['widget_options_settings']   = add_submenu_page(
 			CS_WAPG_PLUGIN_IDENTIFIER,
 			__( 'Widget Options', 'woo-altcoin-payment-gateway' ),
 			'Widget Options',
@@ -125,7 +124,7 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-widget-settings',
 			array( $this, 'load_widget_options_page' )
 		);
-		$altcoin_menu['register_automatic_order']      = add_submenu_page(
+		$altcoin_menu['register_automatic_order']  = add_submenu_page(
 			CS_WAPG_PLUGIN_IDENTIFIER,
 			__( 'Automatic Order Confirmation Registration', 'woo-altcoin-payment-gateway' ),
 			'Automatic Order',
@@ -133,7 +132,6 @@ class RegisterCustomMenu {
 			'cs-woo-altcoin-automatic-order-confirmation-settings',
 			array( $this, 'load_automatic_order_confirmation_settings_page' )
 		);
-		
 
 		if ( false === AutoConfirm::hasPaid() ) {
 			$altcoin_menu['wapg_go_pro'] = add_submenu_page(

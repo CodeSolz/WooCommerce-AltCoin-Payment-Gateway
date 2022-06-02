@@ -14,16 +14,16 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 
 use WooGateWayCoreLib\lib\Util;
 
-class CsPriceDisplay extends \WP_Widget{
+class CsPriceDisplay extends \WP_Widget {
 
-    /**
+	/**
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
 		parent::__construct(
 			'altcoin_display_coin_prices', // Base ID
 			esc_html__( 'Altcoin - Display Coin Prices', 'woo-altcoin-payment-gateway' ), // Name
-			array( 'description' => esc_html__( 'Display Coin Prices', 'woo-altcoin-payment-gateway' ), ) // Args
+			array( 'description' => esc_html__( 'Display Coin Prices', 'woo-altcoin-payment-gateway' ) ) // Args
 		);
 	}
 
@@ -45,7 +45,7 @@ class CsPriceDisplay extends \WP_Widget{
 			<div id='tag-cloud'></div>
 		</div>
 			
-		<?php 
+		<?php
 		echo $args['after_widget'];
 	}
 
@@ -60,13 +60,13 @@ class CsPriceDisplay extends \WP_Widget{
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Coins Recent Prices', 'woo-altcoin-payment-gateway' );
 		?>
 		<p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'woo-altcoin-payment-gateway' ); ?></label> 
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'woo-altcoin-payment-gateway' ); ?></label> 
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-        <p>
-            Please choose coin to show from <a href="<?php echo Util::cs_generate_admin_url('cs-woo-altcoin-widget-settings'); ?>"> Altcoin Payment</a> -> <a href="<?php echo Util::cs_generate_admin_url('cs-woo-altcoin-widget-settings'); ?>">Widget Settings</a> menu.
-        </p>
-		<?php 
+		<p>
+			Please choose coin to show from <a href="<?php echo Util::cs_generate_admin_url( 'cs-woo-altcoin-widget-settings' ); ?>"> Altcoin Payment</a> -> <a href="<?php echo Util::cs_generate_admin_url( 'cs-woo-altcoin-widget-settings' ); ?>">Widget Settings</a> menu.
+		</p>
+		<?php
 	}
 
 	/**
@@ -80,7 +80,7 @@ class CsPriceDisplay extends \WP_Widget{
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
+		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 
 		return $instance;

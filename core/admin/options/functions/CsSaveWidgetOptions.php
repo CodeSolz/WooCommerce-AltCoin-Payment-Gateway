@@ -14,14 +14,14 @@ if ( ! defined( 'CS_WAPG_VERSION' ) ) {
 
 use WooGateWayCoreLib\lib\Util;
 
-class CsSaveWidgetOptions{
+class CsSaveWidgetOptions {
 
-    private static $cs_widget_options = 'CsWidgetsOptions';
+	private static $cs_widget_options = 'CsWidgetsOptions';
 
-    /**
-     * Save widget options
-     */
-    public function save_widget_options(){
+	/**
+	 * Save widget options
+	 */
+	public function save_widget_options() {
 		$selected_coins = Util::check_evil_script( $_POST['show_coins'] );
 
 		$config = array( 'altcoin_display_coin_prices' => array( 'show_coins' => $selected_coins ) );
@@ -34,13 +34,13 @@ class CsSaveWidgetOptions{
 				'text'   => __( 'Your settings have been saved.', 'woo-altcoin-payment-gateway' ),
 			)
 		);
-    }
+	}
 
-    /**
-     * Get widget options
-     */
-    public static function get_widget_options(){
-        return get_option( self::$cs_widget_options );
-    }
+	/**
+	 * Get widget options
+	 */
+	public static function get_widget_options() {
+		return get_option( self::$cs_widget_options );
+	}
 
 }

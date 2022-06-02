@@ -95,14 +95,14 @@ class AddNewCoin {
 			),
 			'cs_add_new[coin_address]'               => array(
 				// 'section'          => '<div class="manual_payment_address">',
-				'title' => __( 'Enter Coin Wallet Address', 'woo-altcoin-payment-gateway' ),
-				'type'          => 'text',
-				'class'         => 'form-control',
-				'required'      => true,
-				'value'         => empty( $coin_addresses ) ? '' : $coin_addresses[0],
-				'placeholder'   => __( 'Please enter coin address', 'woo-altcoin-payment-gateway' ),
-				'desc_tip'      => __( 'Enter new generated coin address. Keep changing your coin address on a certain time to make transactions more safe. e.g : 1KPLgee6crr7u1KQxwnnu4isizufxadVPZ ', 'woo-altcoin-payment-gateway' ),
-				'hidden_div'    => array(
+				'title'       => __( 'Enter Coin Wallet Address', 'woo-altcoin-payment-gateway' ),
+				'type'        => 'text',
+				'class'       => 'form-control',
+				'required'    => true,
+				'value'       => empty( $coin_addresses ) ? '' : $coin_addresses[0],
+				'placeholder' => __( 'Please enter coin address', 'woo-altcoin-payment-gateway' ),
+				'desc_tip'    => __( 'Enter new generated coin address. Keep changing your coin address on a certain time to make transactions more safe. e.g : 1KPLgee6crr7u1KQxwnnu4isizufxadVPZ ', 'woo-altcoin-payment-gateway' ),
+				'hidden_div'  => array(
 					'attributes'        => array(
 						'id'    => 'hidden_block',
 						'class' => "{$hidden_block} more_address_block",
@@ -153,7 +153,7 @@ class AddNewCoin {
 				),
 			),
 
-			'cs_add_new[fee_info_text]'            => array(
+			'cs_add_new[fee_info_text]'              => array(
 				'title'       => __( 'Transfer Fee Text', 'woo-altcoin-payment-gateway' ),
 				'type'        => 'text',
 				'class'       => 'form-control',
@@ -161,7 +161,7 @@ class AddNewCoin {
 				'placeholder' => __( 'Enter text for user to include crypto transfer fee', 'woo-altcoin-payment-gateway' ),
 				'desc_tip'    => __( 'Enter transfer fee text for user. It will show in checkout page, under the "Net Payable Amount" text. ', 'woo-altcoin-payment-gateway' ),
 			),
-			
+
 			'st2'                                    => array(
 				'type'     => 'section_title',
 				'title'    => __( 'Offer Settings', 'woo-altcoin-payment-gateway' ),

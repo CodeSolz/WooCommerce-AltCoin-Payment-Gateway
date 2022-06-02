@@ -57,18 +57,19 @@ class CsAdminQuery {
 				array(
 					'status' => false,
 					'title'  => __( 'Error', 'woo-altcoin-payment-gateway' ),
-					'text'   => sprintf( 
-							__( ' %s is not available to use. Please check the available coins list from  - %s ', 
-								'woo-altcoin-payment-gateway' 
-							),
-							$coin_info['coin_name'],
-							'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway'
+					'text'   => sprintf(
+						__(
+							' %1$s is not available to use. Please check the available coins list from  - %2$s ',
+							'woo-altcoin-payment-gateway'
 						),
+						$coin_info['coin_name'],
+						'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway'
+					),
 				)
 			);
 		}
 
-		$get_coin_info     = array(
+		$get_coin_info = array(
 			'name'                     => sanitize_text_field( $coin_info['coin_name'] ),
 			'coin_web_id'              => $coin_web_id->slug,
 			'symbol'                   => $coin_web_id->symbol,
@@ -77,7 +78,7 @@ class CsAdminQuery {
 			'status'                   => isset( $coin_info['coin_status'] ) ? 1 : 0,
 			'transferFeeTextBoxStatus' => isset( $coin_info['transferFeeTextBoxStatus'] ) ? 1 : 0,
 			'transferFeeTextBoxText'   => Util::check_evil_script( $coin_info['transferFeeTextBoxText'] ),
-			'fee_info_text'   => Util::check_evil_script( $coin_info['fee_info_text'] ),
+			'fee_info_text'            => Util::check_evil_script( $coin_info['fee_info_text'] ),
 		);
 
 		$get_coin_info = apply_filters( 'wapg_add_new_coin_before_save', $get_coin_info, $coin_info );
@@ -148,9 +149,10 @@ class CsAdminQuery {
 				array(
 					'status' => false,
 					'title'  => __( 'Error', 'woo-altcoin-payment-gateway' ),
-					'text'   => sprintf( 
-						__( ' %s is not available to use. Please check the available coins list from  - %s ', 
-							'woo-altcoin-payment-gateway' 
+					'text'   => sprintf(
+						__(
+							' %1$s is not available to use. Please check the available coins list from  - %2$s ',
+							'woo-altcoin-payment-gateway'
 						),
 						$coin_info['coin_name'],
 						'https://coinmarketstats.online/product/woocommerce-bitcoin-altcoin-payment-gateway'
@@ -175,7 +177,7 @@ class CsAdminQuery {
 			'status'                   => isset( $coin_info['coin_status'] ) ? 1 : 0,
 			'transferFeeTextBoxStatus' => isset( $coin_info['transferFeeTextBoxStatus'] ) ? 1 : 0,
 			'transferFeeTextBoxText'   => Util::check_evil_script( $coin_info['transferFeeTextBoxText'] ),
-			'fee_info_text'   => Util::check_evil_script( $coin_info['fee_info_text'] ),
+			'fee_info_text'            => Util::check_evil_script( $coin_info['fee_info_text'] ),
 		);
 
 		$get_coin_info = apply_filters( 'wapg_add_new_coin_before_save', $get_coin_info, $coin_info );

@@ -63,10 +63,8 @@ class CsWapgFunctions extends \WC_Payment_Gateway {
 			add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ), 5 );
 		}
 
-		//checkout scripts
+		// checkout scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'wapg_checkout_scripts' ), 16 );
-
-		
 
 	} // Here is the  End __construct()
 
@@ -220,7 +218,7 @@ class CsWapgFunctions extends \WC_Payment_Gateway {
 	 *
 	 * @return void
 	 */
-	private function get_checkout_options(){
+	private function get_checkout_options() {
 		$custom_settings_options = CsPaymentGateway::get_wapg_options();
 		return \array_merge( (array) $this, (array) $custom_settings_options );
 	}
@@ -230,50 +228,51 @@ class CsWapgFunctions extends \WC_Payment_Gateway {
 	 *
 	 * @return void
 	 */
-	public function wapg_checkout_scripts(){
+	public function wapg_checkout_scripts() {
 
-		wp_enqueue_style( 'wapg-checkout',
-            CS_WAPG_PLUGIN_ASSET_URI . '/css/checkout.min.css',
-            array(),
-            CS_WAPG_VERSION
-        );
-		
+		wp_enqueue_style(
+			'wapg-checkout',
+			CS_WAPG_PLUGIN_ASSET_URI . '/css/checkout.min.css',
+			array(),
+			CS_WAPG_VERSION
+		);
+
 		wp_enqueue_script( 'wapg-checkout-scripts', CS_WAPG_PLUGIN_ASSET_URI . 'js/checkout.min.js', array( 'jquery' ), CS_WAPG_VERSION, true );
-		
+
 		$checkout_options = $this->get_checkout_options();
 
-		$title = isset( $checkout_options['price_section_title'] ) && 
-			! empty( $checkout_options['price_section_title'] ) ? 
+		$title = isset( $checkout_options['price_section_title'] ) &&
+			! empty( $checkout_options['price_section_title'] ) ?
 			$checkout_options['price_section_title'] : __( 'You have to pay:', 'woo-altcoin-payment-gateway' );
 
 		wp_localize_script(
 			'wapg-checkout-scripts',
 			'wapg_checkout',
 			array(
-				'options' => $checkout_options,
+				'options'              => $checkout_options,
 				'checkout_script_hook' => do_action( 'cs_wapg_checkout_script' ),
-				'nonce' => wp_create_nonce( SECURE_AUTH_SALT ),
-				'custom_text' => array(
-					'sd' => __( 'Special Discount', 'woo-altcoin-payment-gateway' ),
-					'ctc' => __( 'I have completed the coin transfer successfully! ', 'woo-altcoin-payment-gateway' ),
-					'sw' => __( 'Please enter a secret word.', 'woo-altcoin-payment-gateway' ),
-					'swph' => __( 'please enter a secret word.', 'woo-altcoin-payment-gateway' ),
-					'swh' => __( 'Incidentally if you close this window or somehow you disconnected from the internet, You can use this secret word to submit your order. Save the word in safe place.', 'woo-altcoin-payment-gateway' ),
+				'nonce'                => wp_create_nonce( SECURE_AUTH_SALT ),
+				'custom_text'          => array(
+					'sd'       => __( 'Special Discount', 'woo-altcoin-payment-gateway' ),
+					'ctc'      => __( 'I have completed the coin transfer successfully! ', 'woo-altcoin-payment-gateway' ),
+					'sw'       => __( 'Please enter a secret word.', 'woo-altcoin-payment-gateway' ),
+					'swph'     => __( 'please enter a secret word.', 'woo-altcoin-payment-gateway' ),
+					'swh'      => __( 'Incidentally if you close this window or somehow you disconnected from the internet, You can use this secret word to submit your order. Save the word in safe place.', 'woo-altcoin-payment-gateway' ),
 					'tbtntext' => __( 'Track My Coin Transfer ', 'woo-altcoin-payment-gateway' ),
-					'tn' => __( 'N.B: After initiate the coin transfer, please click the "Track My Coin Transfer" button immediately. Do not close the window until the tracking process get done. Otherwise your order will not be proceed.', 'woo-altcoin-payment-gateway' ),
-					'stitle' => $title,
-					'c' => __( 'Coin', 'woo-altcoin-payment-gateway' ),
-					't' => __( 'Total', 'woo-altcoin-payment-gateway' ),
-					'st' => __( 'Subtotal', 'woo-altcoin-payment-gateway' ),
-					'np' => __( 'Net Payable Amount', 'woo-altcoin-payment-gateway' ),
-					'npn' => __( '(*Transfer Fee Not Included)', 'woo-altcoin-payment-gateway' ),
-					'ca' => __( 'Please pay to following address:', 'woo-altcoin-payment-gateway' ),
-					'ctt' => __( 'Please enter your ', 'woo-altcoin-payment-gateway' ),
-					'ctt1' => __( ' transaction hash / id :', 'woo-altcoin-payment-gateway' ),
-					'ctxid' => __( 'please enter here your coin transaction id', 'woo-altcoin-payment-gateway' ),
-					'acc' => __( 'Address has been copied to clipboard!', 'woo-altcoin-payment-gateway' ),
-					's' => __( 'Successful..', 'woo-altcoin-payment-gateway' ),
-				)
+					'tn'       => __( 'N.B: After initiate the coin transfer, please click the "Track My Coin Transfer" button immediately. Do not close the window until the tracking process get done. Otherwise your order will not be proceed.', 'woo-altcoin-payment-gateway' ),
+					'stitle'   => $title,
+					'c'        => __( 'Coin', 'woo-altcoin-payment-gateway' ),
+					't'        => __( 'Total', 'woo-altcoin-payment-gateway' ),
+					'st'       => __( 'Subtotal', 'woo-altcoin-payment-gateway' ),
+					'np'       => __( 'Net Payable Amount', 'woo-altcoin-payment-gateway' ),
+					'npn'      => __( '(*Transfer Fee Not Included)', 'woo-altcoin-payment-gateway' ),
+					'ca'       => __( 'Please pay to following address:', 'woo-altcoin-payment-gateway' ),
+					'ctt'      => __( 'Please enter your ', 'woo-altcoin-payment-gateway' ),
+					'ctt1'     => __( ' transaction hash / id :', 'woo-altcoin-payment-gateway' ),
+					'ctxid'    => __( 'please enter here your coin transaction id', 'woo-altcoin-payment-gateway' ),
+					'acc'      => __( 'Address has been copied to clipboard!', 'woo-altcoin-payment-gateway' ),
+					's'        => __( 'Successful..', 'woo-altcoin-payment-gateway' ),
+				),
 			)
 		);
 

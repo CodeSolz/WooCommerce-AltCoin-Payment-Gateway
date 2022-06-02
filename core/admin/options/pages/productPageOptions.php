@@ -102,7 +102,7 @@ class ProductPageOptions {
 				'multiple'    => true,
 				'placeholder' => __( 'Please select coin', 'woo-altcoin-payment-gateway' ),
 				'options'     => CsFormHelperLib::get_all_active_coins(),
-				'value'     => CsFormBuilder::get_value( 'show_live_coin_list', $this->settings, '' ),
+				'value'       => CsFormBuilder::get_value( 'show_live_coin_list', $this->settings, '' ),
 				'desc_tip'    => __( 'Select / Enter coin name to show for live price. e.g : Bitcoin', 'woo-altcoin-payment-gateway' ),
 			),
 			'cs_altcoin_config[variable_product_price_type]' => array(

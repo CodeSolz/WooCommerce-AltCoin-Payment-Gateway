@@ -38,7 +38,8 @@ class Coin_List extends \WP_List_Table {
 	 * @return typeGenerate column
 	 */
 	public function get_columns() {
-		return apply_filters( 'wapg_all_coins_table_cols', 
+		return apply_filters(
+			'wapg_all_coins_table_cols',
 			array(
 				'cb'            => '<input type="checkbox" />',
 				'name'          => __( 'Coin Name', 'woo-altcoin-payment-gateway' ),
@@ -129,10 +130,10 @@ class Coin_List extends \WP_List_Table {
 		}
 	}
 
-	public function column_margin_network_fee( $item ){
-		if( has_action( 'wapg_margin_network_fee_col_data' )){
+	public function column_margin_network_fee( $item ) {
+		if ( has_action( 'wapg_margin_network_fee_col_data' ) ) {
 			do_action( 'wapg_margin_network_fee_col_data', $item );
-		}else{
+		} else {
 			return '---';
 		}
 	}

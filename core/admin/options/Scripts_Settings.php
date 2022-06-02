@@ -22,7 +22,6 @@ class Scripts_Settings {
 	public static function load_admin_settings_scripts( $page_id ) {
 		global $altcoin_menu;
 
-
 		if ( isset( $altcoin_menu['add_new_coin'] ) && $page_id == $altcoin_menu['add_new_coin'] ) {
 			wp_enqueue_style( 'jquery-typehead', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.css', false );
 			wp_enqueue_script( 'jquery-typehead-js', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/jquery-typeahead/jquery.typeahead.min.js', false );
@@ -31,13 +30,13 @@ class Scripts_Settings {
 		}
 
 		if ( ( isset( $altcoin_menu['product_page_options_settings'] ) && $page_id == $altcoin_menu['product_page_options_settings'] ) ||
-				( isset( $altcoin_menu['widget_options_settings'] ) && $page_id == $altcoin_menu['widget_options_settings'])
+				( isset( $altcoin_menu['widget_options_settings'] ) && $page_id == $altcoin_menu['widget_options_settings'] )
 			) {
 			wp_enqueue_style( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/css/select2.min.css', false );
 			wp_enqueue_script( 'select2', CS_WAPG_PLUGIN_ASSET_URI . 'plugins/select2/dist/js/select2.min.js', false );
 		}
 
-		if ( isset( $altcoin_menu['default_settings'] ) && $page_id == $altcoin_menu['default_settings'] ) { 
+		if ( isset( $altcoin_menu['default_settings'] ) && $page_id == $altcoin_menu['default_settings'] ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'wapg-media-uploader', CS_WAPG_PLUGIN_ASSET_URI . 'js/wp.media.uploader.min.js', false );
 		}
@@ -56,7 +55,6 @@ class Scripts_Settings {
 
 		Util::markup_tag( __( 'admin footer script start', 'woo-altcoin-payment-gateway' ) );
 
-
 		// load typehead script
 		if ( $page_id == $altcoin_menu['add_new_coin'] ) {
 			self::load_jquery_typehead();
@@ -67,7 +65,6 @@ class Scripts_Settings {
 			// coin type change
 			self::load_coin_type_changer();
 		}
-
 
 		if ( $page_id == $altcoin_menu['all_coins_list']
 			) {

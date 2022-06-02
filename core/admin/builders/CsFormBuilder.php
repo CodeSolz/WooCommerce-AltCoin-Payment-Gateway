@@ -467,7 +467,7 @@ class CsFormBuilder {
 		 */
 	public static function get_value( $id, $values = array(), $default_value = '' ) {
 		if ( isset( $values[ $id ] ) && ! empty( $values[ $id ] ) ) {
-			return is_array($values[ $id ] ) ? $values[ $id ] :  Util::cs_esc_html( $values[ $id ] );
+			return is_array( $values[ $id ] ) ? $values[ $id ] : Util::cs_esc_html( $values[ $id ] );
 		} elseif ( ! empty( $default_value ) ) {
 			return Util::cs_esc_html( $default_value );
 		}

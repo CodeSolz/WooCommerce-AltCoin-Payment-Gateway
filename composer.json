@@ -1,12 +1,12 @@
 {
-    "name": "tuhin18003/woo-commerce_alt-coin_payment_gateway",
+    "name": "coinmarketstats/woo-commerce_alt-coin_payment_gateway",
     "description": "woocommerce altcoin payment gateway",
     "type": "composer-plugin",
     "license": "mit",
     "authors": [
         {
-            "name": "CodeSolz",
-            "email": "info@codesolz.net"
+            "name": "CoinMarketStats",
+            "email": "info@coinmarketstats.online"
         }
     ],
     "scripts": {

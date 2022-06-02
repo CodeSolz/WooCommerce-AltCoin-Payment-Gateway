@@ -24,11 +24,11 @@ class CsWapgAutoOrderConfirm {
 	 *
 	 * @var type
 	 */
-	
+
 	private $api_config = array(
-		'api_base' => 'https://api.coinmarketstats.online',
-		'api_slug' => 'trxid_validator',
-		'api_version' => 'v1'
+		'api_base'    => 'https://api.coinmarketstats.online',
+		'api_slug'    => 'trxid_validator',
+		'api_version' => 'v1',
 	);
 
 
@@ -105,22 +105,23 @@ class CsWapgAutoOrderConfirm {
 		$con_count = isset( $config['confirmation_count'] ) && ! empty( $config['confirmation_count'] ) ?
 							$config['confirmation_count'] : 6;
 
-		$api_url = $this->api_url_builder(array(
-			$api_key,
-			$cart_info['coinName'],
-			$cart_info['coinAddress'],
-			! isset( $config['coin_percentage'] ) || empty( $config['coin_percentage'] ) ? 100 : $config['coin_percentage'],
-			Util::check_evil_script( $trxid ),
-			$cart_info['totalCoin'],
-			(float) $cartTotal,
-			$secret_word,
-			isset( $config['confirmation_count'] ) && ! empty( $config['confirmation_count'] ) ?
-							$config['confirmation_count'] : 6
-		));
+		$api_url = $this->api_url_builder(
+			array(
+				$api_key,
+				$cart_info['coinName'],
+				$cart_info['coinAddress'],
+				! isset( $config['coin_percentage'] ) || empty( $config['coin_percentage'] ) ? 100 : $config['coin_percentage'],
+				Util::check_evil_script( $trxid ),
+				$cart_info['totalCoin'],
+				(float) $cartTotal,
+				$secret_word,
+				isset( $config['confirmation_count'] ) && ! empty( $config['confirmation_count'] ) ?
+								$config['confirmation_count'] : 6,
+			)
+		);
 
 		$response = Util::remote_call( $api_url );
 		$response = json_decode( $response );
-
 
 		if ( is_object( $response ) ) {
 			if ( isset( $response->error ) && true === $response->error ) {
@@ -182,7 +183,6 @@ class CsWapgAutoOrderConfirm {
 					)
 				);
 			}
-
 		} else {
 			return wp_send_json(
 				Util::notice_html(
@@ -203,14 +203,14 @@ class CsWapgAutoOrderConfirm {
 	 * @param array $params
 	 * @return void
 	 */
-	private function api_url_builder( $params = [] ){
-		if( empty( $params ) ){
+	private function api_url_builder( $params = array() ) {
+		if ( empty( $params ) ) {
 			return false;
 		}
-		$sep = '/';
+		$sep    = '/';
 		$params = \array_map( 'trim', $params );
 
-		return \implode( $sep, $this->api_config ) 
+		return \implode( $sep, $this->api_config )
 			. $sep . \implode( $sep, $params );
 
 	}
