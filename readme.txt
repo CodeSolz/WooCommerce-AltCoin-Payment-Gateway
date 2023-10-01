@@ -6,11 +6,11 @@ Plugin Slug: woo-altcoin-payment-gateway
 Text Domain: woo-altcoin-payment-gateway
 Domain Path: /languages
 Requires at least: 4.0
-Tested up to: 5.9
-Stable tag: 1.6.9
+Tested up to: 6.3
+Stable tag: 1.7.3
 Requires PHP: 7.0
-WC requires at least: 3.0
-WC tested up to: 6.0
+WC requires at least: 4.0
+WC tested up to: 8.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 
@@ -223,8 +223,22 @@ English, Spanish, Russian, German, French, Dutch
 
 == Changelog ==
 
+= V1.7.2 ( October 02, 2023 ) =
+* **Update:** Security issue updated
+
+= V1.7.1 ( October 17, 2022 ) =
+* **Update:** Script updated
+* **Fix:** Little bug fixed
+
+= V1.7.0 ( June 02, 2022 ) =
+* **Improvement:** script optimized for latest features 
+* **Update:** WordPress 6.0 & PHP 8 compatible
+* **Update:** Select2 script upgraded
+* **Update:** jQuery Type-head script upgraded
+* **Update:** jQuery date time picker script upgraded
+
 = V1.6.9 ( Jan 27, 2022 ) =
-* **Improvement:** WordPress 5.9 & PHP 8 compatible
+* **Improvement:** WordPress 5.9 compatible
 
 = V1.6.8 =
 * **BigImprovement:** Automatic confirmation issue fixed
@@ -232,7 +246,7 @@ English, Spanish, Russian, German, French, Dutch
 = V1.6.7 =
 * **New:** Checkout page - transfer fee not included text - is now customizable.
 * **Improve:** Database query updated
-* **Fix:** Configuration settting not saving
+* **Fix:** Configuration settings not saving
 
 = V1.6.6 =
 * **Fix:** Checkout page - coin price loading issue

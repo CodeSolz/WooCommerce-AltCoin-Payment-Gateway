@@ -42,7 +42,7 @@ class CsWapgScript {
 			<script type="text/javascript">
 				var module = {
 					altCoinPayment: function( res ){
-						console.log( res );
+						// console.log( res );
 						var sdm = ''; var sda = ''; var sdf = ''; var ctfd = '';
 						if( true === res.special_discount_status ){
 							sdm = res.special_discount_msg; 
@@ -171,7 +171,7 @@ class CsWapgScript {
 					},
 					qrWidth : function(){
 						var qrWidth = jQuery(".coinAddress-qr").width();
-						console.log( 'width: ' + qrWidth );
+						// console.log( 'width: ' + qrWidth );
 						if( parseInt(qrWidth) <= 900 ){
 							jQuery(".coinAddress-qr").addClass('coinAddress-qr-sm');
 						}else{
@@ -226,7 +226,7 @@ class CsWapgScript {
 								if( res.response === true ){
 									jQuery(".coin-detail").html( module.altCoinPayment( res ) ).slideDown('slow');
 									if( res.checkoutType == 2 ){
-										setTimeout(()=>{
+										setTimeout( ()=> {
 											jQuery("#place_order").hide('slow');
 										}, 2000 );
 									}else{
@@ -238,7 +238,9 @@ class CsWapgScript {
 								}else{
 									jQuery(".coin-detail").html( res.msg ).slideDown('slow');
 								}
+
 								$orderSubmitBtn.removeAttr('disabled');
+
 							});
 						}
 

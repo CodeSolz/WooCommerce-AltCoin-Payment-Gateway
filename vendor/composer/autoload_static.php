@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit085ad6d4abb8a6582b7c0d1825375e5a
+class ComposerStaticInitb78175a1b71ff5cad4c2939e6883993b
 {
     public static $files = array (
         '555fd7c6cd394f9bdcc8eb999cea7608' => __DIR__ . '/..' . '/tuhin18003/advance-var-dumper/src/functions/advance-dump.php',
@@ -39,9 +39,9 @@ class ComposerStaticInit085ad6d4abb8a6582b7c0d1825375e5a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit085ad6d4abb8a6582b7c0d1825375e5a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit085ad6d4abb8a6582b7c0d1825375e5a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit085ad6d4abb8a6582b7c0d1825375e5a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb78175a1b71ff5cad4c2939e6883993b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb78175a1b71ff5cad4c2939e6883993b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb78175a1b71ff5cad4c2939e6883993b::$classMap;
 
         }, null, ClassLoader::class);
     }

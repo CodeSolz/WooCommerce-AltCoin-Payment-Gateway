@@ -174,6 +174,8 @@ class Coin_List extends \WP_List_Table {
 			$order = 'c.id DESC';
 		}
 
+		$orderby_sql       = \sanitize_sql_orderby( "{$order}" );
+
 		$current_page = $this->get_pagenum();
 		if ( 1 < $current_page ) {
 				$offset = $this->item_per_page * ( $current_page - 1 );
@@ -187,7 +189,7 @@ class Coin_List extends \WP_List_Table {
 				. " left join {$wapg_tables['addresses']} as a on c.id = a.coin_id "
 				. " left join {$wapg_tables['offers']} as o on c.id = o.coin_id "
 				. "$search "
-				. " group by c.name order by {$order} limit $this->item_per_page offset {$offset}"
+				. " group by c.name order by {$orderby_sql} limit $this->item_per_page offset {$offset}"
 		);
 
 		if ( $result ) {
