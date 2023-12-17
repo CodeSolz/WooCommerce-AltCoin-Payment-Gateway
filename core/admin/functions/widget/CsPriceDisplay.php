@@ -36,9 +36,9 @@ class CsPriceDisplay extends \WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		echo $args['before_widget'];
+		echo esc_html( $args['before_widget'] );
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+			echo esc_html( $args['before_title'] ) . apply_filters( 'widget_title', $instance['title'] ) . esc_html( $args['after_title'] );
 		}
 		?>
 		<div class="altcoin_widget_price_display">
@@ -46,7 +46,7 @@ class CsPriceDisplay extends \WP_Widget {
 		</div>
 			
 		<?php
-		echo $args['after_widget'];
+		echo esc_html( $args['after_widget'] );
 	}
 
 	/**
@@ -60,11 +60,11 @@ class CsPriceDisplay extends \WP_Widget {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Coins Recent Prices', 'woo-altcoin-payment-gateway' );
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'woo-altcoin-payment-gateway' ); ?></label> 
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label for="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'woo-altcoin-payment-gateway' ); ?></label> 
+			<input class="widefat" id="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-			Please choose coin to show from <a href="<?php echo Util::cs_generate_admin_url( 'cs-woo-altcoin-widget-settings' ); ?>"> Altcoin Payment</a> -> <a href="<?php echo Util::cs_generate_admin_url( 'cs-woo-altcoin-widget-settings' ); ?>">Widget Settings</a> menu.
+			Please choose coin to show from <a href="<?php echo esc_url( Util::cs_generate_admin_url( 'cs-woo-altcoin-widget-settings' )); ?>"> AltCoin Payment</a> -> <a href="<?php echo esc_url( Util::cs_generate_admin_url( 'cs-woo-altcoin-widget-settings' )); ?>">Widget Settings</a> menu.
 		</p>
 		<?php
 	}

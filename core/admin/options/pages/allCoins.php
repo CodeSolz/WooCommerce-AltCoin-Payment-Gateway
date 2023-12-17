@@ -46,7 +46,7 @@ class AllCoins {
 		ob_start();
 		$adCodeList = new Coin_List();
 		$adCodeList->prepare_items();
-		echo '<form id="plugins-filter" method="get"><input type="hidden" name="page" value="' . $page . '" />';
+		echo '<form id="plugins-filter" method="get"><input type="hidden" name="page" value="' . esc_attr($page) . '" />';
 		$adCodeList->views();
 		$adCodeList->search_box( __( 'Search Coin', 'woo-altcoin-payment-gateway' ), '' );
 		$adCodeList->display();

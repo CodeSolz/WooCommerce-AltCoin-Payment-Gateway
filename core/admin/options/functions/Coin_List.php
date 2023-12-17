@@ -174,7 +174,14 @@ class Coin_List extends \WP_List_Table {
 			$order = 'c.id DESC';
 		}
 
-		$orderby_sql       = \sanitize_sql_orderby( "{$order}" );
+		//validating order by sql
+		$orderby_sql = preg_replace('/[^\w\s,.]/', '', $order);
+		if (preg_match('/^[\w\s,.]+$/', $orderby_sql)) {
+			$orderby_sql = $orderby_sql;
+		} else {
+			$orderby_sql = '';
+		}
+
 
 		$current_page = $this->get_pagenum();
 		if ( 1 < $current_page ) {
@@ -191,6 +198,7 @@ class Coin_List extends \WP_List_Table {
 				. "$search "
 				. " group by c.name order by {$orderby_sql} limit $this->item_per_page offset {$offset}"
 		);
+
 
 		if ( $result ) {
 			foreach ( $result as $item ) {

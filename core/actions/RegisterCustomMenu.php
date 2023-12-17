@@ -302,7 +302,7 @@ class RegisterCustomMenu {
 				)
 			);
 		} else {
-			echo $Coin_List;
+			echo esc_html( $Coin_List );
 		}
 	}
 

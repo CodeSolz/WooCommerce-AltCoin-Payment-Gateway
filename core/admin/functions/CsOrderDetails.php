@@ -35,37 +35,37 @@ class CsOrderDetails {
 			</thead>
 			<tbody>
 				<td> 
-					<?php echo $payment_details['coin_name']; ?> &times; <?php echo $payment_details['total_coin']; ?> <br>
-					( 1 <?php echo $payment_details['coin_name']; ?> = &#36;<?php echo $payment_details['coin_price']; ?> )
+					<?php echo esc_html( $payment_details['coin_name'] ); ?> &times; <?php echo esc_html($payment_details['total_coin'] ); ?> <br>
+					( 1 <?php echo $payment_details['coin_name']; ?> = &#36;<?php echo esc_html( $payment_details['coin_price']); ?> )
 				</td>
-				<td><?php echo $payment_details['cart_total']; ?></td>
+				<td><?php echo esc_html( $payment_details['cart_total'] ); ?></td>
 			</tbody>
 			<tfoot>
 				<?php if ( ! empty( $payment_details['special_discount'] ) ) { ?>
 					<tr>
 						<td><?php _e( 'Special Discount', 'woo-altcoin-payment-gateway' ); ?></td>
-						<td> <?php echo $payment_details['special_discount']; ?></td>
+						<td> <?php echo esc_html( $payment_details['special_discount'] ); ?></td>
 					</tr>
 				<?php } ?>
 				<tr>
 					<th><?php _e( 'Subtotal', 'woo-altcoin-payment-gateway' ); ?></th>
-					<td> <?php echo $payment_details['total_coin']; ?> - <?php echo $payment_details['coin_name']; ?></td>
+					<td> <?php echo esc_html( $payment_details['total_coin'] ); ?> - <?php echo esc_html( $payment_details['coin_name'] ); ?></td>
 				</tr>
 				<tr>
 					<th><?php _e( 'Total', 'woo-altcoin-payment-gateway' ); ?></th>
-					<td> <?php echo $payment_details['total_coin']; ?> - <?php echo $payment_details['coin_name']; ?> </td>
+					<td> <?php echo esc_html( $payment_details['total_coin'] ); ?> - <?php echo esc_html( $payment_details['coin_name']); ?> </td>
 				</tr>
 			</tfoot>
 		</table>
 		<div class="cs-ref-info cs-ref-info-first">
 			<div class="name"><?php _e( 'Coin Sent To(your altcoin address)', 'woo-altcoin-payment-gateway' ); ?></div>
 			<div>:</div>
-			<div><?php echo $payment_details['your_address']; ?></div>
+			<div><?php echo esc_html( $payment_details['your_address'] ); ?></div>
 		</div>    
 		<div class="cs-ref-info">
 			<div class="name"><?php _e( 'Transaction Reference / TrxID', 'woo-altcoin-payment-gateway' ); ?></div>
 			<div>:</div>
-			<div><?php echo $payment_details['ref_trxid']; ?></div>
+			<div><?php echo esc_html( $payment_details['ref_trxid'] ); ?></div>
 		</div>    
 		<?php
 		$this->metabox_style();

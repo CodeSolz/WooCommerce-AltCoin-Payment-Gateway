@@ -24,17 +24,17 @@ class CsWapgCustomBlocks {
 		if ( $offers ) {
 			?>
 			<div class="special-discount-notification">
-				<span class="highlight"> <?php echo isset( $settings['offer_msg_blink_text'] ) ? $settings['offer_msg_blink_text'] : __( 'Special Discount!', 'woo-altcoin-payment-gateway' ); ?>  </span> <a class="spcl-msg-box"><?php _e( 'Click here', 'woo-altcoin-payment-gateway' ); ?></a> <?php _e( 'to see more..', 'woo-altcoin-payment-gateway' ); ?>
+				<span class="highlight"> <?php echo isset( $settings['offer_msg_blink_text'] ) ? esc_html( $settings['offer_msg_blink_text'] ) : __( 'Special Discount!', 'woo-altcoin-payment-gateway' ); ?>  </span> <a class="spcl-msg-box"><?php _e( 'Click here', 'woo-altcoin-payment-gateway' ); ?></a> <?php _e( 'to see more..', 'woo-altcoin-payment-gateway' ); ?>
 			</div>
 			<div class="special-discount-box hidden">
 				<b>
 				<?php
-					echo isset( $settings['offer_msg_text'] ) ? $settings['offer_msg_text'] : __( 'You will get special discount, if you pay with following AltCoins', 'woo-altcoin-payment-gateway' );
+					echo isset( $settings['offer_msg_text'] ) ? esc_html( $settings['offer_msg_text'] ) : __( 'You will get special discount, if you pay with following AltCoins', 'woo-altcoin-payment-gateway' );
 				?>
 				</b>
 				<ol>
 					<?php foreach ( $offers as $offer ) { ?>
-						<li><?php echo $offer->name; ?> - <?php echo Util::get_discount_type( $offer->offer_amount, $offer->offer_type ); ?></li>
+						<li><?php echo esc_html( $offer->name ); ?> - <?php echo esc_html( Util::get_discount_type( $offer->offer_amount, $offer->offer_type ) ); ?></li>
 					<?php } ?>
 				</ol>
 			</div>    
