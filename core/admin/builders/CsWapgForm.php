@@ -75,16 +75,17 @@ class CsWapgForm {
 			. '</p><div class="coin-detail"><!--coin calculation--></div>',
 		);
 
-		$fields = wp_parse_args( $fields, apply_filters( 'woocommerce_altcoin_form_fields', $default_fields, $refObj->id ) );
+		// $fields = wp_parse_args( $fields, apply_filters( 'woocommerce_altcoin_form_fields', $default_fields, $refObj->id ) );
 
 		$premade_order_id = isset( $wp->query_vars['order-pay'] ) ? $wp->query_vars['order-pay'] : 0;
+
 		?>
 		<fieldset id="wc-<?php echo esc_attr( $refObj->id ); ?>-cc-form" class='wc-altcoin-form wc-payment-form'>
 				<input type="hidden" name="is_premade_order" id="is_premade_order" value="<?php echo esc_attr( $premade_order_id ); ?>" />
 				<?php do_action( 'woocommerce_altcoin_form_start', $refObj->id ); ?>
 				<?php
-				foreach ( $fields as $field ) {
-						echo esc_html( $field );
+				foreach ( $default_fields as $field ) {
+						echo $field ;
 				}
 				?>
 				<?php do_action( 'woocommerce_altcoin_form_end', $refObj->id ); ?>

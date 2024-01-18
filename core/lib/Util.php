@@ -69,7 +69,7 @@ class Util {
 	 * @param type $tagline
 	 */
 	public static function markup_tag( $tagline ) {
-		 echo esc_html( sprintf( "\n<!--%s - %s-->\n", CS_WAPG_PLUGIN_NAME, $tagline ) );
+		 echo sprintf( "\n<!--%s - %s-->\n", CS_WAPG_PLUGIN_NAME, $tagline );
 	}
 
 	/**

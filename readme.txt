@@ -223,6 +223,10 @@ English, Spanish, Russian, German, French, Dutch
 
 == Changelog ==
 
+= V1.7.5 ( January 19, 2024 ) =
+* **Update:** RAW HTML code error fixed
+
+
 = V1.7.4 ( December 18, 2023 ) =
 * **Update:** Security issue updated
 
